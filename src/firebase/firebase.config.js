@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDXTa2ZK7SDgBx91iO5Qg5bdZXrpSYqFxI",
-  authDomain: "quickfinance-ad874.firebaseapp.com",
-  projectId: "quickfinance-ad874",
-  storageBucket: "quickfinance-ad874.appspot.com",
-  messagingSenderId: "135513823863",
-  appId: "1:135513823863:web:3f6aad4853833624c20472"
+    apiKey: import.meta.env.VITE_apiKey,
+    authDomain: import.meta.env.VITE_authDomain,
+    projectId: import.meta.env.VITE_projectId,
+    storageBucket: import.meta.env.VITE_storageBucket,
+    messagingSenderId: import.meta.env.VITE_messagingSenderId,
+    appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
