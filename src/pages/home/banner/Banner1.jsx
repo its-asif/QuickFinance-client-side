@@ -1,6 +1,6 @@
 import img1 from "../../../../public/bannerImg1.png";
 
-const Banner1 = () => {
+const  Banner1 = () => {
     return (
         <div>
             <div className="hero min-h-screen">
