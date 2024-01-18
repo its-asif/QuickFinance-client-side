@@ -1,21 +1,21 @@
-<<<<<<< HEAD
 import Footer from '../shared/footer/Footer';
 import UnderMaintenance from '../shared/underMaintenance/UnderMaintenance';
-=======
-
->>>>>>> 1326b07e3a6abe3792ced0b9b6c451616bbe821d
 import Banner1 from './banner/Banner1';
 import Banner2 from './banner/Banner2';
+import FaqSection from './faqSection/FaqSection';
 const Home = () => {
     return (
-        <div className='' >
+        <div >
             {/* <UnderMaintenance /> */}
 
             <Banner1 />
 
             <Banner2 />
 
+            <FaqSection />
+
             <Footer />
+
 
 
         </div>
