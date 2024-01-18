@@ -10,10 +10,10 @@ const Banner2 = () => {
                     <div>
 
 
-                        <h1 className="text-4xl md:text-6xl lg:text-5xl font-extrabold">
+                        <h1 className="text-4xl md:text-6xl dark:text-white lg:text-5xl font-extrabold">
                             Your financial security  <br />
                             <span className="text-[#399b53] flex items-center gap-2">is our priority
-                            <img src={dollarIcon} alt="dollarIcon" className="w-16 rotate-12 hidden lg:block lg:relative lg:top-2"/>
+                            <img src={dollarIcon} alt="dollarIcon" className="w-16 rotate-[25deg] hidden lg:block lg:relative lg:top-2"/>
                             </span>
                         </h1>
 
