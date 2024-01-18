@@ -58,7 +58,7 @@ const Navbar = () => {
     );
     return (
 
-        <div className="navbar fixed z-10  h-[80px] lg:h-[70px] bg-[#FBF9F9]  ">
+        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
             <div className="navbar-start lg:ml-8">
                 
 
@@ -71,7 +71,7 @@ const Navbar = () => {
                             src={lgLogo}
                             alt=""
                         />
-                       <img className="mt-[55px] -ml-[45px]" src={QuickFinanceLogo} alt="" />
+                       <img className="mt-[55px] -ml-[45px] lg:w-1/2" src={QuickFinanceLogo} alt="" />
                    </div>
                       
                     </Link>
@@ -82,7 +82,7 @@ const Navbar = () => {
                     <Link to='/'>
                         <img
                         
-                            className=" w-[150px] lg:hidden  md:w-[200px] mt-5 lg:pt-3 object-cover  flex items-center justify-center"
+                            className=" w-[120px] lg:hidden   mt-5 lg:pt-3 object-cover  flex items-center justify-center"
                             src={logo}
                             alt=""
                         />
@@ -91,7 +91,7 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-center hidden  lg:flex">
-                <ul className="menu menu-md menu-horizontal px-1 font-bold gap-10 text-lg   text-white">
+                <ul className="menu menu-md menu-horizontal px-1 font-bold gap-8 text-lg lg:ml-10    text-white">
                     {navLinks}
                 </ul>
             </div>
@@ -132,12 +132,12 @@ const Navbar = () => {
                             </div>
                                 :
                                 <Link to='/login'>
-                                    <button className="btn btn-sm  btn-ghost hover:bg-[#FF0000] px-8 bg-[#09CC7F] text-white font-bold">Login</button>
+                                    <button className="btn btn-sm  btn-ghost hover:bg-[#FF0000] lg:px-8 bg-[#09CC7F] text-white font-bold">Login</button>
                                 </Link>
                         }
                     </div>
                     <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-sm ml-2 md:hidden">
+                        <label tabIndex={0} className="btn btn-ghost btn-sm ml-2 lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-[35px]  w-[28px]"
