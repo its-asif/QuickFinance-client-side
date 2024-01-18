@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '/logoTransparent.png'
+import lgLogo from '/lgLogo.png'
+import QuickFinanceLogo from '/QuickFinance.png'
 const Navbar = () => {
 
     //TODO change after complete authProvider
@@ -56,20 +58,39 @@ const Navbar = () => {
     );
     return (
 
-        <div className="navbar fixed z-10  h-[80px] lg:h-[100px] bg-[#FBF9F9]  ">
+        <div className="navbar fixed z-10  h-[80px] lg:h-[70px] bg-[#FBF9F9]  ">
             <div className="navbar-start lg:ml-8">
+                
+
+            <div className="hidden lg:flex justify-between  -mt-[50px] " >
+                    <Link to='/'>
+                      
+                   <div className="flex justify-center items-center gap-2 ">
+                   <img
+                            className="w-[150px]  lg:pt-3 object-cover  flex items-center justify-center"
+                            src={lgLogo}
+                            alt=""
+                        />
+                       <img className="mt-[55px] -ml-[45px]" src={QuickFinanceLogo} alt="" />
+                   </div>
+                      
+                    </Link>
+                   
+                </div>
 
                 <div >
                     <Link to='/'>
                         <img
-                            className="w-[150px]  md:w-[200px] mt-5 lg:pt-3 object-cover  flex items-center justify-center"
+                        
+                            className=" w-[150px] lg:hidden  md:w-[200px] mt-5 lg:pt-3 object-cover  flex items-center justify-center"
                             src={logo}
                             alt=""
                         />
                     </Link>
                 </div>
+
             </div>
-            <div className="navbar-center hidden  md:flex">
+            <div className="navbar-center hidden  lg:flex">
                 <ul className="menu menu-md menu-horizontal px-1 font-bold gap-10 text-lg   text-white">
                     {navLinks}
                 </ul>
