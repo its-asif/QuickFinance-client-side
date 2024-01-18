@@ -7,7 +7,7 @@ const  Banner1 = () => {
                 <div className="hero-content flex-col justify-between lg:flex-row-reverse mx-10">
                     <img src={img1} className="w-full md:w-3/4 lg:w-1/2 " />
                     <div>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold">
+                    <h1 className="text-4xl dark:text-white md:text-6xl lg:text-7xl font-extrabold">
                         The new <br />
                         era of <span className="text-[#399b53]">finance</span> <br />
                         technology
