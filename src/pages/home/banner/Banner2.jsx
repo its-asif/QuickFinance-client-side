@@ -4,13 +4,13 @@ import dollarIcon from "../../../../public/dollarIcon.png";
 const Banner2 = () => {
     return (
         <div>
-            <div className="hero min-h-screen ">
+            <div className="hero min-h-screen bg-[#E9EFEA] my-10">
                 <div className="hero-content flex-col justify-between lg:flex-row mx-10">
                     <img src={img2} className="w-full md:w-3/4 lg:w-1/2 " />
                     <div>
 
 
-                        <h1 className="text-4xl md:text-6xl dark:text-white lg:text-5xl font-extrabold">
+                        <h1 className="text-4xl md:text-6xl text-black lg:text-5xl font-extrabold">
                             Your financial security  <br />
                             <span className="text-[#399b53] flex items-center gap-2">is our priority
                             <img src={dollarIcon} alt="dollarIcon" className="w-16 rotate-[25deg] hidden lg:block lg:relative lg:top-2"/>
