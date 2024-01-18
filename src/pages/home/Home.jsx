@@ -1,9 +1,9 @@
-import UnderMaintenance from '../shared/underMaintenance/UnderMaintenance';
+
 import Banner1 from './banner/Banner1';
 import Banner2 from './banner/Banner2';
 const Home = () => {
     return (
-        <div >
+        <div className='' >
             {/* <UnderMaintenance /> */}
 
             <Banner1 />

@@ -56,7 +56,7 @@ const Navbar = () => {
     );
     return (
 
-        <div className="navbar h-[80px] lg:h-[100px] bg-[#FBF9F9]  ">
+        <div className="navbar fixed z-10  h-[80px] lg:h-[100px] bg-[#FBF9F9]  ">
             <div className="navbar-start lg:ml-8">
 
                 <div >
