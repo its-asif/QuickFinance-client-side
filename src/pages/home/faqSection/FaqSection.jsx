@@ -18,7 +18,7 @@ const FaqSection = () => {
                             What financial services do you offer?
                         </div>
                         <div className="collapse-content">
-                            <p>hello</p>
+                            <p>We provide a wide range of financial services including accounting, investment management, tax planning, and more. Our goal is to cater to diverse financial needs, ensuring a holistic approach to your prosperity.</p>
                         </div>
                     </div>
 
@@ -28,7 +28,7 @@ const FaqSection = () => {
                             How can I access my account online?
                         </div>
                         <div className="collapse-content">
-                            <p>hello</p>
+                            <p>To access your account online, simply navigate to the 'Login' page on our website. Enter your credentials, and you'll have secure access to your financial information and transactions.</p>
                         </div>
                     </div>
 
