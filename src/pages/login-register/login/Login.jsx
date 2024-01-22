@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div>
+        <div data-aos="fade-up"
+        data-aos-duration="3000">
             <div className="hero min-h-screen">
                 <div className="hero-content flex flex-col justify-evenly lg:flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='LoginPage.png' className="max-w-sm" />
+                    <img data-aos="flip-down" src='LoginPage.png' className="max-w-sm" />
 
 
 
@@ -20,7 +21,7 @@ const Login = () => {
                     <div className='bg-[#07123a]  rounded-2xl'>
                     <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-10 lg:px-8 lg:py-10 ">
                         <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-                            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">Login in</h2>
+                            <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">Login</h2>
 
                             {/* link to register page */}
                             <p className="mt-2 text-sm text-white">
@@ -84,7 +85,7 @@ const Login = () => {
                                     <div>
                                     <button
                                         type="button"
-                                        className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                                        className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-[#399b53]"
                                         onClick={() => { window.location.href = '/' }}
                                     >
                                         Login <ArrowRight className="ml-2" size={16} />
@@ -100,7 +101,7 @@ const Login = () => {
                                 {/* Google */}
                             <button
                                 type="button"
-                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-white focus:bg-gray-100 focus:text-white focus:outline-none"
+                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
                             >
                                 <span className="mr-2 inline-block">
                                 <svg
@@ -119,7 +120,7 @@ const Login = () => {
                             {/* Facebook */}
                             <button
                                 type="button"
-                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-white focus:bg-gray-100 focus:text-white focus:outline-none"
+                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
                             >
                                 <span className="mr-2 inline-block">
                                 <svg

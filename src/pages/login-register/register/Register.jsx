@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div>
+        <div data-aos="fade-up"
+        data-aos-anchor-placement="top-center">
             <div className="hero min-h-screen">
                 <div className="hero-content flex flex-col justify-evenly lg:flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='RegisterPage.png' className="max-w-sm" />
+                    <img data-aos="flip-up" src='RegisterPage.png' className="max-w-sm" />
 
 
 
@@ -121,7 +122,7 @@ const Register = () => {
                                     <div>
                                     <button
                                         type="button"
-                                        className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                                        className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-[#399b53]"
                                         onClick={() => { window.location.href = '/'; }
                                         }
                                     >
@@ -138,7 +139,7 @@ const Register = () => {
                                 {/* Google */}
                             <button
                                 type="button"
-                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-white focus:bg-gray-100 focus:text-white focus:outline-none"
+                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
                             >
                                 <span className="mr-2 inline-block">
                                 <svg
@@ -157,7 +158,7 @@ const Register = () => {
                             {/* Facebook */}
                             <button
                                 type="button"
-                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-white focus:bg-gray-100 focus:text-white focus:outline-none"
+                                className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
                             >
                                 <span className="mr-2 inline-block">
                                 <svg
