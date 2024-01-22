@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div>
+        <div data-aos="fade-up"
+        data-aos-anchor-placement="top-center">
             <div className="hero min-h-screen">
                 <div className="hero-content flex flex-col justify-evenly lg:flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='RegisterPage.png' className="max-w-sm" />
+                    <img data-aos="flip-up" src='RegisterPage.png' className="max-w-sm" />
 
 
 

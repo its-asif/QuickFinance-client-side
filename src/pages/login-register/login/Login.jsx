@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div>
+        <div data-aos="fade-up"
+        data-aos-duration="3000">
             <div className="hero min-h-screen">
                 <div className="hero-content flex flex-col justify-evenly lg:flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='LoginPage.png' className="max-w-sm" />
+                    <img data-aos="flip-down" src='LoginPage.png' className="max-w-sm" />
 
 
 
