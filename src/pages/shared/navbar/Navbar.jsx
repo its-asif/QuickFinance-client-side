@@ -29,7 +29,7 @@ const Navbar = () => {
                         isPending ? "pending" : isActive ? "bg-black text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
                     }
                 >
-                    About
+                    About Us
                 </NavLink>
             </li>
             <li className="mt-2 lg:mt-0">
@@ -51,14 +51,26 @@ const Navbar = () => {
                         isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
                     }
                 >
-                    Contact
+                    Contact Us
+                </NavLink>
+            </li>
+            <li className="my-2 lg:my-0">
+                {" "}
+                <NavLink
+                    to="/zakatAndtax"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                    }
+                >
+                    Calculator
                 </NavLink>
             </li>
         </>
     );
     return (
 
-        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
+      
+         <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
             <div className="navbar-start lg:ml-8">
                 
 
@@ -164,6 +176,7 @@ const Navbar = () => {
                 </div>
             </div>
         </div>
+       
 
     );
 };

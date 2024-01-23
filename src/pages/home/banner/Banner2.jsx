@@ -6,8 +6,8 @@ const Banner2 = () => {
         <div>
             <div className="hero min-h-screen bg-[#E9EFEA] my-10">
                 <div className="hero-content flex-col justify-between lg:flex-row mx-10">
-                    <img src={img2} className="w-full md:w-3/4 lg:w-1/2 " />
-                    <div>
+                    <img data-aos="fade-up-right" src={img2} className="w-full md:w-3/4 lg:w-1/2 " />
+                    <div data-aos="fade-up-left">
 
 
                         <h1 className="text-4xl md:text-6xl text-black lg:text-5xl font-extrabold">
