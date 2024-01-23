@@ -40,87 +40,87 @@ const Register = () => {
                                 <form action="#" method="POST" className="mt-8">
                                     <div className="space-y-5">
 
-                                        {/* Name */}
-                                        <div>
-                                            <label htmlFor="" className="text-base font-medium text-gray-100">
-                                                Name:
-                                                <MdPerson  size={30} className='absolute translate-x-1 translate-y-[13px]' />
-                                            </label>
-                                            <div className="mt-2 border rounded-md">
-                                                <input
-                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
-                                                    type="text"
-                                                    placeholder='Name'
-                                                >
 
-                                                </input>
-                                            </div>
-                                        </div>
-
-
-
-                                        {/* Email */}
-                                        <div>
-                                            <label htmlFor="" className="text-base font-medium text-gray-100">
-                                                Email:
-                                                <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
-                                            </label>
-                                            <div className="mt-2 border rounded-md">
-                                                <input
-                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
-                                                    type="email"
-                                                    placeholder='Email'
-                                                >
-
-                                                </input>
-                                            </div>
-                                        </div>
-                                        <div>
-
-
-                                            {/* Password */}
-                                            <div className="flex items-center justify-between">
+                                        <div className='flex gap-2'>
+                                            {/* Name */}
+                                            <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
-                                                    Password:
-                                                    <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    Name:
+                                                    <MdPerson size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
+                                                <div className="mt-2 border rounded-md">
+                                                    <input
+                                                        className="lg:ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        type="text"
+                                                        placeholder='Name'
+                                                    >
 
-                                                {/* Forgot Password */}
-                                                <a
-                                                    href="#"
-                                                    title=""
-                                                    className="text-sm font-semibold text-gray-300 hover:underline"
-                                                >
-                                                    Forgot password?
-                                                </a>
+                                                    </input>
+                                                </div>
                                             </div>
 
-
-
-                                            <div className="mt-2 border rounded-md">
+                                            {/* Upload Image */}
+                                            <div className="grid w-full items-center gap-1.5">
+                                                <label
+                                                    className="text-base font-medium text-gray-100"
+                                                >
+                                                    Upload Image
+                                                </label
+                                                >
                                                 <input
-                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
-                                                    type="password"
-                                                    placeholder='Password'
-                                                >
-
-                                                </input>
+                                                    className="flex h-10  lg:w-[200px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-blue-600 file:text-white file:text-sm file:font-medium"
+                                                    type="file"
+                                                    id="picture"
+                                                />
                                             </div>
+
                                         </div>
 
+                                        <div className='flex gap-2'>
+                                            {/* Email */}
+                                            <div>
+                                                <label htmlFor="" className="text-base font-medium text-gray-100">
+                                                    Email:
+                                                    <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                </label>
+                                                <div className="mt-2 border rounded-md">
+                                                    <input
+                                                        className="lg:ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        type="email"
+                                                        placeholder='Email'
+                                                    >
 
-                                        {/* Upload Image */}
-                                        <div>
-                                            <label htmlFor="" className="text-base font-medium text-gray-100">
-                                                Upload Image
-                                            </label>
-                                            <div className="mt-2">
-                                                <input
-                                                    className="flex h-10 w-full rounded-md border text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                                                    type="file"
-                                                    placeholder="Upload Image"
-                                                ></input>
+                                                    </input>
+                                                </div>
                                             </div>
+                                            {/* Password */}
+                                            <div>
+                                                <div className="flex items-center justify-between">
+                                                    <label htmlFor="" className="text-base font-medium text-gray-100">
+                                                        Password:
+                                                        <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    </label>
+
+                                                    {/* Forgot Password */}
+                                                    <a
+                                                        href="#"
+                                                        title=""
+                                                        className="text-sm font-semibold text-gray-300 hover:underline"
+                                                    >
+                                                        Forgot password?
+                                                    </a>
+                                                </div>
+                                                <div className="mt-2 border rounded-md">
+                                                    <input
+                                                        className="lg:ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        type="password"
+                                                        placeholder='Password'
+                                                    >
+
+                                                    </input>
+                                                </div>
+                                            </div>
+
                                         </div>
 
 
