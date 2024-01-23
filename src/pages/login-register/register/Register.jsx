@@ -8,12 +8,12 @@ const Register = () => {
     return (
         <div>
             <div className="hero min-h-screen">
-                <div className="hero-content flex flex-col justify-evenly lg:flex-row  w-full">
+                <div className="hero-content flex justify-evenly flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='RegisterPage.png' className="max-w-sm" />
+                    <img src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
 
 
 
@@ -41,7 +41,7 @@ const Register = () => {
                                     <div className="space-y-5">
 
 
-                                        <div className='flex gap-2'>
+                                        <div className='flex flex-col md:flex-row gap-2'>
                                             {/* Name */}
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
@@ -50,7 +50,7 @@ const Register = () => {
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
                                                     <input
-                                                        className="lg:ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
                                                         placeholder='Name'
                                                     >
@@ -76,7 +76,7 @@ const Register = () => {
 
                                         </div>
 
-                                        <div className='flex gap-2'>
+                                        <div className='flex flex-col lg:flex-row gap-2'>
                                             {/* Email */}
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
@@ -85,7 +85,7 @@ const Register = () => {
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
                                                     <input
-                                                        className="lg:ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
                                                     >
@@ -112,7 +112,7 @@ const Register = () => {
                                                 </div>
                                                 <div className="mt-2 border rounded-md">
                                                     <input
-                                                        className="lg:ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="password"
                                                         placeholder='Password'
                                                     >
