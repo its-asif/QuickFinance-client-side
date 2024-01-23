@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
-
+import { RiLockPasswordLine } from "react-icons/ri";
 const Login = () => {
     return (
         <div>
@@ -41,15 +41,17 @@ const Login = () => {
                                         {/* Email */}
                                         <div>
                                             <label htmlFor="" className="text-base font-medium text-gray-100">
-                                                Email address
-                                                <MdOutlineMailOutline size={40}/>
+                                                Email:
+                                                <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                             </label>
-                                            <div className="mt-2">
+                                            <div className="mt-2 border rounded-md">
                                                 <input
-                                                    className="flex h-10 w-full rounded-md border text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="email"
-                                                    placeholder="Email"
-                                                ></input>
+                                                    placeholder='Email'
+                                                >
+
+                                                </input>
                                             </div>
                                         </div>
                                         <div>
@@ -57,8 +59,8 @@ const Login = () => {
                                             {/* Password */}
                                             <div className="flex items-center justify-between">
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
-
-                                                    Password
+                                                    Password:
+                                                    <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
 
                                                 {/* Forgot Password */}
@@ -72,15 +74,18 @@ const Login = () => {
                                             </div>
 
 
-                                            {/* button */}
-                                            <div className="mt-2">
+
+                                            <div className="mt-2 border rounded-md">
                                                 <input
-                                                    className="flex h-10 w-full rounded-md border text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="password"
-                                                    placeholder="Password"
-                                                ></input>
+                                                    placeholder='Password'
+                                                >
+
+                                                </input>
                                             </div>
                                         </div>
+                                        {/* button */}
                                         <div>
                                             <button
                                                 type="button"
