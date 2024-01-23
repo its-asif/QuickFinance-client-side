@@ -6,14 +6,15 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 const Register = () => {
     return (
-        <div>
+        <div data-aos="fade-up"
+        data-aos-anchor-placement="top-center">
             <div className="hero min-h-screen">
                 <div className="hero-content flex justify-evenly flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
+                    <img data-aos="flip-up" src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
 
 
 

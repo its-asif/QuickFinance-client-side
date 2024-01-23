@@ -4,14 +4,15 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 const Login = () => {
     return (
-        <div>
+        <div data-aos="fade-up"
+        data-aos-duration="3000">
             <div className="hero min-h-screen">
                 <div className="hero-content flex  justify-evenly flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='LoginPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
+                    <img data-aos="flip-down" src='LoginPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
 
 
 
