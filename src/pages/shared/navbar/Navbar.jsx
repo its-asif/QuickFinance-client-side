@@ -29,7 +29,7 @@ const Navbar = () => {
                         isPending ? "pending" : isActive ? "bg-black text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
                     }
                 >
-                    About
+                    About Us
                 </NavLink>
             </li>
             <li className="mt-2 lg:mt-0">
@@ -51,7 +51,7 @@ const Navbar = () => {
                         isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
                     }
                 >
-                    Contact
+                    Contact Us
                 </NavLink>
             </li>
             <li className="my-2 lg:my-0">
