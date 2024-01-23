@@ -6,12 +6,12 @@ const Login = () => {
     return (
         <div>
             <div className="hero min-h-screen">
-                <div className="hero-content flex flex-col justify-evenly lg:flex-row  w-full">
+                <div className="hero-content flex  justify-evenly flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img src='LoginPage.png' className="max-w-sm" />
+                    <img src='LoginPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
 
 
 
@@ -46,7 +46,7 @@ const Login = () => {
                                             </label>
                                             <div className="mt-2 border rounded-md">
                                                 <input
-                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                    className="ml-8  flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="email"
                                                     placeholder='Email'
                                                 >
@@ -77,7 +77,7 @@ const Login = () => {
 
                                             <div className="mt-2 border rounded-md">
                                                 <input
-                                                    className="lg:ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                    className="ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="password"
                                                     placeholder='Password'
                                                 >
