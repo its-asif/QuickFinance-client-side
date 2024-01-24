@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "zakatAndTax",
+        path: "/zakatAndTax",
         element: <ZakatAndTax />
       }
     ],
