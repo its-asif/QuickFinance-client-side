@@ -32,17 +32,7 @@ const Navbar = () => {
                     About Us
                 </NavLink>
             </li>
-            <li className="mt-2 lg:mt-0">
-                {" "}
-                <NavLink
-                    to="/services"
-                    className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black   text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F] text-white "
-                    }
-                >
-                    Service
-                </NavLink>
-            </li>
+           
             <li className="my-2 lg:my-0">
                 {" "}
                 <NavLink

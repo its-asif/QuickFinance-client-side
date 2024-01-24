@@ -7,7 +7,7 @@ import ErrorPage from "../pages/shared/errorPage/ErrorPage";
 import Login from "../pages/login-register/login/Login";
 import Register from "../pages/login-register/register/Register";
 import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
-import Services from "../pages/home/services/Services";
+
 
 
 const router = createBrowserRouter([
@@ -32,10 +32,7 @@ const router = createBrowserRouter([
         path: "/zakatAndTax",
         element: <ZakatAndTax />
       },
-      {
-        path:"/services",
-        element:<Services></Services>
-      }
+     
     ],
   },
 ]);
