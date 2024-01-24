@@ -35,7 +35,7 @@ const Navbar = () => {
             <li className="mt-2 lg:mt-0">
                 {" "}
                 <NavLink
-                    to="/service"
+                    to="/services"
                     className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "bg-black   text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F] text-white "
                     }
@@ -69,31 +69,31 @@ const Navbar = () => {
     );
     return (
 
-      
-         <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
-            <div className="navbar-start lg:ml-8">
-                
 
-            <div className="hidden lg:flex justify-between  -mt-[50px] " >
+        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
+            <div className="navbar-start lg:ml-8">
+
+
+                <div className="hidden lg:flex justify-between  -mt-[50px] " >
                     <Link to='/'>
-                      
-                   <div className="flex justify-center items-center gap-2 ">
-                   <img
-                            className="w-[150px]  lg:pt-3 object-cover  flex items-center justify-center"
-                            src={lgLogo}
-                            alt=""
-                        />
-                       <img className="mt-[55px] -ml-[45px] lg:w-1/2" src={QuickFinanceLogo} alt="" />
-                   </div>
-                      
+
+                        <div className="flex justify-center items-center gap-2 ">
+                            <img
+                                className="w-[150px]  lg:pt-3 object-cover  flex items-center justify-center"
+                                src={lgLogo}
+                                alt=""
+                            />
+                            <img className="mt-[55px] -ml-[45px] lg:w-1/2" src={QuickFinanceLogo} alt="" />
+                        </div>
+
                     </Link>
-                   
+
                 </div>
 
                 <div >
                     <Link to='/'>
                         <img
-                        
+
                             className=" w-[120px] lg:hidden   mt-5 lg:pt-3 object-cover  flex items-center justify-center"
                             src={logo}
                             alt=""
@@ -176,7 +176,7 @@ const Navbar = () => {
                 </div>
             </div>
         </div>
-       
+
 
     );
 };
