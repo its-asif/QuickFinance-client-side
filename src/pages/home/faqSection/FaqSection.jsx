@@ -5,7 +5,7 @@ const FaqSection = () => {
         <div className='bg-[#F9FBFA] my-16 py-16 '>
             <div className="grid lg:grid-cols-2 items-center lg:gap-0 gap-6  max-w-7xl mx-auto">
 
-                <div data-aos="flip-down" className="max-lg:order-1 max-lg:text-center w-4/5 lg:w-4/5 mx-auto ">
+                <div data-aos="flip-down" data-aos-duration="2000" className="max-lg:order-1 max-lg:text-center w-4/5 lg:w-4/5 mx-auto ">
 
                     <div>
                         <h1 className='text-4xl font-bold'>Frequently Asked Questions <span className='text-[#399B53]'>(FAQ)</span> </h1>
@@ -45,7 +45,7 @@ const FaqSection = () => {
                 </div>
 
                 <div   className="md:h-[450px] ">
-                    <img data-aos="flip-up" src={faqImg} className="h-full md:w-3/4 lg:w-full  mx-auto" alt="FAQ Image" />
+                    <img data-aos="flip-up" data-aos-duration="2000" src={faqImg} className="h-full md:w-3/4 lg:w-full  mx-auto" alt="FAQ Image" />
                 </div>
             </div>
         </div>
