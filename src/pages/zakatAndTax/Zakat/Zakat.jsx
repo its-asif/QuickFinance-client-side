@@ -47,7 +47,8 @@ const Zakat = () => {
         if (totalAmount < 52000) {
             setZakat('Not Applicable');
         } else {
-            const sumZakat = totalAmount * .025
+            let zakatPercentage = .025
+            const sumZakat = totalAmount * zakatPercentage
             const totalZakat = sumZakat.toFixed(2);
             setZakat(totalZakat);
         }
