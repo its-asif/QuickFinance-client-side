@@ -1,20 +1,20 @@
 
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 const Register = () => {
     return (
-        <div data-aos="fade-up"
-        data-aos-anchor-placement="top-center">
+        <div data-aos="fade-up" data-aos-duration="3000"
+            data-aos-anchor-placement="top-center">
             <div className="hero min-h-screen">
                 <div className="hero-content flex justify-evenly flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img data-aos="flip-up" src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
+                    <img data-aos="flip-up" data-aos-duration="2000" src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
 
 
 

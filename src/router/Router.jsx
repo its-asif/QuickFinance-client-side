@@ -9,6 +9,7 @@ import Register from "../pages/login-register/register/Register";
 import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
       {
         path: "/zakatAndTax",
         element: <ZakatAndTax />
-      }
+      },
+     
     ],
   },
 ]);
