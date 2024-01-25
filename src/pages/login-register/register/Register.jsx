@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,9 +8,11 @@ import { MdPerson } from "react-icons/md";
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../../../AuthProvider/Contextapi';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 const Register = () => {
-    const { loading,createUser, UpdateUser } = useContext(AuthContext)
-    console.log(loading);
+    const { loading, createUser, UpdateUser } = useContext(AuthContext)
+    // console.log(loading);
+    const axiosPublic = useAxiosPublic()
     //Handle Email password Sign In
     const handleSignUp = async (e) => {
         const email = e.target.email.value;
@@ -25,7 +28,48 @@ const Register = () => {
             // if status is ok
             if (res.status === 200) {
                 const result = res.data
-                console.log(email, password, name, result.data.display_url);
+                const HostedImage = result.data.display_url
+                console.log(email, password, name, );
+                createUser(email, password)
+                    .then(result => {
+                        console.log(result.user);
+                        UpdateUser(name, HostedImage)
+                            .then(() => {
+                                console.log(result.user);
+                                const User = {
+                                    name: result.user.displayName,
+                                    email: result.user.email,
+                                    emailVerified: result.user.emailVerified,
+                                    creationTime: result.user.metadata.creationTime,
+                                    lastSignInTime: result.user.metadata.lastSignInTime,
+                                    profileImage: result.user.photoURL,
+                                    role: 'user'
+                                }
+                                console.log(User)
+                                // axiosPublic.post('/users', User)
+                                //     .then(res => {
+                                //         if (res.data.insertedId) {
+                                //             // localStorage.setItem('ToastShowed', JSON.stringify('false'))
+                                //             // toast.success(`Authenticating as ${result.user.email}`)
+                                //             // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                                //         }
+                                //     })
+
+                            })
+                            .catch((error) => {
+                                const errorMessage = error.message;
+                                console.log(errorMessage);
+                                // toast.error(`${errorMessage}`)
+                            });
+
+                    })
+                    .catch((error) => {
+                        const errorMessage = error.message;
+                        console.log(errorMessage);
+                        // toast.error(`${errorMessage}`)
+                    });
+                    const form = e.target
+                    form.value.reset()
             }
 
         }
@@ -113,7 +157,7 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
                                                     Email:
-                                                    <MdOutlineMailOutline  size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
                                                     <input name='email'
@@ -130,7 +174,7 @@ const Register = () => {
                                                 <div className="flex items-center justify-between">
                                                     <label htmlFor="" className="text-base font-medium text-gray-100">
                                                         Password:
-                                                        <RiLockPasswordLine  size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                        <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                     </label>
 
                                                     {/* Forgot Password */}
