@@ -20,12 +20,15 @@ const Services = () => {
                     Our <span className="text-[#399b53]">Services</span>
                 </h1>
             </div>
-            <div className="max-w-screen-xl mx-auto p-5 lg:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10">
+            
+            <div className=" relative max-w-screen-xl z-[5] mx-auto p-5 lg:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10">
             {items?.map((item,idx)=> <ServiceCard key={idx} item={item}></ServiceCard>)}
 
 
             </div>
-            <section className="relative h-[40vh]">
+            <section className="relative h-[20vh]">
+
+         
                 
             <svg
                    
@@ -35,8 +38,8 @@ const Services = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     className="
                     
-                    z-[5]
-                    absolute bottom-0 left-0  transition duration-300 ease-in-out delay-150"
+                   
+                   absolute bottom-0 left-0  transition duration-300 ease-in-out delay-150"
                 >
                     <style>
                         {`
@@ -79,7 +82,6 @@ const Services = () => {
                         className="transition-all duration-300 ease-in-out delay-150 path-0"
                     ></path>
                 </svg>
-
 
             </section>
         </div>
