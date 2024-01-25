@@ -1,20 +1,46 @@
 
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
+import axios from 'axios';
 const Register = () => {
+    //Handle Email password Sign In
+    const handleSignUp = async (e) => {
+        const email = e.target.email.value;
+        const password = e.target.password.value
+        const name = e.target.name.value
+        // const image = e.target.image.value;
+        const image = e.target.image.files[0];
+        try {
+            const formData = new FormData();
+            formData.append('image', image);
+            // image sending to imagbb
+            const res = await axios.post("https://api.imgbb.com/1/upload?key=084c828cb07b191daf9262ae088bdd35", formData)
+            // if status is ok
+            if (res.status === 200) {
+                const result = res.data
+                console.log(email, password, name, result.data.display_url);
+            }
+
+        }
+        catch (error) {
+            console.error('Error during signup:', error.message);
+            console.log(error.code);
+        }
+
+    }
     return (
-        <div data-aos="fade-up"
-        data-aos-anchor-placement="top-center">
+        <div data-aos="fade-up" data-aos-duration="3000"
+            data-aos-anchor-placement="top-center">
             <div className="hero min-h-screen">
                 <div className="hero-content flex justify-evenly flex-row  w-full">
 
 
                     {/* Left Side */}
 
-                    <img data-aos="flip-up" src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
+                    <img data-aos="flip-up" data-aos-duration="2000" src='RegisterPage.png' className="lg:max-w-sm w-[350px] hidden md:flex" />
 
 
 
@@ -38,7 +64,8 @@ const Register = () => {
 
 
                                 {/* Form */}
-                                <form action="#" method="POST" className="mt-8">
+                                <form onSubmit={e => { e.preventDefault(), handleSignUp(e) }}
+                                    action="#" method="POST" className="mt-8">
                                     <div className="space-y-5">
 
 
@@ -50,7 +77,7 @@ const Register = () => {
                                                     <MdPerson size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
-                                                    <input
+                                                    <input name='name'
                                                         className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
                                                         placeholder='Name'
@@ -68,7 +95,7 @@ const Register = () => {
                                                     Upload Image
                                                 </label
                                                 >
-                                                <input
+                                                <input name='image'
                                                     className="flex h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-blue-600 file:text-white file:text-sm file:font-medium"
                                                     type="file"
                                                     id="picture"
@@ -82,10 +109,10 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
                                                     Email:
-                                                    <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    <MdOutlineMailOutline  size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
-                                                    <input
+                                                    <input name='email'
                                                         className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
@@ -99,7 +126,7 @@ const Register = () => {
                                                 <div className="flex items-center justify-between">
                                                     <label htmlFor="" className="text-base font-medium text-gray-100">
                                                         Password:
-                                                        <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                        <RiLockPasswordLine  size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                     </label>
 
                                                     {/* Forgot Password */}
@@ -112,7 +139,7 @@ const Register = () => {
                                                     </a>
                                                 </div>
                                                 <div className="mt-2 border rounded-md">
-                                                    <input
+                                                    <input name='password'
                                                         className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="password"
                                                         placeholder='Password'
@@ -131,10 +158,8 @@ const Register = () => {
                                         {/* Register Button */}
                                         <div>
                                             <button
-                                                type="button"
+                                                type="submit"
                                                 className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-[#399b53]"
-                                                onClick={() => { window.location.href = '/'; }
-                                                }
                                             >
                                                 Register <ArrowRight className="ml-2" size={16} />
                                             </button>

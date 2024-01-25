@@ -10,6 +10,7 @@ import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
 import FinancialManagement from "../pages/financialManagement/financialManagement";
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
         path: "/financialManagement",
         element: <FinancialManagement />
       }
+
     ],
   },
 ]);
