@@ -5,11 +5,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import router from './router/Router.jsx';
+import { ContextApi } from './AuthProvider/Contextapi.jsx';
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ContextApi>
+      <RouterProvider router={router} />
+    </ContextApi>
   </React.StrictMode>,
 )

@@ -5,7 +5,11 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 import axios from 'axios';
+import { useContext } from 'react';
+import { AuthContext } from '../../../AuthProvider/Contextapi';
 const Register = () => {
+    const { loading,createUser, UpdateUser } = useContext(AuthContext)
+    console.log(loading);
     //Handle Email password Sign In
     const handleSignUp = async (e) => {
         const email = e.target.email.value;
