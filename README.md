@@ -66,7 +66,7 @@ Built with a powerful tech stack:
    ```bash
    npm run dev
    ```
-2. Access the application in your browser, typically at `http://localhost:3000/`.
+2. Access the application in your browser, typically at `http://localhost:5173/`.
 
 
 ### Environment Variables
