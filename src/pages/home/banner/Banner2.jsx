@@ -3,7 +3,7 @@ import dollarIcon from "../../../../public/dollarIcon.png";
 
 const Banner2 = () => {
     return (
-        <div>
+        <div className="overflow-x-hidden">
             <div className="hero min-h-screen bg-[#E9EFEA] my-10">
                 <div className="hero-content flex-col justify-between lg:flex-row mx-10">
                     <img data-aos="fade-up-right" data-aos-duration="2000" src={img2} className="w-full md:w-3/4 lg:w-1/2 " />

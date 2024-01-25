@@ -13,7 +13,7 @@ const Services = () => {
     },[])
     
     return (
-        <div className="my-10 bg-slate-100">
+        <div className="my-10 bg-slate-100 overflow-x-hidden">
             <div className="text-center">
 
                 <h1 data-aos="zoom-out-up"  data-aos-duration="1500"  className="font-bold text-3xl pt-10 md:text-4xl lg:text-6xl 2xl:text-7xl my-10">
@@ -39,7 +39,7 @@ const Services = () => {
                     className="
                     
                    
-                   absolute bottom-0 left-0  transition duration-300 ease-in-out delay-150"
+                   absolute bottom-0 left-0  "
                 >
                     <style>
                         {`
