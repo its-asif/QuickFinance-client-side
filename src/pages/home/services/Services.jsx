@@ -21,7 +21,7 @@ const Services = () => {
                 </h1>
             </div>
             
-            <div className=" relative max-w-screen-xl z-[5] mx-auto p-5 lg:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-10">
+            <div className=" relative max-w-screen-xl z-[5] mx-auto p-5 lg:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10">
             {items?.map((item,idx)=> <ServiceCard key={idx} item={item}></ServiceCard>)}
 
 
