@@ -1,5 +1,5 @@
-import img2 from "/bannerImg2.png";
-import dollarIcon from "/dollarIcon.png";
+import img2 from "../../../../public/bannerImg2.png";
+import dollarIcon from "../../../../public/dollarIcon.png";
 
 const Banner2 = () => {
     return (
