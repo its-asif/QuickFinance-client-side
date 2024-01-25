@@ -15,8 +15,8 @@ const Footer = () => {
             <div className='flex justify-center items-center gap-5'>
                 <img data-aos="zoom-in-right" src={footerLogo} alt="QuickFinance Logo" />
                 <h1 data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="500" className='font-bold text-3xl'>QUICK<span className='text-[#399B53]'>FINANCE</span> </h1>
+                    data-aos-easing="linear"
+                    data-aos-duration="500" className='font-bold text-3xl'>QUICK<span className='text-[#399B53]'>FINANCE</span> </h1>
             </div>
 
             <div className='grid grid-cols-4 gap-2 lg:gap-32 my-6'>
@@ -52,7 +52,7 @@ const Footer = () => {
                 <button className="bg-[#399B53] text-white rounded h-10 px-4 ml-3 text-lg">Subscribe</button>
             </div>
 
-            <p>Copyright © 2024 - All right reserved</p> 
+            <p>Copyright © 2024 - All right reserved</p>
         </div>
 
     );
