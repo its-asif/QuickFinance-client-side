@@ -2,12 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '/logoTransparent.png'
 import lgLogo from '/lgLogo.png'
 import QuickFinanceLogo from '/QuickFinance.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/Contextapi";
 const Navbar = () => {
 
     //TODO change after complete authProvider
-    const user = {};
-    const logOut = [];
-
+    const { AuthUser, LogOut } = useContext(AuthContext)
+console.log(AuthUser);
     const navLinks = (
         <>
             <li className="mt-2 lg:mt-0">
@@ -114,15 +115,15 @@ const Navbar = () => {
                 <div className="flex px-2">
                     <div>
                         {
-                            user?.email ? <div className="dropdown dropdown-end">
+                            AuthUser?.email ? <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src={user.photoURL ? user.photoURL : ''} alt={user.displayName} />
+                                        <img src={AuthUser?.photoURL ? AuthUser.photoURL : ''} alt={AuthUser?.photoURL} />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                     <li>
-                                        <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
+                                        <button className="btn btn-sm  btn-ghost">{AuthUser?.displayName}</button>
 
                                     </li>
                                     <li>
@@ -137,7 +138,7 @@ const Navbar = () => {
                                     </li>
                                     <li>
                                         <button className="btn btn-sm  btn-ghost bg-red-500 text-white font-bold"
-                                            onClick={logOut}
+                                            onClick={() => { LogOut() }}
                                         >Logout</button>
 
                                     </li>
