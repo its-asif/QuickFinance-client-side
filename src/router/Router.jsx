@@ -8,6 +8,7 @@ import Login from "../pages/login-register/login/Login";
 import Register from "../pages/login-register/register/Register";
 import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import FinancialManagement from "../pages/financialManagement/financialManagement";
 
 
 
