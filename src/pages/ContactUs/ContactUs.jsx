@@ -26,6 +26,7 @@ const ContactUs = () => {
                         </div>
                     </div>
                     </div>
+                    {/* <p>ha</p> */}
                     <div>
                         <div className="flex  gap-2">
                         <div className="bg-[#d5d5d5] h-12 w-12 rounded-full flex justify-center items-center"><AiTwotoneMail className="text-[#399B53] text-2xl "></AiTwotoneMail></div>
