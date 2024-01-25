@@ -89,12 +89,12 @@ Built with a powerful tech stack:
 2. Add the following variables to the `.env.local` file, replacing the placeholder values with your own Firebase project information:
 
 ```.md
-VITE_apiKey= YOUR_FIREBASE_API_KEY
-VITE_authDomain= YOUR_FIREBASE_AUTH_DOMAIN
-VITE_projectId= YOUR_FIREBASE_PROJECT_ID
-VITE_storageBucket= YOUR_FIREBASE_STORAGE_BUCKET
-VITE_messagingSenderId= YOUR_FIREBASE_MESSAGING_SENDER_ID
-VITE_appId= YOUR_FIREBASE_APP_ID
+VITE_apiKey=AIzaSyDhkao-YNM81D03DmZb1wDoX5_wPGWYW1I
+VITE_authDomain=quick-finance-45c24.firebaseapp.com
+VITE_projectId=quick-finance-45c24
+VITE_storageBucket=quick-finance-45c24.appspot.com
+VITE_messagingSenderId=771991984708
+VITE_appId=1:771991984708:web:95cbe57e29b19823c6ba11
 ```
 
 - You can obtain these values from the Firebase console for your project.
