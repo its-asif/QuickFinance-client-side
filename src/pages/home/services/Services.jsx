@@ -37,7 +37,7 @@ const Services = () => {
                     viewBox="0 0 1440 390"
                     xmlns="http://www.w3.org/2000/svg"
                     className="
-                    
+                   
                    
                    absolute bottom-0 left-0  "
                 >
