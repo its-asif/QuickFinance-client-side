@@ -4,14 +4,32 @@ import { Link } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
+import axios from 'axios';
 const Register = () => {
     //Handle Email password Sign In
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         const email = e.target.email.value;
         const password = e.target.password.value
         const name = e.target.name.value
-        const image = e.target.image.value
-        console.log(email, password, name, image);
+        // const image = e.target.image.value;
+        const image = e.target.image.files[0];
+        try {
+            const formData = new FormData();
+            formData.append('image', image);
+            // image sending to imagbb
+            const res = await axios.post("https://api.imgbb.com/1/upload?key=084c828cb07b191daf9262ae088bdd35", formData)
+            // if status is ok
+            if (res.status === 200) {
+                const result = res.data
+                console.log(email, password, name, result.data.display_url);
+            }
+
+        }
+        catch (error) {
+            console.error('Error during signup:', error.message);
+            console.log(error.code);
+        }
+
     }
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
@@ -47,7 +65,7 @@ const Register = () => {
 
                                 {/* Form */}
                                 <form onSubmit={e => { e.preventDefault(), handleSignUp(e) }}
-                                 action="#" method="POST" className="mt-8">
+                                    action="#" method="POST" className="mt-8">
                                     <div className="space-y-5">
 
 
