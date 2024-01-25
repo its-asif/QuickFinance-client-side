@@ -12,6 +12,7 @@
 - [Installation](#installation)
 - [Environment Variable](#environment-variables)
 - [Running Locally](#running-locally)
+- [Backend Code](#backend)
 - [Contributors](#contributors)
 
 ## Overview
@@ -66,7 +67,7 @@ Built with a powerful tech stack:
    ```bash
    npm run dev
    ```
-2. Access the application in your browser, typically at `http://localhost:3000/`.
+2. Access the application in your browser, typically at `http://localhost:5173/`.
 
 
 ### Environment Variables
@@ -85,6 +86,12 @@ VITE_appId= YOUR_FIREBASE_APP_ID
 
 - You can obtain these values from the Firebase console for your project.
 
+
+## Backend 
+
+- [Backend Server Repository](https://github.com/its-asif/QuickFinance-server-side)
+
+
 ## Contributors
 
 * [Muddasir Faiyaj](https://github.com/muddasirfaiyaj66)
@@ -92,7 +99,5 @@ VITE_appId= YOUR_FIREBASE_APP_ID
 * [Tahsin Zaman](https://github.com/Tahsin0909)
 * [Md Hanif Biswas](https://github.com/mdhanifbiswas27)
 * [Asif Hossain](https://github.com/its-asif)
-
-
 
 

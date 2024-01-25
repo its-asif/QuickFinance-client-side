@@ -1,9 +1,9 @@
 
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { MdOutlineMailOutline } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdPerson } from "react-icons/md";
+import { FiMail } from "@react-icons/all-files/fi/FiMail";
+import { FiUser } from "@react-icons/all-files/fi/FiUser";
+import { FiLock } from "@react-icons/all-files/fi/FiLock";
 const Register = () => {
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
@@ -47,7 +47,7 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
                                                     Name:
-                                                    <MdPerson size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    <FiUser size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
                                                     <input
@@ -82,7 +82,7 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
                                                     Email:
-                                                    <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    <FiMail size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
                                                     <input
@@ -99,7 +99,7 @@ const Register = () => {
                                                 <div className="flex items-center justify-between">
                                                     <label htmlFor="" className="text-base font-medium text-gray-100">
                                                         Password:
-                                                        <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                        <FiLock size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                     </label>
 
                                                     {/* Forgot Password */}
