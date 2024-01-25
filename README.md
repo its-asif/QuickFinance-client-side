@@ -44,6 +44,19 @@ Built with a powerful tech stack:
 - Express
 - Firebase
 - MongoDB
+## Dependencies
+
+    "aos": "^3.0.0-beta.6",
+    "axios": "^1.6.6",
+    "firebase": "^10.7.1",
+    "localforage": "^1.10.0",
+    "lucide-react": "^0.312.0",
+    "match-sorter": "^6.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.21.2",
+    "sort-by": "^1.2.0"
 
 ## Installation
 

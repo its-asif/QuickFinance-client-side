@@ -10,7 +10,8 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value
         const name = e.target.name.value
-        console.log(email, password, name);
+        const image = e.target.image.value
+        console.log(email, password, name, image);
     }
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
@@ -76,7 +77,7 @@ const Register = () => {
                                                     Upload Image
                                                 </label
                                                 >
-                                                <input
+                                                <input name='image'
                                                     className="flex h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-blue-600 file:text-white file:text-sm file:font-medium"
                                                     type="file"
                                                     id="picture"
