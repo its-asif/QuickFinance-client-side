@@ -8,7 +8,7 @@ import FaqSection from './faqSection/FaqSection';
 import Services from './services/Services';
 const Home = () => {
     return (
-        <div>
+        <div className='overflow-hidden'>
             {/* <UnderMaintenance /> */}
 
             {/* <Navbar /> */}
