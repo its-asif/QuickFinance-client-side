@@ -47,6 +47,7 @@ Built with a powerful tech stack:
 - MongoDB
 ## Dependencies
 
+    "@tanstack/react-query": "^5.17.19",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.6.6",
     "firebase": "^10.7.1",
@@ -55,9 +56,11 @@ Built with a powerful tech stack:
     "match-sorter": "^6.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.3",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.21.2",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.10.4"
 
 ## Installation
 
