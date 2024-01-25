@@ -1,11 +1,18 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom';
-import { FiMail } from "@react-icons/all-files/fi/FiMail";
-import { FiLock } from "@react-icons/all-files/fi/FiLock";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
+
 const Login = () => {
+    //Handle Email password Sign In
+    const handleSignIn = (e) => {
+        const email = e.target.email.value;
+        const password = e.target.password.value
+        console.log(email, password);
+    }
     return (
         <div data-aos="fade-up"
-        data-aos-duration="3000">
+            data-aos-duration="3000">
             <div className="hero min-h-screen">
                 <div className="hero-content flex  justify-evenly flex-row  w-full">
 
@@ -36,17 +43,18 @@ const Login = () => {
 
 
                                 {/* Form */}
-                                <form action="#" method="POST" className="mt-8">
+                                <form onSubmit={e => { e.preventDefault(), handleSignIn(e) }}
+                                    action="#" method="POST" className="mt-8">
                                     <div className="space-y-5">
 
                                         {/* Email */}
                                         <div>
                                             <label htmlFor="" className="text-base font-medium text-gray-100">
                                                 Email:
-                                                <FiMail size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                             </label>
                                             <div className="mt-2 border rounded-md">
-                                                <input
+                                                <input name='email'
                                                     className="ml-8  flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="email"
                                                     placeholder='Email'
@@ -61,7 +69,7 @@ const Login = () => {
                                             <div className="flex items-center justify-between">
                                                 <label htmlFor="" className="text-base font-medium text-gray-100">
                                                     Password:
-                                                    <FiLock size={30} className='absolute translate-x-1 translate-y-[13px]' />
+                                                    <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
 
                                                 {/* Forgot Password */}
@@ -77,7 +85,7 @@ const Login = () => {
 
 
                                             <div className="mt-2 border rounded-md">
-                                                <input
+                                                <input name='password'
                                                     className="ml-8 flex h-10 lg:w-[350px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="password"
                                                     placeholder='Password'
@@ -89,7 +97,7 @@ const Login = () => {
                                         {/* button */}
                                         <div>
                                             <button
-                                                type="button"
+                                                type="submit"
                                                 className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-[#399b53]"
                                             >
                                                 Login <ArrowRight className="ml-2" size={16} />
