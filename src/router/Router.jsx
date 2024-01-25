@@ -34,10 +34,14 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
-        path:"/contact",
-        element:<ContactUs></ContactUs>
+        path: "/financialManagement",
+        element: <FinancialManagement />
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>
       }
-     
+
     ],
   },
 ]);
