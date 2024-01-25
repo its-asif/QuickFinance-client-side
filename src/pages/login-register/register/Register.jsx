@@ -113,7 +113,7 @@ const Register = () => {
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
                                                     <input name='email'
-                                                        className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
                                                     >
