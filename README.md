@@ -45,19 +45,6 @@ Built with a powerful tech stack:
 - Express
 - Firebase
 - MongoDB
-## Dependencies
-
-    "aos": "^3.0.0-beta.6",
-    "axios": "^1.6.6",
-    "firebase": "^10.7.1",
-    "localforage": "^1.10.0",
-    "lucide-react": "^0.312.0",
-    "match-sorter": "^6.3.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^5.0.1",
-    "react-router-dom": "^6.21.2",
-    "sort-by": "^1.2.0"
 
 ## Installation
 
@@ -89,12 +76,12 @@ Built with a powerful tech stack:
 2. Add the following variables to the `.env.local` file, replacing the placeholder values with your own Firebase project information:
 
 ```.md
-VITE_apiKey=AIzaSyDhkao-YNM81D03DmZb1wDoX5_wPGWYW1I
-VITE_authDomain=quick-finance-45c24.firebaseapp.com
-VITE_projectId=quick-finance-45c24
-VITE_storageBucket=quick-finance-45c24.appspot.com
-VITE_messagingSenderId=771991984708
-VITE_appId=1:771991984708:web:95cbe57e29b19823c6ba11
+VITE_apiKey= YOUR_FIREBASE_API_KEY
+VITE_authDomain= YOUR_FIREBASE_AUTH_DOMAIN
+VITE_projectId= YOUR_FIREBASE_PROJECT_ID
+VITE_storageBucket= YOUR_FIREBASE_STORAGE_BUCKET
+VITE_messagingSenderId= YOUR_FIREBASE_MESSAGING_SENDER_ID
+VITE_appId= YOUR_FIREBASE_APP_ID
 ```
 
 - You can obtain these values from the Firebase console for your project.
