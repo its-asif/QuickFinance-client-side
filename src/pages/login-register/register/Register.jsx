@@ -5,6 +5,13 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 const Register = () => {
+    //Handle Email password Sign In
+    const handleSignUp = (e) => {
+        const email = e.target.email.value;
+        const password = e.target.password.value
+        const name = e.target.name.value
+        console.log(email, password, name);
+    }
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
             data-aos-anchor-placement="top-center">
@@ -38,7 +45,8 @@ const Register = () => {
 
 
                                 {/* Form */}
-                                <form action="#" method="POST" className="mt-8">
+                                <form onSubmit={e => { e.preventDefault(), handleSignUp(e) }}
+                                 action="#" method="POST" className="mt-8">
                                     <div className="space-y-5">
 
 
@@ -50,7 +58,7 @@ const Register = () => {
                                                     <MdPerson size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
-                                                    <input
+                                                    <input name='name'
                                                         className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
                                                         placeholder='Name'
@@ -85,7 +93,7 @@ const Register = () => {
                                                     <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
                                                 <div className="mt-2 border rounded-md">
-                                                    <input
+                                                    <input name='email'
                                                         className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
@@ -112,7 +120,7 @@ const Register = () => {
                                                     </a>
                                                 </div>
                                                 <div className="mt-2 border rounded-md">
-                                                    <input
+                                                    <input name='password'
                                                         className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="password"
                                                         placeholder='Password'
@@ -131,10 +139,8 @@ const Register = () => {
                                         {/* Register Button */}
                                         <div>
                                             <button
-                                                type="button"
+                                                type="submit"
                                                 className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-[#399b53]"
-                                                onClick={() => { window.location.href = '/'; }
-                                                }
                                             >
                                                 Register <ArrowRight className="ml-2" size={16} />
                                             </button>
