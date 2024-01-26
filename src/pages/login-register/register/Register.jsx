@@ -6,12 +6,12 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 import axios from 'axios';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import useAuth from '../../../Components/Hooks/useAuth';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 const Register = () => {
     const { loading, createUser, UpdateUser } = useAuth()
     // console.log(loading);
-    const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic
     //Handle Email password Sign In
     const handleSignUp = async (e) => {
         const email = e.target.email.value;
