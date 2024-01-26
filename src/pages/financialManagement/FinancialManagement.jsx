@@ -15,11 +15,9 @@ const FinancialManagement = () => {
     
     const email = AuthUser?.email;
 
-    const [financialManagementData , refetch] = useFinanceData()
+    const {financialManagementData , refetch} = useFinanceData()
     const userFinancialData = financialManagementData.filter(data => data.userEmail === email);
-    console.log(userFinancialData);
-    console.log("financialManagementData:", financialManagementData);
-    console.log("refetch:", refetch);
+    // console.log(financialManagementData);
 
     const onSubmit = async (data) => {
 
@@ -64,7 +62,7 @@ const FinancialManagement = () => {
                     <div className={`btn btn-wide font-semibold text-lg ${isFormOpen ? "btn-error text-white" : "btn-warning"}`}
                         onClick={() => setIsFormOpen(!isFormOpen)}
                     >
-                        {isFormOpen ? 'Close Form' : 'Add a Management Task'}
+                        {isFormOpen ? 'Close Form' : 'Add Transaction'}
                     </div>
                 </div>
 
@@ -89,48 +87,6 @@ const FinancialManagement = () => {
                                 <label htmlFor="userEmail" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Email</label>
                             </div>
                             <div className="relative z-0 w-full mb-5 group">
-                                <input
-                                    {...register('trxCategory', { required: true })}
-                                    type="text"
-                                    name="trxCategory"
-                                    id="trxCategory"
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" "
-                                    required
-                                />
-                                <label htmlFor="trxCategory" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Transaction Category <small>(eg: Food, Salary)</small></label>
-                            </div>
-
-                        </div>
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input
-                                {...register('trxDetails')}
-                                type="text"
-                                name="trxDetails"
-                                id="trxDetails"
-                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" "
-                            />
-                            <label htmlFor="trxDetails" 
-                            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Transaction Details <small>(eg: BreakFast, ABC Office)</small></label>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 md:gap-6">
-                            <div className="relative z-0 w-full mb-5 group">
-                                <input
-                                    {...register('amount', { required: true, min: 0 })}
-                                    type="number"
-                                    name="amount"
-                                    id="amount"
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder=" "
-                                    required
-                                />
-                                <label htmlFor="amount" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
-                            </div>
-                            <div className="relative z-0 w-full mb-5 group">
                                 <select
                                     {...register('trxType', { required: true })}
                                     required
@@ -145,6 +101,52 @@ const FinancialManagement = () => {
                             </div>
 
                         </div>
+
+                        <div className="relative z-0 w-full mb-5 group">
+                                <input
+                                    {...register('amount', { required: true, min: 0 })}
+                                    type="number"
+                                    name="amount"
+                                    id="amount"
+                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" "
+                                    required
+                                />
+                                <label htmlFor="amount" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
+                            </div>
+
+                        <div className="grid md:grid-cols-2 md:gap-6">
+                            <div className="relative z-0 w-full mb-5 group">
+                                <input
+                                    {...register('trxDetails')}
+                                    type="text"
+                                    name="trxDetails"
+                                    id="trxDetails"
+                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" "
+                                />
+                                <label htmlFor="trxDetails" 
+                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                >Transaction Details <small>(eg: BreakFast, ABC Office)</small></label>
+                            </div>
+                        
+
+                            <div className="relative z-0 w-full mb-5 group">
+                                <input
+                                    {...register('trxCategory', { required: true })}
+                                    type="text"
+                                    name="trxCategory"
+                                    id="trxCategory"
+                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" "
+                                    required
+                                />
+                                <label htmlFor="trxCategory" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                >Transaction Category <small>(eg: Food, Salary)</small></label>
+                            </div>
+
+                        </div>
+
                         <input
                             type="submit"
                             value="Add Transaction"
