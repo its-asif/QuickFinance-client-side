@@ -12,7 +12,7 @@ const Dashboard = () => {
                 <div className="flex items-center gap-2">
                     <div>
                         <img className="md:w-24 w-14 h-14 md:h-24 object-cover rounded-full border-[3.5px] border-green-700" src={AuthUser?.photoURL} alt="" />
-                        <MdVerifiedUser size={20} className="text-green-700 absolute -translate-y-[60px] md:-translate-y-24 z-20"/>
+                        <MdVerifiedUser size={20} className="text-green-700 absolute -translate-y-[60/api/dashboard/:emailpx] md:-translate-y-24 z-20"/>
                     </div>
                     <div className="">
                         <p className="flex items-center gap-1">
