@@ -2,12 +2,11 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { useContext } from 'react';
-import { AuthContext } from '../../../AuthProvider/Contextapi';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import useAuth from '../../../Components/Hooks/useAuth';
 
 const Login = () => {
-    const { SignInUser } = useContext(AuthContext)
+    const { SignInUser } = useAuth()
     const axiosPublic = useAxiosPublic()
     //Handle Email password Sign In
     const handleSignIn = (e) => {
