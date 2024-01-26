@@ -8,6 +8,7 @@ import { MdPerson } from "react-icons/md";
 import axios from 'axios';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../Hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 const Register = () => {
     const { GoogleSignUp, createUser, UpdateUser } = useAuth()
     // console.log(loading);
@@ -62,15 +63,16 @@ const Register = () => {
                             .catch((error) => {
                                 const errorMessage = error.message;
                                 console.log(errorMessage);
-                                // toast.error(`${errorMessage}`)
+                                toast.error(`${errorMessage}`)
                             });
 
                     })
                     .catch((error) => {
                         const errorMessage = error.message;
                         console.log(errorMessage);
-                        // toast.error(`${errorMessage}`)
+                        toast.error(`${errorMessage}`)
                     });
+                toast.success(`Authenticating as ${result.user.email}`)
                 form.reset()
             }
 
@@ -85,6 +87,7 @@ const Register = () => {
         GoogleSignUp()
             .then(result => {
                 console.log(result.user)
+                toast.success(`Authenticating as ${result.user.email}`)
                 // const SignedUser = {
                 //     userName: result.user.displayName,
                 //     userEmail: result.user.email,
@@ -116,7 +119,7 @@ const Register = () => {
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                toast.error(`${errorMessage}`)
             });
     }
     return (
@@ -302,6 +305,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

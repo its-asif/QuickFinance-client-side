@@ -4,6 +4,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Login = () => {
@@ -36,18 +37,20 @@ const Login = () => {
                 //             location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
                 //         }
                 //     })
+                toast.success(`Authenticating as ${result.user.email}`)
                 form.reset()
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
-                // toast.error(`${errorMessage}`)
+                toast.error(`${errorMessage}`)
             });
     }
     const handleGoogle = () => {
         GoogleSignUp()
             .then(result => {
                 console.log(result.user)
+                toast.success(`Authenticating as ${result.user.email}`)
                 // const SignedUser = {
                 //     userName: result.user.displayName,
                 //     userEmail: result.user.email,
@@ -79,7 +82,7 @@ const Login = () => {
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                toast.error(`${errorMessage}`)
             });
     }
     return (
@@ -224,6 +227,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };
