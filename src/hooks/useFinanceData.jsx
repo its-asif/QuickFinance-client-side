@@ -13,6 +13,7 @@ const useFinanceData = () => {
             return res.data;
         }
     })
+    
     return {financialManagementData, loading, refetch}
 };
 

@@ -2,8 +2,9 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-import useAuth from '../../../Components/Hooks/useAuth';
+import useAuth from '../../../Hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+
 
 const Login = () => {
     const { SignInUser } = useAuth()

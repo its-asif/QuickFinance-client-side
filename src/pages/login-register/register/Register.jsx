@@ -6,8 +6,8 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 import axios from 'axios';
-import useAuth from '../../../Components/Hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import useAuth from '../../../Hooks/useAuth';
 const Register = () => {
     const { loading, createUser, UpdateUser } = useAuth()
     // console.log(loading);

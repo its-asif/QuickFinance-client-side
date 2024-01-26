@@ -4,7 +4,7 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import UserFinancialDataTable from "./userFinancialDataTable/UserFinancialDataTable";
 import useFinanceData from "../../hooks/useFinanceData";
-import useAuth from "../../Components/Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 
 
 const FinancialManagement = () => {
