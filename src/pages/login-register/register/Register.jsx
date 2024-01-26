@@ -50,6 +50,9 @@ const Register = () => {
                                     role: 'user'
                                 }
                                 console.log(User)
+                                toast.success(`Authenticating as ${result.user.email}`)
+                                form.reset()
+                                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
                                 // axiosPublic.post('/users', User)
                                 //     .then(res => {
                                 //         if (res.data.insertedId) {
@@ -72,8 +75,6 @@ const Register = () => {
                         console.log(errorMessage);
                         toast.error(`${errorMessage}`)
                     });
-                toast.success(`Authenticating as ${result.user.email}`)
-                form.reset()
             }
 
         }
@@ -115,7 +116,7 @@ const Register = () => {
                 //     email: result?.user.email,
                 // }, { withCredentials: true })
                 //     .then(res => console.log(res.data))
-                // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;

@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import useAuth from '../../../Hooks/useAuth';
@@ -8,8 +8,11 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const Login = () => {
-    const { SignInUser , GoogleSignUp} = useAuth()
+    const { SignInUser, GoogleSignUp } = useAuth()
     const axiosPublic = useAxiosPublic()
+    // Navigate After LOgIn
+    const location = useLocation()
+    const navigate = useNavigate()
     //Handle Email password Sign In
     const handleSignIn = (e) => {
         const form = e.target
@@ -39,6 +42,7 @@ const Login = () => {
                 //     })
                 toast.success(`Authenticating as ${result.user.email}`)
                 form.reset()
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -78,7 +82,7 @@ const Login = () => {
                 //     email: result?.user.email,
                 // }, { withCredentials: true })
                 //     .then(res => console.log(res.data))
-                // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;
