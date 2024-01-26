@@ -4,19 +4,22 @@ import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import UserFinancialDataTable from "./userFinancialDataTable/UserFinancialDataTable";
 import useFinanceData from "../../hooks/useFinanceData";
+import useAuth from "../../Components/Hooks/useAuth";
 
 
 const FinancialManagement = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
+    const {loading, AuthUser} = useAuth();
+    
+    const email = AuthUser?.email;
 
-    // To Do -- change the email after authentication part complete
-    const email = "teamundefined@gmail.com"
-
-    const [financialManagementData, , refetch] = useFinanceData()
+    const [financialManagementData , refetch] = useFinanceData()
     const userFinancialData = financialManagementData.filter(data => data.userEmail === email);
     console.log(userFinancialData);
+    console.log("financialManagementData:", financialManagementData);
+    console.log("refetch:", refetch);
 
     const onSubmit = async (data) => {
 
@@ -38,13 +41,21 @@ const FinancialManagement = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            console.log(financialItemRes.data)
             refetch()
+            console.log(financialItemRes.data)
             reset();
+            console.log(financialItemRes.data)
         }
 
     }
 
+    if(loading){
+        return <h1 className="pt-32 text-lg">Loading...</h1>
+    }
+
     return (
+        
         <div>
             <div className="pt-32 pb-32">
 
@@ -69,6 +80,8 @@ const FinancialManagement = () => {
                                     type="email"
                                     name="userEmail"
                                     id="userEmail"
+                                    value={email}
+                                    readOnly
                                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     placeholder=" "
                                     required
@@ -85,7 +98,8 @@ const FinancialManagement = () => {
                                     placeholder=" "
                                     required
                                 />
-                                <label htmlFor="trxCategory" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Transaction Category</label>
+                                <label htmlFor="trxCategory" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                >Transaction Category <small>(eg: Food, Salary)</small></label>
                             </div>
 
                         </div>
@@ -98,7 +112,9 @@ const FinancialManagement = () => {
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" "
                             />
-                            <label htmlFor="trxDetails" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Transaction Details</label>
+                            <label htmlFor="trxDetails" 
+                            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >Transaction Details <small>(eg: BreakFast, ABC Office)</small></label>
                         </div>
 
                         <div className="grid md:grid-cols-2 md:gap-6">
