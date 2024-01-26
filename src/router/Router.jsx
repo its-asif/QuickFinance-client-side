@@ -10,6 +10,7 @@ import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import FinancialManagement from "../pages/financialManagement/financialManagement";
 import Dashboard from "../Components/DashBoard/Dashboard";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/dashBoard",
         element: <Dashboard/>
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>
       }
 
     ],
