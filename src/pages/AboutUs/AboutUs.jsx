@@ -39,6 +39,7 @@ const AboutUs = () => {
                         <h1 className="text-[25px] font-bold">Meet John Doe: Founder of QuickFinance</h1>
                         <p className="text-lg font-normal text-justify">Meet John Doe, the innovative mind behind QuickFinance, a dynamic force reshaping the financial landscape. With a rich background in finance and a profound understanding of market dynamics, John founded QuickFinance on the principle of simplifying financial processes. His two-decade journey in the industry showcases a commitment to leveraging technology for accessible and efficient financial solutions. John's strategic acumen and customer-centric approach have propelled QuickFinance to a leading position in the fintech sector, earning trust nationwide. Beyond business success, John Doe is recognized for his philanthropy, supporting initiatives that empower communities and promote financial literacy. As QuickFinance continues to thrive under his leadership, John remains dedicated to pushing boundaries and exploring new horizons in the world of finance.</p>
                     </div>
+                    <div></div>
                     <div>
                         <img className="ml-auto" src="../../../public/Founder.png" alt="" />
                     </div>
