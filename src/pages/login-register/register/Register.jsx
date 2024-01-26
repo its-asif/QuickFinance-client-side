@@ -1,19 +1,24 @@
 /* eslint-disable no-unused-vars */
 
 import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 import axios from 'axios';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../Hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 const Register = () => {
-    const { loading, createUser, UpdateUser } = useAuth()
+    const { GoogleSignUp, createUser, UpdateUser } = useAuth()
     // console.log(loading);
-    const axiosPublic = useAxiosPublic
+    // Navigate After LOgIn
+    const location = useLocation()
+    const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
     //Handle Email password Sign In
     const handleSignUp = async (e) => {
+        const form = e.target
         const email = e.target.email.value;
         const password = e.target.password.value
         const name = e.target.name.value
@@ -28,7 +33,7 @@ const Register = () => {
             if (res.status === 200) {
                 const result = res.data
                 const HostedImage = result.data.display_url
-                console.log(email, password, name, );
+                console.log(email, password, name,);
                 createUser(email, password)
                     .then(result => {
                         console.log(result.user);
@@ -45,6 +50,9 @@ const Register = () => {
                                     role: 'user'
                                 }
                                 console.log(User)
+                                toast.success(`Authenticating as ${result.user.email}`)
+                                form.reset()
+                                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
                                 // axiosPublic.post('/users', User)
                                 //     .then(res => {
                                 //         if (res.data.insertedId) {
@@ -58,17 +66,15 @@ const Register = () => {
                             .catch((error) => {
                                 const errorMessage = error.message;
                                 console.log(errorMessage);
-                                // toast.error(`${errorMessage}`)
+                                toast.error(`${errorMessage}`)
                             });
 
                     })
                     .catch((error) => {
                         const errorMessage = error.message;
                         console.log(errorMessage);
-                        // toast.error(`${errorMessage}`)
+                        toast.error(`${errorMessage}`)
                     });
-                    const form = e.target
-                    form.value.reset()
             }
 
         }
@@ -77,6 +83,45 @@ const Register = () => {
             console.log(error.code);
         }
 
+    }
+    const handleGoogle = () => {
+        GoogleSignUp()
+            .then(result => {
+                console.log(result.user)
+                toast.success(`Authenticating as ${result.user.email}`)
+                // const SignedUser = {
+                //     userName: result.user.displayName,
+                //     userEmail: result.user.email,
+                //     userFirebaseUid: result.user.uid,
+                //     userCreationTime: result.user.metadata.creationTime,
+                //     userLastSignInTime: result.user.metadata.lastSignInTime,
+                //     UserVerified: result.user.emailVerified,
+                //     userCity: "none",
+                //     userZip: "none",
+                //     userSkill: "none",
+                //     userPhoto: result.user.photoURL,
+                // }
+                // console.log(SignedUser);
+                // fetch('https://joblancernewserver.vercel.app/user', {
+                //     method: `POST`,
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(SignedUser)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => console.log(data))
+                // localStorage.setItem('ToastShow', JSON.stringify('false'))
+                // axios.post('https://joblancernewserver.vercel.app/jwt', {
+                //     email: result?.user.email,
+                // }, { withCredentials: true })
+                //     .then(res => console.log(res.data))
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                toast.error(`${errorMessage}`)
+            });
     }
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
@@ -219,7 +264,7 @@ const Register = () => {
                                 <div className="mt-3 space-y-3">
 
                                     {/* Google */}
-                                    <button
+                                    <button onClick={handleGoogle}
                                         type="button"
                                         className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
                                     >
@@ -255,11 +300,13 @@ const Register = () => {
                                         Sign in with Facebook
                                     </button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };
