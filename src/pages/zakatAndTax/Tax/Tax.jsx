@@ -245,49 +245,6 @@ const Tax = () => {
                         </form>
                     </dialog>
 
-                    <div>
-                        <div className="max-w-6xl mx-auto mt-8 p-6 bg-white shadow-md rounded-md">
-                            <h2 className="text-2xl font-bold mb-4">Income Tax Brackets</h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div className="border p-4 rounded-md">
-                                    <p className="font-bold mb-2">Up to BDT 350,000</p>
-                                    <p>Nil</p>
-                                </div>
-                                <div className="border p-4 rounded-md">
-                                    <p className="font-bold mb-2">Over BDT 350,000 up to 450,000 (next BDT 100,000)</p>
-                                    <p>5%</p>
-                                </div>
-                                <div className="border p-4 rounded-md">
-                                    <p className="font-bold mb-2">Over BDT 450,000 up to 750,000 (next BDT 300,000)</p>
-                                    <p>10%</p>
-                                </div>
-                                <div className="border p-4 rounded-md">
-                                    <p className="font-bold mb-2">Over BDT 750,000 up to 1,150,000 (next BDT 400,000)</p>
-                                    <p>15%</p>
-                                </div>
-                                <div className="border p-4 rounded-md">
-                                    <p className="font-bold mb-2">Over BDT 1,150,000 up to 1,650,000 (next BDT 500,000)</p>
-                                    <p>20%</p>
-                                </div>
-                                <div className="border p-4 rounded-md">
-                                    <p className="font-bold mb-2">Over BDT 1,650,000</p>
-                                    <p>25%</p>
-                                </div>
-                            </div>
-
-                            <h2 className="text-2xl font-bold my-4">Additional Rules</h2>
-                            <ul className="list-disc pl-4">
-                                <li>Threshold for females and taxpayers older than 65 increased to BDT 400,000</li>
-                                <li>Consolidated tax exemption: Lesser of BDT 450,000 or one-third of annual salary</li>
-                                <li>Minimum tax for individuals with income exceeding BDT 350,000:</li>
-                                <ul className="list-disc pl-4">
-                                    <li>BDT 5,000 if living in Dhaka and Chattogram city corporation areas</li>
-                                    <li>BDT 4,000 if living in other city corporation areas</li>
-                                    <li>BDT 3,000 if living in non-city corporation areas</li>
-                                </ul>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </dialog>
 
