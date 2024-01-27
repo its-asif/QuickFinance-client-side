@@ -170,10 +170,10 @@ const Dashboard = () => {
 
     // console.log(AuthUser);
     return (
-        <div className="pt-20 mb-4 lg:max-w-screen-xl ">
+        <div className="pt-20 mb-4 lg:max-w-screen-xl overflow-hidden ">
 
             {/* Profile section */}
-            <div className=" w-fit p-10 py-6 rounded-md shadow-xl mx-auto my-4">
+            <div data-aos="zoom-in-right" data-aos-duration="3000"  className=" w-fit p-10 py-6 rounded-md shadow-xl mx-auto my-4">
                 {/* profile */}
                 <div className="flex items-center gap-2 text-xl">
                     <div>
@@ -205,8 +205,8 @@ const Dashboard = () => {
 
             <div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                <div  className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div data-aos="fade-up" data-aos-duration="1000">
                         <Chart
                             width={'100%'}
                             height={'400px'}
@@ -219,7 +219,7 @@ const Dashboard = () => {
                             rootProps={{ 'data-testid': '1' }}
                         />
                     </div>
-                    <div>
+                    <div data-aos="fade-up" data-aos-duration="1000">
                         <Chart
                             width={'100%'}
                             height={'400px'}
@@ -235,7 +235,7 @@ const Dashboard = () => {
                 </div>
 
 
-                <div>
+                <div data-aos="fade-up" data-aos-duration="1000">
                 <Chart
                     chartType="LineChart"
                     width="100%"
