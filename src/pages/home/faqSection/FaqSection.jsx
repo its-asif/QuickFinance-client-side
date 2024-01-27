@@ -1,4 +1,4 @@
-import faqImg from './../../../assets/faq.png'
+import faqImg from './../../../assets/faq.png';
 
 const FaqSection = () => {
     return (
@@ -13,7 +13,7 @@ const FaqSection = () => {
                     </div>
 
                     <div className="collapse collapse-arrow bg-[#DFDDDD9C]">
-                        <input type="radio" name="my-accordion-2" />
+                        <input type="checkbox" id="faq1" />
                         <div className="collapse-title text-xl font-medium">
                             What financial services do you offer?
                         </div>
@@ -23,7 +23,7 @@ const FaqSection = () => {
                     </div>
 
                     <div className="collapse collapse-arrow bg-[#DFDDDD9C] mt-4">
-                        <input type="radio" name="my-accordion-2" />
+                        <input type="checkbox" id="faq2" />
                         <div className="collapse-title text-xl font-medium">
                             How can I access my account online?
                         </div>
@@ -33,7 +33,7 @@ const FaqSection = () => {
                     </div>
 
                     <div className="collapse collapse-arrow bg-[#DFDDDD9C] mt-4">
-                        <input type="radio" name="my-accordion-2" />
+                        <input type="checkbox" id="faq3" />
                         <div className="collapse-title text-xl font-medium">
                             How do I get started with your services?
                         </div>
@@ -44,7 +44,7 @@ const FaqSection = () => {
 
                 </div>
 
-                <div   className="md:h-[450px] ">
+                <div className="md:h-[450px] ">
                     <img data-aos="flip-up" data-aos-duration="2000" src={faqImg} className="h-full md:w-3/4 lg:w-full  mx-auto" alt="FAQ Image" />
                 </div>
             </div>
