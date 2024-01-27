@@ -1,6 +1,4 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
-
 
 const Zakat = () => {
 
@@ -188,8 +186,7 @@ const Zakat = () => {
                     </dialog>
 
 
-                    <p className="mt-4">* If your total savings are 52,000 BDT or more, you are required to pay Zakat. The Zakat amount is calculated as 2.5% of your total savings.</p>
-
+                   
                 </div>
 
             </dialog>
