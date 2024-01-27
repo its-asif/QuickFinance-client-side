@@ -7,6 +7,10 @@ import ErrorPage from "../pages/shared/errorPage/ErrorPage";
 import Login from "../pages/login-register/login/Login";
 import Register from "../pages/login-register/register/Register";
 import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import FinancialManagement from "../pages/financialManagement/financialManagement";
+import Dashboard from "../Components/DashBoard/Dashboard";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 
 
@@ -32,7 +36,24 @@ const router = createBrowserRouter([
         path: "/zakatAndTax",
         element: <ZakatAndTax />
       },
-     
+      {
+        path: "/financialManagement",
+        element: <FinancialManagement />
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>
+      }
+      ,
+      {
+        path: "/dashBoard",
+        element: <Dashboard/>
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>
+      }
+
     ],
   },
 ]);

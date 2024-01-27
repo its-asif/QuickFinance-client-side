@@ -56,6 +56,17 @@ console.log(AuthUser);
                     Calculator
                 </NavLink>
             </li>
+            <li className="my-2 lg:my-0">
+                {" "}
+                <NavLink
+                    to="/financialManagement"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                    }
+                >
+                    Financial Management
+                </NavLink>
+            </li>
         </>
     );
     return (
