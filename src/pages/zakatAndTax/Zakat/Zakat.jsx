@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const Zakat = () => {
 
     const [earn, setEarn] = useState(null)
@@ -44,7 +44,7 @@ const Zakat = () => {
 
 
         if (totalAmount < 52000) {
-            setZakat('Not Applicable');
+            setZakat(0);
         } else {
             let zakatPercentage = .025
             const sumZakat = totalAmount * zakatPercentage
@@ -167,16 +167,21 @@ const Zakat = () => {
                         <div className="modal-box">
                             <div>
 
-                                <div className="p-6 text-lg text-center">
+                                <div className="flex flex-col w-2/3 py-8 mx-auto text-lg">
+                                    <div className="">
+                                        <p className="mb-2 flex justify-between">Total Earn : <span className="flex justify-center items-center gap-1">{earn} <FaBangladeshiTakaSign /></span></p>
 
-                                    <p className="mb-2">Total Earn : {earn}</p>
-                                    <p className="mb-2">Total Expense : {expense}</p>
-                                    <p className="mb-2">Current Amount : {total} </p>
-                                    <p className=" text-xl mt-4 font-bold">Zakat Amount: {zakat}</p>
+                                        <p className="mb-2 flex justify-between">Total Expense : <span className="flex justify-center items-center gap-1">{expense} <FaBangladeshiTakaSign /></span></p>
+
+                                        <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
+
+                                        <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Zakat Amount: <span className="flex justify-center items-center gap-1">{zakat} <FaBangladeshiTakaSign /></span></p>
+                                    </div>
                                     <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
-                                        Donate Your Zakat</button>
-
+                                        Donate Your Zakat
+                                    </button>
                                 </div>
+
 
                             </div>
                         </div>
@@ -186,7 +191,7 @@ const Zakat = () => {
                     </dialog>
 
 
-                   
+
                 </div>
 
             </dialog>
