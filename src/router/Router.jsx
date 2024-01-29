@@ -11,6 +11,8 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import FinancialManagement from "../pages/financialManagement/financialManagement";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Dashboard from "../layout/Dashboard";
+import MyDashboard from "../pages/Dashboard/MyDashboard/MyDashboard";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -55,10 +57,15 @@ const router = createBrowserRouter([
   },
   {
     path:"/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute>
+      <Dashboard></Dashboard>
+    </PrivateRoute>,
     children:
     [
-      
+     {
+      index:true,
+      element:<MyDashboard></MyDashboard>
+     }
     ] 
   }
 ]);
