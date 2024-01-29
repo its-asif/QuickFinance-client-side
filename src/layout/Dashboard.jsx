@@ -1,13 +1,18 @@
 
 import { useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import { FaHome } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { TfiSupport } from "react-icons/tfi";
+import { GiTakeMyMoney } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
 import { PiUserCircleDuotone } from "react-icons/pi";
+import { SiGoogletagmanager } from "react-icons/si";
+import { GoGoal } from "react-icons/go";
+import { GiMoneyStack } from "react-icons/gi";
 import useAuth from "../Hooks/useAuth";
 import { MdDashboard } from "react-icons/md";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
     const { AuthUser, LogOut } = useAuth();
@@ -49,6 +54,7 @@ const Dashboard = () => {
                         style={{ textAlign: "center" }}
                     >
 
+
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -57,9 +63,70 @@ const Dashboard = () => {
                                     isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
                                 }
                             >
-                                <MdDashboard className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Dashboard</span>
+                                <MdDashboard className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Account</span>
                             </NavLink>
                         </li>
+
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/myAsset"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
+                                }
+                            >
+                                <TfiSupport className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Asset</span>
+                            </NavLink>
+                        </li>
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/personalFinance"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
+                                }
+                            >
+                                <GiTakeMyMoney className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Personal Finance</span>
+                            </NavLink>
+                        </li>
+
+
+
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/budgetPlaning"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
+                                }
+                            >
+                                <GiMoneyStack className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Budget Planing</span>
+                            </NavLink>
+                        </li>
+
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/goalProgress"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
+                                }
+                            >
+                                <GoGoal className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Goal Progress</span>
+                            </NavLink>
+                        </li>
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/manageDebt"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
+                                }
+                            >
+                                <SiGoogletagmanager className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
+                            </NavLink>
+                        </li>
+
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -71,30 +138,6 @@ const Dashboard = () => {
                                 <MdPayment className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Payments</span>
                             </NavLink>
                         </li>
-                        <li className="mt-2 lg:mt-0">
-                            {" "}
-                            <NavLink
-                                to="/dashboard/profile"
-                                className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
-                                }
-                            >
-                                <PiUserCircleDuotone className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Profile</span>
-                            </NavLink>
-                        </li>
-                        <li className="mt-2 lg:mt-0">
-                            {" "}
-                            <NavLink
-                                to="/dashboard/support"
-                                className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
-                                }
-                            >
-                                <TfiSupport className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Support Center</span>
-                            </NavLink>
-                        </li>
-
-
 
 
                     </ul>
@@ -107,12 +150,37 @@ const Dashboard = () => {
 
 
                 <div className="text-center ">
-                  
+
                     <hr
                         className="my-4 h-[1px] border-t-0 bg-white opacity-100 " />
+
+
+
+                    {/* <li className="mt-2 lg:mt-0">
+                        {" "}
+                        <NavLink
+                            to="/"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
+                            }
+                        >
+                            <FaHome className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Home</span>
+                        </NavLink>
+                    </li> */}
+
+
+                   <div className="mb-3">
+                   <Link to='/'>
+                        <button className="btn btn-sm   hover:bg-gray-300  " >
+                            < FaHome className={`${open && "text-4xl"} font-extrabold  text-[#09CC7F] text-xl duration-300 `} />   <span className={`${!open && "hidden"} px-[0.5px] font-bold`}> Home </span>
+                        </button>
+                    </Link>
+                   </div>
                     <button className="btn btn-sm hover:bg-gray-300  " onClick={LogOut}>
                         < CiLogout className={`${open && "text-4xl"} font-extrabold  text-[#09CC7F] text-xl duration-300 `} />   <span className={`${!open && "hidden"} font-bold`}>log Out</span>
                     </button>
+
+
                 </div>
             </div>
 
