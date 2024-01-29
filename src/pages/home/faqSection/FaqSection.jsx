@@ -2,7 +2,7 @@ import faqImg from './../../../assets/faq.png';
 
 const FaqSection = () => {
     return (
-        <div className='bg-[#F9FBFA] my-16 py-16 '>
+        <div className=' my-16 py-16 '>
             <div className="grid lg:grid-cols-2 items-center lg:gap-0 gap-6  max-w-7xl mx-auto">
 
                 <div data-aos="flip-down" data-aos-duration="2000" className="max-lg:order-1 max-lg:text-center w-4/5 lg:w-4/5 mx-auto ">

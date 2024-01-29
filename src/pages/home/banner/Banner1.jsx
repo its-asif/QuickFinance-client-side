@@ -3,7 +3,7 @@ import img1 from "/bannerImg1.png";
 const  Banner1 = () => {
     return (
         <div className="overflow-x-hidden" data-aos="fade-down " data-aos-duration="2000">
-            <div className="hero min-h-screen bg-[#F9FBFA]  pt-[100px]">
+            <div className="hero min-h-screen  pt-[100px]">
                 <div className="hero-content flex-col justify-between lg:flex-row-reverse mx-10">
                     <img data-aos="fade-left" data-aos-duration="2000"src={img1} className="w-full md:w-3/4 lg:w-1/2 " />
                     <div data-aos="fade-right">

@@ -16,7 +16,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black hover:bg-[#09CC7F] text-white " : " bg-[#399B53] hover:bg-[#09CC7F] text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Home
@@ -27,7 +27,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/about"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     About Us
@@ -39,7 +39,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/contact"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                    isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Contact Us
@@ -50,7 +50,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/zakatAndtax"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                    isPending ? "pending" : isActive ? "activeNav hover:scale-110  opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Calculator
@@ -61,7 +61,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/financialManagement"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                    isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Financial Management
@@ -72,7 +72,7 @@ console.log(AuthUser);
     return (
 
 
-        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
+        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-white">
             <div className="navbar-start lg:ml-8">
 
 

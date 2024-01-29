@@ -2,19 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: "Roboto", sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
-body{
-    /* background: linear-gradient(to right,#000000 1%, #00862d 70%,  #151b5e 100%); */
-    /* background: linear-gradient(to right,#ffffff 0%, #5af68e 70%,  #6773ff 100%); */
-    /* background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%); */
-    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
-    /* background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%); */
+
+body {
+  background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
 }
-.trial{
-    background-image: linear-gradient(to right, #72e297 0%, #70e9d3 100%);
-    background-image: linear-gradient(to right, #7BC393 0%, #31B7C2 100%);
+
+.trial {
+  /* background-image: linear-gradient(to right, #72e297 0%, #70e9d3 100%); */
+  /* background-image: linear-gradient(to right, #7BC393 0%, #31B7C2 100%); */
+  /* background-image: linear-gradient(to bottom right, #72FFB6, #10D164); */
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
+.activeNav{
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  color: black;
+}
+.pendingNav{
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  color: white;
 }
 
 /* .roboto-light {
@@ -40,4 +48,3 @@ body{
     font-weight: 500;
     font-style: normal;
   } */
-  
