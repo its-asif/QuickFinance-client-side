@@ -6,7 +6,7 @@ const ServiceCard = ({item}) => {
     
     return (
         
-        <div data-aos="fade-up" data-aos-duration="1000" className="relative card  transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0 rounded-xl bg-gradient-to-r from-[#dbdddc] to-[#b8b8b8] hover:from-[#99ffa5] hover:to-[#70f3e8] bg-clip-border text-gray-700 shadow-xl">
+        <div data-aos="fade-up" data-aos-duration="1000" className="relative card  transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0 rounded-xl bg-gradient-to-r from-[#dbdddc] to-[#b8b8b8] hover:from-[#0ba360] hover:to-[#3cba92] bg-clip-border text-gray-700 shadow-xl">
            <figure className="">
            <img
            src={item?.image} className=" object-cover  lg:h-[265px] w-full "
