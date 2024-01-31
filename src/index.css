@@ -48,8 +48,26 @@ body {
   color: #fff;
   text-align: center;
 }
+/* button with full width  */
+.fullWidthSharedBtn {
+  width: 100%;
+  height: 50px;
+  background-color: #000;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-align: center;
+}
 
-.sharedBtn:before {
+.sharedBtn:before, .fullWidthSharedBtn:before {
   content: '';
   position: absolute;
   top: 0;
@@ -62,7 +80,7 @@ body {
   border-radius: 15px;
 }
 
-.sharedBtn:hover {
+.sharedBtn:hover, .fullWidthSharedBtn:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   color: #000;
@@ -70,7 +88,7 @@ body {
   font-weight: 500;
 }
 
-.sharedBtn:hover:before {
+.sharedBtn:hover:before, .fullWidthSharedBtn:hover:before {
   left: 0;
 }
 

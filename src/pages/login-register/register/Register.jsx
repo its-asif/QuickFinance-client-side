@@ -137,23 +137,10 @@ const Register = () => {
 
 
                     {/* Right side */}
-                    <div className='bg-[#07123a]  rounded-2xl'>
+                    <div className='bg-white  rounded-2xl'>
                         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-10 lg:px-8 lg:py-10 ">
                             <div className="">
-                                <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">Sign up</h2>
-
-                                {/* link to Login page */}
-                                <p className="mt-2 text-sm text-white">
-                                    Already have an account? {" "}
-                                    <Link
-                                        to='/login'
-                                        title=""
-                                        className="font-semibold text-white transition-all duration-200 hover:underline"
-                                    >
-                                        Sign In
-                                    </Link>
-                                </p>
-
+                                <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign up</h2>
 
                                 {/* Form */}
                                 <form onSubmit={e => { e.preventDefault(), handleSignUp(e) }}
@@ -164,13 +151,13 @@ const Register = () => {
                                         <div className='flex flex-col md:flex-row gap-2'>
                                             {/* Name */}
                                             <div>
-                                                <label htmlFor="" className="text-base font-medium text-gray-100">
+                                                <label htmlFor="" className="text-base font-medium text-black">
                                                     Name:
                                                     <MdPerson size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
-                                                <div className="mt-2 border rounded-md">
+                                                <div className="mt-2 border border-black rounded-md">
                                                     <input name='name'
-                                                        className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
                                                         placeholder='Name'
                                                     >
@@ -180,15 +167,15 @@ const Register = () => {
                                             </div>
 
                                             {/* Upload Image */}
-                                            <div className="grid  gap-1.5">
+                                            <div className="grid group gap-1.5">
                                                 <label
-                                                    className="text-base font-medium text-gray-100"
+                                                    className="text-base font-medium text-black"
                                                 >
                                                     Upload Image
                                                 </label
                                                 >
                                                 <input name='image'
-                                                    className="flex h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-blue-600 file:text-white file:text-sm file:font-medium"
+                                                    className="flex group-hover:cursor-pointer file:group-hover:cursor-pointer h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-gradient-to-t file:from-green-500 file:to-teal-500 file:text-black file:text-sm file:font-medium"
                                                     type="file"
                                                     id="picture"
                                                 />
@@ -199,13 +186,13 @@ const Register = () => {
                                         <div className='flex flex-col lg:flex-row gap-2'>
                                             {/* Email */}
                                             <div>
-                                                <label htmlFor="" className="text-base font-medium text-gray-100">
+                                                <label htmlFor="" className="text-base font-medium text-black">
                                                     Email:
                                                     <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
-                                                <div className="mt-2 border rounded-md">
+                                                <div className="mt-2 border border-black rounded-md">
                                                     <input name='email'
-                                                        className="ml-8 flex h-10 w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 w-[200px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
                                                     >
@@ -216,23 +203,14 @@ const Register = () => {
                                             {/* Password */}
                                             <div>
                                                 <div className="flex items-center justify-between">
-                                                    <label htmlFor="" className="text-base font-medium text-gray-100">
+                                                    <label htmlFor="" className="text-base font-medium text-black">
                                                         Password:
                                                         <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                     </label>
-
-                                                    {/* Forgot Password */}
-                                                    <a
-                                                        href="#"
-                                                        title=""
-                                                        className="text-sm font-semibold text-gray-300 hover:underline"
-                                                    >
-                                                        Forgot password?
-                                                    </a>
                                                 </div>
-                                                <div className="mt-2 border rounded-md">
+                                                <div className="mt-2 border border-black rounded-md">
                                                     <input name='password'
-                                                        className="ml-8 flex h-10 lg:w-[200px]  text-white border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-white focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex h-10 lg:w-[200px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="password"
                                                         placeholder='Password'
                                                     >
@@ -251,7 +229,7 @@ const Register = () => {
                                         <div>
                                             <button
                                                 type="submit"
-                                                className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-[#399b53]"
+                                                className="fullWidthSharedBtn "
                                             >
                                                 Register <ArrowRight className="ml-2" size={16} />
                                             </button>
@@ -266,7 +244,7 @@ const Register = () => {
                                     {/* Google */}
                                     <button onClick={handleGoogle}
                                         type="button"
-                                        className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
+                                        className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                                     >
                                         <span className="mr-2 inline-block">
                                             <svg
@@ -285,7 +263,7 @@ const Register = () => {
                                     {/* Facebook */}
                                     <button
                                         type="button"
-                                        className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
+                                        className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                                     >
                                         <span className="mr-2 inline-block">
                                             <svg
@@ -300,7 +278,17 @@ const Register = () => {
                                         Sign in with Facebook
                                     </button>
                                 </div>
-
+                                {/* link to Login page */}
+                                <p className="mt-6 text-center text-sm text-black">
+                                    Already have an account? {" "}
+                                    <Link
+                                        to='/login'
+                                        title=""
+                                        className="font-semibold text-black transition-all duration-200 hover:underline"
+                                    >
+                                        Sign In
+                                    </Link>
+                                </p>
                             </div>
                         </div>
                     </div>

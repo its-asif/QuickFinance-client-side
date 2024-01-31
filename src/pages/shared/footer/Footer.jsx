@@ -49,7 +49,7 @@ const Footer = () => {
 
             <div className="flex mt-8 mb-4">
                 <input type="email" placeholder="Your email" className="bg-white text-black rounded px-8 h-10 outline-none" />
-                <button className="bg-[#399B53] text-white rounded h-10 px-4 ml-3 text-lg">Subscribe</button>
+                {/* <button className="bg-[#399B53] text-white rounded h-10 px-4 ml-3 text-lg">Subscribe</button> */}
             </div>
 
             <p>Copyright © 2024 - All right reserved</p>
