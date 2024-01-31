@@ -10,6 +10,9 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../Hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from '../../shared/Social_Login/SocialLogin';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+import { useState } from 'react';
 const Register = () => {
     const { GoogleSignUp, createUser, UpdateUser } = useAuth()
     // console.log(loading);
@@ -85,6 +88,12 @@ const Register = () => {
         }
 
     }
+    // handle show password 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
             data-aos-anchor-placement="top-center">
@@ -99,7 +108,7 @@ const Register = () => {
 
 
                     {/* Right side */}
-                    <div className='bg-white  rounded-2xl'>
+                    <div className='bg-white shadow-2xl rounded-2xl'>
                         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-10 lg:px-8 lg:py-10 ">
                             <div className="">
                                 <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign up</h2>
@@ -115,9 +124,10 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-black">
                                                     Name:
-                                                    <MdPerson size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
-                                                <div className="mt-2 border border-black rounded-md">
+                                                <div className="mt-2 border border-black rounded-md flex items-center">
+                                                <MdPerson size={25} className='absolute translate-x-1' />
+
                                                     <input name='name'
                                                         className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
@@ -137,7 +147,7 @@ const Register = () => {
                                                 </label
                                                 >
                                                 <input name='image'
-                                                    className="flex group-hover:cursor-pointer file:group-hover:cursor-pointer h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-gradient-to-t file:from-green-500 file:to-teal-500 file:text-black file:text-sm file:font-medium"
+                                                    className="flex group-hover:cursor-pointer file:group-hover:cursor-pointer h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-gradient-to-t file:from-[#0ba360] file:to-[#3cba92] file:text-black file:text-sm file:font-medium"
                                                     type="file"
                                                     id="picture"
                                                 />
@@ -150,9 +160,9 @@ const Register = () => {
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-black">
                                                     Email:
-                                                    <MdOutlineMailOutline size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                 </label>
-                                                <div className="mt-2 border border-black rounded-md">
+                                                <div className="mt-2 border border-black rounded-md flex items-center">
+                                                <MdOutlineMailOutline size={25} className='absolute translate-x-1 ' />
                                                     <input name='email'
                                                         className="ml-8 flex h-10 w-[200px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
@@ -167,17 +177,24 @@ const Register = () => {
                                                 <div className="flex items-center justify-between">
                                                     <label htmlFor="" className="text-base font-medium text-black">
                                                         Password:
-                                                        <RiLockPasswordLine size={30} className='absolute translate-x-1 translate-y-[13px]' />
                                                     </label>
                                                 </div>
-                                                <div className="mt-2 border border-black rounded-md">
+                                                <div className="mt-2 border border-black rounded-md flex items-center">
+                                                <RiLockPasswordLine size={25} className='absolute translate-x-1' />
                                                     <input name='password'
                                                         className="ml-8 flex h-10 lg:w-[200px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
-                                                        type="password"
+                                                        type={showPassword ? 'text' : 'password'}
                                                         placeholder='Password'
                                                     >
 
                                                     </input>
+                                                    <div onClick={togglePasswordVisibility} className="cursor-pointer">
+                                                        {showPassword ? (
+                                                            <FaEye size={25} className="-translate-x-4" />
+                                                        ) : (
+                                                            <FaEyeSlash size={25} className="-translate-x-4" />
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
 
