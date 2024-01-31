@@ -67,9 +67,9 @@ const MyDashboard = () => {
 
     return (
         <div className="pt-20 mb-4 lg:max-w-screen-xl overflow-hidden">
-            <div className={`grid my-5 grid-cols-1 lg:grid-cols-2 justify-between items-center md:gap-12 lg:gap-48 xl:gap-64`}>
-                <div className=" rounded-lg w-full bg-white " data-aos="zoom-in-right" data-aos-duration="3000">
-                    <div className="mb-4 rounded-md bg-gray-100  p-8 pr-0 flex justify-around items-center lg:p-[45px] ">
+            <div className={`grid my-5 grid-cols-1 lg:grid-cols-2 justify-around items-center gap-5 md:gap-16 `}>
+                <div className="  rounded-lg  bg-white " data-aos="zoom-in-right" data-aos-duration="3000">
+                    <div className="mb-4 rounded-md bg-gray-100  lg:h-[300px] p-8 pr-0 flex justify-around items-center lg:p-[45px] ">
                         <div className="space-y-1">
                             <h1 className="xl:text-4xl font-extrabold font-Jost tracking-wider lg:text-2xl text-xl"> Hello!  {AuthUser?.displayName}</h1>
                             <p className="text-base  font-semibold ">
@@ -85,7 +85,7 @@ const MyDashboard = () => {
                 </div>
 
                 {/* profile */}
-                <div  data-aos="zoom-in-right" data-aos-duration="3000" className=" rounded-lg w-full  mb-4  bg-gray-100 p-8 ">
+                <div  data-aos="zoom-in-right" data-aos-duration="3000" className=" rounded-lg lg:h-[300px] max-h-full max-w-full  mb-4 flex justify-center items-center  bg-gray-100  ">
                     <div className="flex flex-col md:flex-row items-center gap-2 text-xl">
                         <div className="mb-5 text-center">
                             <img className="md:w-24 duration-300 md:h-24 w-2/3 object-cover rounded-full border-[3.5px] border-green-700 " src={AuthUser?.photoURL} alt="" />
