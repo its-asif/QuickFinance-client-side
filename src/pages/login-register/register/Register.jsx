@@ -20,6 +20,14 @@ const Register = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const axiosPublic = useAxiosPublic()
+    // Password validation
+    const [passwordError, setPasswordError] = useState(null)
+
+    // regx to check UpperCAse
+    const UpperRegX = /(?=.*[A-Z])/;
+
+    // regx to check special charecter
+    const SpecialRegX = /(?=.*[@$!%*?&])/
     //Handle Email password Sign In
     const handleSignUp = async (e) => {
         const form = e.target
@@ -27,66 +35,84 @@ const Register = () => {
         const password = e.target.password.value
         const name = e.target.name.value
         // const image = e.target.image.value;
-        const image = e.target.image.files[0];
-        try {
-            const formData = new FormData();
-            formData.append('image', image);
-            // image sending to imagbb
-            const res = await axios.post("https://api.imgbb.com/1/upload?key=084c828cb07b191daf9262ae088bdd35", formData)
-            // if status is ok
-            if (res.status === 200) {
-                const result = res.data
-                const HostedImage = result.data.display_url
-                console.log(email, password, name,);
-                createUser(email, password)
-                    .then(result => {
-                        console.log(result.user);
-                        UpdateUser(name, HostedImage)
-                            .then(() => {
-                                console.log(result.user);
-                                const User = {
-                                    name: result.user.displayName,
-                                    email: result.user.email,
-                                    emailVerified: result.user.emailVerified,
-                                    creationTime: result.user.metadata.creationTime,
-                                    lastSignInTime: result.user.metadata.lastSignInTime,
-                                    profileImage: result.user.photoURL,
-                                    role: 'user'
-                                }
-                                console.log(User)
-                                toast.success(`Authenticating as ${result.user.email}`)
-                                form.reset()
-                                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
-                                // axiosPublic.post('/users', User)
-                                //     .then(res => {
-                                //         if (res.data.insertedId) {
-                                //             // localStorage.setItem('ToastShowed', JSON.stringify('false'))
-                                //             // toast.success(`Authenticating as ${result.user.email}`)
-                                //             // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
-                                //         }
-                                //     })
+        // password validation 
 
-                            })
-                            .catch((error) => {
-                                const errorMessage = error.message;
-                                console.log(errorMessage);
-                                toast.error(`${errorMessage}`)
-                            });
+        if (password.length >= 6) {
+            // to check UpperCAse
+            if (UpperRegX.test(password)) {
+                // to check special charecter
+                if (SpecialRegX.test(password)) {
+                    const image = e.target.image.files[0];
+                    try {
+                        const formData = new FormData();
+                        formData.append('image', image);
+                        // image sending to imagbb
+                        const res = await axios.post("https://api.imgbb.com/1/upload?key=084c828cb07b191daf9262ae088bdd35", formData)
 
-                    })
-                    .catch((error) => {
-                        const errorMessage = error.message;
-                        console.log(errorMessage);
-                        toast.error(`${errorMessage}`)
-                    });
+                        // if status is ok
+                        if (res.status === 200) {
+                            const result = res.data
+                            const HostedImage = result.data.display_url
+                            console.log(email, password, name,);
+                            createUser(email, password)
+                                .then(result => {
+                                    console.log(result.user);
+                                    UpdateUser(name, HostedImage)
+                                        .then(() => {
+                                            console.log(result.user);
+                                            const User = {
+                                                name: result.user.displayName,
+                                                email: result.user.email,
+                                                emailVerified: result.user.emailVerified,
+                                                creationTime: result.user.metadata.creationTime,
+                                                lastSignInTime: result.user.metadata.lastSignInTime,
+                                                profileImage: result.user.photoURL,
+                                                role: 'user'
+                                            }
+                                            console.log(User)
+                                            toast.success(`Authenticating as ${result.user.email}`)
+                                            form.reset()
+                                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                                            // axiosPublic.post('/users', User)
+                                            //     .then(res => {
+                                            //         if (res.data.insertedId) {
+                                            //             // localStorage.setItem('ToastShowed', JSON.stringify('false'))
+                                            //             // toast.success(`Authenticating as ${result.user.email}`)
+                                            //             // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                                            //         }
+                                            //     })
+
+                                        })
+                                        .catch((error) => {
+                                            const errorMessage = error.message;
+                                            console.log(errorMessage);
+                                            toast.error(`${errorMessage}`)
+                                        });
+
+                                })
+                                .catch((error) => {
+                                    const errorMessage = error.message;
+                                    console.log(errorMessage);
+                                    toast.error(`${errorMessage}`)
+                                });
+                        }
+
+                    }
+                    catch (error) {
+                        console.error('Error during signup:', error.message);
+                        console.log(error.code);
+                    }
+                }
+                else {
+                    setPasswordError('Password must contain at least one special character.')
+                }
+
             }
-
+            else {
+                setPasswordError('Password must contain at least one uppercase letter')
+            }
         }
-        catch (error) {
-            console.error('Error during signup:', error.message);
-            console.log(error.code);
-        }
-
+        else { setPasswordError('Password must be at least 6 characters long.') }
     }
     // handle show password 
     const [showPassword, setShowPassword] = useState(false);
@@ -126,9 +152,10 @@ const Register = () => {
                                                     Name:
                                                 </label>
                                                 <div className="mt-2 border lg:w-[250px] md:w-[300px]  w-[250px]  border-black rounded-md flex items-center">
-                                                <MdPerson size={25} className='absolute translate-x-1' />
+                                                    <MdPerson size={25} className='absolute translate-x-1' />
 
                                                     <input name='name'
+                                                        required
                                                         className="ml-8 flex rounded-md h-10 w-full text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
                                                         placeholder='Name'
@@ -146,6 +173,7 @@ const Register = () => {
                                                     Upload Image
                                                 </label>
                                                 <input name='image'
+                                                    required
                                                     className="flex  group-hover:cursor-pointer file:group-hover:cursor-pointer h-10 lg:w-[250px] md:w-[300px] w-[250px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-gradient-to-t file:from-[#0ba360] file:to-[#3cba92] file:text-black file:text-sm file:font-medium"
                                                     type="file"
                                                     id="picture"
@@ -161,8 +189,9 @@ const Register = () => {
                                                     Email:
                                                 </label>
                                                 <div className="mt-2 border lg:w-[250px] md:w-[300px] w-[250px]  border-black rounded-md flex items-center">
-                                                <MdOutlineMailOutline size={25} className='absolute translate-x-1 ' />
+                                                    <MdOutlineMailOutline size={25} className='absolute translate-x-1 ' />
                                                     <input name='email'
+                                                        required
                                                         className="ml-8 flex rounded-md h-10 w-full text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
@@ -179,8 +208,9 @@ const Register = () => {
                                                     </label>
                                                 </div>
                                                 <div className="mt-2 border lg:w-[250px] md:w-[300px] w-[250px] border-black rounded-md flex items-center">
-                                                <RiLockPasswordLine size={25} className='absolute translate-x-1' />
+                                                    <RiLockPasswordLine size={25} className='absolute translate-x-1' />
                                                     <input name='password'
+                                                        required
                                                         className="ml-8 flex rounded-md h-10 w-full text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type={showPassword ? 'text' : 'password'}
                                                         placeholder='Password'
@@ -195,6 +225,7 @@ const Register = () => {
                                                         )}
                                                     </div>
                                                 </div>
+                                                <p className='lg:text-sm text-xs  w-[250px] text-red-600'>{passwordError}</p>
                                             </div>
 
                                         </div>
