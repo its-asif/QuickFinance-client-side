@@ -97,7 +97,7 @@ const Register = () => {
     return (
         <div data-aos="fade-up" data-aos-duration="3000"
             data-aos-anchor-placement="top-center">
-            <div className="hero min-h-screen">
+            <div className="hero min-h-screen py-16">
                 <div className="hero-content flex justify-evenly flex-row  w-full">
 
 
@@ -119,17 +119,17 @@ const Register = () => {
                                     <div className="space-y-5">
 
 
-                                        <div className='flex flex-col md:flex-row gap-2'>
+                                        <div className='flex flex-col lg:flex-row gap-2'>
                                             {/* Name */}
                                             <div>
                                                 <label htmlFor="" className="text-base font-medium text-black">
                                                     Name:
                                                 </label>
-                                                <div className="mt-2 border border-black rounded-md flex items-center">
+                                                <div className="mt-2 border lg:w-[250px] md:w-[300px]  w-[250px]  border-black rounded-md flex items-center">
                                                 <MdPerson size={25} className='absolute translate-x-1' />
 
                                                     <input name='name'
-                                                        className="ml-8 flex h-10 lg:w-[200px] w-[150px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex rounded-md h-10 w-full text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="text"
                                                         placeholder='Name'
                                                     >
@@ -144,10 +144,9 @@ const Register = () => {
                                                     className="text-base font-medium text-black"
                                                 >
                                                     Upload Image
-                                                </label
-                                                >
+                                                </label>
                                                 <input name='image'
-                                                    className="flex group-hover:cursor-pointer file:group-hover:cursor-pointer h-10 lg:w-[233px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-gradient-to-t file:from-[#0ba360] file:to-[#3cba92] file:text-black file:text-sm file:font-medium"
+                                                    className="flex  group-hover:cursor-pointer file:group-hover:cursor-pointer h-10 lg:w-[250px] md:w-[300px] w-[250px] rounded-md border border-blue-300 border-input bg-white text-sm text-gray-400 file:h-10 file:border-0 file:bg-gradient-to-t file:from-[#0ba360] file:to-[#3cba92] file:text-black file:text-sm file:font-medium"
                                                     type="file"
                                                     id="picture"
                                                 />
@@ -161,10 +160,10 @@ const Register = () => {
                                                 <label htmlFor="" className="text-base font-medium text-black">
                                                     Email:
                                                 </label>
-                                                <div className="mt-2 border border-black rounded-md flex items-center">
+                                                <div className="mt-2 border lg:w-[250px] md:w-[300px] w-[250px]  border-black rounded-md flex items-center">
                                                 <MdOutlineMailOutline size={25} className='absolute translate-x-1 ' />
                                                     <input name='email'
-                                                        className="ml-8 flex h-10 w-[200px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex rounded-md h-10 w-full text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type="email"
                                                         placeholder='Email'
                                                     >
@@ -179,10 +178,10 @@ const Register = () => {
                                                         Password:
                                                     </label>
                                                 </div>
-                                                <div className="mt-2 border border-black rounded-md flex items-center">
+                                                <div className="mt-2 border lg:w-[250px] md:w-[300px] w-[250px] border-black rounded-md flex items-center">
                                                 <RiLockPasswordLine size={25} className='absolute translate-x-1' />
                                                     <input name='password'
-                                                        className="ml-8 flex h-10 lg:w-[200px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                        className="ml-8 flex rounded-md h-10 w-full text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                         type={showPassword ? 'text' : 'password'}
                                                         placeholder='Password'
                                                     >

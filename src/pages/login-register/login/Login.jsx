@@ -17,42 +17,70 @@ const Login = () => {
     // Navigate After LOgIn
     const location = useLocation()
     const navigate = useNavigate()
+    // Password validation
+    const [passwordError, setPasswordError] = useState(null)
+
+    // regx to check UpperCAse
+    const UpperRegX = /(?=.*[A-Z])/;
+
+    // regx to check special charecter
+    const SpecialRegX = /(?=.*[@$!%*?&])/
     //Handle Email password Sign In
     const handleSignIn = (e) => {
         const form = e.target
         const email = e.target.email.value;
         const password = e.target.password.value
         // console.log(email, password);
-        SignInUser(email, password)
-            .then(result => {
-                const User = {
-                    name: result.user.displayName,
-                    email: result.user.email,
-                    emailVerified: result.user.emailVerified,
-                    creationTime: result.user.metadata.creationTime,
-                    lastSignInTime: result.user.metadata.lastSignInTime,
-                    profileImage: result.user.photoURL,
-                    role: 'user'
+        // password validation 
+
+        if (password.length >= 6) {
+            // to check UpperCAse
+            if (UpperRegX.test(password)) {
+                // to check special charecter
+                if (SpecialRegX.test(password)) {
+                    SignInUser(email, password)
+                        .then(result => {
+                            const User = {
+                                name: result.user.displayName,
+                                email: result.user.email,
+                                emailVerified: result.user.emailVerified,
+                                creationTime: result.user.metadata.creationTime,
+                                lastSignInTime: result.user.metadata.lastSignInTime,
+                                profileImage: result.user.photoURL,
+                                role: 'user'
+                            }
+                            setPasswordError(null)
+                            console.log(User);
+                            // axiosPublic.patch(`/users/${result.user.email}`, User)
+                            //     .then(res => {
+                            //         console.log(res.data);
+                            //         if (res.data.insertedId || res.data.modifiedCount > 0) {
+                            //             toast.success(`Authenticating as ${result.user.email}`)
+                            //             localStorage.setItem('ToastShowed', JSON.stringify('false'))
+                            //             location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                            //         }
+                            //     })
+                            toast.success(`Authenticating as ${result.user.email}`)
+                            form.reset()
+                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                        })
+                        .catch((error) => {
+                            const errorMessage = error.message;
+                            console.log(errorMessage);
+                            toast.error(`${errorMessage}`)
+                            setPasswordError(null)
+                        });
                 }
-                console.log(User);
-                // axiosPublic.patch(`/users/${result.user.email}`, User)
-                //     .then(res => {
-                //         console.log(res.data);
-                //         if (res.data.insertedId || res.data.modifiedCount > 0) {
-                //             toast.success(`Authenticating as ${result.user.email}`)
-                //             localStorage.setItem('ToastShowed', JSON.stringify('false'))
-                //             location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
-                //         }
-                //     })
-                toast.success(`Authenticating as ${result.user.email}`)
-                form.reset()
-                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
-                toast.error(`${errorMessage}`)
-            });
+                else {
+                    setPasswordError('Password must contain at least one special character.')
+                }
+
+            }
+            else {
+                setPasswordError('Password must contain at least one uppercase letter')
+            }
+        }
+        else { setPasswordError('Password must be at least 6 characters long.') }
     }
     // handle show password 
     const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +92,7 @@ const Login = () => {
     return (
         <div data-aos="fade-up"
             data-aos-duration="3000">
-            <div className="hero min-h-screen ">
+            <div className="hero min-h-screen py-16">
                 <div className="hero-content flex  justify-evenly flex-row  w-full">
 
 
@@ -89,12 +117,13 @@ const Login = () => {
                                         <div>
                                             <label htmlFor="" className="text-base font-medium text-black">
                                                 Email:
-                                                
+
                                             </label>
-                                            <div className="mt-2 border border-black rounded-md flex items-center">
-                                            <MdOutlineMailOutline size={25} className='absolute translate-x-1' />
+                                            <div className="mt-2 lg:w-[350px] border border-black rounded-md flex items-center">
+                                                <MdOutlineMailOutline size={25} className='absolute translate-x-1' />
                                                 <input name='email'
-                                                    className="ml-8  flex h-10 lg:w-[350px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                    required
+                                                    className="ml-8  flex h-10 w-full rounded-md  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type="email"
                                                     placeholder='Email'
                                                 >
@@ -102,7 +131,7 @@ const Login = () => {
                                                 </input>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className=''>
 
                                             {/* Password */}
                                             <div className="flex items-center justify-between">
@@ -122,10 +151,11 @@ const Login = () => {
 
 
 
-                                            <div className="mt-2 border border-black rounded-md flex items-center">
-                                            <RiLockPasswordLine size={25} className='absolute translate-x-1 ' />
+                                            <div className="mt-2 lg:w-[350px] border border-black rounded-md flex items-center">
+                                                <RiLockPasswordLine size={25} className='absolute translate-x-1 ' />
                                                 <input name='password'
-                                                    className="ml-8 flex h-10 lg:w-[350px]  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
+                                                    required
+                                                    className="ml-8 flex h-10 w-full rounded-md  text-black border-black bg-transparent px-3 py-2 text-sm placeholder:text-black focus:outline-none focus:border-none disabled:cursor-not-allowed disabled:opacity-50 "
                                                     type={showPassword ? 'text' : 'password'}
                                                     placeholder='Password'
                                                 >
@@ -140,6 +170,7 @@ const Login = () => {
                                                 </div>
 
                                             </div>
+                                            <p className='lg:text-sm text-xs  lg:w-[350px] w-[250px] text-red-600'>{passwordError}</p>
                                         </div>
                                         {/* button */}
                                         <div>
