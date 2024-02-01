@@ -1,7 +1,7 @@
 import useAuth from "../../Hooks/useAuth";
 import { MdVerified } from "react-icons/md";
 import { MdVerifiedUser } from "react-icons/md";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import React from "react";
 import { Chart } from "react-google-charts";

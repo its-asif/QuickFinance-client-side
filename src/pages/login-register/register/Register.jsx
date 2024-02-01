@@ -6,13 +6,13 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdPerson } from "react-icons/md";
 import axios from 'axios';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../Hooks/useAuth';
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from '../../shared/Social_Login/SocialLogin';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from 'react';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 const Register = () => {
     const { GoogleSignUp, createUser, UpdateUser } = useAuth()
     // console.log(loading);
