@@ -1,5 +1,4 @@
-
-
+/* eslint-disable react/no-unescaped-entities */
 
 const AboutUs = () => {
     return (
@@ -9,7 +8,7 @@ const AboutUs = () => {
                 <h1 data-aos="fade-down"
                     data-aos-easing="linear"
                     data-aos-duration="500"  className="mt-5 text-[50px] font-extrabold text-[#399B53] uppercase text-center"><span className="text-black">About</span> us</h1>
-                <p  data-aos="zoom-in-right" data-aos-duration="2000" className="max-w-[1050px] text-center mx-auto font-normal text-[20px]">Welcome to QuickFinance, your go-to platform for seamless financial management, founded by visionary entrepreneur John Doe over a decade ago. With 12 years of expertise, QuickFinance empowers you to effortlessly track earnings, expenses, calculate Zakat and taxes, and manage investments—all in one place. With a user-friendly interface, QuickFinance ensures easy organization and clear insights into your financial health. Take control of your finances and build a secure future with QuickFinance, driven by the passion and foresight of our founder, John Doe.</p>
+                <p  data-aos="zoom-in-right" data-aos-duration="2000" className="max-w-[1050px] text-center mx-auto font-thin text-[20px]">Welcome to QuickFinance, your go-to platform for seamless financial management, founded by visionary entrepreneur John Doe over a decade ago. With 12 years of expertise, QuickFinance empowers you to effortlessly track earnings, expenses, calculate Zakat and taxes, and manage investments—all in one place. With a user-friendly interface, QuickFinance ensures easy organization and clear insights into your financial health. Take control of your finances and build a secure future with QuickFinance, driven by the passion and foresight of our founder, John Doe.</p>
             </div>
             <div  data-aos="zoom-in-right" data-aos-duration="3000">
                 <img className="mx-auto my-10" src="/Counter.png" alt="" />
