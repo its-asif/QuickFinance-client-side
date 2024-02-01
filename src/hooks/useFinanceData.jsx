@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 const useFinanceData = () => {
+    
     const axiosPublic = useAxiosPublic();
 
     const { data: financialManagementData = [], loading: loading, refetch } = useQuery({
