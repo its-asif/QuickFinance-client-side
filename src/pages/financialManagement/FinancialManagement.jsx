@@ -35,15 +35,12 @@ const FinancialManagement = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Task Added",
+                title: "Transaction Added",
                 showConfirmButton: false,
                 timer: 1500
             });
-            console.log(financialItemRes.data)
+            // console.log(financialItemRes.data)
             refetch()
-            console.log(financialItemRes.data)
-            reset();
-            console.log(financialItemRes.data)
         }
 
     }
@@ -54,14 +51,15 @@ const FinancialManagement = () => {
 
     return (
         
-        <div className="bg-cover  bg-black opacity-80" style={{ backgroundImage: `url('${bg}')` }}>
+        <div className={`bg-cover  bg-[url('/finance.jpg')] bg-opacity-60 bg-no-repeat bg-center h-full`}
+        >
            
-            <div className="pt-32 pb-32 z-[3] ">
+            <div className="pt-32 pb-32 z-[3] md:mx-32">
 
-           <div className="bg-white max-w-screen-lg py-5 shadow-xl rounded-xl opacity-96 mx-auto">
+           <div className="bg-white bg-opacity-95 max-w-screen-lg py-5 shadow-xl rounded-xl opacity-96 mx-auto">
                  {/* Add List */}
                  <div className="text-center ">
-                    <div className={`btn btn-wide font-semibold text-lg ${isFormOpen ? "btn bg-red-500 hover:bg-red-600  text-white" : "btn-warning"}`}
+                    <div className={`btn md:btn-wide font-semibold text-lg ${isFormOpen ? "btn bg-red-500 hover:bg-red-600  text-white" : "btn-warning"}`}
                         onClick={() => setIsFormOpen(!isFormOpen)}
                     >
                         {isFormOpen ? 'Close Form' : 'Add Transaction'}
@@ -72,7 +70,7 @@ const FinancialManagement = () => {
                 {isFormOpen &&
 
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-3xl   mx-5 md:mx-auto mt-12">
+                    <form onSubmit={handleSubmit(onSubmit)} className="mx-5 md:mx-auto mt-12">
                         <div className="grid md:grid-cols-2 md:gap-6">
                             <div className="relative z-0 w-full mb-5 group">
                                 <input
@@ -160,9 +158,9 @@ const FinancialManagement = () => {
 
                 }
                 <div className="overflow-x-auto ">
-                    <table className="table max-w-3xl mx-auto text-center mt-10">
+                    <table className="table  mx-auto text-center mt-10" >
                         {/* head */}
-                        <thead>
+                        <thead className="font-semibold md:text-base">
                             <tr>
 
                                 <th>Trx Type</th>
@@ -172,7 +170,7 @@ const FinancialManagement = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* row 1 */}
+                            {/* rows */}
                             {
                                 userFinancialData.map(userFinancialDataTable => <UserFinancialDataTable key={userFinancialDataTable._id} userFinancialDataTable={userFinancialDataTable}></UserFinancialDataTable>)
                             }

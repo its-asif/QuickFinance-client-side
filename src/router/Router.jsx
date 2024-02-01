@@ -39,15 +39,9 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
-        path: "/financialManagement",
-        element: <FinancialManagement />
-      },
-      {
         path: "/contact",
         element: <ContactUs></ContactUs>
-      }
-      ,
-     
+      },
       {
         path: "/about",
         element: <AboutUs></AboutUs>
@@ -56,16 +50,19 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:"/dashboard",
-    element: <PrivateRoute>
-      <Dashboard></Dashboard>
-    </PrivateRoute>,
+    path:"/dashboard", 
+    // element: <PrivateRoute><Dashboard/></PrivateRoute>,
+    element: <Dashboard/>,
     children:
     [
-     {
-      index:true,
-      element:<MyDashboard></MyDashboard>
-     }
+      {
+        path:"",
+        element:<MyDashboard/>,
+      },
+      {
+        path:"financialManagement",
+        element:<FinancialManagement/>
+      }
     ] 
   }
 ]);
