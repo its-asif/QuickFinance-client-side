@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import useAuth from '../../../Hooks/useAuth';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from '../../shared/Social_Login/SocialLogin';
 import { FaEye } from "react-icons/fa";
