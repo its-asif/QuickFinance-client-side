@@ -1,6 +1,7 @@
 import { FaLocationDot  ,FaPhone } from "react-icons/fa6";
 import { AiTwotoneMail } from "react-icons/ai";
 
+
 const ContactUs = () => {
     return (
         <div className="max-w-screen-xl mx-auto lg:px-10 p-5 overflow-hidden">

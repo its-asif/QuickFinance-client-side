@@ -72,7 +72,7 @@ console.log(AuthUser);
     return (
 
 
-        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
+        <div className="navbar fixed z-10   h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
             <div className="navbar-start lg:ml-8">
 
 
