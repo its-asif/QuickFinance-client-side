@@ -58,7 +58,6 @@ const MyDashboard = () => {
 
 
 
-
     const options = {
         title: "Expense & Income By Date",
         curveType: "function",
@@ -115,8 +114,10 @@ const MyDashboard = () => {
                 </div>
             </div>
 
+            {/* Graph */}
             <div>
 
+                {/* income and expense by date */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div data-aos="fade-up" data-aos-duration="1000">
                         <Chart
@@ -157,7 +158,6 @@ const MyDashboard = () => {
                     />
                 </div>
             </div>
-
 
         </div>
 
