@@ -1,46 +1,93 @@
 import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Login = () => {
-    const { SignInUser } = useAuth()
+    const { SignInUser, GoogleSignUp } = useAuth()
     const axiosPublic = useAxiosPublic()
+    // Navigate After LOgIn
+    const location = useLocation()
+    const navigate = useNavigate()
     //Handle Email password Sign In
     const handleSignIn = (e) => {
+        const form = e.target
         const email = e.target.email.value;
         const password = e.target.password.value
         // console.log(email, password);
         SignInUser(email, password)
-        .then(result => {
-            const User = {
-                name: result.user.displayName,
-                email: result.user.email,
-                emailVerified: result.user.emailVerified,
-                creationTime: result.user.metadata.creationTime,
-                lastSignInTime: result.user.metadata.lastSignInTime,
-                profileImage: result.user.photoURL,
-                role: 'user'
-            }
-            console.log(User);
-            // axiosPublic.patch(`/users/${result.user.email}`, User)
-            //     .then(res => {
-            //         console.log(res.data);
-            //         if (res.data.insertedId || res.data.modifiedCount > 0) {
-            //             toast.success(`Authenticating as ${result.user.email}`)
-            //             localStorage.setItem('ToastShowed', JSON.stringify('false'))
-            //             location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
-            //         }
-            //     })
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            console.log(errorMessage);
-            // toast.error(`${errorMessage}`)
-        });
+            .then(result => {
+                const User = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    emailVerified: result.user.emailVerified,
+                    creationTime: result.user.metadata.creationTime,
+                    lastSignInTime: result.user.metadata.lastSignInTime,
+                    profileImage: result.user.photoURL,
+                    role: 'user'
+                }
+                console.log(User);
+                // axiosPublic.patch(`/users/${result.user.email}`, User)
+                //     .then(res => {
+                //         console.log(res.data);
+                //         if (res.data.insertedId || res.data.modifiedCount > 0) {
+                //             toast.success(`Authenticating as ${result.user.email}`)
+                //             localStorage.setItem('ToastShowed', JSON.stringify('false'))
+                //             location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                //         }
+                //     })
+                toast.success(`Authenticating as ${result.user.email}`)
+                form.reset()
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                toast.error(`${errorMessage}`)
+            });
+    }
+    const handleGoogle = () => {
+        GoogleSignUp()
+            .then(result => {
+                console.log(result.user)
+                toast.success(`Authenticating as ${result.user.email}`)
+                // const SignedUser = {
+                //     userName: result.user.displayName,
+                //     userEmail: result.user.email,
+                //     userFirebaseUid: result.user.uid,
+                //     userCreationTime: result.user.metadata.creationTime,
+                //     userLastSignInTime: result.user.metadata.lastSignInTime,
+                //     UserVerified: result.user.emailVerified,
+                //     userCity: "none",
+                //     userZip: "none",
+                //     userSkill: "none",
+                //     userPhoto: result.user.photoURL,
+                // }
+                // console.log(SignedUser);
+                // fetch('https://joblancernewserver.vercel.app/user', {
+                //     method: `POST`,
+                //     headers: {
+                //         'content-type': 'application/json'
+                //     },
+                //     body: JSON.stringify(SignedUser)
+                // })
+                //     .then(res => res.json())
+                //     .then(data => console.log(data))
+                // localStorage.setItem('ToastShow', JSON.stringify('false'))
+                // axios.post('https://joblancernewserver.vercel.app/jwt', {
+                //     email: result?.user.email,
+                // }, { withCredentials: true })
+                //     .then(res => console.log(res.data))
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                toast.error(`${errorMessage}`)
+            });
     }
     return (
         <div data-aos="fade-up"
@@ -143,7 +190,7 @@ const Login = () => {
                                 <div className="mt-3 space-y-3">
 
                                     {/* Google */}
-                                    <button
+                                    <button onClick={handleGoogle}
                                         type="button"
                                         className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-white focus:outline-none"
                                     >
@@ -184,6 +231,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

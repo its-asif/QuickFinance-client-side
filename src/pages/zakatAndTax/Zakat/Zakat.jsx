@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const Zakat = () => {
 
     const [earn, setEarn] = useState(null)
@@ -45,7 +44,7 @@ const Zakat = () => {
 
 
         if (totalAmount < 52000) {
-            setZakat('Not Applicable');
+            setZakat(0);
         } else {
             let zakatPercentage = .025
             const sumZakat = totalAmount * zakatPercentage
@@ -73,98 +72,125 @@ const Zakat = () => {
 
                     <div>
                         <p className="text-center text-4xl font-bold mb-10">Calculate Zakat</p>
-                        <form id="zakatSection" onSubmit={handleCalculate} className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                            <div className="bg-green-300 p-4">
-                                <div className="mb-2">
-                                    <label className="text-sm mb-2 block">Cash at Home</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            name="homeCash"
-                                            type="number"
-                                            className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-[#333]"
-                                            placeholder="0"
+                        <form id="zakatSection" onSubmit={handleCalculate} >
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div className=" p-4">
+                                    <div className="mb-2">
+                                        <label className="text-sm mb-2 block">Cash at Home</label>
+                                        <div className="relative flex items-center">
+                                            <input
+                                                name="homeCash"
+                                                type="number"
+                                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder="0"
 
-                                        />
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="mb-2">
-                                    <label className="text-sm mb-2 block">
-                                        Balance Held in Bank Accounts
-                                    </label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            name="bankCash"
-                                            type="number"
-                                            className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-[#333]"
-                                            placeholder="0"
+                                    <div className="mb-2">
+                                        <label className="text-sm mb-2 block">
+                                            Balance Held in Bank Accounts
+                                        </label>
+                                        <div className="relative flex items-center">
+                                            <input
+                                                name="bankCash"
+                                                type="number"
+                                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder="0"
 
-                                        />
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="mb-2">
-                                    <label className="text-sm mb-2 block">Investment</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            name="investmentCash"
-                                            type="number"
-                                            className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-[#333]"
-                                            placeholder="0"
+                                    <div className="mb-2">
+                                        <label className="text-sm mb-2 block">Investment</label>
+                                        <div className="relative flex items-center">
+                                            <input
+                                                name="investmentCash"
+                                                type="number"
+                                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder="0"
 
-                                        />
+                                            />
+                                        </div>
                                     </div>
+
                                 </div>
+
+
+                                <div className="p-4">
+                                    <div className="mb-2">
+                                        <label className="text-sm mb-2 block">Other Income</label>
+                                        <div className="relative flex items-center">
+                                            <input
+                                                name="otherCash"
+                                                type="number"
+                                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder="0"
+
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="mb-2">
+                                        <label className="text-sm mb-2 block">Deduct Debts</label>
+                                        <div className="relative flex items-center">
+                                            <input
+                                                name="debtCash"
+                                                type="number"
+                                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder="0"
+
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="mb-2">
+                                        <label className="text-sm mb-2 block">Deduct Expenses</label>
+                                        <div className="relative flex items-center">
+                                            <input
+                                                name="expenseCash"
+                                                type="number"
+                                                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder="0"
+                                            />
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                            <div className="bg-green-300 p-4">
-                                <div className="mb-2">
-                                    <label className="text-sm mb-2 block">Other Income</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            name="otherCash"
-                                            type="number"
-                                            className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-[#333]"
-                                            placeholder="0"
-
-                                        />
-                                    </div>
-                                </div>
-                                <div className="mb-2">
-                                    <label className="text-sm mb-2 block">Deduct Debts</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            name="debtCash"
-                                            type="number"
-                                            className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-[#333]"
-                                            placeholder="0"
-
-                                        />
-                                    </div>
-                                </div>
-                                <div className="mb-2">
-                                    <label className="text-sm mb-2 block">Deduct Expenses</label>
-                                    <div className="relative flex items-center">
-                                        <input
-                                            name="expenseCash"
-                                            type="number"
-                                            className="w-full text-sm border border-gray-300 px-4 py-3 rounded-md outline-[#333]"
-                                            placeholder="0"
-
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="text-lg font-bold bg-gray-200 p-4">
-                                <p className="mb-2">Total Earn : {earn}</p>
-                                <p className="mb-2">Total Expense : {expense}</p>
-                                <p className="mb-2">Current Amount : {total} </p>
-                                <p className="mb-2 text-xl mt-4 border-2 border-gray-600 p-2">Zakat : {zakat}</p>
-                                <input type="submit" value="Calculate" className="mt-16 btn w-full bg-blue-400 rounded-none" />
-                            </div>
+                            <input onClick={() => document.getElementById('my_modal_2').showModal()} type="submit" value="Calculate Zakat" className="mt-4 btn w-full bg-[#399b53] text-white rounded-none" />
                         </form>
                     </div>
 
-                    <p className="mt-4">* If your total savings are 52,000 BDT or more, you are required to pay Zakat. The Zakat amount is calculated as 2.5% of your total savings.</p>
+                    {/* modal body  */}
+                    <dialog id="my_modal_2" className="modal">
+                        <div className="modal-box">
+                            <div>
+
+                                <div className="flex flex-col w-2/3 py-8 mx-auto text-lg">
+                                    <div className="">
+                                        <p className="mb-2 flex justify-between">Total Earn : <span className="flex justify-center items-center gap-1">{earn} <FaBangladeshiTakaSign /></span></p>
+
+                                        <p className="mb-2 flex justify-between">Total Expense : <span className="flex justify-center items-center gap-1">{expense} <FaBangladeshiTakaSign /></span></p>
+
+                                        <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
+
+                                        <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Zakat Amount: <span className="flex justify-center items-center gap-1">{zakat} <FaBangladeshiTakaSign /></span></p>
+                                    </div>
+                                    {/* <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
+                                        Donate Your Zakat
+                                    </button> */}
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <form method="dialog" className="modal-backdrop">
+                            <button>close</button>
+                        </form>
+                    </dialog>
+
+
 
                 </div>
 
