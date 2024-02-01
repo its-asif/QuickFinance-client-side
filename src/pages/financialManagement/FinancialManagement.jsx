@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "./../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import UserFinancialDataTable from "./userFinancialDataTable/UserFinancialDataTable";
-import useFinanceData from "../../hooks/useFinanceData";
 import useAuth from "../../Hooks/useAuth";
-
+import bg from "/finance.jpg"
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useFinanceData from "../../hooks/useFinanceData";
 
 const FinancialManagement = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
@@ -54,12 +54,14 @@ const FinancialManagement = () => {
 
     return (
         
-        <div>
-            <div className="pt-32 pb-32">
+        <div className="bg-cover  bg-black opacity-80" style={{ backgroundImage: `url('${bg}')` }}>
+           
+            <div className="pt-32 pb-32 z-[3] ">
 
-                {/* Add List */}
-                <div className="text-center">
-                    <div className={`btn btn-wide font-semibold text-lg ${isFormOpen ? "btn-error text-white" : "btn-warning"}`}
+           <div className="bg-white max-w-screen-lg py-5 shadow-xl rounded-xl opacity-96 mx-auto">
+                 {/* Add List */}
+                 <div className="text-center ">
+                    <div className={`btn btn-wide font-semibold text-lg ${isFormOpen ? "btn bg-red-500 hover:bg-red-600  text-white" : "btn-warning"}`}
                         onClick={() => setIsFormOpen(!isFormOpen)}
                     >
                         {isFormOpen ? 'Close Form' : 'Add Transaction'}
@@ -70,7 +72,7 @@ const FinancialManagement = () => {
                 {isFormOpen &&
 
 
-                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-3xl mx-5 md:mx-auto mt-12">
+                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-3xl   mx-5 md:mx-auto mt-12">
                         <div className="grid md:grid-cols-2 md:gap-6">
                             <div className="relative z-0 w-full mb-5 group">
                                 <input
@@ -80,17 +82,17 @@ const FinancialManagement = () => {
                                     id="userEmail"
                                     value={email}
                                     readOnly
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400"
                                     placeholder=" "
                                     required
                                 />
-                                <label htmlFor="userEmail" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">User Email</label>
+                                <label htmlFor="userEmail" className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">User Email</label>
                             </div>
                             <div className="relative z-0 w-full mb-5 group">
                                 <select
                                     {...register('trxType', { required: true })}
                                     required
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400"
                                     name="trxType"
                                     id="trxType"
                                 >
@@ -108,11 +110,12 @@ const FinancialManagement = () => {
                                     type="number"
                                     name="amount"
                                     id="amount"
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    
+                                    className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400"
                                     placeholder=" "
                                     required
                                 />
-                                <label htmlFor="amount" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
+                                <label htmlFor="amount" className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">Amount</label>
                             </div>
 
                         <div className="grid md:grid-cols-2 md:gap-6">
@@ -122,11 +125,11 @@ const FinancialManagement = () => {
                                     type="text"
                                     name="trxDetails"
                                     id="trxDetails"
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400"
                                     placeholder=" "
                                 />
                                 <label htmlFor="trxDetails" 
-                                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500"
                                 >Transaction Details <small>(eg: BreakFast, ABC Office)</small></label>
                             </div>
                         
@@ -137,11 +140,11 @@ const FinancialManagement = () => {
                                     type="text"
                                     name="trxCategory"
                                     id="trxCategory"
-                                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400"
                                     placeholder=" "
                                     required
                                 />
-                                <label htmlFor="trxCategory" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                <label htmlFor="trxCategory" className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500"
                                 >Transaction Category <small>(eg: Food, Salary)</small></label>
                             </div>
 
@@ -150,13 +153,13 @@ const FinancialManagement = () => {
                         <input
                             type="submit"
                             value="Add Transaction"
-                            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-blue-800"
+                            className="text-white bg-[#399b53] hover:bg-[#399c54] focus:ring-4 focus:outline-none focus:ring-green-500 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:focus:ring-green-500"
                         />
                     </form>
 
 
                 }
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto ">
                     <table className="table max-w-3xl mx-auto text-center mt-10">
                         {/* head */}
                         <thead>
@@ -180,6 +183,7 @@ const FinancialManagement = () => {
                     </table>
                 </div>
                 <div>
+           </div>
 
                 </div>
 

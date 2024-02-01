@@ -4,11 +4,13 @@ import lgLogo from '/lgLogo.png'
 import QuickFinanceLogo from '/QuickFinance.png'
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/Contextapi";
+import { IoLogOutOutline } from "react-icons/io5";
+import { RiLoginBoxLine } from "react-icons/ri";
 const Navbar = () => {
 
     //TODO change after complete authProvider
     const { AuthUser, LogOut } = useContext(AuthContext)
-console.log(AuthUser);
+    console.log(AuthUser);
     const navLinks = (
         <>
             <li className="mt-2 lg:mt-0">
@@ -16,7 +18,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black hover:bg-[#09CC7F] text-white " : " bg-[#399B53] hover:bg-[#09CC7F] text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Home
@@ -27,19 +29,19 @@ console.log(AuthUser);
                 <NavLink
                     to="/about"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     About Us
                 </NavLink>
             </li>
-           
+
             <li className="my-2 lg:my-0">
                 {" "}
                 <NavLink
                     to="/contact"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Contact Us
@@ -50,7 +52,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/zakatAndtax"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110  opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Calculator
@@ -61,7 +63,7 @@ console.log(AuthUser);
                 <NavLink
                     to="/financialManagement"
                     className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "bg-black  text-white hover:bg-[#09CC7F] " : "bg-[#399B53] hover:bg-[#09CC7F]  text-white "
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
                 >
                     Financial Management
@@ -72,10 +74,11 @@ console.log(AuthUser);
     return (
 
 
-        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] bg-[#FBF9F9]  ">
+        <div className="navbar fixed z-10  h-[50px] lg:h-[70px] navBg">
+            {/* logo  */}
             <div className="navbar-start lg:ml-8">
 
-
+                {/* logo */}
                 <div className="hidden lg:flex justify-between  -mt-[50px] " >
                     <Link to='/'>
 
@@ -91,7 +94,7 @@ console.log(AuthUser);
                     </Link>
 
                 </div>
-
+                {/* logo */}
                 <div >
                     <Link to='/'>
                         <img
@@ -104,6 +107,7 @@ console.log(AuthUser);
                 </div>
 
             </div>
+            {/* navlink  */}
             <div className="navbar-center hidden  lg:flex">
                 <ul className="menu menu-md menu-horizontal px-1 font-bold gap-8 text-lg lg:ml-10    text-white">
                     {navLinks}
@@ -137,16 +141,20 @@ console.log(AuthUser);
 
                                     </li>
                                     <li>
-                                        <button className="btn btn-sm  btn-ghost bg-red-500 text-white font-bold"
+                                        <button className="sharedBtn"
                                             onClick={() => { LogOut() }}
-                                        >Logout</button>
+                                        >
+                                            Logout <IoLogOutOutline size={15} className="pl-2" />
+                                        </button>
 
                                     </li>
                                 </ul>
                             </div>
                                 :
                                 <Link to='/login'>
-                                    <button className="btn btn-sm  btn-ghost hover:bg-[#FF0000] lg:px-8 bg-[#09CC7F] text-white font-bold">Login</button>
+                                    <button className="authBtn">
+                                        <span className="mr-1">Login</span> <RiLoginBoxLine  size={15}  />
+                                    </button>
                                 </Link>
                         }
                     </div>
