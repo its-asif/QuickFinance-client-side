@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { BsCalculatorFill } from "react-icons/bs";
 const Tax = () => {
     const [earn, setEarn] = useState(null);
     const [expense, setExpense] = useState(null);
@@ -93,10 +94,10 @@ const Tax = () => {
 
     return (
         <div>
-            <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300" onClick={handleClose}>Calculate Your Tax</button>
+            <button className="sharedBtn flex items-center gap-1" onClick={handleClose}><span>Calculate Tax</span> <BsCalculatorFill /></button>
 
             <dialog id="my_modal_3_" className="modal">
-                <div className="modal-box w-11/12 max-w-5xl p-10 rounded-none">
+                <div className="modal-box w-11/12 max-w-5xl p-10 rounded-none modalBg">
                     <form method="dialog">
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
@@ -222,37 +223,40 @@ const Tax = () => {
 
 
                         </div>
-                        <input onClick={() => document.getElementById('my_modal_tax').showModal()} type="submit" value="Calculate Tax" className="mt-4 btn w-full bg-[#399b53] text-white rounded-none" />
+                        <button
+                            onClick={() => {
+                                document.getElementById('my_modal_tax').showModal(),
+                                    document.getElementById('my_modal_3_').close()
+                            }} type="submit" className="fullWidthSharedBtn flex items-center gap-1" >
+                            <span>Calculate Your Tax</span> <BsCalculatorFill />
+                        </button>
                     </form>
-
-                    {/* modal body  */}
-                    <dialog id="my_modal_tax" className="modal">
-                        <div className="modal-box">
-                            <div>
-                                <div className="flex flex-col w-2/3 py-4 mx-auto text-lg">
-
-                                    <div className="">
-                                        <p className="mb-2 flex justify-between">Total Earn : <span className="flex justify-center items-center gap-1">{earn} <FaBangladeshiTakaSign /></span></p>
-
-                                        <p className="mb-2 flex justify-between">Total Expense : <span className="flex justify-center items-center gap-1">{expense} <FaBangladeshiTakaSign /></span></p>
-
-                                        <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
-
-                                        <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Zakat Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
-                                    </div>
-                                    {/* <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
-                                        Pay Your Tax</button> */}
-                                </div>
-                            </div>
-                        </div>
-                        <form method="dialog" className="modal-backdrop">
-                            <button>close</button>
-                        </form>
-                    </dialog>
-
                 </div>
             </dialog>
+            {/* modal body  */}
+            <dialog id="my_modal_tax" className="modal">
+                <div className="modal-box modalBg">
+                    <div>
+                        <div className="flex flex-col w-2/3 py-4 mx-auto text-lg">
 
+                            <div className="">
+                                <p className="mb-2 flex justify-between">Total Earn : <span className="flex justify-center items-center gap-1">{earn} <FaBangladeshiTakaSign /></span></p>
+
+                                <p className="mb-2 flex justify-between">Total Expense : <span className="flex justify-center items-center gap-1">{expense} <FaBangladeshiTakaSign /></span></p>
+
+                                <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
+
+                                <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
+                            </div>
+                            {/* <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
+                                        Pay Your Tax</button> */}
+                        </div>
+                    </div>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
+            </dialog>
             <div></div>
         </div>
     );
