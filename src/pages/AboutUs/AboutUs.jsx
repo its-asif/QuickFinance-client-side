@@ -7,7 +7,7 @@ const AboutUs = () => {
             <div>
                 <h1 data-aos="fade-down"
                     data-aos-easing="linear"
-                    data-aos-duration="500"  className="mt-5  md:text-[50px] mb-6 text-[36px] font-extrabold text-[#399B53] uppercase text-center"><span className="text-black">About</span> us</h1>
+                    data-aos-duration="500"  className="mt-5 mb-6  md:text-[50px]  text-[36px] font-extrabold text-[#399B53] uppercase text-center"><span className="text-black">About</span> us</h1>
                 <p  data-aos="zoom-in-right" data-aos-duration="2000" className="max-w-[1050px] text-center mx-auto font-normal text-[20px]">Welcome to QuickFinance, your go-to platform for seamless financial management, founded by visionary entrepreneur John Doe over a decade ago. With 12 years of expertise, QuickFinance empowers you to effortlessly track earnings, expenses, calculate Zakat and taxes, and manage investments—all in one place. With a user-friendly interface, QuickFinance ensures easy organization and clear insights into your financial health. Take control of your finances and build a secure future with QuickFinance, driven by the passion and foresight of our founder, John Doe.</p>
             </div>
             <div  data-aos="zoom-in-right" data-aos-duration="3000">
@@ -20,7 +20,7 @@ const AboutUs = () => {
             <div className="py-16">
                 <div className="relative">
                     <div className="lg:absolute relative">
-                        <h1 className="text-[48px] font-bold text-[#399B53]">Our Evaluation</h1>
+                        <h1 className=" md:text-[50px]  text-[36px] font-bold text-[#399B53]">Our Evaluation</h1>
                         <p data-aos="fade-down"
                     data-aos-easing="linear"
                     data-aos-duration="500" className="text-[20px] font-medium max-w-[600px] text-justify">In 2008, QuickFinance was founded by a dedicated team of finance and technology experts driven by a singular mission—to simplify financial management and provide equal opportunities for all. Today, after 12 years of evolution, QuickFinance has transformed into a robust platform empowering individuals and businesses globally to effortlessly navigate their financial landscapes and achieve greater financial visibility.</p>
