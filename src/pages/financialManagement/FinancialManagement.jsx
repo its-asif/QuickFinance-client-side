@@ -5,7 +5,8 @@ import UserFinancialDataTable from "./userFinancialDataTable/UserFinancialDataTa
 import useAuth from "../../Hooks/useAuth";
 import bg from "/finance.jpg"
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import useFinanceData from "../../Hooks/useFinanceData";
+import useFinanceData from "../../hooks/useFinanceData";
+// import useFinanceData from "../../Hooks/useFinanceData";
 
 const FinancialManagement = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
