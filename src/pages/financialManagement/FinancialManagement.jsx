@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import UserFinancialDataTable from "./userFinancialDataTable/UserFinancialDataTable";
-import useFinanceData from "../../Hooks/useFinanceData";
 import useAuth from "../../Hooks/useAuth";
 import bg from "/finance.jpg"
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useFinanceData from "../../hooks/useFinanceData";
 
 const FinancialManagement = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
