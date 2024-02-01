@@ -1,5 +1,4 @@
 
-
 const AboutUs = () => {
     return (
         <div className="pt-16 max-w-screen-xl mx-auto lg:px-7 md:px-5 px-4">

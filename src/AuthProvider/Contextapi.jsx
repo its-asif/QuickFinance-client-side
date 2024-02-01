@@ -5,7 +5,7 @@
 import { createContext, useEffect, useState } from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import auth from "../firebase/firebase.config";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "@firebase/auth";
+import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "@firebase/auth";
 
 
 
@@ -36,6 +36,12 @@ const ContextApi = ({ children }) => {
 
     const GoogleSignUp = () => {
         return signInWithPopup(auth, GoogleProvider)
+    }
+    // Facebook Sign In
+    const FaceBookProvider = new FacebookAuthProvider();
+
+    const FacebookSignUp = () => {
+        return signInWithPopup(auth, FaceBookProvider)
     }
 
     //Sign In User
@@ -88,6 +94,7 @@ const ContextApi = ({ children }) => {
         UpdateUser,
         SignInUser,
         GoogleSignUp,
+        FacebookSignUp,
         LogOut
     }
 
