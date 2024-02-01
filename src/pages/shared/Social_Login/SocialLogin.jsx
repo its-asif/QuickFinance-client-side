@@ -5,7 +5,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 const SocialLogin = () => {
-    const { SignInUser, GoogleSignUp } = useAuth()
+    const { FacebookSignUp, GoogleSignUp } = useAuth()
     const axiosPublic = useAxiosPublic()
     // Navigate After LOgIn
     const location = useLocation()
@@ -49,6 +49,23 @@ const SocialLogin = () => {
                 // toast.error(`${errorMessage}`)
             });
     }
+    const handleFacebookLogIn = () => {
+        FacebookSignUp()
+            .then((result) => {
+                // The signed-in user info.
+                const user = result.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                console.log(errorMessage);
+            });
+    }
     return (
         <div>
             <div className="divider">OR</div>
@@ -65,7 +82,7 @@ const SocialLogin = () => {
                 </button>
 
                 {/* Facebook */}
-                <button
+                <button onClick={handleFacebookLogIn}
                     type="button"
                     className="relative flex  gap-1  w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                 >
