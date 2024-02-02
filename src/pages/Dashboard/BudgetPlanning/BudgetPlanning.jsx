@@ -1,6 +1,7 @@
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
+import { useState } from "react";
 
 
 const BudgetPlanning = () => {
@@ -9,28 +10,49 @@ const BudgetPlanning = () => {
 
     const userEmail = AuthUser?.email;
 
+    // State variables for each input field
+    const [planName, setPlanName] = useState("");
+    const [homePay, setHomePay] = useState(0);
+    const [partnerPay, setPartnerPay] = useState(0);
+    const [bonusPay, setBonusPay] = useState(0);
+    const [investmentsPay, setInvestmentsPay] = useState(0);
+    const [familyPay, setFamilyPay] = useState(0);
+    const [otherPay, setOtherPay] = useState(0);
+    const [medicalExpense, setMedicalExpense] = useState(0);
+    const [rentExpense, setRentExpense] = useState(0);
+    const [utilitiesExpense, setUtilitiesExpense] = useState(0);
+    const [groceriesExpense, setGroceriesExpense] = useState(0);
+    const [entertainmentExpense, setEntertainmentExpense] = useState(0);
+    const [otherExpense, setOtherExpense] = useState(0);
+
+    const handleInputChange = (e, setter) => {
+        setter(parseFloat(e.target.value) || 0);
+    };
+
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const planName = e.target.planName.value;
-        const homePay = parseFloat(e.target.homePay.value) || 0
-        const partnerPay = parseFloat(e.target.partnerPay.value) || 0
-        const bonusPay = parseFloat(e.target.bonusPay.value) || 0
-        const investmentsPay = parseFloat(e.target.investmentsPay.value) || 0
-        const familyPay = parseFloat(e.target.familyPay.value) || 0
-        const otherPay = parseFloat(e.target.otherPay.value) || 0
-        const medicalExpense = parseFloat(e.target.medicalExpense.value) || 0
-        const rentExpense = parseFloat(e.target.rentExpense.value) || 0
-        const utilitiesExpense = parseFloat(e.target.utilitiesExpense.value) || 0
-        const groceriesExpense = parseFloat(e.target.groceriesExpense.value) || 0
-        const entertainmentExpense = parseFloat(e.target.entertainmentExpense.value) || 0
-        const otherExpense = parseFloat(e.target.otherExpense.value) || 0
-
-        const budgetData = { planName, homePay, partnerPay, bonusPay, investmentsPay, familyPay, otherPay, medicalExpense, rentExpense, utilitiesExpense, groceriesExpense, entertainmentExpense, otherExpense, userEmail }
+        const budgetData = {
+            planName,
+            homePay,
+            partnerPay,
+            bonusPay,
+            investmentsPay,
+            familyPay,
+            otherPay,
+            medicalExpense,
+            rentExpense,
+            utilitiesExpense,
+            groceriesExpense,
+            entertainmentExpense,
+            otherExpense,
+            userEmail,
+        };
 
         console.log(budgetData);
-        const budgetDataRes = await axiosPublic?.post('/api/budget', budgetData);
-        console.log(budgetDataRes.data)
+
+        const budgetDataRes = await axiosPublic?.post("/api/budget", budgetData);
+        console.log(budgetDataRes.data);
         if (budgetDataRes?.data.userEmail) {
             // show success popup
             Swal.fire({
@@ -38,37 +60,10 @@ const BudgetPlanning = () => {
                 icon: "success",
                 title: "budgetData Added",
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
             });
-
         }
-
-        // Perform calculations
-        // const totalIncome =
-        //     formData.homePay +
-        //     formData.partnerPay +
-        //     formData.bonusPay +
-        //     formData.investmentsPay +
-        //     formData.familyPay +
-        //     formData.otherPay;
-
-        // const totalExpense =
-        //     formData.rentExpense +
-        //     formData.utilitiesExpense +
-        //     formData.groceriesExpense +
-        //     formData.entertainmentExpense +
-        //     formData.medicalExpense +
-        //     formData.otherExpense;
-
-        // const mainTotal = totalIncome - totalExpense;
-
-        // // Update state or perform any other actions if needed
-        // console.log("Total Income:", totalIncome);
-        // console.log("Total Expense:", totalExpense);
-        // console.log("Main Total:", mainTotal);
-
-        // // Further actions like API call can be performed here
-    };
+    }
 
 
     return (
@@ -94,9 +89,7 @@ const BudgetPlanning = () => {
                             />
                         </div>
                     </div>
-                    <div>
 
-                    </div>
                     <h1 className="bg-gray-200  text-xl p-4">Income  <p>Total Income: </p> </h1>
                     <div>
 
@@ -106,16 +99,22 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
-                                    id='homePay' name="homePay" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
-                                <select name="homePayFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
-                                    {/* <option value="Weekly">Weekly</option> */}
+                                    onChange={(e) => handleInputChange(e, setHomePay)}
+                                    id='homePay'
+                                    name="homePay"
+                                    type="number"
+                                    className="input input-bordered w-2/3 focus:border-0 rounded-none"
+                                />
+                                <select
+                                    name="homePayFrequency"
+                                    className="select focus:border-0 w-2/3 select-bordered rounded-none"
+                                >
                                     <option value="Monthly">Monthly</option>
-                                    {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{homePay}</p>
                         </div>
+
 
 
                         <div className='grid grid-cols-1 lg:grid-cols-3 text-center items-center border-2 py-3 border-b-0 '>
@@ -124,7 +123,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setPartnerPay)}
                                     id='partnerPay' name="partnerPay" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="partnerPayFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -132,7 +131,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{partnerPay}</p>
                         </div>
 
 
@@ -142,15 +141,16 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setBonusPay)}
                                     id='bonusPay' name="bonusPay" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="bonusPayFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
                                     <option value="Monthly">Monthly</option>
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
-                            </div>
 
+                            </div>
+                            <p>{bonusPay}</p>
                         </div>
 
 
@@ -160,7 +160,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setInvestmentsPay)}
                                     id='investmentsPay' name="investmentsPay" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="investmentsPayFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -168,7 +168,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{investmentsPay}</p>
                         </div>
 
 
@@ -178,7 +178,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setFamilyPay)}
                                     id='familyPay' name="familyPay" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="familyPayFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -186,7 +186,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{familyPay}</p>
                         </div>
 
 
@@ -196,7 +196,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setOtherPay)}
                                     id='otherPay' name="otherPay" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="otherPayFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -204,7 +204,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{otherPay}</p>
                         </div>
 
 
@@ -218,7 +218,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setRentExpense)}
                                     id='rentExpense' name="rentExpense" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="rentExpenseFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -226,7 +226,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{rentExpense}</p>
                         </div>
 
                         <div className='grid grid-cols-1 lg:grid-cols-3 text-center items-center border-2 border-b-0 py-3'>
@@ -235,7 +235,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setUtilitiesExpense)}
                                     id='utilitiesExpense' name="utilitiesExpense" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="utilitiesExpenseFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -243,7 +243,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{utilitiesExpense}</p>
                         </div>
 
                         <div className='grid grid-cols-1 lg:grid-cols-3 text-center items-center border-2 border-b-0 py-3'>
@@ -252,7 +252,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setGroceriesExpense)}
                                     id='groceriesExpense' name="groceriesExpense" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="groceriesExpenseFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -260,7 +260,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{groceriesExpense}</p>
                         </div>
 
                         <div className='grid grid-cols-1 lg:grid-cols-3 text-center items-center border-2 border-b-0 py-3'>
@@ -269,7 +269,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setEntertainmentExpense)}
                                     id='entertainmentExpense' name="entertainmentExpense" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="entertainmentExpenseFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -277,7 +277,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{entertainmentExpense}</p>
                         </div>
 
                         <div className='grid grid-cols-1 lg:grid-cols-3 text-center items-center border-2 border-b-0  py-3'>
@@ -286,7 +286,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setMedicalExpense)}
                                     id='medicalExpense' name="medicalExpense" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="medicalExpenseFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -294,7 +294,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{medicalExpense}</p>
 
                         </div>
 
@@ -304,7 +304,7 @@ const BudgetPlanning = () => {
                             </label>
                             <div className='flex gap-4 mx-4 md:mx-0 my-2 md:my-0'>
                                 <input
-
+                                    onChange={(e) => handleInputChange(e, setOtherExpense)}
                                     id='otherExpense' name="otherExpense" type="number" className="input input-bordered w-2/3 focus:border-0 rounded-none" />
                                 <select name="otherExpenseFrequency" className="select focus:border-0 w-2/3 select-bordered rounded-none">
                                     {/* <option value="Weekly">Weekly</option> */}
@@ -312,7 +312,7 @@ const BudgetPlanning = () => {
                                     {/* <option value="Yearly">Yearly</option> */}
                                 </select>
                             </div>
-
+                            <p>{otherExpense}</p>
                         </div>
 
                     </div>
