@@ -10,7 +10,7 @@ const Navbar = () => {
 
     //TODO change after complete authProvider
     const { AuthUser, LogOut } = useContext(AuthContext)
-    console.log(AuthUser);
+    // console.log(AuthUser);
     const navLinks = (
         <>
             <li className="mt-2 lg:mt-0">

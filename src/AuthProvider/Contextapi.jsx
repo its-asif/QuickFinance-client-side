@@ -66,6 +66,14 @@ const ContextApi = ({ children }) => {
                 const UserInfo = {
                     email: user?.email
                 }
+
+                
+
+                // send data to backend
+                // axiosPublic.post('/users', UserInfo)
+                console.log("from contextapi line72",userDetails, user)
+
+
                 // get token and store client
                 // axiosPublic.post('/jwt', UserInfo)
                 //     .then(res => {
