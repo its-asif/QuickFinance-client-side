@@ -1,38 +1,40 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
-    const [items,setItems]=useState(null);
+    const [items, setItems] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch("./services.json")
-        .then(res=> res.json())
-        .then(data=> setItems(data))
+            .then(res => res.json())
+            .then(data => setItems(data))
 
-        
-    },[])
-    
+
+    }, [])
+
     return (
-        <div className="my-10 bg-slate-100 overflow-x-hidden">
-            <div className="text-center">
-
-                <h1 data-aos="zoom-out-up"  data-aos-duration="1500"  className="font-bold text-3xl pt-10 md:text-4xl lg:text-6xl 2xl:text-7xl my-10">
+        <div className="my-10  overflow-x-hidden">
+            {/* heading  */}
+            <div data-aos="zoom-out-up" data-aos-duration="1500" className="text-center">
+                <h1 className="text-4xl  text-black md:text-6xl lg:text-7xl font-extrabold  pt-10 2xl:text-7xl my-3">
                     Our <span className="text-[#399b53]">Services</span>
                 </h1>
+                <h3 className="text-lg text-slate-600 font-bold">Empowering Your Financial Journey: Explore QuickFinance's Comprehensive Suite of Services</h3>
             </div>
-            
+
             <div className=" relative max-w-screen-xl z-[5] mx-auto p-5 lg:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10">
-            {items?.map((item,idx)=> <ServiceCard key={idx} item={item}></ServiceCard>)}
+                {items?.map((item, idx) => <ServiceCard key={idx} item={item}></ServiceCard>)}
 
 
             </div>
             <section className="relative h-[20vh]">
 
-         
-                
-            <svg
-                   
-                   
+
+
+                <svg
+
+
                     id="svg"
                     viewBox="0 0 1440 390"
                     xmlns="http://www.w3.org/2000/svg"
