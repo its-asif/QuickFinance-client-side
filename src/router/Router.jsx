@@ -13,6 +13,7 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Dashboard from "../layout/Dashboard";
 import MyDashboard from "../pages/Dashboard/MyDashboard/MyDashboard";
 import PrivateRoute from "./PrivateRoute";
+import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 
 
 
@@ -50,20 +51,24 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:"/dashboard", 
+    path: "/dashboard",
     // element: <PrivateRoute><Dashboard/></PrivateRoute>,
-    element: <Dashboard/>,
+    element: <Dashboard />,
     children:
-    [
-      {
-        path:"",
-        element:<MyDashboard/>,
-      },
-      {
-        path:"financialManagement",
-        element:<FinancialManagement/>
-      }
-    ] 
+      [
+        {
+          path: "",
+          element: <MyDashboard />,
+        },
+        {
+          path: "financialManagement",
+          element: <FinancialManagement />
+        },
+        {
+          path: "budgetPlanning",
+          element: <BudgetPlanning />
+        }
+      ]
   }
 ]);
 
