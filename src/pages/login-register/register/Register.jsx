@@ -56,10 +56,10 @@ const Register = () => {
                             console.log(email, password, name,);
                             createUser(email, password)
                                 .then(result => {
-                                    console.log(result.user);
+                                    // console.log(result.user);
                                     UpdateUser(name, HostedImage)
                                         .then(() => {
-                                            console.log(result.user);
+                                            // console.log(result.user);
                                             const User = {
                                                 name: result.user.displayName,
                                                 email: result.user.email,
@@ -69,7 +69,32 @@ const Register = () => {
                                                 profileImage: result.user.photoURL,
                                                 role: 'user'
                                             }
-                                            console.log(User)
+
+                                            const userDetail = {
+                                                name: result.user.displayName,
+                                                email: result.user.email,
+                                                photoUrl : result.user.photoURL
+                                            }
+                                            
+
+                                            try {
+                                                axiosPublic.post('/api/users', userDetail)
+                                                    .then(res => {
+                                                        if (res.data.status === 200) {
+                                                            console.log('User Added to Database')
+                                                            // localStorage.setItem('ToastShowed', JSON.stringify('false'))
+                                                            // toast.success(`Authenticating as ${result.user.email}`)
+                                                            // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                                                        }
+                                                    })
+
+                                            }
+                                            catch (error) {
+                                                console.error('Error during signup:', error.message);
+                                            }
+
+
+                                            // console.log(User)
                                             toast.success(`Authenticating as ${result.user.email}`)
                                             form.reset()
                                             location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
