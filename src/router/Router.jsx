@@ -13,6 +13,9 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Dashboard from "../layout/Dashboard";
 import MyDashboard from "../pages/Dashboard/MyDashboard/MyDashboard";
 import PrivateRoute from "./PrivateRoute";
+import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
+
+
 
 
 
@@ -47,7 +50,7 @@ const router = createBrowserRouter([
         element: <ContactUs></ContactUs>
       }
       ,
-     
+
       {
         path: "/about",
         element: <AboutUs></AboutUs>
@@ -56,17 +59,21 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path:"/dashboard",
+    path: "/dashboard",
     element: <PrivateRoute>
       <Dashboard></Dashboard>
     </PrivateRoute>,
-    children:
-    [
-     {
-      index:true,
-      element:<MyDashboard></MyDashboard>
-     }
-    ] 
+    children: [
+      {
+        index: true,
+        element: <MyDashboard></MyDashboard>
+      },
+      {
+        path: 'budgetPlanning',
+        element: <BudgetPlanning></BudgetPlanning>,
+      },
+
+    ]
   }
 ]);
 

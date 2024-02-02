@@ -95,7 +95,7 @@ const Dashboard = () => {
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
-                                to="/dashboard/budgetPlaning"
+                                to="/dashboard/budgetPlanning"
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
                                 }
