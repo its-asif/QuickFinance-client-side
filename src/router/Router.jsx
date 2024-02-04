@@ -8,9 +8,12 @@ import Login from "../pages/login-register/login/Login";
 import Register from "../pages/login-register/register/Register";
 import ZakatAndTax from "../pages/zakatAndTax/zakatAndTax/ZakatAndTax";
 import ContactUs from "../pages/ContactUs/ContactUs";
-import FinancialManagement from "../pages/financialManagement/financialManagement";
-import Dashboard from "../Components/DashBoard/Dashboard";
+import FinancialManagement from "../pages/financialManagement/FinancialManagement";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import Dashboard from "../layout/Dashboard";
+import MyDashboard from "../pages/Dashboard/MyDashboard/MyDashboard";
+import PrivateRoute from "./PrivateRoute";
+import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 
 
 
@@ -37,17 +40,8 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
-        path: "/financialManagement",
-        element: <FinancialManagement />
-      },
-      {
         path: "/contact",
         element: <ContactUs></ContactUs>
-      }
-      ,
-      {
-        path: "/dashBoard",
-        element: <Dashboard/>
       },
       {
         path: "/about",
@@ -56,6 +50,26 @@ const router = createBrowserRouter([
 
     ],
   },
+  {
+    path: "/dashboard",
+    // element: <PrivateRoute><Dashboard/></PrivateRoute>,
+    element: <Dashboard />,
+    children:
+      [
+        {
+          path: "",
+          element: <MyDashboard />,
+        },
+        {
+          path: "financialManagement",
+          element: <FinancialManagement />
+        },
+        {
+          path: "budgetPlanning",
+          element: <BudgetPlanning />
+        }
+      ]
+  }
 ]);
 
 export default router;
