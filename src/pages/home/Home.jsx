@@ -2,6 +2,7 @@
 // import Navbar from '../shared/navbar/Navbar';
 // import UnderMaintenance from '../shared/underMaintenance/UnderMaintenance';
 
+import CustomerChat from '../../Components/CustomerChat/CustomerChat';
 import Banner1 from './banner/Banner1';
 import Banner2 from './banner/Banner2';
 import FaqSection from './faqSection/FaqSection';
@@ -19,7 +20,7 @@ const Home = () => {
             <Services></Services>
 
             <FaqSection />
-
+            <CustomerChat />
             {/* <Footer /> */}
 
 
