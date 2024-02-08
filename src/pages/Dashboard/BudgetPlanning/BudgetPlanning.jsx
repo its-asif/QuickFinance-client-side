@@ -601,9 +601,9 @@ const BudgetPlanning = () => {
     const frequencyOptions = ['Monthly']; // Add other frequency options if needed
 
     return (
-        <div className="mx-2 md:mx-20 mt-4">
-            <form onSubmit={handleSubmit} className=''>
-                <div className="">
+        <div className="mx-2 pt-10 md:mx-20 mt-4">
+            <form onSubmit={handleSubmit} className=' '>
+                <div className="space-y-3">
                     {/* <div className="mb-6 ml-10 md:ml-0">
                         <label htmlFor='planName' className=''>
                             Your Name
