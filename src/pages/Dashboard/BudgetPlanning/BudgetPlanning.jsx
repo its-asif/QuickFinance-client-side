@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import useBudgetData from "../../../Hooks/useBudgetData";
 // import BudgetData from "./BudgetData";
-// import BudgetData from "./BudgetData";
 
 const BudgetPlanning = () => {
 
@@ -337,10 +336,10 @@ const BudgetPlanning = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const planName = e.target.planName.value;
+        const planName =  AuthUser?.email.split('@')[0];
         const budgetData = {
             // General Information
-            planName,
+            planName: planName,
             userEmail,
 
             // Income
@@ -451,7 +450,7 @@ const BudgetPlanning = () => {
             const budgetDataRes = await axiosPublic.post("/api/budget", budgetData);
             console.log(budgetDataRes.data);
 
-            if (budgetDataRes?.data.planName) {
+            if (budgetDataRes?.data.modifiedCount !== 0) {
                 // show success popup
                 Swal.fire({
                     position: "top-right",
@@ -492,7 +491,7 @@ const BudgetPlanning = () => {
     );
 
     const incomeFields = [
-        { label: 'Your take-home pay', value: homePay || '', onChange: setFieldState('homePay', setHomePay) },
+        { label: 'Your salary', value: homePay || '', onChange: setFieldState('homePay', setHomePay) },
         { label: 'Your partner take-home pay', value: partnerPay || '', onChange: setFieldState('partnerPay', setPartnerPay) },
         { label: 'Bonuses & overtime', value: bonusPay || '', onChange: setFieldState('bonusPay', setBonusPay) },
         { label: 'Income from savings & investments', value: investmentsPay || '', onChange: setFieldState('investmentsPay', setInvestmentsPay) },
@@ -601,7 +600,7 @@ const BudgetPlanning = () => {
         <div className="mx-2 md:mx-20 mt-4">
             <form onSubmit={handleSubmit} className=''>
                 <div className="">
-                    <div className="mb-6 ml-10 md:ml-0">
+                    {/* <div className="mb-6 ml-10 md:ml-0">
                         <label htmlFor='planName' className=''>
                             Your Name
                         </label>
@@ -611,7 +610,7 @@ const BudgetPlanning = () => {
                                 id='planName' name="planName" defaultValue={planName} type="text" className="input input-bordered w-2/3 focus:border-0 rounded-none"
                             />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="collapse bg-base-200 mb-2 rounded-none">
                         <input type="checkbox" />
