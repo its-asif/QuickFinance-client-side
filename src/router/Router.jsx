@@ -58,7 +58,11 @@ const router = createBrowserRouter([
       [
         {
           path: "",
-          element: <MyDashboard />,
+          element: <MyDashboard />, 
+        },
+        {
+          path: "myAccount",
+          element: <MyDashboard />, 
         },
         {
           path: "financialManagement",

@@ -12,10 +12,12 @@ import { GoGoal } from "react-icons/go";
 import { GiMoneyStack } from "react-icons/gi";
 import useAuth from "../Hooks/useAuth";
 import { MdDashboard } from "react-icons/md";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
     const { AuthUser, LogOut } = useAuth();
+    const Location = useLocation()
+    console.log(Location);
     return (
         <div className="flex">
             <div
@@ -58,7 +60,7 @@ const Dashboard = () => {
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
-                                to="/dashboard"
+                                to="/dashboard/myAccount"
                                 className={({ isActive, isPending }) =>
                                     isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
                                 }
