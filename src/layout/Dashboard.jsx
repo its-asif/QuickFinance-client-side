@@ -19,9 +19,9 @@ const Dashboard = () => {
     const Location = useLocation()
     console.log(Location);
     return (
-        <div className="flex">
+        <div className="flex ">
             <div
-                className={`bg-black tracking-wider fixed z-[10] min-h-screen  p-5 pt-8  ${open ? "w-72 " : "w-20 "}     transform translate-x-0 md:translate-x-0 duration-300 relative`}>
+                className={`bg-black tracking-wider fixed z-[10] h-screen  p-5 pt-8  ${open ? "w-72 " : "w-20 "}     transform translate-x-0 md:translate-x-0 duration-300 relative`}>
 
                 <BsFillArrowLeftSquareFill className={` text-black text-4xl bg-white absolute -right-7 border border-white rounded-lg top-9  cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
 
@@ -172,9 +172,8 @@ const Dashboard = () => {
             </div>
 
 
-            <div className="overflow-hidden w-full">
+            <div className="w-full h-screen overflow-scroll">
                 <Outlet />
-
             </div>
 
         </div>
