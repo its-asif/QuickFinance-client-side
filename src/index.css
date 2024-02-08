@@ -24,6 +24,16 @@ body {
   background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
   color: white;
 }
+/* for dashboard navlink  */
+.activeDashboard {
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  color: white;
+}
+
+.pendingDashboard {
+  background-image: none;
+  color: white;
+}
 
 /* primary bg  */
 .trial {
