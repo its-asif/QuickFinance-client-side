@@ -172,7 +172,7 @@ const Dashboard = () => {
             </div>
 
 
-            <div className="w-full h-screen overflow-scroll">
+            <div className="w-full h-screen overflow-y-scroll dashboardScroll">
                 <Outlet />
             </div>
 
