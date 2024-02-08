@@ -14,6 +14,7 @@ import Dashboard from "../layout/Dashboard";
 import MyDashboard from "../pages/Dashboard/MyDashboard/MyDashboard";
 import PrivateRoute from "./PrivateRoute";
 import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
+import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 
 
 
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
       [
         {
           path: "",
-          element: <MyDashboard />, 
+          element: <MyDashboard />,
         },
         {
           path: "myAccount",
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
         {
           path: "budgetPlanning",
           element: <BudgetPlanning />
+        },
+        {
+          path:'goalProgress',
+          element: <GoalProgress></GoalProgress>,
         }
       ]
   }
