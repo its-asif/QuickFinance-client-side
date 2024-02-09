@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaUsers } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { TfiSupport } from "react-icons/tfi";
 import { GiTakeMyMoney } from "react-icons/gi";
@@ -59,7 +59,7 @@ const Dashboard = () => {
                         style={{ textAlign: "center" }}
                     >
 
-
+                        {/* My Account */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -73,6 +73,10 @@ const Dashboard = () => {
                             </NavLink>
                         </li>
 
+                        {/* General Users Routes*/}
+                        {!isAdmin && <>
+
+                        {/* My assets */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -84,6 +88,9 @@ const Dashboard = () => {
                                 <TfiSupport className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Asset</span>
                             </NavLink>
                         </li>
+
+
+                        {/* Finance Management */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -97,7 +104,7 @@ const Dashboard = () => {
                         </li>
 
 
-
+                        {/* Budget Planning */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -110,6 +117,7 @@ const Dashboard = () => {
                             </NavLink>
                         </li>
 
+                        {/* Goal Progress */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -121,6 +129,9 @@ const Dashboard = () => {
                                 <GoGoal className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Goal Progress</span>
                             </NavLink>
                         </li>
+
+
+                        {/* Debt Management */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -133,6 +144,7 @@ const Dashboard = () => {
                             </NavLink>
                         </li>
 
+                        {/* My Payments */}
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
@@ -144,7 +156,28 @@ const Dashboard = () => {
                                 <MdPayment className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Payments</span>
                             </NavLink>
                         </li>
+                        </>}
 
+
+
+
+                        {/* Admin Routes */}
+                        {isAdmin && <>
+
+                        {/* All Users */}
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/allUsers"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                }
+                            >
+                                <FaUsers className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>All Users</span>
+                            </NavLink>
+                        </li>
+
+                        </>}
 
                     </ul>
 
