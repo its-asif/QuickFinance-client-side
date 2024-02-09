@@ -5,7 +5,7 @@
 import { createContext, useEffect, useState } from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import auth from "../firebase/firebase.config";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "@firebase/auth";
+import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "@firebase/auth";
 
 
 
@@ -37,6 +37,12 @@ const ContextApi = ({ children }) => {
     const GoogleSignUp = () => {
         return signInWithPopup(auth, GoogleProvider)
     }
+    // Facebook Sign In
+    const FaceBookProvider = new FacebookAuthProvider();
+
+    const FacebookSignUp = () => {
+        return signInWithPopup(auth, FaceBookProvider)
+    }
 
     //Sign In User
     const SignInUser = (email, password) => {
@@ -60,6 +66,7 @@ const ContextApi = ({ children }) => {
                 const UserInfo = {
                     email: user?.email
                 }
+
                 // get token and store client
                 // axiosPublic.post('/jwt', UserInfo)
                 //     .then(res => {
@@ -88,6 +95,7 @@ const ContextApi = ({ children }) => {
         UpdateUser,
         SignInUser,
         GoogleSignUp,
+        FacebookSignUp,
         LogOut
     }
 

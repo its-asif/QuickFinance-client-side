@@ -1,7 +1,6 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
-
-
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
+import { BsCalculatorFill } from "react-icons/bs";
 const Zakat = () => {
 
     const [earn, setEarn] = useState(null)
@@ -46,7 +45,7 @@ const Zakat = () => {
 
 
         if (totalAmount < 52000) {
-            setZakat('Not Applicable');
+            setZakat(0);
         } else {
             let zakatPercentage = .025
             const sumZakat = totalAmount * zakatPercentage
@@ -61,11 +60,11 @@ const Zakat = () => {
 
     return (
         <div>
-            <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300" onClick={handleClose}>Calculate Your Zakat</button>
+            <button className="sharedBtn flex items-center gap-1" onClick={handleClose}><span>Calculate Zakat</span> <BsCalculatorFill /></button>
 
             <dialog id="my_modal_3" className="modal">
 
-                <div className="modal-box w-11/12 max-w-5xl p-10 rounded-none">
+                <div className="modal-box w-11/12 max-w-5xl p-10 rounded-none modalBg">
 
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
@@ -159,39 +158,41 @@ const Zakat = () => {
                                 </div>
 
                             </div>
-
-                            <input onClick={() => document.getElementById('my_modal_2').showModal()} type="submit" value="Calculate Zakat" className="mt-4 btn w-full bg-[#399b53] text-white rounded-none" />
+                            <button
+                                onClick={() => { document.getElementById('my_modal_2').showModal(), document.getElementById('my_modal_3').close() }} type="submit"className="fullWidthSharedBtn flex items-center gap-1">
+                                <span>Calculate Your Zakat</span> <BsCalculatorFill />
+                            </button>
                         </form>
                     </div>
-
-                    {/* modal body  */}
-                    <dialog id="my_modal_2" className="modal">
-                        <div className="modal-box">
-                            <div>
-
-                                <div className="p-6 text-lg text-center">
-
-                                    <p className="mb-2">Total Earn : {earn}</p>
-                                    <p className="mb-2">Total Expense : {expense}</p>
-                                    <p className="mb-2">Current Amount : {total} </p>
-                                    <p className=" text-xl mt-4 font-bold">Zakat Amount: {zakat}</p>
-                                    <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
-                                        Donate Your Zakat</button>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <form method="dialog" className="modal-backdrop">
-                            <button>close</button>
-                        </form>
-                    </dialog>
-
-
-                    <p className="mt-4">* If your total savings are 52,000 BDT or more, you are required to pay Zakat. The Zakat amount is calculated as 2.5% of your total savings.</p>
-
                 </div>
 
+            </dialog>
+            {/* modal body  */}
+            <dialog id="my_modal_2" className="modal">
+                <div className="modal-box modalBg">
+                    <div>
+
+                        <div className="flex flex-col w-2/3 py-8 mx-auto text-lg">
+                            <div className="">
+                                <p className="mb-2 flex justify-between">Total Earn : <span className="flex justify-center items-center gap-1">{earn} <FaBangladeshiTakaSign /></span></p>
+
+                                <p className="mb-2 flex justify-between">Total Expense : <span className="flex justify-center items-center gap-1">{expense} <FaBangladeshiTakaSign /></span></p>
+
+                                <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
+
+                                <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Zakat Amount: <span className="flex justify-center items-center gap-1">{zakat} <FaBangladeshiTakaSign /></span></p>
+                            </div>
+                            {/* <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
+                                        Donate Your Zakat
+                                    </button> */}
+                        </div>
+
+
+                    </div>
+                </div>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
+                </form>
             </dialog>
         </div>
     );
