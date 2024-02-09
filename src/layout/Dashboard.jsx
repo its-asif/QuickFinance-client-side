@@ -12,14 +12,16 @@ import { GoGoal } from "react-icons/go";
 import { GiMoneyStack } from "react-icons/gi";
 import useAuth from "../Hooks/useAuth";
 import { MdDashboard } from "react-icons/md";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
     const { AuthUser, LogOut } = useAuth();
+    const Location = useLocation()
+    console.log(Location);
     return (
-        <div className="flex">
+        <div className="flex ">
             <div
-                className={`bg-black tracking-wider fixed z-[10] min-h-screen  p-5 pt-8  ${open ? "w-72 " : "w-20 "}     transform translate-x-0 md:translate-x-0 duration-300 relative`}>
+                className={`bg-black tracking-wider fixed z-[10] h-screen  p-5 pt-8  ${open ? "w-72 " : "w-20 "}     transform translate-x-0 md:translate-x-0 duration-300 relative`}>
 
                 <BsFillArrowLeftSquareFill className={` text-black text-4xl bg-white absolute -right-7 border border-white rounded-lg top-9  cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
 
@@ -58,12 +60,13 @@ const Dashboard = () => {
                         <li className="mt-2 lg:mt-0">
                             {" "}
                             <NavLink
-                                to="/dashboard"
+                                to="/dashboard/myAccount"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <MdDashboard className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Account</span>
+                                <MdDashboard className={`${open && "text-2xl"} text-md`} />
+                                <span className={`${!open && "hidden"}`}>My Account</span>
                             </NavLink>
                         </li>
 
@@ -72,10 +75,10 @@ const Dashboard = () => {
                             <NavLink
                                 to="/dashboard/myAsset"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <TfiSupport className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Asset</span>
+                                <TfiSupport className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Asset</span>
                             </NavLink>
                         </li>
                         <li className="mt-2 lg:mt-0">
@@ -83,10 +86,10 @@ const Dashboard = () => {
                             <NavLink
                                 to="/dashboard/financialManagement"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <GiTakeMyMoney className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Personal Finance</span>
+                                <GiTakeMyMoney className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Personal Finance</span>
                             </NavLink>
                         </li>
 
@@ -97,10 +100,10 @@ const Dashboard = () => {
                             <NavLink
                                 to="/dashboard/budgetPlanning"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300 text-white" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <GiMoneyStack className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Budget Planing</span>
+                                <GiMoneyStack className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Budget Planing</span>
                             </NavLink>
                         </li>
 
@@ -109,10 +112,10 @@ const Dashboard = () => {
                             <NavLink
                                 to="/dashboard/goalProgress"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <GoGoal className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Goal Progress</span>
+                                <GoGoal className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Goal Progress</span>
                             </NavLink>
                         </li>
                         <li className="mt-2 lg:mt-0">
@@ -120,10 +123,10 @@ const Dashboard = () => {
                             <NavLink
                                 to="/dashboard/manageDebt"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <SiGoogletagmanager className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
+                                <SiGoogletagmanager className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
                             </NavLink>
                         </li>
 
@@ -132,10 +135,10 @@ const Dashboard = () => {
                             <NavLink
                                 to="/dashboard/payments"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "bg-[#399b53] hover:bg-gray-900  hover:text-[#399b53] text-white " : " bg-gray-900 hover:text-[#399b53] hover:bg-gray-900  text-white "
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <MdPayment className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>My Payments</span>
+                                <MdPayment className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Payments</span>
                             </NavLink>
                         </li>
 
@@ -149,45 +152,28 @@ const Dashboard = () => {
 
 
 
-                <div className="text-center ">
+                <div className="">
 
                     <hr
                         className="my-4 h-[1px] border-t-0 bg-white opacity-100 " />
 
-
-
-                    {/* <li className="mt-2 lg:mt-0">
-                        {" "}
-                        <NavLink
-                            to="/"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "bg-[#22805ae6] hover:bg-gray-900  hover:text-[#09CC7F] text-white " : " bg-gray-900 hover:text-[#09CC7F] hover:bg-gray-900  text-white "
-                            }
-                        >
-                            <FaHome className={`${open && "text-2xl"} text-md duration-300`} />   <span className={`${!open && "hidden"}`}>Home</span>
-                        </NavLink>
-                    </li> */}
-
-
-                   <div className="mb-3">
-                   <Link to='/'>
-                        <button className="btn btn-sm   hover:bg-gray-300  " >
-                            < FaHome className={`${open && "text-4xl"} font-extrabold  text-[#399b53] text-xl duration-300 `} />   <span className={`${!open && "hidden"} px-[0.5px] font-bold`}> Home </span>
+                    <div className={`flex ${open ? "flex-row" : "flex-col"} items-center justify-center gap-2`}>
+                        <Link to='/'>
+                            <button className="bg-white btn btn-sm" >
+                                < FaHome className={`${open && "text-4xl"} font-extrabold  primaryColor text-xl duration-300 `} />
+                            </button>
+                        </Link>
+                        <button className="bg-white flex items-center gap-1 btn btn-sm" onClick={LogOut}>
+                            < CiLogout className={`${open && "text-4xl"} font-extrabold  primaryColor text-xl duration-300 `} />
+                            <span className={`${!open && "hidden"} font-bold primaryColor`}>log Out</span>
                         </button>
-                    </Link>
-                   </div>
-                    <button className="btn btn-sm hover:bg-gray-300  " onClick={LogOut}>
-                        < CiLogout className={`${open && "text-4xl"} font-extrabold  text-[#399b53] text-xl duration-300 `} />   <span className={`${!open && "hidden"} font-bold`}>log Out</span>
-                    </button>
-
-
+                    </div>
                 </div>
             </div>
 
 
-            <div className="overflow-hidden w-full">
-                <Outlet/>
-
+            <div className="w-full h-screen overflow-y-scroll dashboardScroll">
+                <Outlet />
             </div>
 
         </div>

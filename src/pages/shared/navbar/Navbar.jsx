@@ -20,7 +20,7 @@ const Navbar = () => {
                     className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "activeNav hover:scale-110 opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
                     }
-                >
+                > 
                     Home
                 </NavLink>
             </li>

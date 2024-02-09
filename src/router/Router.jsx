@@ -58,8 +58,12 @@ const router = createBrowserRouter([
     children:
       [
         {
-          index:true,
+          path: "",
           element: <MyDashboard />,
+        },
+        {
+          path: "myAccount",
+          element: <MyDashboard />, 
         },
         {
           path: "financialManagement",
