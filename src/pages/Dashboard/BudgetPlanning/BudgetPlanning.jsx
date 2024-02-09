@@ -332,7 +332,11 @@ const BudgetPlanning = () => {
         schoolUniforms, otherSchoolNeeds, otherChildren
     ]);
 
-
+    document.addEventListener("wheel", function(event){
+        if(document.activeElement.type === "number"){
+            document.activeElement.blur();
+        }
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();

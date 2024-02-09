@@ -5,6 +5,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import moment from 'moment';
 import { Chart } from "react-google-charts";
+import useAdminStatus from "../../../Hooks/useAdminStatus";
 const MyDashboard = () => {
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
@@ -13,9 +14,11 @@ const MyDashboard = () => {
         axiosPublic.get("/api/dashboard/" + AuthUser?.email)
             .then((res) => {
                 setData(res.data);
-                console.log(res.data);
+                // console.log(res.data);
             });
     }, [AuthUser]);
+
+    const isAdmin = useAdminStatus();
 
 
     // income by date chart
@@ -127,8 +130,9 @@ const MyDashboard = () => {
                                 {/* <span className="font-semibold  text-green-700">Username:</span> */}
 
                             </p>
-                            <p className="text-sm md:text-xl flex justify-center items-center"><span className="font-semibold text-black">Email: </span >  <span className="ml-2 font-medium ">{AuthUser?.email} </span>  {AuthUser?.emailVerified ? <MdVerified className="text-blue-700 mt-[1] ml-[2px] " /> : ""}</p>
-                            {/* <p  className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
+                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
+                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin? "Admin" : "User"}</p>
+                            {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
                             {/* expencess and income*/}
                             <div className="mt-2 text-sm md:text-md">
