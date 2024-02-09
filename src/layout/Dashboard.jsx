@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
@@ -13,11 +12,15 @@ import { GiMoneyStack } from "react-icons/gi";
 import useAuth from "../Hooks/useAuth";
 import { MdDashboard } from "react-icons/md";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import useAdminStatus from "../Hooks/useAdminStatus";
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
     const { AuthUser, LogOut } = useAuth();
     const Location = useLocation()
-    console.log(Location);
+    // console.log(Location);
+    const isAdmin = useAdminStatus();
+
+
     return (
         <div className="flex ">
             <div

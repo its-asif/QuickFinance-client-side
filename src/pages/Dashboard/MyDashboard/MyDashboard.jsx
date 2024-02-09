@@ -4,6 +4,7 @@ import { MdVerifiedUser } from "react-icons/md";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
+import useAdminStatus from "../../../Hooks/useAdminStatus";
 const MyDashboard = () => {
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
@@ -12,9 +13,11 @@ const MyDashboard = () => {
         axiosPublic.get("/api/dashboard/" + AuthUser?.email)
             .then((res) => {
                 setData(res.data);
-                console.log(res.data);
+                // console.log(res.data);
             });
     }, [AuthUser]);
+
+    const isAdmin = useAdminStatus();
 
 
     // income by date chart
@@ -96,6 +99,7 @@ const MyDashboard = () => {
                                 {AuthUser?.displayName}  {AuthUser?.emailVerified ? <MdVerified className="text-green-700" /> : ""}
                             </p>
                             <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
+                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin? "Admin" : "User"}</p>
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
                             {/* expencess and income*/}
