@@ -51,7 +51,7 @@ const FinancialManagement = () => {
 
     return (
 
-        <div className={`bg-cover  bg-[url('/finance.jpg')] bg-opacity-60 bg-no-repeat bg-center h-full`}
+        <div className={`bg-cover object-cover min-h-screen bg-[url('/finance.jpg')] bg-opacity-60 `}
         >
 
             <div className="pt-32 pb-32 z-[3] md:mx-32">
@@ -70,7 +70,7 @@ const FinancialManagement = () => {
                     {isFormOpen &&
 
 
-                        <form onSubmit={handleSubmit(onSubmit)} className="mx-5 md:mx-auto mt-12">
+                        <form onSubmit={handleSubmit(onSubmit)} className="mx-5 md:mx-auto p-8 mt-12">
                             <div className="grid md:grid-cols-2 md:gap-6">
                                 <div className="relative z-0 w-full mb-5 group">
                                     <input

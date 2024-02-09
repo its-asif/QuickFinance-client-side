@@ -3,6 +3,7 @@ import { MdVerified } from "react-icons/md";
 import { MdVerifiedUser } from "react-icons/md";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
+import moment from 'moment';
 import { Chart } from "react-google-charts";
 const MyDashboard = () => {
     const { AuthUser } = useAuth();
@@ -63,11 +64,36 @@ const MyDashboard = () => {
         curveType: "function",
         legend: { position: "bottom" },
     };
-
+    // Determine the appropriate greeting based on the current time
+    let greeting = (null);
+    const hour = moment().hour();
+    if (hour >= 5 && hour < 12) {
+        greeting = 'Good Morning';
+    } else if (hour >= 12 && hour < 17) {
+        greeting = 'Good Afternoon';
+    } else {
+        greeting = 'Good Evening';
+    }
+    const date = moment().format('LL');
     return (
-        <div className="pt-20 mb-4 lg:max-w-screen-xl overflow-hidden">
-            <div className={`grid my-5 grid-cols-1 lg:grid-cols-2 justify-around items-center gap-5 md:gap-16 `}>
-                <div className="  rounded-lg  bg-white " data-aos="zoom-in-right" data-aos-duration="3000">
+        <div className="pt-20 mb-4  overflow-hidden">
+
+            {/* greeting part of GoalProgress */}
+            <div className="text-center pb-8">
+                <div className="flex justify-center items-center">
+                    <img className="w-[50px] hidden md:flex rounded-full  mr-2" src={AuthUser?.photoURL} alt="" />
+                    <h1 className="md:text-2xl font-medium">
+                        <span className="text-[#399b53]">{greeting}, </span> {AuthUser?.displayName}
+                    </h1>
+
+                </div>
+                <div className='text-center'>
+                    {date}
+                </div>
+            </div>
+            {/*End  greeting part */}
+            <div className={`bg-cover w-full    bg-[url('/dashboard.png')]  bg-no-repeat bg-center shadow-2xl rounded-xl mb-4 py-8`}>
+                {/* <div className="  rounded-lg  bg-white " data-aos="zoom-in-right" data-aos-duration="3000">
                     <div className="mb-4 rounded-md bg-gray-100  lg:h-[300px] p-8 pr-0 flex justify-around items-center lg:p-[45px] ">
                         <div className="space-y-1">
                             <h1 className="xl:text-4xl font-extrabold font-Jost tracking-wider lg:text-2xl text-xl"> Hello!  {AuthUser?.displayName}</h1>
@@ -81,32 +107,38 @@ const MyDashboard = () => {
                     </div>
 
 
-                </div>
+                </div> */}
 
                 {/* profile */}
-                <div  data-aos="zoom-in-right" data-aos-duration="3000" className=" rounded-lg lg:h-[300px] max-h-full max-w-full  mb-4 flex justify-center items-center  bg-gray-100  ">
-                    <div className="flex flex-col md:flex-row items-center gap-2 text-xl">
-                        <div className="mb-5 text-center">
-                            <img className="md:w-24 duration-300 md:h-24 w-2/3 object-cover rounded-full border-[3.5px] border-green-700 " src={AuthUser?.photoURL} alt="" />
-                            <MdVerifiedUser size={20} className="text-green-700 absolute -translate-y-[60/api/dashboard/:emailpx] md:-translate-y-24 z-20" />
+                <div data-aos="zoom-in-right" data-aos-duration="3000"
+                    className="  rounded-lg lg:h-[300px] max-h-full max-w-full  mb-4 flex justify-center items-center   ">
+                    <div
+                        className="flex flex-col md:flex-row items-center  bg-white py-14 px-8 bg-opacity-70 rounded-lg gap-2 text-xl">
+                        <div
+                            className="mb-5 text-center">
+                            <img
+                                className="md:w-24 duration-300 md:h-24 w-2/3 object-cover rounded-full border-[3.5px] border-green-700 "
+                                src={AuthUser?.photoURL} alt="" />
+                            <MdVerifiedUser size={20}
+                                className="text-blue-700 absolute -translate-y-[60/api/dashboard/:emailpx] md:-translate-y-24 z-20" />
                         </div>
                         <div className="">
                             <p className="flex items-center gap-1 text-sm md:text-xl">
-                                <span className="font-semibold  text-green-700">Username:</span>
-                                {AuthUser?.displayName}  {AuthUser?.emailVerified ? <MdVerified className="text-green-700" /> : ""}
+                                {/* <span className="font-semibold  text-green-700">Username:</span> */}
+
                             </p>
-                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
-                            {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
+                            <p className="text-sm md:text-xl flex justify-center items-center"><span className="font-semibold text-black">Email: </span >  <span className="ml-2 font-medium ">{AuthUser?.email} </span>  {AuthUser?.emailVerified ? <MdVerified className="text-blue-700 mt-[1] ml-[2px] " /> : ""}</p>
+                            {/* <p  className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
                             {/* expencess and income*/}
                             <div className="mt-2 text-sm md:text-md">
-                                <p className=" text-sm md:text-xl font-semibold"><span className=" pr-3 text-green-700"
+                                <p className=" text-sm md:text-xl font-semibold"><span className=" pr-3 text-black"
                                 >Total Balance:</span>{data?.balance} TK</p>
 
-                                <p className="text-sm md:text-xl font-semibold"><span className="  text-green-700"
+                                <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
                                 >Total Expenses:</span> {data?.totalExpense} Tk</p>
 
-                                <p className="text-sm md:text-xl font-semibold"><span className="  text-green-700"
+                                <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
                                 >Total Income:</span> {data?.totalIncome} Tk</p>
                             </div>
                         </div>
