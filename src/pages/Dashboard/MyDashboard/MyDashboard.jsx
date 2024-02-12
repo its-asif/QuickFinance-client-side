@@ -79,7 +79,7 @@ const MyDashboard = () => {
     }
     const date = moment().format('LL');
     return (
-        <div className="pt-20 mb-4  overflow-hidden">
+        <div className="pt-20 mb-4 max-w-screen-xl mx-auto overflow-hidden">
 
             {/* greeting part of GoalProgress */}
             <div className="text-center pb-8">
