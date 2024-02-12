@@ -131,11 +131,11 @@ const MyDashboard = () => {
 
                             </p>
                             <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
-                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin? "Admin" : "User"}</p>
+                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin ? "Admin" : "User"}</p>
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
                             {/* expencess and income*/}
-                            <div className="mt-2 text-sm md:text-md">
+                            <div className="mt-2 mb-4 text-sm md:text-md">
                                 <p className=" text-sm md:text-xl font-semibold"><span className=" pr-3 text-black"
                                 >Total Balance:</span>{data?.balance} TK</p>
 
@@ -145,8 +145,10 @@ const MyDashboard = () => {
                                 <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
                                 >Total Income:</span> {data?.totalIncome} Tk</p>
                             </div>
+                            <button className="sharedBtn">Print Data</button>
                         </div>
                     </div>
+
                 </div>
             </div>
 
