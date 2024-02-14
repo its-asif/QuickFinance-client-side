@@ -105,7 +105,7 @@ const GoalProgressCard = ({ item, refetch }) => {
     return (
         <div>
             {/* card start  */}
-            <div className={`bg-cover  md:min-w-80  bg-[url('/wave.png')] bg-opacity-60  bg-no-repeat bg-center shadow-2xl rounded-xl`}>
+            <div className={`bg-cover  md:min-w-80  bg-[url('/wave.png')] bg-opacity-60  bg-no-repeat bg-center shadow-lg overflow-hidden rounded-xl`}>
                 <div className='mb-5 font-medium p-5 text-white'>
                     <h1 className='font-bold text-black  mb-2 text-4xl text-center'> {goalName}</h1>
                     <h2>Goal Amount: {goalAmount}Tk</h2>
@@ -150,11 +150,11 @@ const GoalProgressCard = ({ item, refetch }) => {
                         </button>
                         <dialog
                             id="my_modal_3"
-                            className="modal modal-bottom sm:modal-middle">
+                            className="modal modal-bottom transform duration-500 sm:modal-middle">
 
                             {/* Modal body text and input field  */}
-                            <div className="modal-box relative">
-                                <button onClick={() => document.getElementById('my_modal_3').close()} className='flex justify-end right-0 top-0 p-3 absolute'>
+                            <div className="modal-box transform duration-500 relative">
+                                <button  onClick={() => document.getElementById('my_modal_3').close()} className='flex transform duration-500  justify-end right-0 top-0 p-3 absolute'>
                                     <FaTimesCircle className='text-3xl text-[#D2042D] hover:text-red-600 bg-white rounded-full' /></button>
                                 <p className="py-4 px-5 font-bold">Update your Goal Details</p>
                                 <div className="modal-action">
