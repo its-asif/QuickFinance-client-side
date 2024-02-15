@@ -26,7 +26,7 @@ const MyAsset = () => {
             default:
                 return (
                     <>
-                        <h2 className="text-center lg:text-lg font-bold">Choose <span className="primaryColor">Asset</span> Category</h2>
+                        <h2 className="text-center md:text-lg lg:text-xl font-bold">Choose <span className="primaryColor">Asset</span> Category</h2>
                     </>
                 );
         }
@@ -42,14 +42,14 @@ const MyAsset = () => {
             </div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box w-80 h-96 modalBg">
+                <div className="modal-box w-80 h-[300px] md:h-80 modalBg">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     {/* to go back*/}
                     {/* Content div */}
-                    <div className="m-4 p-4 border-2">
+                    <div className=" ">
                         <div id="modalContent">
                             {getContent()}
                         </div>
@@ -57,13 +57,13 @@ const MyAsset = () => {
                             currentPage === 'default' ? (
                                 <div className="py-2 grid grid-cols-2 gap-2">
                                     {/* Buttons to switch between pages */}
-                                    <button className="btn" onClick={() => showPage('stocks')}>Stocks</button>
-                                    <button className="btn" onClick={() => showPage('news')}>Real Estate</button>
-                                    <button className="btn" onClick={() => showPage('news')}>Cryptocurrencies</button>
-                                    <button className="btn" onClick={() => showPage('stocks')}>Forex</button>
-                                    <button className="btn" onClick={() => showPage('news')}>Jewelry</button>
-                                    <button className="btn" onClick={() => showPage('stocks')}>savings</button>
-                                    <button className="btn" onClick={() => showPage('stocks')}>Vehicles</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Stocks</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('news')}>Real Estate</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('news')}>Cryptocurrencies</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Forex</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('news')}>Jewelry</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Savings</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Vehicles</button>
                                 </div>
                             ) :
                                 <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2" onClick={() => setCurrentPage('default')}>
