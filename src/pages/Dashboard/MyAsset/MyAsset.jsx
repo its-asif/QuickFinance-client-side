@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MdAssignmentAdd } from "react-icons/md";
 import Stocks from "./Input/Stocks";
-
+import { IoMdArrowBack } from "react-icons/io";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
@@ -26,8 +26,7 @@ const MyAsset = () => {
             default:
                 return (
                     <>
-                        <h2>Default Page Content</h2>
-                        <p>This is the default content.</p>
+                        <h2 className="text-center lg:text-lg font-bold">Choose <span className="primaryColor">Asset</span> Category</h2>
                     </>
                 );
         }
@@ -43,25 +42,35 @@ const MyAsset = () => {
             </div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box w-80 h-80">
+                <div className="modal-box w-80 h-96 modalBg">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     {/* to go back*/}
-                    <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2" onClick={() => setCurrentPage('default')}>back</button>
                     {/* Content div */}
-                    <div id="modalContent">
-                        {getContent()}
+                    <div className="m-4 p-4 border-2">
+                        <div id="modalContent">
+                            {getContent()}
+                        </div>
+                        {
+                            currentPage === 'default' ? (
+                                <div className="py-2 grid grid-cols-2 gap-2">
+                                    {/* Buttons to switch between pages */}
+                                    <button className="btn" onClick={() => showPage('stocks')}>Stocks</button>
+                                    <button className="btn" onClick={() => showPage('news')}>Real Estate</button>
+                                    <button className="btn" onClick={() => showPage('news')}>Cryptocurrencies</button>
+                                    <button className="btn" onClick={() => showPage('stocks')}>Forex</button>
+                                    <button className="btn" onClick={() => showPage('news')}>Jewelry</button>
+                                    <button className="btn" onClick={() => showPage('stocks')}>savings</button>
+                                    <button className="btn" onClick={() => showPage('stocks')}>Vehicles</button>
+                                </div>
+                            ) :
+                                <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2" onClick={() => setCurrentPage('default')}>
+                                    <IoMdArrowBack size={15} />
+                                </button>
+                        }
                     </div>
-                    {
-                        currentPage === 'default' ? (<div>
-                            {/* Buttons to switch between pages */}
-                            <button className="btn" onClick={() => showPage('stocks')}>Stocks</button>
-                            <button className="btn" onClick={() => showPage('news')}>News</button>
-                            {/* Add more buttons for additional pages */}
-                        </div>) : ''
-                    }
                 </div>
             </dialog>
         </div>
