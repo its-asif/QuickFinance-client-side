@@ -16,6 +16,7 @@ import PrivateRoute from "./PrivateRoute";
 import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
+import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
 
 
 
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute><Dashboard/></PrivateRoute>,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     // element: <Dashboard />,
     children:
       [
@@ -64,7 +65,7 @@ const router = createBrowserRouter([
         },
         {
           path: "myAccount",
-          element: <MyDashboard />, 
+          element: <MyDashboard />,
         },
         {
           path: "financialManagement",
@@ -75,12 +76,17 @@ const router = createBrowserRouter([
           element: <BudgetPlanning />
         },
         {
-          path:'goalProgress',
+          path: 'goalProgress',
           element: <GoalProgress></GoalProgress>,
         },
         {
           path: 'allUsers',
           element: <AllUsers></AllUsers>,
+        }
+        ,
+        {
+          path: 'myAsset',
+          element: <MyAsset/>,
         }
       ]
   }
