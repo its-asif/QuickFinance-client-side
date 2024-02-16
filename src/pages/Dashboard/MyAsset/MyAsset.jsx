@@ -4,6 +4,7 @@ import Stocks from "./Input/Stocks";
 import { IoMdArrowBack } from "react-icons/io";
 import RealState from "./Input/RealState";
 import Crypto from "./Input/Cryptocurrencies";
+import Forex from "./Input/Forex";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
@@ -27,6 +28,18 @@ const MyAsset = () => {
                 return (
                     <>
                         <Crypto/>
+                    </>
+                );
+            case 'forex':
+                return (
+                    <>
+                        <Forex/>
+                    </>
+                );
+            case 'jewelry':
+                return (
+                    <>
+                        <Forex/>
                     </>
                 );
             // Add more cases for additional pages
@@ -67,8 +80,8 @@ const MyAsset = () => {
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Stocks</button>
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('realState')}>Real Estate</button>
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('cryptocurrencies')}>Cryptocurrencies</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Forex</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('news')}>Jewelry</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('forex')}>Forex</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('jewelry')}>Jewelry</button>
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Savings</button>
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Vehicles</button>
                                 </div>
