@@ -19,7 +19,7 @@ const Footer = () => {
                     data-aos-duration="500" className='font-bold text-3xl'>QUICK<span className='text-[#399B53]'>FINANCE</span> </h1>
             </div>
 
-            <div className='grid grid-cols-4 gap-2 lg:gap-32 my-6'>
+            <div className='flex flex-row gap-4 lg:gap-32 my-6'>
                 <Link className='text-center'>FAQ</Link>
                 <Link className='text-center'>Configuration</Link>
                 <Link className='text-center'>Github</Link>
@@ -48,8 +48,8 @@ const Footer = () => {
             </div>
 
             <div className="flex mt-8 mb-4">
-                <input type="email" placeholder="Your email" className="bg-white text-black rounded px-8 h-10 outline-none" />
-                <button className="bg-[#399B53] text-white rounded h-10 px-4 ml-3 text-lg">Subscribe</button>
+                <input type="email" placeholder="Your email" className="bg-white text-black rounded px-2 h-10 outline-none" />
+                <button className="bg-[#399B53] text-white rounded h-10 px-2 ml-3 text-md">Subscribe</button>
             </div>
 
             <p>Copyright © 2024 - All right reserved</p>
