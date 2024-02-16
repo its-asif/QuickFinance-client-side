@@ -19,6 +19,8 @@ import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
 import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
 import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
 import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
+import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
+import MyPayments from "../pages/Dashboard/payments/MyPayments";
 
 
 
@@ -72,7 +74,6 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <PrivateRoute><Dashboard/></PrivateRoute>,
-    // element: <Dashboard />,
     children:
       [
         {
@@ -84,7 +85,11 @@ const router = createBrowserRouter([
           element: <MyDashboard />, 
         },
         {
-          path: "financialManagement",
+          path: "myAsset",
+          element: <UnderMaintenance />, 
+        },
+        {
+          path: "financialManagement",  //personal finance
           element: <FinancialManagement />
         },
         {
@@ -93,11 +98,19 @@ const router = createBrowserRouter([
         },
         {
           path:'goalProgress',
-          element: <GoalProgress></GoalProgress>,
+          element: <GoalProgress/>,
+        },
+        {
+          path:'manageDebt',
+          element: <UnderMaintenance/>,
+        },
+        {
+          path:'payments',
+          element: <MyPayments/>,
         },
         {
           path: 'allUsers',
-          element: <AllUsers></AllUsers>,
+          element: <AllUsers/>,
         }
       ]
   }
