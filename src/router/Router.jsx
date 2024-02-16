@@ -22,6 +22,7 @@ import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
 import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
+import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
 
 
 
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
         element: <ContactUs></ContactUs>
       },
       {
-        path: "/about",
+        path: "/about", 
         element: <AboutUs></AboutUs>
       },
       {
@@ -112,8 +113,11 @@ const router = createBrowserRouter([
         {
           path: 'allUsers',
           element: <AllUsers/>,
-        }
-        ,
+        },
+        {
+          path: 'myBlogs',
+          element: <MyBlogs/>,
+        },
         {
           path: 'myAsset',
           element: <MyAsset/>,
