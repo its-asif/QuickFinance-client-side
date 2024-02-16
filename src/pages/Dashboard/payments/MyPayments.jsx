@@ -1,5 +1,18 @@
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAuth from "../../../Hooks/useAuth";
 
 const MyPayments = () => {
+    const axiosPublic = useAxiosPublic();
+    const { AuthUser } = useAuth();
+    const [paymentData, setPaymentData] = useState([]);
+
+    useEffect(() => {
+        axiosPublic.get(`/api/payments/${AuthUser?.email}`)
+        .then(res => {
+            setPaymentData(res.data);
+        })
+    }, [])
 
     // heading 
     const tableHeadings = (
@@ -13,41 +26,6 @@ const MyPayments = () => {
         </tr>
     ); 
 
-    // demo data
-    const paymentData = [
-        {
-            id: 1,
-            paymentDate: '2021-12-12',
-            paymentType: 'Zakat',
-            trxId: '123456asdf',
-            trxStatus: 'Success',
-            orgName: 'Al-Khair'
-        },
-        {
-            id: 2,
-            paymentDate: '2021-12-12',
-            paymentType: 'Zakat',
-            trxId: '123456asdf',
-            trxStatus: 'Success',
-            orgName: 'Al-Khair'
-        },
-        {
-            id: 3,
-            paymentDate: '2021-12-12',
-            paymentType: 'Zakat',
-            trxId: '123456asdf',
-            trxStatus: 'Failed',
-            orgName: 'Al-Khair'
-        },
-        {
-            id: 4,
-            paymentDate: '2021-12-12',
-            paymentType: 'Zakat',
-            trxId: '123456asdf',
-            trxStatus: 'Success',
-            orgName: 'Al-Khair'
-        },
-    ];
 
 
     return (
@@ -83,25 +61,29 @@ const MyPayments = () => {
                     <tbody>
                         {/* body */}
                         {
-                            paymentData.map((item, index) => (
-                                <tr key={index} 
-                                // className={ !(item.trxStatus === 'Success') && `bg-red-50`}
-                                >
-                                    <td>{index+1}</td>
-                                    <td>{item.paymentDate}</td>
-                                    <td>{item.paymentType}</td>
-                                    <td>{item.trxId}</td>
-                                    <td>
-                                        {
-                                            item.trxStatus === 'Success' ? 
-                                            <span className='btn btn-sm bg-green-200 text-green-700 w-20 hover:cursor-default hover:bg-green-200 hover:border-0 '>{item.trxStatus}</span> :
-                                            <span className='btn btn-sm bg-red-200 text-red-700 w-20 hover:cursor-default hover:bg-red-200 hover:border-0 '>{item.trxStatus}</span>
-                                        
-                                        }
-                                    </td>
-                                    <td>{item.orgName}</td>
-                                </tr>
-                            ))
+                            paymentData?.map((payment, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>
+                                            {
+                                                new Date(payment.createdAt).toLocaleDateString()
+                                            }
+                                        </td>
+                                        <td>{payment.trxType}</td>
+                                        <td>{payment.tran_id}</td>
+                                        <td>
+                                            {
+                                                payment.trxStatus === "success" ? 
+                                                <span className="btn btn-sm bg-green-200 text-green-700">Success</span> :
+                                                <span className="btn btn-sm bg-red-200 text-red-700">Failed</span>
+                                            
+                                            }
+                                        </td>
+                                        <td>{payment.organizer_name}</td>
+                                    </tr>
+                                );
+                            })
                         }
                     </tbody>
                 </table>
