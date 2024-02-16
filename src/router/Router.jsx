@@ -16,6 +16,7 @@ import PrivateRoute from "./PrivateRoute";
 import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
+import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
 import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
 import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
 import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
@@ -83,7 +84,7 @@ const router = createBrowserRouter([
         },
         {
           path: "myAccount",
-          element: <MyDashboard />, 
+          element: <MyDashboard />,
         },
         {
           path: "myAsset",
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
           path: 'myBlogs',
           element: <MyBlogs/>,
         },
+        {
+          path: 'myAsset',
+          element: <MyAsset/>,
+        }
       ]
   }
 ]);

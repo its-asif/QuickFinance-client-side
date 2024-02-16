@@ -1,27 +1,26 @@
 [
-    {
-      "category": "Streamlined Financial Management",
-      "image": "https://i.ibb.co/CwRYXtd/image-4.jpg"
-    },
-    {
-      "category": "Tax and Zakat Management",
-      "image": "https://i.ibb.co/TTrkjLQ/image-6.jpg"
-    },
-    {
-      "category": "Financial Reporting Services",
-      "image": "https://i.ibb.co/7YM2wZ1/image-7.jpg"
-    },
-    {
-      "category": "Budget Planning",
-      "image": "https://i.ibb.co/p00qBK1/image-3.jpg"
-    },
-    {
-      "category": "Asset Calculator",
-      "image": "https://i.ibb.co/Cm3RrRQ/image-5.jpg"
-    },
-    {
-      "category": "Debt Management",
-      "image": "https://i.ibb.co/NCCWjpQ/image-2.jpg"
-    }
-  ]
-  
+  {
+    "category": "Streamlined Financial Management",
+    "image": "https://i.ibb.co/CwRYXtd/image-4.jpg"
+  },
+  {
+    "category": "Tax and Zakat Management",
+    "image": "https://i.ibb.co/TTrkjLQ/image-6.jpg"
+  },
+  {
+    "category": "Financial Reporting Services",
+    "image": "https://i.ibb.co/7YM2wZ1/image-7.jpg"
+  },
+  {
+    "category": "Budget Planning",
+    "image": "https://i.ibb.co/p00qBK1/image-3.jpg"
+  },
+  {
+    "category": "Asset Calculator",
+    "image": "https://i.ibb.co/Cm3RrRQ/image-5.jpg"
+  },
+  {
+    "category": "Debt Management",
+    "image": "https://i.ibb.co/NCCWjpQ/image-2.jpg"
+  }
+]
