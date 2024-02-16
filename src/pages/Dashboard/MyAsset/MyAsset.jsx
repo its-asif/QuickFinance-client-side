@@ -6,6 +6,7 @@ import RealState from "./Input/RealState";
 import Crypto from "./Input/Cryptocurrencies";
 import Forex from "./Input/Forex";
 import Jewelry from "./Input/Jewelry";
+import Savings from "./Savings";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
@@ -41,6 +42,12 @@ const MyAsset = () => {
                 return (
                     <>
                         <Jewelry/>
+                    </>
+                );
+            case 'savings':
+                return (
+                    <>
+                        <Savings/>
                     </>
                 );
             // Add more cases for additional pages
@@ -83,8 +90,8 @@ const MyAsset = () => {
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('cryptocurrencies')}>Cryptocurrencies</button>
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('forex')}>Forex</button>
                                     <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('jewelry')}>Jewelry</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Savings</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Vehicles</button>
+                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('savings')}>Savings</button>
+                                    {/* <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Vehicles</button> */}
                                 </div>
                             ) :
                                 <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2" onClick={() => setCurrentPage('default')}>

@@ -35,9 +35,9 @@ const Jewelry = () => {
                             defaultValue="" // Add a default value if needed
                         >
                             <option value="">Select Material Type</option>
-                            <option value="house">Gold</option>
-                            <option value="apartment">Silver</option>
-                            <option value="condo">Diamond</option>
+                            <option value="Gold<">Gold</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Diamond">Diamond</option>
                             {/* Add more options as needed */}
                         </select>
                     </div>
