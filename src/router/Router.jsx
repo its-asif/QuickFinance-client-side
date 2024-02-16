@@ -16,6 +16,9 @@ import PrivateRoute from "./PrivateRoute";
 import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
+import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
+import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
+import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
 import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
@@ -45,12 +48,26 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
+        path:"/donateZakat",
+        element:<DonateZakat></DonateZakat>
+
+      },
+      {
+        path:"/donateTax",
+        element:<DonateTax></DonateTax>
+
+      },
+      {
         path: "/contact",
         element: <ContactUs></ContactUs>
       },
       {
         path: "/about",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path:"/payment/success/:tranId",
+        element:<PaymentSuccess></PaymentSuccess>
       }
 
     ],
