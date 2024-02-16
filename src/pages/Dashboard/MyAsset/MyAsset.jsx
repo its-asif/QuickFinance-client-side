@@ -7,6 +7,13 @@ import Crypto from "./Input/Cryptocurrencies";
 import Forex from "./Input/Forex";
 import Jewelry from "./Input/Jewelry";
 import Savings from "./Savings";
+import { BiBuildingHouse } from "react-icons/bi";
+import { AiOutlineStock } from "react-icons/ai";
+import { PiCurrencyBtcFill } from "react-icons/pi";
+import { FaSackDollar } from "react-icons/fa6";
+import { AiFillGolden } from "react-icons/ai";
+import { BsBank2 } from "react-icons/bs";
+import Table from "./Table";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
@@ -23,31 +30,31 @@ const MyAsset = () => {
             case 'realState':
                 return (
                     <>
-                        <RealState/>
+                        <RealState />
                     </>
                 );
             case 'cryptocurrencies':
                 return (
                     <>
-                        <Crypto/>
+                        <Crypto />
                     </>
                 );
             case 'forex':
                 return (
                     <>
-                        <Forex/>
+                        <Forex />
                     </>
                 );
             case 'jewelry':
                 return (
                     <>
-                        <Jewelry/>
+                        <Jewelry />
                     </>
                 );
             case 'savings':
                 return (
                     <>
-                        <Savings/>
+                        <Savings />
                     </>
                 );
             // Add more cases for additional pages
@@ -60,7 +67,7 @@ const MyAsset = () => {
         }
     };
     return (
-        <div className="w-full h-full p-4 border-2 border-red-600">
+        <div className="w-full h-full p-4 ">
             {/* buttno  */}
             <div className="flex justify-end w-full">
                 <button className="sharedBtn " onClick={() => { document.getElementById('my_modal_5').showModal(), setCurrentPage('default') }}>
@@ -85,13 +92,31 @@ const MyAsset = () => {
                             currentPage === 'default' ? (
                                 <div className="py-2 grid grid-cols-2 gap-2">
                                     {/* Buttons to switch between pages */}
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Stocks</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('realState')}>Real Estate</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('cryptocurrencies')}>Cryptocurrencies</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('forex')}>Forex</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('jewelry')}>Jewelry</button>
-                                    <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('savings')}>Savings</button>
-                                    {/* <button className="py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Vehicles</button> */}
+                                    <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>
+                                        <AiOutlineStock className="h-6 w-6 md:h-8 md:w-8" />
+                                        <span>Stocks</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('realState')}>
+                                        <BiBuildingHouse  className="h-6 w-6 md:h-8 md:w-8" />
+                                        <span>Real Estate</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('cryptocurrencies')}>
+                                        <PiCurrencyBtcFill className="h-6 w-6 md:h-8 md:w-8" />
+                                        <span>Crypto</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('forex')}>
+                                        <FaSackDollar className="h-6 w-6 md:h-8 md:w-8" />
+                                        <span>Forex</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('jewelry')}>
+                                        <AiFillGolden className="h-6 w-6 md:h-8 md:w-8" />
+                                        <span>Jewelry</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('savings')}>
+                                        <BsBank2 className="h-6 w-6 md:h-8 md:w-8" />
+                                        <span>Savings</span>
+                                    </button>
+                                    {/* <button className="flex items-center justify-center gap-1 py-3 hover:scale-105 transition md:text-base text-sm  rounded-md font-bold text-white bgForAsset" onClick={() => showPage('stocks')}>Vehicles</button> */}
                                 </div>
                             ) :
                                 <button className="btn btn-sm btn-circle btn-ghost absolute left-2 top-2" onClick={() => setCurrentPage('default')}>
@@ -101,6 +126,10 @@ const MyAsset = () => {
                     </div>
                 </div>
             </dialog>
+            {/* table  */}
+            <div className="lg:mt-6">
+                <Table/>
+            </div>
         </div>
     );
 };

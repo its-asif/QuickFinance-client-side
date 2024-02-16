@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { AiFillGolden } from "react-icons/ai";
 
 const Jewelry = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -9,7 +10,7 @@ const Jewelry = () => {
 
     return (
         <div className="">   
-            <h2 className="text-center md:text-lg lg:text-xl font-bold">Jewelry  <span className="primaryColor">Asset</span> Manager</h2>
+            <h2 className="flex items-center justify-center gap-1 text-center md:text-lg lg:text-xl font-bold"><AiFillGolden className="h-4 w-4 md:h-6 md:w-6" /> Jewelry  <span className="primaryColor">Asset</span> Manager</h2>
             <form action="" onSubmit={handleSubmit(onSubmit)} className="mt-2 flex flex-col justify-center items-center">
                 <div className="flex md:flex-row flex-col gap-3 w-full">
                     <div className="flex flex-col mb-4 w-full">

@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { AiOutlineStock } from "react-icons/ai";
 
 const Stocks = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -8,12 +9,12 @@ const Stocks = () => {
     }
     return (
         <div className="">
-            <h2 className="text-center md:text-lg lg:text-xl font-bold">Stock <span className="primaryColor">Asset</span> Manage</h2>
+            <h2 className="flex items-center justify-center gap-1 text-center md:text-lg lg:text-xl font-bold"><AiOutlineStock className="h-4 w-4 md:h-6 md:w-6" />Stock <span className="primaryColor">Asset</span> Manage</h2>
             <form action="" onSubmit={handleSubmit(onSubmit)} className="mt-2">
                 <div className="flex flex-col mb-2">
                     <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Stock Symbol</label>
                     <input
-                        {...register('stock', { required: true, min: 0 ,})}
+                        {...register('stock', { required: true, min: 0, })}
                         type="text"
                         name="stock"
 
