@@ -12,7 +12,10 @@ const useAdminStatus = () => {
         if (AuthUser) {
             axiosPublic.get(`api/users/${AuthUser?.email}`)
             .then((res) => {
-                setIsAdmin(res.data.isAdmin);
+                setIsAdmin(res?.data?.isAdmin);
+            })
+            .catch((err) => {
+                console.log(err);
             });
         }
     }, []);
