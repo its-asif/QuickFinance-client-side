@@ -5,6 +5,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import RealState from "./Input/RealState";
 import Crypto from "./Input/Cryptocurrencies";
 import Forex from "./Input/Forex";
+import Jewelry from "./Input/Jewelry";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
@@ -39,7 +40,7 @@ const MyAsset = () => {
             case 'jewelry':
                 return (
                     <>
-                        <Forex/>
+                        <Jewelry/>
                     </>
                 );
             // Add more cases for additional pages

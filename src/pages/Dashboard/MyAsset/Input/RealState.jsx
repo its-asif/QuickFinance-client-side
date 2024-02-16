@@ -9,7 +9,7 @@ const RealState = () => {
     return (
         <div className="">
             <h2 className="text-center md:text-lg lg:text-xl font-bold">Real <span className="primaryColor">Estate</span> Listings</h2>
-            <form action="" onSubmit={handleSubmit(onSubmit)} className="mt-2 flex flex-col justify-center items-center border">
+            <form action="" onSubmit={handleSubmit(onSubmit)} className="mt-2 flex flex-col justify-center items-center">
                 <div className="flex md:flex-row flex-col gap-3 w-full">
                     <div className="flex flex-col mb-2 md:w-[220px] w-full">
                         <label htmlFor="property" className="primaryColor text-sm md:text-base font-bold mb-1">Property Type</label>
