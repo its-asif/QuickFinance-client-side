@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { BsCalculatorFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Zakat = () => {
 
     const [earn, setEarn] = useState(null)
@@ -51,6 +52,7 @@ const Zakat = () => {
             const sumZakat = totalAmount * zakatPercentage
             const totalZakat = sumZakat.toFixed(2);
             setZakat(totalZakat);
+            localStorage.setItem('zakat_money', totalZakat)
         }
 
 
@@ -182,9 +184,11 @@ const Zakat = () => {
 
                                 <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Zakat Amount: <span className="flex justify-center items-center gap-1">{zakat} <FaBangladeshiTakaSign /></span></p>
                             </div>
-                            {/* <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
+                           <Link to='/donateZakat'>
+                           <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
                                         Donate Your Zakat
-                                    </button> */}
+                                    </button>
+                           </Link>
                         </div>
 
 

@@ -121,8 +121,8 @@ const Navbar = () => {
                                     </li>
                                     <li>
 
-                                        <button className="btn my-3 ">
-                                            <Link to='/dashboard'>
+                                        <button className="btn btn-sm my-3 ">
+                                            <Link to='/dashboard' className="">
                                                 Dashboard
                                             </Link>
                                         </button>

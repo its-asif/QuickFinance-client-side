@@ -17,6 +17,11 @@ import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
 import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
+import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
+import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
+import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
+import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
+import MyPayments from "../pages/Dashboard/payments/MyPayments";
 
 
 
@@ -43,20 +48,33 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
+        path:"/donateZakat",
+        element:<DonateZakat></DonateZakat>
+
+      },
+      {
+        path:"/donateTax",
+        element:<DonateTax></DonateTax>
+
+      },
+      {
         path: "/contact",
         element: <ContactUs></ContactUs>
       },
       {
         path: "/about",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path:"/payment/success/:tranId",
+        element:<PaymentSuccess></PaymentSuccess>
       }
 
     ],
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute><Dashboard /></PrivateRoute>,
-    // element: <Dashboard />,
+    element: <PrivateRoute><Dashboard/></PrivateRoute>,
     children:
       [
         {
@@ -68,7 +86,11 @@ const router = createBrowserRouter([
           element: <MyDashboard />,
         },
         {
-          path: "financialManagement",
+          path: "myAsset",
+          element: <UnderMaintenance />, 
+        },
+        {
+          path: "financialManagement",  //personal finance
           element: <FinancialManagement />
         },
         {
@@ -76,12 +98,20 @@ const router = createBrowserRouter([
           element: <BudgetPlanning />
         },
         {
-          path: 'goalProgress',
-          element: <GoalProgress></GoalProgress>,
+          path:'goalProgress',
+          element: <GoalProgress/>,
+        },
+        {
+          path:'manageDebt',
+          element: <UnderMaintenance/>,
+        },
+        {
+          path:'payments',
+          element: <MyPayments/>,
         },
         {
           path: 'allUsers',
-          element: <AllUsers></AllUsers>,
+          element: <AllUsers/>,
         }
         ,
         {

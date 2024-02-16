@@ -168,10 +168,13 @@ const MyDashboard = () => {
                 </div>
             </div>
 
+
+            <h1 className="text-5xl my-10 font-bold text-center text-green-700"> Transaction Summary</h1>
+
             {/* Graph */}
             <div>
 
-                {/* income and expense by date */}
+                {/* income and expense by category (pie chart) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div data-aos="fade-up" data-aos-duration="1000">
                         <Chart
@@ -201,7 +204,7 @@ const MyDashboard = () => {
                     </div>
                 </div>
 
-
+                {/* income and expense by date ( line chart )*/}
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <Chart
                         chartType="LineChart"
