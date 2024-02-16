@@ -18,6 +18,7 @@ import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
+import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
 
 
 
@@ -94,7 +95,11 @@ const router = createBrowserRouter([
         {
           path: 'allUsers',
           element: <AllUsers/>,
-        }
+        },
+        {
+          path: 'myBlogs',
+          element: <MyBlogs/>,
+        },
       ]
   }
 ]);
