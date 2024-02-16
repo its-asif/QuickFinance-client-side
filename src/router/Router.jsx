@@ -17,6 +17,7 @@ import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
+import MyPayments from "../pages/Dashboard/payments/MyPayments";
 
 
 
@@ -88,7 +89,7 @@ const router = createBrowserRouter([
         },
         {
           path:'payments',
-          element: <UnderMaintenance/>,
+          element: <MyPayments/>,
         },
         {
           path: 'allUsers',
