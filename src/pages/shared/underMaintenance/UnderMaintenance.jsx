@@ -2,7 +2,7 @@ import underConstraction from '../../../assets/uc.png'
 
 const UnderMaintenance = () => {
     return (
-        <div>
+        <div className='max-h-screen'>
             
             <section className="bg-gray-900 ">
                 <h1 className='text-center  pt-6 font-bold text-7xl text-white'>Quick<span className='text-[#399B53]'>Finance</span></h1>
