@@ -22,7 +22,7 @@ const RealState = () => {
                             <option value="">Select Property Type</option>
                             <option value="house">House</option>
                             <option value="apartment">Apartment</option>
-                            <option value="condo">Condo</option>
+                            <option value="condo">Land</option>
                             {/* Add more options as needed */}
                         </select>
                     </div>
