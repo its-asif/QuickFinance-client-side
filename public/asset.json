@@ -1,0 +1,59 @@
+[
+    {
+      "category": "Stocks",
+      "asset_name": "IBM",
+      "magnitude": "100",
+      "purchase_date": "2024-02-15",
+      "locale": "US",
+      "value": "18000"
+    },
+    {
+      "category": "Real Estate",
+      "asset_name": "Property A",
+      "magnitude": "5000 sqft",
+      "purchase_date": "2024-02-15",
+      "locale": "New York",
+      "value": "180000"
+    },
+    {
+      "category": "Real Estate",
+      "asset_name": "Apartment B",
+      "magnitude": "2100 sqft",
+      "purchase_date": "2024-02-15",
+      "locale": "Los Angeles",
+      "value": "150000"
+    },
+    {
+      "category": "Jewelry",
+      "asset_name": "Gold Necklace",
+      "magnitude": "200 grams",
+      "purchase_date": "2024-02-15",
+      "locale": "Home",
+      "value": "150000"
+    },
+    {
+      "category": "Forex",
+      "asset_name": "USD",
+      "magnitude": "200",
+      "purchase_date": "2024-02-15",
+      "locale": "Home",
+      "value": "10000"
+    },
+    {
+      "category": "Savings",
+      "asset_name": "Deposit Account",
+      "magnitude": "20000",
+      "purchase_date": "2024-02-15",
+      "locale": "Bank",
+      "value": "20000"
+    },
+    {
+      "category": "Crypto",
+      "asset_name": "Bitcoin",
+      "magnitude": "5",
+      "purchase_date": "2024-02-15",
+      "locale": "Global",
+      "value": "50000"
+    }
+  ]
+  
