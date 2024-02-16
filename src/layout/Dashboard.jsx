@@ -209,7 +209,7 @@ const Dashboard = () => {
             </div>
 
 
-            <div className="w-full h-screen overflow-y-scroll dashboardScroll">
+            <div className="w-full h-screen overflow-y-scroll ">
                 <Outlet />
             </div>
 
