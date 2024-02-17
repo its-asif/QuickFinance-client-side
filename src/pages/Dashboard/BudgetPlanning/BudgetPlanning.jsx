@@ -668,7 +668,7 @@ const BudgetPlanning = () => {
                         </div>
                     </div>
 
-                    <div className="collapse bg-base-200 rounded-none mb-2">
+                    <div className="collapse bg-base-200 rounded-none mb-4">
                         <input type="checkbox" />
                         <div className="collapse-title text-xl font-medium">
                             <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -682,7 +682,7 @@ const BudgetPlanning = () => {
                     </div>
                 </div>
 
-                <div className="collapse bg-base-200 rounded-none mb-2">
+                <div className="collapse bg-base-200 rounded-none mb-2 mt-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -721,7 +721,7 @@ const BudgetPlanning = () => {
                     </div>
                 </div>
 
-                <input type="submit" value="Save Data" className="btn w-full bg-[#399b53] text-white my-4" />
+                <input type="submit" value="Save Data" className="btn  w-full bg-[#399b53] text-white my-4" />
 
 
 

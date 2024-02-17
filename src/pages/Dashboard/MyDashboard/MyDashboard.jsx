@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import moment from 'moment';
 import { Chart } from "react-google-charts";
 import useAdminStatus from "../../../Hooks/useAdminStatus";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 const MyDashboard = () => {
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
@@ -78,8 +80,20 @@ const MyDashboard = () => {
         greeting = 'Good Evening';
     }
     const date = moment().format('LL');
+
+    // Pdf download section
+    const componentPdf = useRef()
+    const downloadPdf = useReactToPrint({
+        content: () => componentPdf.current,
+        documentTitle: "User Data",
+        pageStyle: `
+        @page {
+            size: landscape;
+        }
+    `,
+    })
     return (
-        <div className="pt-20 mb-4  overflow-hidden">
+        <div className="pt-20 mb-4 max-w-screen-xl mx-auto overflow-hidden">
 
             {/* greeting part of GoalProgress */}
             <div className="text-center pb-8">
@@ -131,11 +145,11 @@ const MyDashboard = () => {
 
                             </p>
                             <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
-                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin? "Admin" : "User"}</p>
+                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin ? "Admin" : "User"}</p>
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
                             {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
                             {/* expencess and income*/}
-                            <div className="mt-2 text-sm md:text-md">
+                            <div className="mt-2 mb-4 text-sm md:text-md">
                                 <p className=" text-sm md:text-xl font-semibold"><span className=" pr-3 text-black"
                                 >Total Balance:</span>{data?.balance} TK</p>
 
@@ -145,15 +159,22 @@ const MyDashboard = () => {
                                 <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
                                 >Total Income:</span> {data?.totalIncome} Tk</p>
                             </div>
+
+                            {/* Print Btn  */}
+                            <button onClick={downloadPdf} className="sharedBtn">Print Data</button>
                         </div>
                     </div>
+
                 </div>
             </div>
+
+
+            <h1 className="text-5xl my-10 font-bold text-center text-green-700"> Transaction Summary</h1>
 
             {/* Graph */}
             <div>
 
-                {/* income and expense by date */}
+                {/* income and expense by category (pie chart) */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div data-aos="fade-up" data-aos-duration="1000">
                         <Chart
@@ -183,7 +204,7 @@ const MyDashboard = () => {
                     </div>
                 </div>
 
-
+                {/* income and expense by date ( line chart )*/}
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <Chart
                         chartType="LineChart"
@@ -192,6 +213,51 @@ const MyDashboard = () => {
                         data={lineData}
                         options={options}
                     />
+                </div>
+            </div>
+
+
+            {/* Report Data  */}
+            <div className="hidden">
+                <div className="bg-gray-100 " ref={componentPdf} style={{ width: '100%' }} >
+                    <div>
+                        <h1 className="text-3xl font-bold text-center pb-2 pt-2">Personal Financial Report</h1>
+                    </div>
+
+                    <h1 className="md:text-xl text-center font-medium">
+                        <span className="">Name : </span> {AuthUser?.displayName}
+                    </h1>
+
+                    {/* Income Report */}
+                    <div className="p-4">
+                        <h2 className="text-lg font-semibold my-4 ml-10">Income Report</h2>
+                        {incomeByCategoryData.slice(1).map((fnData, index) => (
+                            <p key={index} className="grid grid-cols-4">
+                                <span className="font-bold"></span> {fnData[0]} <span className="font-bold"></span> {fnData[1]} Tk
+                            </p>
+                        ))}
+                    </div>
+                    {/* summary  */}
+                    <div className="p-4 w-full ml-10 text-lg font-semibold">
+                        <p className="flex justify-end mr-64 gap-5"> <span>Total Income :</span> <span>{data?.totalIncome} Tk</span></p>
+                    </div>
+                    {/* Expense Report */}
+                    <div className="p-4">
+                        <h2 className="text-lg font-semibold my-4 ml-10">Expense Report</h2>
+                        {expenseByCategoryData.slice(1).map((fnData, index) => (
+                            <p key={index} className="grid grid-cols-4">
+                                <span className="font-bold"></span> {fnData[0]} <span className="font-bold"></span> {fnData[1]} Tk
+                            </p>
+                        ))}
+                    </div>
+                    <div className="p-4 w-full ml-10 text-lg font-semibold">
+                        <p className="flex justify-end mr-64 gap-5"> <span>Total Expense :</span> <span>{data?.totalExpense} Tk</span></p>
+                    </div>
+                    <div className="w-full p-2">
+                        <div className="p-4 w-full text-lg font-semibold">
+                            <p className="flex gap-10 justify-between mr-56 ml-10"> <span>Current Balance :</span> <span>{data?.totalExpense} Tk</span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

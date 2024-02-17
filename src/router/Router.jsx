@@ -16,6 +16,13 @@ import PrivateRoute from "./PrivateRoute";
 import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
+import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
+import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
+import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
+import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
+import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
+import MyPayments from "../pages/Dashboard/payments/MyPayments";
+import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
 
 
 
@@ -42,12 +49,26 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
+        path:"/donateZakat",
+        element:<DonateZakat></DonateZakat>
+
+      },
+      {
+        path:"/donateTax",
+        element:<DonateTax></DonateTax>
+
+      },
+      {
         path: "/contact",
         element: <ContactUs></ContactUs>
       },
       {
-        path: "/about",
+        path: "/about", 
         element: <AboutUs></AboutUs>
+      },
+      {
+        path:"/payment/success/:tranId",
+        element:<PaymentSuccess></PaymentSuccess>
       }
 
     ],
@@ -55,7 +76,6 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <PrivateRoute><Dashboard/></PrivateRoute>,
-    // element: <Dashboard />,
     children:
       [
         {
@@ -64,10 +84,14 @@ const router = createBrowserRouter([
         },
         {
           path: "myAccount",
-          element: <MyDashboard />, 
+          element: <MyDashboard />,
         },
         {
-          path: "financialManagement",
+          path: "myAsset",
+          element: <UnderMaintenance />, 
+        },
+        {
+          path: "financialManagement",  //personal finance
           element: <FinancialManagement />
         },
         {
@@ -76,11 +100,27 @@ const router = createBrowserRouter([
         },
         {
           path:'goalProgress',
-          element: <GoalProgress></GoalProgress>,
+          element: <GoalProgress/>,
+        },
+        {
+          path:'manageDebt',
+          element: <UnderMaintenance/>,
+        },
+        {
+          path:'payments',
+          element: <MyPayments/>,
         },
         {
           path: 'allUsers',
-          element: <AllUsers></AllUsers>,
+          element: <AllUsers/>,
+        },
+        {
+          path: 'myBlogs',
+          element: <MyBlogs/>,
+        },
+        {
+          path: 'myAsset',
+          element: <MyAsset/>,
         }
       ]
   }

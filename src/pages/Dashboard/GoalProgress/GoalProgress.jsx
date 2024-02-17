@@ -4,6 +4,7 @@ import useAuth from '../../../Hooks/useAuth';
 import goalImg from '/goal.png'
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import { FaTimesCircle } from "react-icons/fa";
 import GoalProgressCard from './GoalProgressCard';
 import toast from 'react-hot-toast';
 const GoalProgress = () => {
@@ -111,11 +112,14 @@ const GoalProgress = () => {
                     className="modal modal-bottom sm:modal-middle">
 
                     {/* Modal body text and input field  */}
-                    <div className="modal-box">
-
-                        <p className="py-4">Give us your Goal Details</p>
+                    <div className="modal-box relative">
+                    <button onClick={() => document.getElementById('my_modal_5').close()} className='flex justify-end right-0 top-0 p-3 absolute'>
+                        <FaTimesCircle className='text-3xl text-[#D2042D] hover:text-red-600 bg-white rounded-full' /></button>
+                        <p className="py-4 px-5 font-bold">Give us your Goal Details</p>
+                        
                         <div className="modal-action">
-                            <form onSubmit={handleAddGoal} className='space-y-4' method="dialog">
+                          
+                            <form onSubmit={handleAddGoal} className='space-y-4 px-5' method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
 
                                 <input  name='goalName' type="text" placeholder="Goal Name" className="input input-bordered input-success w-full max-w-xs" />
@@ -130,7 +134,8 @@ const GoalProgress = () => {
                                 <br />
                                 <input name='amountSaved' type="text" placeholder="Already saved Amount" className="input input-bordered input-success w-full max-w-xs" />
                                 <br />
-                                <button type='submit' className="btn">Submit</button>
+                                <button type='submit' className="btn sharedBtn">Submit</button>
+                                
                             </form>
                         </div>
                     </div>
@@ -139,7 +144,9 @@ const GoalProgress = () => {
 
             {/* display all goals from user */}
             <div className="grid grid-cols-1  my-8  md:grid-cols-2 lg:grid-cols-3 gap-10 xl:col-span-4 p-5 ">
-
+{
+    // console.log(data)
+}
 
                 {
                     data?.goals.map((item) =>
