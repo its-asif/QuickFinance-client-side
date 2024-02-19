@@ -16,13 +16,14 @@ import PrivateRoute from "./PrivateRoute";
 import BudgetPlanning from "../pages/Dashboard/BudgetPlanning/BudgetPlanning";
 import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
+import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
 import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
-import DonateTax from "../pages/zakatAndTax/Tax/PayTax";
 import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
 import PayTax from "../pages/zakatAndTax/Tax/PayTax";
 import PaymentFailed from "../pages/shared/Payment/PaymentFailed";
+import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
 
 
 
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
         element: <ContactUs></ContactUs>
       },
       {
-        path: "/about",
+        path: "/about", 
         element: <AboutUs></AboutUs>
       },
       {
@@ -88,12 +89,12 @@ const router = createBrowserRouter([
         },
         {
           path: "myAccount",
-          element: <MyDashboard />, 
+          element: <MyDashboard />,
         },
-        {
-          path: "myAsset",
-          element: <UnderMaintenance />, 
-        },
+        // {
+        //   path: "myAsset",
+        //   element: <UnderMaintenance />, 
+        // },
         {
           path: "financialManagement",  //personal finance
           element: <FinancialManagement />
@@ -117,6 +118,14 @@ const router = createBrowserRouter([
         {
           path: 'allUsers',
           element: <AllUsers/>,
+        },
+        {
+          path: 'myBlogs',
+          element: <MyBlogs/>,
+        },
+        {
+          path: 'myAsset',
+          element: <MyAsset/>,
         }
       ]
   }
