@@ -18,10 +18,11 @@ import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
 import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
 import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
-import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
 import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
+import PayTax from "../pages/zakatAndTax/Tax/PayTax";
+import PaymentFailed from "../pages/shared/Payment/PaymentFailed";
 import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
 
 
@@ -54,8 +55,8 @@ const router = createBrowserRouter([
 
       },
       {
-        path:"/donateTax",
-        element:<DonateTax></DonateTax>
+        path:"/payTax",
+        element:<PayTax></PayTax>
 
       },
       {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path:"/payment/success/:tranId",
         element:<PaymentSuccess></PaymentSuccess>
+      },
+      {
+        path:"/payment/fail",
+        element:<PaymentFailed></PaymentFailed>
       }
 
     ],
@@ -86,10 +91,10 @@ const router = createBrowserRouter([
           path: "myAccount",
           element: <MyDashboard />,
         },
-        {
-          path: "myAsset",
-          element: <UnderMaintenance />, 
-        },
+        // {
+        //   path: "myAsset",
+        //   element: <UnderMaintenance />, 
+        // },
         {
           path: "financialManagement",  //personal finance
           element: <FinancialManagement />

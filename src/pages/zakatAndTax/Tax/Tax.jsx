@@ -250,7 +250,7 @@ const Tax = () => {
 
                                         <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
                                     </div>
-                                    <Link to='/donateTax'>
+                                    <Link to='/payTax'>
                                         <div className="mt-6">
                                             <button className="fullWidthSharedBtn ">
                                                 <FaDonate className="mr-4" />Pay Your Tax
