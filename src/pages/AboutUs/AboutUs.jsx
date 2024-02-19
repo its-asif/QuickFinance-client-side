@@ -1,12 +1,103 @@
 
+import { TfiSupport } from "react-icons/tfi";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { MdPayment } from "react-icons/md";
+import { PiUserCircleDuotone } from "react-icons/pi";
+import { SiGoogletagmanager } from "react-icons/si";
+import { GoGoal } from "react-icons/go";
+import { GiMoneyStack } from "react-icons/gi";
+import { MdDashboard } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 
 const AboutUs = () => {
+
+    // ToDo 
+    // This Total Value will be Dynamic 
+
+    const totalUsers = 50
+    const totalSubscribers = 40
+    const totalFeatures = 10
+
+    const featuresData = [
+        {
+            icon: <TfiSupport className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 1',
+            description: 'Tailor our product to suit your needs Tailor our product to suit your needs.',
+        },
+        {
+            icon: <GiTakeMyMoney className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 2',
+            description: 'Your data is protected by the latest security measures.',
+        },
+        {
+            icon: <MdPayment className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 3',
+            description: 'Description for Feature 3.',
+        },
+        {
+            icon: <PiUserCircleDuotone className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 4',
+            description: 'Experience blazing-fast performance with our product.',
+        },
+        {
+            icon: <SiGoogletagmanager className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 5',
+            description: 'Expand your reach with our global network.',
+        },
+        {
+            icon: <GoGoal className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 6',
+            description: 'Seamless communication for your team.',
+        },
+        {
+            icon: <PiUserCircleDuotone className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 7',
+            description: 'Experience blazing-fast performance with our product.',
+        },
+        {
+            icon: <SiGoogletagmanager className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 8',
+            description: 'Expand your reach with our global network.',
+        },
+        {
+            icon: <GoGoal className="w-8 h-8 mb-4 inline-block" />,
+            title: 'Feature Title 9',
+            description: 'Seamless communication for your team.',
+        }
+    ];
+
+
+    // To Do
+    // This Data Will be dynamic  
+    const clients = [
+        {
+            imageUrl: "https://readymadeui.com/profile_2.webp",
+            name: "John Doe",
+            company: "Rubik",
+            testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+        },
+        {
+            imageUrl: "https://readymadeui.com/profile_3.webp",
+            name: "Mark Adair",
+            company: "Alpha",
+            testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+        },
+        {
+            imageUrl: "https://readymadeui.com/profile_4.webp",
+            name: "Simon Konecki",
+            company: "Labar",
+            testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+        }
+    ];
+
+
     return (
         <div className="pt-20">
             {/* about us intro  */}
             <div className="py-10">
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold tracking-wide">About QuickFinance</h1>
+                    <h1 className="text-5xl font-bold tracking-wide">Know QuickFinance</h1>
                     <p className="mt-4 tracking-widest">QuickFinance: Accelerating Your Wealth, One Smart Decision at a Time.</p>
                 </div>
             </div>
@@ -24,37 +115,37 @@ const AboutUs = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" className="fill-green-500 shrink-0" viewBox="0 0 24 24">
                                     <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" data-original="#000000"></path>
                                 </svg>
-                                <h6 className="text-base font-semibold ml-4">Budget Planning</h6>
+                                <h6 className="text-base font-semibold ml-4">Secure Transactions</h6>
                             </div>
                             <div className="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" className="fill-green-500 shrink-0" viewBox="0 0 24 24">
                                     <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" data-original="#000000"></path>
                                 </svg>
-                                <h6 className="text-base font-semibold ml-4">Goal Progress </h6>
+                                <h6 className="text-base font-semibold ml-4">User-Friendly Interface</h6>
                             </div>
                             <div className="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" className="fill-green-500 shrink-0" viewBox="0 0 24 24">
                                     <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" data-original="#000000"></path>
                                 </svg>
-                                <h6 className="text-base font-semibold ml-4">My Finance</h6>
+                                <h6 className="text-base font-semibold ml-4">Financial Tracking</h6>
                             </div>
                             <div className="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" className="fill-green-500 shrink-0" viewBox="0 0 24 24">
                                     <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" data-original="#000000"></path>
                                 </svg>
-                                <h6 className="text-base font-semibold ml-4">Debt Management</h6>
+                                <h6 className="text-base font-semibold ml-4">Real-Time Updates</h6>
                             </div>
                             <div className="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" className="fill-green-500 shrink-0" viewBox="0 0 24 24">
                                     <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" data-original="#000000"></path>
                                 </svg>
-                                <h6 className="text-base font-semibold ml-4">My Assets</h6>
+                                <h6 className="text-base font-semibold ml-4">Robust Security</h6>
                             </div>
                             <div className="flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" className="fill-green-500 shrink-0" viewBox="0 0 24 24">
                                     <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" data-original="#000000"></path>
                                 </svg>
-                                <h6 className="text-base font-semibold ml-4">Tahsin Vai</h6>
+                                <h6 className="text-base font-semibold ml-4">Customer Support</h6>
                             </div>
                         </div>
 
@@ -67,7 +158,7 @@ const AboutUs = () => {
             </div>
 
             {/* Milestone  */}
-            <div className="bg-gradient-to-r from-green-400 to-green-300 py-8 px-16">
+            <div className="bg-gradient-to-r from-[#0ba360] to-green-400 py-8 px-16">
                 <div className="container mx-auto">
                     <h2 className="text-4xl font-bold text-white mb-8">Milestones that we have achieved.</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -80,7 +171,7 @@ const AboutUs = () => {
                             </div>
                             <div className="mt-4">
                                 <p className="text-lg font-semibold text-gray-800">Total Users</p>
-                                <p className="text-gray-600 text-sm mt-1">50</p>
+                                <p className="text-gray-600 text-sm mt-1">{totalUsers}</p>
                             </div>
                         </div>
                         {/* Subscription  */}
@@ -92,7 +183,7 @@ const AboutUs = () => {
                             </div>
                             <div className="mt-4">
                                 <p className="text-lg font-semibold text-gray-800">Total Subscribers</p>
-                                <p className="text-gray-600 text-sm mt-1">40</p>
+                                <p className="text-gray-600 text-sm mt-1">{totalSubscribers}</p>
                             </div>
                         </div>
                         {/* Services  */}
@@ -104,7 +195,7 @@ const AboutUs = () => {
                             </div>
                             <div className="mt-4">
                                 <p className="text-lg font-semibold text-gray-800">Total Features</p>
-                                <p className="text-gray-600 text-sm mt-1">9</p>
+                                <p className="text-gray-600 text-sm mt-1">{totalFeatures}</p>
                             </div>
                         </div>
                     </div>
@@ -114,50 +205,46 @@ const AboutUs = () => {
             {/* Testimonial */}
             <div className="mt-20 mb-40">
                 <div className="md:mb-28 mb-12 text-center">
-                    <h2 className="text-4xl font-bold my-8">What our happy client say</h2>
+                    <h2 className="text-4xl font-bold my-8">What our happy clients say</h2>
                 </div>
+
                 <div className="grid md:grid-cols-3 md:gap-6 max-md:gap-10 max-w-6xl mx-auto relative">
-                    <div
-                        className="bg-gradient-to-r from-green-400 to-green-300 max-w-[60%] h-[145%] w-full -top-16 left-0 right-0 mx-auto rounded-3xl absolute max-md:hidden">
+                    <div className="bg-gradient-to-r from-[#0ba360] to-green-400 max-w-[60%] h-[145%] w-full -top-16 left-0 right-0 mx-auto rounded-3xl absolute max-md:hidden">
                     </div>
-                    <div className="max-w-[350px] h-auto lg:p-8 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
-                        <div className="">
-                            <img src="https://readymadeui.com/profile_2.webp" className="w-12 h-12 rounded-full" />
-                            <h4 className="text-sm whitespace-nowrap font-extrabold mt-2">John Doe</h4>
-                            <p className="mt-1 text-xs text-gray-400">Founder of Rubik</p>
+
+                    {clients.map((client, index) => (
+                        <div key={index} className="max-w-[350px] h-auto lg:p-8 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
+                            <div className="">
+                                <img src={client.imageUrl} className="w-12 h-12 rounded-full" />
+                                <h4 className="text-sm whitespace-nowrap font-extrabold mt-2">{client.name}</h4>
+                                <p className="mt-1 text-xs text-gray-400">Founder of {client.company}</p>
+                            </div>
+                            <div className="mt-4">
+                                <p className="text-sm leading-relaxed">{client.testimonial}</p>
+                            </div>
                         </div>
-                        <div className="mt-4">
-                            <p className="text-sm leading-relaxed">The service was amazing. I never had to wait that long for my food.
-                                The staff was friendly and attentive, and the delivery was impressively prompt.</p>
-                        </div>
-                    </div>
-                    <div className="max-w-[350px] h-auto lg:p-8 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
-                        <div className="">
-                            <img src="https://readymadeui.com/profile_3.webp" className="w-12 h-12 rounded-full" />
-                            <h4 className="text-sm whitespace-nowrap font-extrabold mt-2">Mark Adair</h4>
-                            <p className="mt-1 text-xs text-gray-400">Founder of Alpha</p>
-                        </div>
-                        <div className="mt-4">
-                            <p className="text-sm leading-relaxed">The service was amazing. I never had to wait that long for my food.
-                                The staff was friendly and attentive, and the delivery was impressively prompt.</p>
-                        </div>
-                    </div>
-                    <div className="max-w-[350px] h-auto lg:p-8 p-4 rounded-md mx-auto bg-white relative max-md:shadow-md">
-                        <div className="">
-                            <img src="https://readymadeui.com/profile_4.webp" className="w-12 h-12 rounded-full" />
-                            <h4 className="text-sm whitespace-nowrap font-extrabold mt-2">Simon Konecki</h4>
-                            <p className="mt-1 text-xs text-gray-400">Founder of Labar</p>
-                        </div>
-                        <div className="mt-4">
-                            <p className="text-sm leading-relaxed">The service was amazing. I never had to wait that long for my food.
-                                The staff was friendly and attentive, and the delivery was impressively prompt.</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
-            {/* What we Do */}
-          
+
+            {/* QuickFinance Features  */}
+
+            <div className="max-w-6xl mx-auto mb-16">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-16">Discover Our Exclusive Features</h2>
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
+                    {featuresData.map((feature, index) => (
+                        <Link key={index} to='/dashboard'>
+                            <div className="p-4 text-center border-[1px] border-transparent hover:border-[1px] hover:border-[#0ba360] hover:bg-[#0ba360] hover:text-white mx-10 md:mx-0">
+                                {feature.icon}
+                                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                                <p className="text-sm">{feature.description}</p>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
 
         </div>
     );
