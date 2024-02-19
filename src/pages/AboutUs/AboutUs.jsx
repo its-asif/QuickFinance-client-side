@@ -70,26 +70,65 @@ const AboutUs = () => {
 
     // To Do
     // This Data Will be dynamic  
-    const clients = [
+    // const clients = [
+    //     {
+    //         imageUrl: "https://readymadeui.com/profile_2.webp",
+    //         name: "John Doe",
+    //         company: "Rubik",
+    //         testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+    //     },
+    //     {
+    //         imageUrl: "https://readymadeui.com/profile_3.webp",
+    //         name: "Mark Adair",
+    //         company: "Alpha",
+    //         testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+    //     },
+    //     {
+    //         imageUrl: "https://readymadeui.com/profile_4.webp",
+    //         name: "Simon Konecki",
+    //         company: "Labar",
+    //         testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+    //     }
+    // ];
+
+    // Team Section 
+    const teamData = [
         {
-            imageUrl: "https://readymadeui.com/profile_2.webp",
-            name: "John Doe",
-            company: "Rubik",
-            testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+            name: "David Forren",
+            position: "Founder / CEO",
+            image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            portfolio: "#"
         },
         {
-            imageUrl: "https://readymadeui.com/profile_3.webp",
-            name: "Mark Adair",
-            company: "Alpha",
-            testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
+            name: "Amil Evara",
+            position: "UI/UX Designer",
+            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            portfolio: "#"
         },
         {
-            imageUrl: "https://readymadeui.com/profile_4.webp",
-            name: "Simon Konecki",
-            company: "Labar",
-            testimonial: "The service was amazing. I never had to wait that long for my food. The staff was friendly and attentive, and the delivery was impressively prompt."
-        }
+            name: "David Forren",
+            position: "Founder / CEO",
+            image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            portfolio: "#"
+        },
+        {
+            name: "Amil Evara",
+            position: "UI/UX Designer",
+            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            portfolio: "#"
+        },
+        {
+            name: "David Forren",
+            position: "Founder / CEO",
+            image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            portfolio: "#"
+        },
+
+        // Add more team members as needed
     ];
+
+    // Rest of the code using the map function remains the same
+
 
 
     return (
@@ -203,7 +242,7 @@ const AboutUs = () => {
             </div>
 
             {/* Testimonial */}
-            <div className="mt-20 mb-40">
+            {/* <div className="mt-20 mb-40">
                 <div className="md:mb-28 mb-12 text-center">
                     <h2 className="text-4xl font-bold my-8">What our happy clients say</h2>
                 </div>
@@ -225,12 +264,12 @@ const AboutUs = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div> */}
 
 
             {/* QuickFinance Features  */}
 
-            <div className="max-w-6xl mx-auto mb-16">
+            <div className="max-w-6xl mx-auto mb-16 mt-20">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-16">Discover Our Exclusive Features</h2>
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
                     {featuresData.map((feature, index) => (
@@ -244,6 +283,34 @@ const AboutUs = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Team Section */}
+
+            <div className="text-slate-100 max-w-[85rem] px-4 py-10 lg:px-8 lg:py-14 mx-auto bg-gradient-to-r from-[#0ba360] to-green-400">
+
+                <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+                    <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Meet Our team</h2>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2">
+                    {teamData.map((member, index) => (
+                        <div key={index} className="text-center">
+                            <img className="rounded-xl w-1/2 mx-auto" src={member.image} alt="Image Description" />
+                            <div className="mt-2 sm:mt-4">
+                                <h3 className="text-sm font-medium  sm:text-base lg:text-lg">
+                                    {member.name}
+                                </h3>
+                                <p className="text-xs sm:text-sm lg:text-base">
+                                    {member.position}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+
+
 
 
         </div>
