@@ -39,9 +39,9 @@ const Table = () => {
                             assetData?.map((data, idx) => <tr key={idx} className="hover:bg-green-300 group" >
                                 <th className="flex items-center  w-[100px] gap-2">
                                     <button onClick={() => { document.getElementById(`asset_edit_${idx}`).showModal() }}>
-                                        <MdEdit className="h-4 w-4 md:h-5 md:w-5 text-blue-700 hover:scale-110 hover:cursor-pointer" />
+                                        <MdEdit className="h-4 w-4 md:h-5 md:w-5 text-green-500 hover:scale-110 hover:cursor-pointer" />
                                     </button>
-                                    <MdDelete className="h-4 w-4 md:h-5 md:w-5 text-red-700  hover:scale-110 hover:cursor-pointer" />
+                                    <MdDelete className="h-4 w-4 md:h-5 md:w-5 text-red-500  hover:scale-110 hover:cursor-pointer" />
                                 </th>
                                 <td className="">
                                     {data.category}

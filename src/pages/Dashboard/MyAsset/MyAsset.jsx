@@ -6,7 +6,6 @@ import RealState from "./Input/RealState";
 import Crypto from "./Input/Cryptocurrencies";
 import Forex from "./Input/Forex";
 import Jewelry from "./Input/Jewelry";
-import Savings from "./Savings";
 import { BiBuildingHouse } from "react-icons/bi";
 import { AiOutlineStock } from "react-icons/ai";
 import { PiCurrencyBtcFill } from "react-icons/pi";
@@ -14,6 +13,7 @@ import { FaSackDollar } from "react-icons/fa6";
 import { AiFillGolden } from "react-icons/ai";
 import { BsBank2 } from "react-icons/bs";
 import Table from "./Table";
+import Savings from "./Input/Savings";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
