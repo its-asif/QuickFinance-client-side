@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import './Table.css'
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { GoDotFill } from "react-icons/go";
+import { IoTrendingUpSharp } from "react-icons/io5";
+import { IoTrendingDownSharp } from "react-icons/io5";
 import { FaEye } from "react-icons/fa";
+import { RiEqualLine } from "react-icons/ri";
+import Spinner from "./Spinner/Spinner";
 const Table = () => {
     const [assetData, setAssetData] = useState(null)
     useEffect(() => {
@@ -68,7 +71,9 @@ const Table = () => {
                                 <td className="hide-on-tablet">{data.purchase_date}</td>
                                 <td className="hide-on-small">{data.locale}</td>
                                 <td className="hide-on-small flex items-center justify-start gap-1">
-                                    <GoDotFill className="h-4 w-4 md:h-5 md:w-5 text-yellow-500 hover:cursor-pointer" />
+                                    <IoTrendingUpSharp className="h-4 w-4 md:h-5 md:w-5 text-green-500 hover:cursor-pointer" />
+                                    <RiEqualLine  className="h-4 w-4 md:h-5 md:w-5 text-yellow-500 hover:cursor-pointer" />
+                                    <IoTrendingDownSharp className="h-4 w-4 md:h-5 md:w-5 text-red-500 hover:cursor-pointer" />
                                     <FaEye className="group-hover:visible invisible hover:cursor-pointer" onClick={() => { document.getElementById(`asset_data_${idx}`).showModal() }} />
                                 </td>
                                 <td>{data.value} USD</td>
@@ -92,8 +97,8 @@ const Table = () => {
                                             {/* if there is a button in form, it will close the modal */}
                                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                         </form>
-                                        <div className="">
-                                            {data.category} not same
+                                        <div className="h-full">
+                                            <Spinner />
                                         </div>
                                     </div>
                                 </dialog>
