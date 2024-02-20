@@ -88,7 +88,7 @@ const router = createBrowserRouter([
         },
         {
           path: "myAsset",
-          element: <UnderMaintenance />, 
+          element: <MyAsset />, 
         },
         {
           path: "financialManagement",  //personal finance
