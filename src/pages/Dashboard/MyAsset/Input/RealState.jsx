@@ -4,7 +4,15 @@ import { BiBuildingHouse } from "react-icons/bi";
 const RealState = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
-        console.log(data);
+        const realStateData = {
+            category: data.property,
+            asset_name: data.name,
+            magnitude: data.size,
+            purchase_date: data.date,
+            locale: data.location,
+            value: 180000
+        }
+        console.log(realStateData);
         reset()
     }
     return (
@@ -21,12 +29,25 @@ const RealState = () => {
                             defaultValue="" // Add a default value if needed
                         >
                             <option value="">Select Property Type</option>
-                            <option value="house">House</option>
-                            <option value="apartment">Apartment</option>
-                            <option value="condo">Land</option>
+                            <option value="House">House</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Land">Land</option>
                             {/* Add more options as needed */}
                         </select>
                     </div>
+                    <div className="flex flex-col mb-4 md:w-[220px] w-full">
+                        <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Property Name</label>
+                        <input
+                            {...register('name', { required: true })}
+                            type="text"
+                            name="name"
+                            className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
+                            required
+                            placeholder="My Home"
+                        />
+                    </div>
+                </div>
+                <div className="flex md:flex-row flex-col gap-3 w-full">
                     <div className="flex flex-col mb-4 md:w-[220px] w-full">
                         <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Location</label>
                         <input
@@ -39,29 +60,39 @@ const RealState = () => {
                             required
                         />
                     </div>
+                    <div className="flex flex-col mb-4 md:w-[220px] w-full">
+                        <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Purchase Date</label>
+                        <input
+                            {...register('date', { required: true })}
+                            type="date"
+                            name="date"
+                            className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
+                            required
+                        />
+                    </div>
                 </div>
+
                 <div className="flex md:flex-row flex-col gap-3 w-full">
                     <div className="flex flex-col mb-2 md:w-[220px] w-full">
-                        <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Size/Area</label>
+                        <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Size/Area(sqft)</label>
                         <input
                             {...register('size', { required: true, min: 0, })}
-                            type="text"
+                            type="number"
                             name="size"
-
                             className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
-                            placeholder="e.g. 1000 sqft, 200 acres"
+                            placeholder="e.g. 1000, 200"
                             required
                         />
                     </div>
                     <div className="flex flex-col mb-4 md:w-[220px] w-full">
-                        <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Price</label>
+                        <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Price(USD)</label>
                         <input
                             {...register('price', { required: true, min: 0 })}
                             type="number"
                             name="price"
 
                             className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
-                            placeholder="e.g. 100000"
+                            placeholder="e.g. 100000 "
                             required
                         />
                     </div>
