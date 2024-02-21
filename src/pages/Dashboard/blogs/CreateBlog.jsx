@@ -3,17 +3,21 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PostedBlog from './postedBlog/PostedBlog'
 import useAuth from '../../../Hooks/useAuth';
+import DashboardHeader from '../../../Components/header/DashboardHeader';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
-const MyBlogs = () => {
+const CreateBlogs = () => {
     const { AuthUser } = useAuth();
     const [value, setValue] = useState('');
-    console.log(value);
+    // console.log(value);
     const [tags, setTags] = useState([]);
     const [tag, setTag] = useState('');
     const [title, setTitle] = useState('');
     const {email, displayName, photoURL} = AuthUser;
+    const axiosPublic = useAxiosPublic();
 
-    console.log(email, displayName, photoURL);
+    // console.log(email, displayName, photoURL);
 
     
     const modules = {
@@ -60,25 +64,37 @@ const MyBlogs = () => {
     }
 
 
+    const handleSubmit = () => {
+        const blogData = {
+            userEmail: email,
+            userName: displayName,
+            userImg: photoURL,
+            title,
+            tags,
+            content: value,
+        }
+        console.log(blogData);
+        // post data
+        axiosPublic.post('/api/blogs', blogData)
+        .then(res => {
+            console.log(res);
+            toast.success('Blog Posted Successfully');
+            setTitle('');
+            setTags([]);
+            setValue('');
+        })
+        .catch(err => {
+            console.log(err);
+            toast.error('Failed to Post Blog');
+        })
+    }
+
     return (
         <div>
             
             {/* Banner Section */}
-            <div className=' flex flex-col-reverse md:flex md:flex-row justify-around items-center max-w-screen-lg mx-auto m-4'>
-                <div className='flex-1'>
-                   
-                    <h4 className=' text-3xl font-bold'>Publish Your </h4>
+            <DashboardHeader smallTitle={"Publish Your"} largeTitle={"Finance Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
 
-                    <h1 className='text-2xl  md:text-8xl font-bold'>
-                        Finance Blogs
-                    </h1>
-                </div>
-
-                <div className='flex'>
-                    <img className='w-full' src={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} 
-                    alt="paymentImg" />
-                </div>
-            </div>
 
             
             {/* Blog Section */}
@@ -157,11 +173,13 @@ const MyBlogs = () => {
                     formats={formats}
                     clipboard={clipboard}
                     placeholder='Write your blog...'
-                    className='h-[500px] border-2 border-gray-300 rounded-lg m-10 overflow-y-clip'
+                    className='h-[500px] border-2 border-gray-300 rounded-lg m-10 overflow-y-clip
+                    pb-10'
                 />
 
                 <div className='w-full text-center mb-10'>
                     <div className='btn btn-outline btn-wide text-xl text-green-700 btn-accent text-center mx-auto'
+                    onClick={handleSubmit}
                     > POST BLOG</div>
                 </div>
 
@@ -173,4 +191,4 @@ const MyBlogs = () => {
     );
 };
 
-export default MyBlogs;
+export default CreateBlogs;

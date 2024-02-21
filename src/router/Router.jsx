@@ -23,7 +23,8 @@ import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance"
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
 import PayTax from "../pages/zakatAndTax/Tax/PayTax";
 import PaymentFailed from "../pages/shared/Payment/PaymentFailed";
-import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
+import CreateBlogs from "../pages/Dashboard/blogs/CreateBlog";
+import MyBlog from "../pages/Dashboard/blogs/myBlog/MyBlog";
 
 
 
@@ -120,8 +121,12 @@ const router = createBrowserRouter([
           element: <AllUsers/>,
         },
         {
+          path: 'publishBlogs',
+          element: <CreateBlogs/>,
+        },
+        {
           path: 'myBlogs',
-          element: <MyBlogs/>,
+          element: <MyBlog/>,
         },
         {
           path: 'myAsset',
