@@ -14,6 +14,7 @@ const CreateBlogs = () => {
     const [tags, setTags] = useState([]);
     const [tag, setTag] = useState('');
     const [title, setTitle] = useState('');
+    const [blogImage, setBlogImage] = useState('');
     const {email, displayName, photoURL} = AuthUser;
     const axiosPublic = useAxiosPublic();
 
@@ -72,6 +73,7 @@ const CreateBlogs = () => {
             title,
             tags,
             content: value,
+            blogImage
         }
         console.log(blogData);
         // post data
@@ -82,6 +84,7 @@ const CreateBlogs = () => {
             setTitle('');
             setTags([]);
             setValue('');
+            setBlogImage('');
         })
         .catch(err => {
             console.log(err);
@@ -93,7 +96,7 @@ const CreateBlogs = () => {
         <div>
             
             {/* Banner Section */}
-            <DashboardHeader smallTitle={"Publish Your"} largeTitle={"Finance Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
+            <DashboardHeader smallTitle={"Publish Your"} largeTitle={"Finance Blogs"} imgSrc={"https://i.ibb.co/PZmKGyj/blgo.png"} />
 
 
             
@@ -136,9 +139,24 @@ const CreateBlogs = () => {
                     </div>
                 </div>
 
+                {/* input blog image link */}
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Blog Image</span>
+                    </label>
+                    <input type="text" placeholder="Blog Image Link"
+                        value={blogImage}
+                        onChange={(e) => setBlogImage(e.target.value)}
+                        className="input input-bordered border-2 border-gray-300" required />
+                </div>
+
+                {/* write a message in small font that they can upload image in imgbb.com and share link easily */}
+                <p className='text-xs text-gray-500'>You can upload your image in imgbb.com and share the link here</p>
+                
+
                 {/* show all tags */}
-                <div className='flex flex-row mt-4 gap-2'>
-                    <h5 className='font-semibold mr-2'>Tags : </h5>
+                <div className='flex flex-row mt-4 gap-2 flex-wrap items-center'>
+                    <h5 className='font-semibold mr-2'>Tags: </h5>
                     {tags.map((tag, index) => {
 
                         return (
