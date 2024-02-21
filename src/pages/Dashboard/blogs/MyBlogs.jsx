@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PostedBlog from './postedBlog/PostedBlog'
+import useAuth from '../../../Hooks/useAuth';
 
 const MyBlogs = () => {
-    
+    const { AuthUser } = useAuth();
     const [value, setValue] = useState('');
-    // console.log(value);
+    console.log(value);
     const [tags, setTags] = useState([]);
     const [tag, setTag] = useState('');
     const [title, setTitle] = useState('');
+    const {email, displayName, photoURL} = AuthUser;
+
+    console.log(email, displayName, photoURL);
 
     
     const modules = {
@@ -60,7 +64,7 @@ const MyBlogs = () => {
         <div>
             
             {/* Banner Section */}
-            <div className=' flex flex-col-reverse md:flex md:flex-row  items-center max-w-screen-lg mx-auto m-4'>
+            <div className=' flex flex-col-reverse md:flex md:flex-row justify-around items-center max-w-screen-lg mx-auto m-4'>
                 <div className='flex-1'>
                    
                     <h4 className=' text-3xl font-bold'>Publish Your </h4>
@@ -153,8 +157,7 @@ const MyBlogs = () => {
                     formats={formats}
                     clipboard={clipboard}
                     placeholder='Write your blog...'
-                    className='h-[500px] border-2 border-gray-300 rounded-lg p-2  m-10 overflow-y-scroll'
-
+                    className='h-[500px] border-2 border-gray-300 rounded-lg m-10 overflow-y-clip'
                 />
 
                 <div className='w-full text-center mb-10'>
