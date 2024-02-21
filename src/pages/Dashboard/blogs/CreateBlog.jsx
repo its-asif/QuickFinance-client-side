@@ -3,17 +3,22 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PostedBlog from './postedBlog/PostedBlog'
 import useAuth from '../../../Hooks/useAuth';
+import DashboardHeader from '../../../Components/header/DashboardHeader';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
-const MyBlogs = () => {
+const CreateBlogs = () => {
     const { AuthUser } = useAuth();
     const [value, setValue] = useState('');
-    console.log(value);
+    // console.log(value);
     const [tags, setTags] = useState([]);
     const [tag, setTag] = useState('');
     const [title, setTitle] = useState('');
+    const [blogImage, setBlogImage] = useState('');
     const {email, displayName, photoURL} = AuthUser;
+    const axiosPublic = useAxiosPublic();
 
-    console.log(email, displayName, photoURL);
+    // console.log(email, displayName, photoURL);
 
     
     const modules = {
@@ -60,25 +65,39 @@ const MyBlogs = () => {
     }
 
 
+    const handleSubmit = () => {
+        const blogData = {
+            userEmail: email,
+            userName: displayName,
+            userImg: photoURL,
+            title,
+            tags,
+            content: value,
+            blogImage
+        }
+        console.log(blogData);
+        // post data
+        axiosPublic.post('/api/blogs', blogData)
+        .then(res => {
+            console.log(res);
+            toast.success('Blog Posted Successfully');
+            setTitle('');
+            setTags([]);
+            setValue('');
+            setBlogImage('');
+        })
+        .catch(err => {
+            console.log(err);
+            toast.error('Failed to Post Blog');
+        })
+    }
+
     return (
         <div>
             
             {/* Banner Section */}
-            <div className=' flex flex-col-reverse md:flex md:flex-row justify-around items-center max-w-screen-lg mx-auto m-4'>
-                <div className='flex-1'>
-                   
-                    <h4 className=' text-3xl font-bold'>Publish Your </h4>
+            <DashboardHeader smallTitle={"Publish Your"} largeTitle={"Finance Blogs"} imgSrc={"https://i.ibb.co/PZmKGyj/blgo.png"} />
 
-                    <h1 className='text-2xl  md:text-8xl font-bold'>
-                        Finance Blogs
-                    </h1>
-                </div>
-
-                <div className='flex'>
-                    <img className='w-full' src={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} 
-                    alt="paymentImg" />
-                </div>
-            </div>
 
             
             {/* Blog Section */}
@@ -120,9 +139,24 @@ const MyBlogs = () => {
                     </div>
                 </div>
 
+                {/* input blog image link */}
+                <div className="form-control w-full">
+                    <label className="label">
+                        <span className="label-text">Blog Image</span>
+                    </label>
+                    <input type="text" placeholder="Blog Image Link"
+                        value={blogImage}
+                        onChange={(e) => setBlogImage(e.target.value)}
+                        className="input input-bordered border-2 border-gray-300" required />
+                </div>
+
+                {/* write a message in small font that they can upload image in imgbb.com and share link easily */}
+                <p className='text-xs text-gray-500'>You can upload your image in imgbb.com and share the link here</p>
+                
+
                 {/* show all tags */}
-                <div className='flex flex-row mt-4 gap-2'>
-                    <h5 className='font-semibold mr-2'>Tags : </h5>
+                <div className='flex flex-row mt-4 gap-2 flex-wrap items-center'>
+                    <h5 className='font-semibold mr-2'>Tags: </h5>
                     {tags.map((tag, index) => {
 
                         return (
@@ -157,11 +191,13 @@ const MyBlogs = () => {
                     formats={formats}
                     clipboard={clipboard}
                     placeholder='Write your blog...'
-                    className='h-[500px] border-2 border-gray-300 rounded-lg m-10 overflow-y-clip'
+                    className='h-[500px] border-2 border-gray-300 rounded-lg m-10 overflow-y-clip
+                    pb-10'
                 />
 
                 <div className='w-full text-center mb-10'>
                     <div className='btn btn-outline btn-wide text-xl text-green-700 btn-accent text-center mx-auto'
+                    onClick={handleSubmit}
                     > POST BLOG</div>
                 </div>
 
@@ -173,4 +209,4 @@ const MyBlogs = () => {
     );
 };
 
-export default MyBlogs;
+export default CreateBlogs;

@@ -15,7 +15,7 @@ const DashboardHeader = ({smallTitle, largeTitle, imgSrc}) => {
                 </div>
 
                 <div className='flex'>
-                    <img className='max-h-[350px] w-auto' src={imgSrc} 
+                    <img className=' max-h-96 w-full' src={imgSrc} 
                     
                     alt="" />
                 </div>
