@@ -4,7 +4,15 @@ import { FaSackDollar } from "react-icons/fa6";
 const Forex = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
-        console.log(data);
+        const forexData = {
+            category: "Forex",
+            asset_name: data.currency,
+            magnitude: data.amount,
+            purchase_date: data.date,
+            locale: "US",
+            value: "000"
+        };
+        console.log(forexData);
         reset()
     }
 
@@ -25,6 +33,16 @@ const Forex = () => {
                     />
                 </div>
                 <div className="flex flex-col mb-4">
+                    <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Purchase Date</label>
+                    <input
+                        {...register('date', { required: true})}
+                        type="date"
+                        name="date"
+                        className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
+                        required
+                    />
+                </div>
+                <div className="flex flex-col mb-4">
                     <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Amount</label>
                     <input
                         {...register('amount', { required: true, min: 0 })}
@@ -32,7 +50,7 @@ const Forex = () => {
                         name="amount"
 
                         className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
-                        placeholder="e.g  1.5 BTC"
+                        placeholder="e.g  1000, 200"
                         required
                     />
                 </div>

@@ -1,10 +1,12 @@
-import axios from "axios";
+
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 const DonateZakat = () => {
   
   const {AuthUser}=useAuth()
+  const axiosPublic = useAxiosPublic();
   const handleDonateZakat = (event)=>{
     event.preventDefault();
     const form = event.target;
@@ -30,7 +32,7 @@ const DonateZakat = () => {
         email,
 
     }
-    axios.post('http://localhost:3000/api/payments',data)
+    axiosPublic.post('/api/payments',data)
     .then((res)=>{
       window.location.replace(res?.data?.url)
       console.log(res.data);

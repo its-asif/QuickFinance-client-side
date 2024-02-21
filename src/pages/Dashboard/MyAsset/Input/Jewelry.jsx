@@ -28,7 +28,7 @@ const Jewelry = () => {
                 </div>
                 <div className="flex md:flex-row flex-col gap-3 w-full">
                 <div className="flex flex-col mb-2 md:w-[220px] w-full">
-                        <label htmlFor="property" className="primaryColor text-sm md:text-base font-bold mb-1">Property Type</label>
+                        <label htmlFor="property" className="primaryColor text-sm md:text-base font-bold mb-1">Material Type</label>
                         <select
                             {...register('material', { required: true })}
                             name="material"

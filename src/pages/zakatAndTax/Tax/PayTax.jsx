@@ -1,9 +1,11 @@
-import axios from "axios";
+
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
-const DonateTax = () => {
+const PayTax = () => {
     const {AuthUser}=useAuth();
+    const axiosPublic = useAxiosPublic()
     const handleDonateTax = (event)=>{
             event.preventDefault();
             const form = event.target;
@@ -32,7 +34,7 @@ const DonateTax = () => {
             }
 
             console.log(data);
-            axios.post('http://localhost:3000/api/payments',data)
+            axiosPublic.post('/api/payments',data)
             .then((res)=>{
               window.location.replace(res?.data?.url)
               console.log(res.data);
@@ -113,7 +115,7 @@ const DonateTax = () => {
           <input type="number" name='phone_no'  placeholder="Phone Number" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required />
         </div>
         <div className="form-control mt-6">
-          <button className="sharedBtn">Donate</button>
+          <button className="sharedBtn">Pay Your TAX</button>
         </div>
       </form>
     </div>
@@ -123,4 +125,4 @@ const DonateTax = () => {
     );
 };
 
-export default DonateTax;
+export default PayTax;

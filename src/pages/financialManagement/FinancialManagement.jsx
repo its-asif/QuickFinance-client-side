@@ -51,7 +51,7 @@ const FinancialManagement = () => {
 
     return (
 
-        <div className={`bg-cover object-cover min-h-screen bg-[url('/finance.jpg')] bg-opacity-60 `}
+        <div className={` `}
         >
 
             <div className="pt-32 pb-32 z-[3] md:mx-32">

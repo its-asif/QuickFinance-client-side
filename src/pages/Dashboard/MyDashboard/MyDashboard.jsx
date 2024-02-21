@@ -1,5 +1,6 @@
 import useAuth from "../../../Hooks/useAuth";
 import { MdVerified } from "react-icons/md";
+import { ImCloudDownload } from "react-icons/im";
 import { MdVerifiedUser } from "react-icons/md";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
@@ -161,7 +162,7 @@ const MyDashboard = () => {
                             </div>
 
                             {/* Print Btn  */}
-                            <button onClick={downloadPdf} className="sharedBtn">Print Data</button>
+                            <button onClick={downloadPdf} className="sharedBtn "> <ImCloudDownload className=" mr-2 text-2xl" /> My Report </button>
                         </div>
                     </div>
 
