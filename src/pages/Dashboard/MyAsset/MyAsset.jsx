@@ -71,7 +71,7 @@ const MyAsset = () => {
         <div className="w-full h-full p-4 ">
 
             {/* Banner section */}
-            <DashboardHeader smallTitle={"Calculate Your"} largeTitle={"Assets"} imgSrc={"https://i.ibb.co/rcpy1HF/asset.png"} />
+            <DashboardHeader smallTitle={"Your Asset"} largeTitle={"Portfolio"} imgSrc={"https://i.ibb.co/rcpy1HF/asset.png"} />
 
 
 
@@ -134,7 +134,7 @@ const MyAsset = () => {
                 </div>
             </dialog>
             {/* table  */}
-            <div className="mt-6">
+            <div className="my-6">
                 <Table/>
             </div>
         </div>
