@@ -74,7 +74,7 @@ const MyPayments = () => {
                                         <td>{payment.tran_id}</td>
                                         <td>
                                             {
-                                                payment.payment_status === "true" ? 
+                                                payment.payment_status === 'true'? 
                                                 <span className="btn btn-sm bg-green-200 text-green-700">Success</span> :
                                                 <span className="btn btn-sm bg-red-200 text-red-700">Failed</span>
                                             
