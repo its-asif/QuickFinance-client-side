@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
+import DashboardHeader from "../../../Components/header/DashboardHeader";
 
 const MyPayments = () => {
     const axiosPublic = useAxiosPublic();
@@ -32,22 +33,7 @@ const MyPayments = () => {
         <div>
 
             {/* Banner Section */}
-            <div className=' flex flex-col-reverse md:flex md:flex-row justify-between items-center max-w-screen-md mx-auto m-4'>
-                <div className='flex-1'>
-                    <h4 className='ml-1 text-3xl font-bold'>See Your </h4>
-                   
-
-                    <h1 className='text-2xl  md:text-8xl font-bold'>
-                        Payments
-                    </h1>
-                </div>
-
-                <div className='flex-1'>
-                    <img className='max-w-96' src={"https://i.ibb.co/sybZCX6/cash-payment-concept-illustration-114360-3320-removebg-preview.png"} 
-                    
-                    alt="paymentImg" />
-                </div>
-            </div>
+            <DashboardHeader smallTitle={"See Your"} largeTitle={"Payments"} imgSrc={"https://i.ibb.co/sybZCX6/cash-payment-concept-illustration-114360-3320-removebg-preview.png"} />
 
 
 
