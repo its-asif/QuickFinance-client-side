@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { FaTimesCircle } from "react-icons/fa";
 import GoalProgressCard from './GoalProgressCard';
 import toast from 'react-hot-toast';
+import DashboardHeader from '../../../Components/header/DashboardHeader';
 const GoalProgress = () => {
 
 
@@ -79,29 +80,15 @@ const GoalProgress = () => {
             </div>
             {/*End  greeting part */}
 
-            <div className=' flex flex-col-reverse md:flex md:flex-row justify-between items-center max-w-screen-md mx-auto'>
-                <div className='flex-1'>
-                    <h4 className='text-3xl font-bold'>Plan Your </h4>
-                   
 
-                    <h1 className='ml-3 text-2xl  md:text-8xl font-bold'>
-                        Future
-                    </h1>
-                    <h1 className='ml-3 text-2xl md:text-8xl font-bold'>
-                        Goals
-                    </h1>
-                </div>
+            {/* Banner section */}
+            <DashboardHeader smallTitle={"Plan Your"} largeTitle={"Future Goals"} imgSrc={goalImg} />
 
-                <div className='flex-1'>
-                    <img className='' src={goalImg} alt="" />
-                </div>
-            </div>
+
+
+
             {/* set goal input field and button */}
             <div>
-
-
-
-
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
                 <button
                     className="btn ml-2 bg-[#399b53] text-white  hover:bg-[#399b53a8]"
