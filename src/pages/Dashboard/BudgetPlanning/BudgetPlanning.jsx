@@ -5,6 +5,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import useBudgetData from "../../../Hooks/useBudgetData";
+import DashboardHeader from "../../../Components/header/DashboardHeader";
 // import BudgetData from "./BudgetData";
 
 const BudgetPlanning = () => {
@@ -602,7 +603,16 @@ const BudgetPlanning = () => {
 
     return (
         <div className="mx-2 pt-10 md:mx-20 mt-4">
-            <form onSubmit={handleSubmit} className=' '>
+
+
+            {/* Banner section */}
+            <DashboardHeader smallTitle={"Plan Your"} largeTitle={"Monthly Budget"} imgSrc={"https://i.ibb.co/Php2XhG/saving.png"} />
+
+
+
+
+
+            <form onSubmit={handleSubmit} className='mt-20 '>
                 <div className="space-y-3">
                     {/* <div className="mb-6 ml-10 md:ml-0">
                         <label htmlFor='planName' className=''>

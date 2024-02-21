@@ -14,6 +14,7 @@ import { AiFillGolden } from "react-icons/ai";
 import { BsBank2 } from "react-icons/bs";
 import Table from "./Table";
 import Savings from "./Input/Savings";
+import DashboardHeader from "../../../Components/header/DashboardHeader";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
     const showPage = (page) => {
@@ -68,6 +69,12 @@ const MyAsset = () => {
     };
     return (
         <div className="w-full h-full p-4 ">
+
+            {/* Banner section */}
+            <DashboardHeader smallTitle={"Calculate Your"} largeTitle={"Assets"} imgSrc={"https://i.ibb.co/rcpy1HF/asset.png"} />
+
+
+
             {/* buttno  */}
             <div className="flex justify-end w-full">
                 <button className="sharedBtn " onClick={() => { document.getElementById('my_modal_5').showModal(), setCurrentPage('default') }}>
