@@ -27,7 +27,7 @@ const Forex = () => {
                     asset_name: CurrencyName,
                     magnitude: data.amount,
                     purchase_date: data.date,
-                    locale: "US",
+                    locale: "Home",
                     status: "equal",
                     value: `${newPrice * data.amount} ${code}`
                 };

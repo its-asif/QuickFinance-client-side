@@ -4,7 +4,35 @@ import { BsBank2 } from "react-icons/bs";
 const Savings = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
-        console.log(data);
+
+        // Function to calculate the value of the deposit account
+        const calculateDepositValue = (amount, interestRate, date) => {
+            // Assuming the interest is compounded annually
+            const today = new Date();
+            const purchaseDate = new Date(date);
+            const timeDiff = today.getTime() - purchaseDate.getTime();
+            const timeInYears = timeDiff / (1000 * 3600 * 24 * 365); // Convert milliseconds to years
+
+            // Convert interest rate to decimal
+            const r = parseFloat(interestRate) / 100;
+
+            // Calculate the value of the deposit account using compound interest formula
+            const value = parseFloat(amount) * Math.pow(1 + r, timeInYears);
+            return value;
+        };
+
+        const depositValue = calculateDepositValue(data.amount, data.interestRate, data.date);
+        console.log("Value of the deposit account:", depositValue);
+        const SavingsData = {
+            category: "Savings",
+            asset_name: data.accType,
+            magnitude: data.amount,
+            purchase_date: data.date,
+            locale: data.bank,
+            value: depositValue.toFixed(3),
+            status: "ups"
+        }
+        console.log(SavingsData);
         reset()
     }
     // todo 
@@ -38,6 +66,16 @@ const Savings = () => {
                             required
                         />
                     </div>
+                </div>
+                <div className="flex flex-col mb-4 w-full">
+                    <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Purchase Date</label>
+                    <input
+                        {...register('date', { required: true })}
+                        type="date"
+                        name="date"
+                        className="h-10 rounded-md border border-black focus:border-none placeholder:px-2"
+                        required
+                    />
                 </div>
                 <div className="flex md:flex-row flex-col gap-3 w-full">
                     <div className="flex flex-col mb-2 md:w-[220px] w-full">

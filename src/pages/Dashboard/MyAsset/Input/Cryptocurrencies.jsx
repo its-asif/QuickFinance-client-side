@@ -26,7 +26,7 @@ const Crypto = () => {
                     asset_name: cryptoName,
                     magnitude: data.amount,
                     purchase_date: data.date,
-                    locale: "US",
+                    locale: "Global",
                     status: "equal",
                     value: `${newPrice * data.amount} ${code}`
                 };
