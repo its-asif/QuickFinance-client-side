@@ -5,6 +5,7 @@ import { AiOutlineStock } from "react-icons/ai";
 const Stocks = () => {
     const { register, handleSubmit, reset } = useForm();
     const [price, SetPrice] = useState(null)
+    
     const onSubmit = async (data) => {
         const stockName = data.stock.toUpperCase();
         if (stockName) {
