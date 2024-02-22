@@ -5,67 +5,68 @@ import { MdPayment } from "react-icons/md";
 import { PiUserCircleDuotone } from "react-icons/pi";
 import { SiGoogletagmanager } from "react-icons/si";
 import { GoGoal } from "react-icons/go";
-import { GiMoneyStack } from "react-icons/gi";
-import { MdDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
+import useUsersData from "../../Hooks/useUsersData";
 
 
 const AboutUs = () => {
 
+    const { totalUser } = useUsersData()
+
+    const totalUsers = totalUser.length
     // ToDo 
     // This Total Value will be Dynamic 
-
-    const totalUsers = 50
-    const totalSubscribers = 40
-    const totalFeatures = 10
+    const totalSubscribers = 0
+    const totalServices = 10
 
     const featuresData = [
         {
             icon: <TfiSupport className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 1',
-            description: 'Tailor our product to suit your needs Tailor our product to suit your needs.',
+            title: 'My Asset',
+            description: 'Tailor our product to suit your needs.',
         },
         {
             icon: <GiTakeMyMoney className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 2',
-            description: 'Your data is protected by the latest security measures.',
+            title: 'Personal Finance',
+            description: 'ensuring financial control and peace of mind.',
         },
         {
             icon: <MdPayment className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 3',
-            description: 'Description for Feature 3.',
+            title: 'My Payment',
+            description: 'Manage your payments effortlessly with our secure system.',
         },
         {
             icon: <PiUserCircleDuotone className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 4',
-            description: 'Experience blazing-fast performance with our product.',
+            title: 'Budget Planning',
+            description: 'Experience blazing-fast performance while planning your budget.',
         },
         {
             icon: <SiGoogletagmanager className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 5',
-            description: 'Expand your reach with our global network.',
+            title: 'Manage Debt',
+            description: 'Efficiently manage your debts with our global network.',
         },
         {
             icon: <GoGoal className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 6',
-            description: 'Seamless communication for your team.',
+            title: 'Goal Progress',
+            description: 'Track and achieve your goals with our intuitive features.',
         },
         {
             icon: <PiUserCircleDuotone className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 7',
-            description: 'Experience blazing-fast performance with our product.',
+            title: 'Print Finance Data',
+            description: 'Generate and print financial data with ease for your records.',
         },
         {
             icon: <SiGoogletagmanager className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 8',
-            description: 'Expand your reach with our global network.',
+            title: 'Read Blog',
+            description: 'Expand your financial knowledge by reading our informative blogs.',
         },
         {
             icon: <GoGoal className="w-8 h-8 mb-4 inline-block" />,
-            title: 'Feature Title 9',
-            description: 'Seamless communication for your team.',
+            title: 'Zakat & Tax',
+            description: 'Easily Pay your tax and zakat',
         }
     ];
+
 
 
     // To Do
@@ -233,8 +234,8 @@ const AboutUs = () => {
                                 </svg>
                             </div>
                             <div className="mt-4">
-                                <p className="text-lg font-semibold text-gray-800">Total Features</p>
-                                <p className="text-gray-600 text-sm mt-1">{totalFeatures}</p>
+                                <p className="text-lg font-semibold text-gray-800">Total Services</p>
+                                <p className="text-gray-600 text-sm mt-1">{totalServices}</p>
                             </div>
                         </div>
                     </div>
