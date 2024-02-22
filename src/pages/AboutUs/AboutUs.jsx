@@ -1,13 +1,21 @@
 
 import { TfiSupport } from "react-icons/tfi";
 import { GiTakeMyMoney } from "react-icons/gi";
-import { MdPayment } from "react-icons/md";
+import { MdCalculate, MdPayment } from "react-icons/md";
 import { PiUserCircleDuotone } from "react-icons/pi";
 import { SiGoogletagmanager } from "react-icons/si";
 import { GoGoal } from "react-icons/go";
 import { Link } from "react-router-dom";
 import useUsersData from "../../Hooks/useUsersData";
+import team1 from './../../assets/team/tahmid.webp'
+import team2 from './../../assets/team/asif-2.jpg'
+import team3 from './../../assets/team/hanif.jpg'
+import team4 from './../../assets/team/fayaz-2.jpg'
+import team5 from './../../assets/team/tahsin.jpg'
 
+
+import { GiMoneyStack } from "react-icons/gi";
+import { FaBookReader } from "react-icons/fa";
 
 const AboutUs = () => {
 
@@ -36,7 +44,7 @@ const AboutUs = () => {
             description: 'Manage your payments effortlessly with our secure system.',
         },
         {
-            icon: <PiUserCircleDuotone className="w-8 h-8 mb-4 inline-block" />,
+            icon: <GiMoneyStack className="w-8 h-8 mb-4 inline-block" />,
             title: 'Budget Planning',
             description: 'Experience blazing-fast performance while planning your budget.',
         },
@@ -56,12 +64,12 @@ const AboutUs = () => {
             description: 'Generate and print financial data with ease for your records.',
         },
         {
-            icon: <SiGoogletagmanager className="w-8 h-8 mb-4 inline-block" />,
+            icon: <FaBookReader className="w-8 h-8 mb-4 inline-block" />,
             title: 'Read Blog',
             description: 'Expand your financial knowledge by reading our informative blogs.',
         },
         {
-            icon: <GoGoal className="w-8 h-8 mb-4 inline-block" />,
+            icon: <MdCalculate className="w-8 h-8 mb-4 inline-block" />,
             title: 'Zakat & Tax',
             description: 'Easily Pay your tax and zakat',
         }
@@ -95,33 +103,33 @@ const AboutUs = () => {
     // Team Section 
     const teamData = [
         {
-            name: "David Forren",
-            position: "Founder / CEO",
-            image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            name: "Tahmid Rahman",
+            position: "",
+            image: team1,
             portfolio: "#"
         },
         {
-            name: "Amil Evara",
-            position: "UI/UX Designer",
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            name: "Asif Hossain",
+            position: "",
+            image: team2,
             portfolio: "#"
         },
         {
-            name: "David Forren",
-            position: "Founder / CEO",
-            image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            name: "Hanif Biswas",
+            position: "",
+            image: team3,
             portfolio: "#"
         },
         {
-            name: "Amil Evara",
-            position: "UI/UX Designer",
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            name: "Muddasir Faiyaz",
+            position: "",
+            image: team4,
             portfolio: "#"
         },
         {
-            name: "David Forren",
-            position: "Founder / CEO",
-            image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=900&h=900&q=80",
+            name: "Tahsin Zaman",
+            position: "",
+            image: team5,
             portfolio: "#"
         },
 
@@ -293,21 +301,27 @@ const AboutUs = () => {
                     <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Meet Our team</h2>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-2">
-                    {teamData.map((member, index) => (
-                        <div key={index} className="text-center">
-                            <img className="rounded-xl w-1/2 mx-auto" src={member.image} alt="Image Description" />
-                            <div className="mt-2 sm:mt-4">
-                                <h3 className="text-sm font-medium  sm:text-base lg:text-lg">
-                                    {member.name}
-                                </h3>
-                                <p className="text-xs sm:text-sm lg:text-base">
-                                    {member.position}
-                                </p>
+                <div className="container mx-auto my-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                        {teamData.map((member, index) => (
+                            <div key={index} className="text-center shadow-xl rounded-lg overflow-hidden group">
+                                <div className="relative">
+                                    <img className="w-full h-56 object-cover group-hover:opacity-40" src={member.image} alt={member.name} />
+                                    <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 ">
+                                        <div className="transform translate-y-6 group-hover:translate-y-0">
+                                            <h3 className="text-lg font-semibold text-black transition-all duration-300">{member.name}</h3>
+                                            <a href={member.profileLink} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+                
+
+
+
 
             </div>
 
