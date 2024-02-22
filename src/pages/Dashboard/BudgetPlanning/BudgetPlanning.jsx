@@ -14,7 +14,6 @@ const BudgetPlanning = () => {
     const { AuthUser } = useAuth();
     const userEmail = AuthUser?.email;
     const { budgetPlanningData, refetch } = useBudgetData(userEmail);
-    console.log(budgetPlanningData[0]);
 
     useEffect(() => {
         if (budgetPlanningData[0]) {
