@@ -71,9 +71,13 @@ const Table = () => {
                                 <td className="hide-on-tablet">{data.purchase_date}</td>
                                 <td className="hide-on-small">{data.locale}</td>
                                 <td className="hide-on-small flex items-center justify-start gap-1">
-                                    <IoTrendingUpSharp className="h-4 w-4 md:h-5 md:w-5 text-green-500 hover:cursor-pointer" />
-                                    <RiEqualLine  className="h-4 w-4 md:h-5 md:w-5 text-yellow-500 hover:cursor-pointer" />
-                                    <IoTrendingDownSharp className="h-4 w-4 md:h-5 md:w-5 text-red-500 hover:cursor-pointer" />
+                                    {
+                                        data.status === "ups" ?
+                                            <IoTrendingUpSharp className="h-4 w-4 md:h-5 md:w-5 text-green-500 hover:cursor-pointer" />
+                                            : data.status === 'down' ?
+                                                <IoTrendingDownSharp className="h-4 w-4 md:h-5 md:w-5 text-red-500 hover:cursor-pointer" />
+                                                : <RiEqualLine className="h-4 w-4 md:h-5 md:w-5 text-yellow-500 hover:cursor-pointer" />
+                                    }
                                     <FaEye className="group-hover:visible invisible hover:cursor-pointer" onClick={() => { document.getElementById(`asset_data_${idx}`).showModal() }} />
                                 </td>
                                 <td>{data.value} USD</td>
