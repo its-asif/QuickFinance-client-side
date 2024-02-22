@@ -40,8 +40,6 @@ const Crypto = () => {
                 }
             }
         }
-
-
     }
 
     return (
