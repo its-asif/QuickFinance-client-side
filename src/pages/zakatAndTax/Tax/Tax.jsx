@@ -216,7 +216,6 @@ const Tax = () => {
                                         <input
                                             name="age"
                                             type="number"
-                                            required
                                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                             placeholder="0"
                                         />
@@ -248,7 +247,7 @@ const Tax = () => {
 
                                         <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
 
-                                        <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
+                                        <p className="mb-2 text-[#0ba360] flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
                                     </div>
                                     <Link to='/payTax'>
                                         <div className="mt-6">
