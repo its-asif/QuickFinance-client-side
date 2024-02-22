@@ -25,7 +25,7 @@ const Dashboard = () => {
     return (
         <div className="flex ">
             <div
-                className={`bg-black tracking-wider fixed z-[10] h-screen  p-5 pt-8  ${open ? "w-72  " : "w-20 "}     transform translate-x-0 md:translate-x-0 duration-300 relative`}>
+                className={`bg-black tracking-wider min-h-screen fixed z-[10]   p-5 pt-8   ${open ? "w-72  duration-1500  " : "w-20 duration-2000 "}     transform translate-x-0 md:translate-x-0 duration-1500 relative`}>
 
                 <BsFillArrowLeftSquareFill className={` text-black text-4xl  bg-white absolute -right-7 border border-white rounded-lg top-9  cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
 
@@ -39,29 +39,29 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className={`inline-flex mt-3    ${open && " p-12 rotate-[360ndeg]"} duration-500 `} >
+                <div className={`inline-flex mt-3    ${open && " p-12 rotate-[360deg]"} duration-700 `} >
 
                     <img src={AuthUser?.photoURL} className={`rounded-lg w-full  flex justify-center items-center border border-white 
-                 ${!open && "w-[80px] rounded-sm "} duration-500`} alt="" />
+                 ${!open && "w-[80px] rounded-sm "} duration-700 `} alt="" />
 
 
 
                 </div>
-                <div className={`font-sans font-bold  -mt-10 text-center block text-white ${!open && "hidden"} duration-500`} >
+                <div className={`font-sans font-bold  -mt-10 text-center block text-white ${!open && "hidden"}  duration-700 `} >
                     <h1>
                         {AuthUser?.displayName}
                     </h1>
 
                 </div>
-                <div className="text-center flex justify-center items-center mt-8">
+                <div className="text-center flex justify-center items-center duration-500 mt-8">
                     <ul
 
-                        className={`menu p-2 shadow space-y-2 rounded-box text-center font-bold text-sm md:text-md`}
+                        className={`menu p-2 shadow space-y-2 rounded-box text-center duration-500 font-bold text-sm md:text-md`}
                         style={{ textAlign: "center" }}
                     >
 
                         {/* My Account */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/myAccount"
@@ -78,7 +78,7 @@ const Dashboard = () => {
                         {!isAdmin && <>
 
                         {/* My assets */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/myAsset"
@@ -92,7 +92,7 @@ const Dashboard = () => {
 
 
                         {/* Finance Management */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/financialManagement"
@@ -106,7 +106,7 @@ const Dashboard = () => {
 
 
                         {/* Budget Planning */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/budgetPlanning"
@@ -119,7 +119,7 @@ const Dashboard = () => {
                         </li>
 
                         {/* Goal Progress */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/goalProgress"
@@ -133,7 +133,7 @@ const Dashboard = () => {
 
 
                         {/* Debt Management */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/manageDebt"
@@ -146,7 +146,7 @@ const Dashboard = () => {
                         </li>
 
                         {/* My Payments */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-1000 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/payments"
@@ -166,12 +166,12 @@ const Dashboard = () => {
                         {isAdmin && <>
 
                         {/* All Users */}
-                        <li className="mt-2 lg:mt-0">
+                        <li className="mt-2  duration-500 lg:mt-0">
                             {" "}
                             <NavLink
                                 to="/dashboard/allUsers"
                                 className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-500 " : " pendingDashboard hover:scale-110 opacity-95 duration-500 "
                                 }
                             >
                                 <FaUsers className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>All Users</span>
@@ -189,19 +189,19 @@ const Dashboard = () => {
 
 
 
-                <div className="">
+                <div className=" duration-500">
 
                     <hr
-                        className="my-4 h-[1px] border-t-0 bg-white opacity-100 " />
+                        className="my-4 h-[1px] border-t-0 duration-500  bg-white opacity-100 " />
 
-                    <div className={`flex ${open ? "flex-row" : "flex-col"} items-center justify-center gap-2`}>
+                    <div className={`flex ${open ? "flex-row" : "flex-col"} items-center duration-500  justify-center gap-2`}>
                         <Link to='/'>
                             <button className="bg-white btn btn-sm" >
-                                < FaHome className={`${open && "text-4xl"} font-extrabold  primaryColor text-xl duration-300 `} />
+                                < FaHome className={`${open && "text-4xl"} font-extrabold  primaryColor text-xl duration-500  `} />
                             </button>
                         </Link>
                         <button className="bg-white flex items-center gap-1 btn btn-sm" onClick={LogOut}>
-                            < CiLogout className={`${open && "text-4xl"} font-extrabold  primaryColor text-xl duration-300 `} />
+                            < CiLogout className={`${open && "text-4xl"} font-extrabold  primaryColor text-xl duration-500  `} />
                             <span className={`${!open && "hidden"} font-bold primaryColor`}>log Out</span>
                         </button>
                     </div>
@@ -209,7 +209,7 @@ const Dashboard = () => {
             </div>
 
 
-            <div className="w-full h-screen overflow-y-scroll ">
+            <div className="w-full duration-1000 ease-in  ">
                 <Outlet />
             </div>
 
