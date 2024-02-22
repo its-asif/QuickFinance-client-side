@@ -84,7 +84,7 @@ const MyAsset = () => {
             </div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box  modalBg">
+                <div className="modal-box w-[100vw] md:w-full modalBg">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

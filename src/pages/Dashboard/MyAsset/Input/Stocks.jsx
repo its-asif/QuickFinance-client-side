@@ -1,11 +1,9 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineStock } from "react-icons/ai";
 
 const Stocks = () => {
     const { register, handleSubmit, reset } = useForm();
-    const [price, SetPrice] = useState(null)
-    
+
     const onSubmit = async (data) => {
         const stockName = data.stock.toUpperCase();
         if (stockName) {
@@ -14,29 +12,29 @@ const Stocks = () => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch stock data');
                 }
-                const data = await response.json();
-                const newPrice = await data['Global Quote']['05. price'];
-                SetPrice(newPrice)
-                const previousPrice = data['Global Quote']['08. previous close'];
-                console.log('Latest Price:', newPrice);
-                console.log('Previous Price:', previousPrice);
+                const StocksData = await response.json();
+                const newPrice = await StocksData['Global Quote']['05. price'];
+                const StockStatus = await StocksData['Global Quote']['09. change'];
 
+
+                const stocksData = {
+                    category: "Stocks",
+                    asset_name: data.stock.toUpperCase(),
+                    magnitude: data.quantity,
+                    purchase_date: data.date,
+                    locale: "US",
+                    status: `${StockStatus > 0 ? 'ups': 'downs'}`,
+                    value: newPrice * data.quantity
+                };
+                console.log(stocksData);
+                reset()
             }
             catch {
                 console.log('error');
             }
         }
 
-        const stocksData = {
-            category: "Stocks",
-            asset_name: data.stock.toUpperCase(),
-            magnitude: data.quantity,
-            purchase_date: data.date,
-            locale: "US",
-            value: price * data.quantity
-        };
-        console.log(stocksData);
-        reset()
+
 
     }
     return (

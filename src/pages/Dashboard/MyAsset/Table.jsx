@@ -24,7 +24,7 @@ const Table = () => {
                     <thead className=" trial rounded-md">
                         <tr>
                             <th className=" w-[100px] "></th>
-                            <th className="text-white text-[15px]">Category</th>
+                            <th className="text-white text-[15px] hide-on-small">Category</th>
                             <th className="text-white text-[15px]">Asset</th>
                             <th className="text-white text-[15px] hide-on-tablet">Magnitude</th>
                             <th className="text-white text-[15px] hide-on-tablet">Purchase Date</th>
@@ -43,7 +43,7 @@ const Table = () => {
                                     </button>
                                     <MdDelete className="h-4 w-4 md:h-5 md:w-5 text-red-500  hover:scale-110 hover:cursor-pointer" />
                                 </th>
-                                <td className="">
+                                <td className="hide-on-small">
                                     {data.category}
                                 </td>
                                 <td>{data.asset_name}</td>

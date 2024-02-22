@@ -10,7 +10,8 @@ const RealState = () => {
             magnitude: data.size,
             purchase_date: data.date,
             locale: data.location,
-            value: 180000
+            status:'equal',
+            value: data.price
         }
         console.log(realStateData);
         reset()
