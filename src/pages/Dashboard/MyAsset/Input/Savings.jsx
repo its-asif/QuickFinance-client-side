@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsBank2 } from "react-icons/bs";
+import { AuthContext } from "../../../../AuthProvider/Contextapi";
 
 const Savings = () => {
+    const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
 
@@ -12,28 +15,40 @@ const Savings = () => {
             const purchaseDate = new Date(date);
             const timeDiff = today.getTime() - purchaseDate.getTime();
             const timeInYears = timeDiff / (1000 * 3600 * 24 * 365); // Convert milliseconds to years
+            // console.log(timeInYears);
+            // if any one choose feature time 
+            if (timeInYears < 0) {
+                const value = null;
+                console.log('sorry');
+                return value;
+            }
+            else {
+                // Convert interest rate to decimal
+                const r = parseFloat(interestRate) / 100;
 
-            // Convert interest rate to decimal
-            const r = parseFloat(interestRate) / 100;
-
-            // Calculate the value of the deposit account using compound interest formula
-            const value = parseFloat(amount) * Math.pow(1 + r, timeInYears);
-            return value;
+                // Calculate the value of the deposit account using compound interest formula
+                const value = parseFloat(amount) * Math.pow(1 + r, timeInYears);
+                return value;
+            }
         };
 
         const depositValue = calculateDepositValue(data.amount, data.interestRate, data.date);
-        console.log("Value of the deposit account:", depositValue);
-        const SavingsData = {
-            category: "Savings",
-            asset_name: data.accType,
-            magnitude: data.amount,
-            purchase_date: data.date,
-            locale: data.bank,
-            value: depositValue.toFixed(3),
-            status: "ups"
+        // console.log("Value of the deposit account:", depositValue);
+        if (depositValue) {
+            const SavingsData = {
+                userEmail: AuthUser?.email,
+                category: "Savings",
+                asset_name: data.accType,
+                magnitude: parseFloat(data.amount),
+                purchase_date: data.date,
+                locale: data.bank,
+                value: parseFloat(depositValue.toFixed(3)),
+                status: "ups"
+            }
+            console.log(SavingsData);
+            reset()
         }
-        console.log(SavingsData);
-        reset()
+
     }
     // todo 
     // research for savings  Savings Tracker Service

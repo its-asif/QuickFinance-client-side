@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineStock } from "react-icons/ai";
+import { AuthContext } from "../../../../AuthProvider/Contextapi";
 
 const Stocks = () => {
+    const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
@@ -18,12 +21,13 @@ const Stocks = () => {
 
 
                 const stocksData = {
+                    userEmail: AuthUser?.email,
                     category: "Stocks",
                     asset_name: data.stock.toUpperCase(),
-                    magnitude: data.quantity,
+                    magnitude: parseFloat(data.quantity),
                     purchase_date: data.date,
                     locale: "US",
-                    status: `${StockStatus > 0 ? 'ups': 'downs'}`,
+                    status: `${StockStatus > 0 ? 'ups' : 'downs'}`,
                     value: newPrice * data.quantity
                 };
                 console.log(stocksData);

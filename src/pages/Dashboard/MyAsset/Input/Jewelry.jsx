@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillGolden } from "react-icons/ai";
+import { AuthContext } from "../../../../AuthProvider/Contextapi";
 
 const Jewelry = () => {
+    const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
 
     // handle submit 
@@ -40,9 +43,10 @@ const Jewelry = () => {
                 const purchaseAmount =  parseFloat(data.amount)
                 // console.log(purchaseAmount);
                 const jewelryData = {
+                    userEmail: AuthUser?.email,
                     category: "Jewelry",
                     asset_name: data.jewelry,
-                    magnitude: data.amount,
+                    magnitude: parseFloat(data.weight),
                     purchase_date: data.date,
                     locale: "Home",
                     status: `${purchaseAmount > CurrentValue? 'down': CurrentValue > purchaseAmount ? 'ups' :'equal'}`,

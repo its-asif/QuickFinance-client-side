@@ -1,17 +1,21 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BiBuildingHouse } from "react-icons/bi";
+import { AuthContext } from "../../../../AuthProvider/Contextapi";
 
 const RealState = () => {
+    const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
         const realStateData = {
+            userEmail: AuthUser?.email,
             category: data.property,
             asset_name: data.name,
-            magnitude: data.size,
+            magnitude: parseFloat(data.size),
             purchase_date: data.date,
             locale: data.location,
             status:'equal',
-            value: data.price
+            value: parseFloat(data.price)
         }
         console.log(realStateData);
         reset()

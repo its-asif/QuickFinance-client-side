@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { PiCurrencyBtcFill } from "react-icons/pi";
+import { AuthContext } from "../../../../AuthProvider/Contextapi";
 
 const Crypto = () => {
+    const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
         const cryptoSymbol = data.crypto.toUpperCase();
-        const exchangeCurrency = data.currency.toUpperCase();
+        const exchangeCurrency = 'USD'
         if (cryptoSymbol) {
             try {
                 const response = await fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${cryptoSymbol}&to_currency=${exchangeCurrency}&apikey=7F65SIUO6QKGE5OP`);
@@ -19,16 +22,17 @@ const Crypto = () => {
                 // crypto price 
                 const newPrice = await CryptoData['Realtime Currency Exchange Rate']['5. Exchange Rate']
                 // crypto exchange currency 
-                const code = await CryptoData['Realtime Currency Exchange Rate']['3. To_Currency Code']
+                // const code = await CryptoData['Realtime Currency Exchange Rate']['3. To_Currency Code']
 
                 const cryptoData = {
+                    userEmail: AuthUser?.email,
                     category: "Crypto",
                     asset_name: cryptoName,
-                    magnitude: data.amount,
+                    magnitude: parseFloat(data.amount),
                     purchase_date: data.date,
                     locale: "Global",
                     status: "equal",
-                    value: `${newPrice * data.amount} ${code}`
+                    value: parseFloat(`${newPrice * data.amount}`)
                 };
                 console.log(cryptoData);
                 reset()
@@ -58,7 +62,7 @@ const Crypto = () => {
                         required
                     />
                 </div>
-                <div className="flex flex-col mb-2">
+                {/* <div className="flex flex-col mb-2">
                     <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Exchange Currency</label>
                     <input
                         {...register('currency', { required: true, min: 0, })}
@@ -69,7 +73,7 @@ const Crypto = () => {
                         placeholder="e.g. USD, CNY, BDT"
                         required
                     />
-                </div>
+                </div> */}
                 <div className="flex flex-col mb-4">
                     <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Purchase Date</label>
                     <input
