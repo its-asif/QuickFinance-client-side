@@ -106,31 +106,31 @@ const AboutUs = () => {
             name: "Tahmid Rahman",
             position: "",
             image: team1,
-            portfolio: "#"
+            portfolio: "https://tahmidshawn.netlify.app/"
         },
         {
             name: "Asif Hossain",
             position: "",
             image: team2,
-            portfolio: "#"
+            portfolio: "https://asifhossain.netlify.app/"
         },
         {
             name: "Hanif Biswas",
             position: "",
             image: team3,
-            portfolio: "#"
+            portfolio: "https://asifhossain.netlify.app/"
         },
         {
             name: "Muddasir Faiyaz",
             position: "",
             image: team4,
-            portfolio: "#"
+            portfolio: "https://muddasir-faiyaj.web.app/"
         },
         {
             name: "Tahsin Zaman",
             position: "",
             image: team5,
-            portfolio: "#"
+            portfolio: "https://tahsinzaman.netlify.app"
         },
 
         // Add more team members as needed
@@ -310,7 +310,7 @@ const AboutUs = () => {
                                     <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 ">
                                         <div className="transform translate-y-6 group-hover:translate-y-0">
                                             <h3 className="text-lg font-semibold text-black transition-all duration-300">{member.name}</h3>
-                                            {/* <a href={member.profileLink} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a> */}
+                                            <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -318,7 +318,7 @@ const AboutUs = () => {
                         ))}
                     </div>
                 </div>
-                
+
 
 
 
