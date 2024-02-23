@@ -1,5 +1,8 @@
-// ToDo 
-// 1.Email Js need to be implement 
+// import { FaLocationDot, FaPhone } from "react-icons/fa6";
+// import { AiTwotoneMail } from "react-icons/ai";
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
 
@@ -14,6 +17,33 @@ const ContactUs = () => {
         window.location.href = mailtoLink;
     };
 
+
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_f3ou88i', 'template_tbzc2ye', form.current, 'Sdok8aunyfWTnDtXq')
+            .then(() => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your message send successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                form.current.reset();
+            }, () => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Something wrong try again later",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            });
+    }
+
     return (
         <div className="py-24">
             <div
@@ -26,7 +56,7 @@ const ContactUs = () => {
                         experienced team is ready to engage with you.</p>
 
                     {/* Form Part      */}
-                    <form>
+                    <form ref={form} onSubmit={sendEmail}>
                         <div className="space-y-4 mt-8 c">
                             {/* Name  */}
                             <input type="text" placeholder="Full Name"
