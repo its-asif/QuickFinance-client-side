@@ -400,7 +400,7 @@ const Dashboard = () => {
 
 
 
-            <div className=" w-full h-full absolute md:sticky   px-4  md:px-0 ">
+            <div className=" w-full h-full absolute md:sticky mt-4  px-4  md:px-0 ">
                 <Outlet  />
             </div>
 
