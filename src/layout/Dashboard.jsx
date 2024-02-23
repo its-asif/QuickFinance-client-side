@@ -27,21 +27,21 @@ const Dashboard = () => {
 
             {/* start sidebar for medium and large devices  */}
             <div
-                className={`bg-black tracking-wider min-h-screen hidden md:block fixed z-[10]   p-5 pt-8   ${open ? "w-72  duration-1500  " : "w-20 duration-2000 "}     transform translate-x-0 md:translate-x-0 duration-1500 `}>
+                className={`bg-black tracking-wider min-h-screen hidden md:block fixed z-[10]   md:p-4 lg:p-5 pt-8   ${open ? " md:w-52 lg:w-72    duration-1500  " : "w-20 duration-2000 "}   relative  transform translate-x-0 md:translate-x-0 duration-1500 `}>
 
                 <BsFillArrowLeftSquareFill className={` text-black text-4xl  bg-white absolute -right-7 border border-white rounded-lg top-9  cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
 
 
 
-                <div className="inline-flex ">
+                <div className="inline-flex  ">
                     <img src="/favicon.png" className={` h-8 w-full cursor-pointer block float-left duration-500 ${open && "rotate-[360deg]"}`} />
-                    <h1 className={`text-white origin-left md:text-2xl font-medium mr-2 ml-2 duration-300 ${!open && "scale-0"}`}>
+                    <h1 className={`text-white origin-left md:text-md  lg:text-2xl font-medium mr-2 ml-2 duration-300 ${!open && "scale-0"}`}>
                         Quick<span className="text-[#399b53]">Finance</span>
                     </h1>
 
                 </div>
 
-                <div className={`inline-flex mt-3    ${open && " p-12 rotate-[360deg]"} duration-700 `} >
+                <div className={`inline-flex mt-3    ${open && " md:p-8 lg:p-12 "} duration-700 `} >
 
                     <img src={AuthUser?.photoURL} className={`rounded-lg w-full  flex justify-center items-center border border-white 
                  ${!open && "w-[80px] rounded-sm "} duration-700 `} alt="" />
@@ -49,8 +49,8 @@ const Dashboard = () => {
 
 
                 </div>
-                <div className={`font-sans font-bold text-center pr-6  -mt-10  block text-white ${!open && "hidden"}  duration-700 `} >
-                    <h1>
+                <div className={`font-sans font-bold text-center lg:pr-6 md:pr-4  lg:-mt-10 md:mt-2  block text-white ${!open && "hidden"}  duration-700 `} >
+                    <h1 className="md:text-sm  lg:text-2xl text-center ml-0">
                         {AuthUser?.displayName}
                     </h1>
 
@@ -71,7 +71,7 @@ const Dashboard = () => {
                                     isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <MdDashboard className={`${open && "text-2xl"} text-md`} />
+                                <MdDashboard className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />
                                 <span className={`${!open && "hidden"}`}>My Account</span>
                             </NavLink>
                         </li>
@@ -88,7 +88,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                     }
                                 >
-                                    <TfiSupport className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Asset</span>
+                                    <TfiSupport className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>My Asset</span>
                                 </NavLink>
                             </li>
 
@@ -102,7 +102,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                     }
                                 >
-                                    <GiTakeMyMoney className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Personal Finance</span>
+                                    <GiTakeMyMoney className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Personal Finance</span>
                                 </NavLink>
                             </li>
 
@@ -116,7 +116,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300 text-white" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                     }
                                 >
-                                    <GiMoneyStack className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Budget Planing</span>
+                                    <GiMoneyStack className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Budget Planing</span>
                                 </NavLink>
                             </li>
 
@@ -129,7 +129,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                     }
                                 >
-                                    <GoGoal className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Goal Progress</span>
+                                    <GoGoal className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Goal Progress</span>
                                 </NavLink>
                             </li>
 
@@ -143,7 +143,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                     }
                                 >
-                                    <SiGoogletagmanager className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
+                                    <SiGoogletagmanager className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
                                 </NavLink>
                             </li>
 
@@ -156,7 +156,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                     }
                                 >
-                                    <MdPayment className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Payments</span>
+                                    <MdPayment className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>My Payments</span>
                                 </NavLink>
                             </li>
                         </>}
@@ -176,7 +176,7 @@ const Dashboard = () => {
                                         isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-500 " : " pendingDashboard hover:scale-110 opacity-95 duration-500 "
                                     }
                                 >
-                                    <FaUsers className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>All Users</span>
+                                    <FaUsers className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>All Users</span>
                                 </NavLink>
                             </li>
 
@@ -220,7 +220,7 @@ const Dashboard = () => {
                 ${open ? "w-20   p-5 pt-8   duration-1500  " : "w-0 duration-2000 "}  
                     transform translate-x-0 md:translate-x-0 duration-1500 `}>
 
-                <BsFillArrowLeftSquareFill className={` text-black text-4xl font-bold  ${open && "absolute"}  bg-white  -right-7 border border-white rounded-lg top-9  cursor-pointer ${!open && "rotate-180 fixed z-[10]"}`} onClick={() => setOpen(!open)} />
+                <BsFillArrowLeftSquareFill className={` text-black text-4xl font-bold  ${open && "absolute"}  bg-white  -right-6 border border-white rounded-lg top-16  cursor-pointer ${!open && "rotate-180 fixed z-[10]"}`} onClick={() => setOpen(!open)} />
 
 
 
@@ -230,7 +230,7 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className={`inline-flex mt-3    ${open && "  rotate-[360deg] duration-500"} duration-700 `} >
+                <div className={`inline-flex mt-3    ${open && "   duration-500"} duration-700 `} >
 
                     <img src={AuthUser?.photoURL} className={`rounded-lg w-full  flex justify-center items-center border border-white 
                  ${!open && "hidden "} duration-700 `} alt="" />
@@ -400,8 +400,8 @@ const Dashboard = () => {
 
 
 
-            <div className=" w-full h-full  duration-1000 absolute  ease-in px-4 md:px-0 ">
-                <Outlet />
+            <div className=" w-full h-full absolute md:sticky mt-4  px-4  md:px-0 ">
+                <Outlet  />
             </div>
 
         </div>
