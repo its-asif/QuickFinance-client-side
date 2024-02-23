@@ -310,7 +310,7 @@ const AboutUs = () => {
                                     <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 ">
                                         <div className="transform translate-y-6 group-hover:translate-y-0">
                                             <h3 className="text-lg font-semibold text-black transition-all duration-300">{member.name}</h3>
-                                            <a href={member.profileLink} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a>
+                                            {/* <a href={member.profileLink} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a> */}
                                         </div>
                                     </div>
                                 </div>
