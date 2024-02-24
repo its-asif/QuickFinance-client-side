@@ -29,7 +29,7 @@ const MyBlog = () => {
             
             {/* card - blog list */}
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
-             container mt-5 mx-20">
+             container mt-5">
                 {
                     blogs.map(blog => (
                         <div key={blog._id} className="card mb-4">
