@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsBank2 } from "react-icons/bs";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Savings = () => {
     const { AuthUser } = useContext(AuthContext)
+    const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
 
@@ -46,7 +49,32 @@ const Savings = () => {
                 status: "ups"
             }
             console.log(SavingsData);
-            reset()
+            axiosPublic.post('/api/assets', SavingsData)
+            .then(res => {
+                console.log(res.status);
+                if (res.status === 200) {
+                    document.getElementById('my_modal_5').close();
+                    Swal.fire({
+                        title: "Successful",
+                        text: "Your Asset Added to Portfolio",
+                        icon: "success",
+                        confirmButtonColor: "#0ba360",
+                        confirmButtonText: 'DONE'
+                    });
+                    reset()
+
+                }
+                else {
+                    Swal.fire({
+                        title: "oh!",
+                        text: "Some Error Occurred",
+                        icon: "error",
+                        confirmButtonColor: "#0ba360",
+                        confirmButtonText: 'DONE'
+                    });
+                }
+            }
+            )
         }
 
     }
