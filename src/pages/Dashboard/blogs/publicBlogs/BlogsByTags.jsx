@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import DashboardHeader from "../../../../Components/header/DashboardHeader";
+import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { Link } from "react-router-dom";
-import useAuth from "../../../../Hooks/useAuth";
+import DashboardHeader from "../../../../Components/header/DashboardHeader";
 
-const MyBlog = () => {
-    const { AuthUser } = useAuth();
+const BlogsByTags = () => {
+
+    const { tag } = useParams();
     const axiosPublic = useAxiosPublic();
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    
     useEffect(() => {
-        axiosPublic.get(`/api/blogs/${AuthUser.email}`)
+        axiosPublic.get(`/api/blogs/tag/${tag}`)
         .then(res => {
             setBlogs(res.data);
             setLoading(false);
@@ -24,21 +25,19 @@ const MyBlog = () => {
     if(loading) return (<div>Loading...</div>)
 
     return (
-        <div className="mx-20 mb-10">
-            <DashboardHeader smallTitle={"See Your"} largeTitle={"Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
+        <div className="pt-10">
+            <DashboardHeader smallTitle={"Read all"} largeTitle={`${tag} Blogs`} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
-             container mt-5 mx-auto">
+            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4
+             container mt-5 mx-20">
                 {
                     blogs.map(blog => (
                         <div key={blog._id} className="card mb-4">
-                            <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 ">
+                            <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-60 md:w-80">
                                 <Link to={`/blogs/${blog._id}`} className="block w-full h-full">
                                     <img alt="blog photo" src={blog.blogImg} className="object-cover w-full h-48"/>
-                                    <div className="w-full p-4 bg-white dark:bg-gray-800
-                                        h-40
-                                    ">
+                                    <div className="w-full p-4 bg-white dark:bg-gray-800 h-40">
                                         {/* <p className="font-medium text-indigo-500 text-md">
                                             Article
                                         </p> */}
@@ -75,9 +74,6 @@ const MyBlog = () => {
                                                 {blog.userName}
                                             </p>
                                             <p className="text-gray-400 dark:text-gray-300">
-                                                {/* 20 mars 2029 - 6 min read */}
-                                                {/* "2024-02-21T17:23:35.625Z" */}
-                                                {/* count word in blog.content then divide it and give an appoximate min read */}
                                                 {new Date(blog.createdAt).toLocaleDateString()} - {Math.floor(blog.content.split(' ').length / 150)} min read
                                             </p>
                                         </div>
@@ -92,4 +88,4 @@ const MyBlog = () => {
     );
 };
 
-export default MyBlog;
+export default BlogsByTags;

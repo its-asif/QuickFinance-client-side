@@ -28,7 +28,7 @@ const PublicBlogs = () => {
             <DashboardHeader smallTitle={"Read all"} largeTitle={"Financial Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
-            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10
              container mt-5 mx-20">
                 {
                     blogs.map(blog => (
@@ -44,7 +44,6 @@ const PublicBlogs = () => {
                                             {blog.title}
                                         </p>
                                         <p className="font-light text-gray-400 dark:text-gray-300 text-md h-12">
-                                            {/* first convert it to html then show first 20 words */}
                                             {blog.content.replace(/<[^>]*>?/gm, '').split(' ').slice(0, 20).join(' ')}...
                                         </p>
                                         <div className="flex flex-wrap items-center mt-4 justify-starts">
@@ -57,7 +56,7 @@ const PublicBlogs = () => {
                                             {
                                                 blog.tags.map(tag => (
                                                     <div key={tag.id} className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                                        {tag}
+                                                        <Link to={`/blog/tag/${tag}`}> {tag}</Link>
                                                     </div>
                                                 ))
                                             }
@@ -73,7 +72,8 @@ const PublicBlogs = () => {
                                                 {blog.userName}
                                             </p>
                                             <p className="text-gray-400 dark:text-gray-300">
-                                                {new Date(blog.createdAt).toLocaleDateString()} - {Math.floor(blog.content.split(' ').length / 150)} min read
+                                                {new Date(blog.createdAt).toLocaleDateString()} - Likes: { blog.likes} 
+                                                {/* {Math.floor(blog.content.split(' ').length / 150)} min read */}
                                             </p>
                                         </div>
                                     </div>

@@ -27,6 +27,7 @@ import CreateBlogs from "../pages/Dashboard/blogs/CreateBlog";
 import MyBlog from "../pages/Dashboard/blogs/myBlog/MyBlog";
 import PublicBlogs from "../pages/Dashboard/blogs/publicBlogs/PublicBlogs";
 import BlogDetails from "../pages/Dashboard/blogs/publicBlogs/BlogDetails";
+import BlogsByTags from "../pages/Dashboard/blogs/publicBlogs/BlogsByTags";
 
 
 
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "blogs/:blogId",
         element: <BlogDetails/>,
+      },
+      {
+        path: "blog/tag/:tag",
+        element: <BlogsByTags/>,
       },
       {
         path: 'publicBlogs',
