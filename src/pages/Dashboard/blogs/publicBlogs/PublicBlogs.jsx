@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import DashboardHeader from "../../../../Components/header/DashboardHeader";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import DashboardHeader from "../../../../Components/header/DashboardHeader";
 
-const MyBlog = () => {
+const PublicBlogs = () => {
+
     const axiosPublic = useAxiosPublic();
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    
     useEffect(() => {
         axiosPublic.get('/api/blogs')
         .then(res => {
@@ -22,8 +24,8 @@ const MyBlog = () => {
     if(loading) return (<div>Loading...</div>)
 
     return (
-        <div>
-            <DashboardHeader smallTitle={"See Your"} largeTitle={"Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
+        <div className="pt-10">
+            <DashboardHeader smallTitle={"Read all"} largeTitle={"Financial Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
             <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4
@@ -34,9 +36,7 @@ const MyBlog = () => {
                             <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-60 md:w-80">
                                 <Link to={`/blogs/${blog._id}`} className="block w-full h-full">
                                     <img alt="blog photo" src={blog.blogImg} className="object-cover w-full h-48"/>
-                                    <div className="w-full p-4 bg-white dark:bg-gray-800
-                                        h-40
-                                    ">
+                                    <div className="w-full p-4 bg-white dark:bg-gray-800 h-40">
                                         {/* <p className="font-medium text-indigo-500 text-md">
                                             Article
                                         </p> */}
@@ -73,9 +73,6 @@ const MyBlog = () => {
                                                 {blog.userName}
                                             </p>
                                             <p className="text-gray-400 dark:text-gray-300">
-                                                {/* 20 mars 2029 - 6 min read */}
-                                                {/* "2024-02-21T17:23:35.625Z" */}
-                                                {/* count word in blog.content then divide it and give an appoximate min read */}
                                                 {new Date(blog.createdAt).toLocaleDateString()} - {Math.floor(blog.content.split(' ').length / 150)} min read
                                             </p>
                                         </div>
@@ -90,4 +87,4 @@ const MyBlog = () => {
     );
 };
 
-export default MyBlog;
+export default PublicBlogs;
