@@ -48,7 +48,7 @@ const Savings = () => {
                 value: parseFloat(depositValue.toFixed(3)),
                 status: "ups"
             }
-            console.log(SavingsData);
+            // console.log(SavingsData);
             axiosPublic.post('/api/assets', SavingsData)
             .then(res => {
                 console.log(res.status);
