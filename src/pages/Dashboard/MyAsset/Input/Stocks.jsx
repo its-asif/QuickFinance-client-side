@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineStock } from "react-icons/ai";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Stocks = () => {
+    const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
 
@@ -30,8 +33,31 @@ const Stocks = () => {
                     status: `${StockStatus > 0 ? 'ups' : 'downs'}`,
                     value: newPrice * data.quantity
                 };
-                console.log(stocksData);
-                reset()
+                axiosPublic.post('/api/assets', stocksData )
+                .then(res => {
+                    // console.log(res.status);
+                    if (res.status === 200) {
+                        document.getElementById('my_modal_5').close();
+                        Swal.fire({
+                            title: "Successful",
+                            text: "Your Asset Added to Portfolio",
+                            icon: "success",
+                            confirmButtonColor: "#0ba360",
+                            confirmButtonText: 'DONE'
+                        });
+                        reset()
+    
+                    }
+                    else {
+                        Swal.fire({
+                            title: "oh!",
+                            text: "Some Error Occurred",
+                            icon: "error",
+                            confirmButtonColor: "#0ba360",
+                            confirmButtonText: 'DONE'
+                        });
+                    }
+                })
             }
             catch {
                 console.log('error');
