@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaSackDollar } from "react-icons/fa6";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Forex = () => {
+    const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
@@ -35,8 +38,31 @@ const Forex = () => {
                     status: "equal",
                     value: parseFloat(`${newPrice * data.amount}`)
                 };
-                console.log(forexData);
-                reset()
+                axiosPublic.post('/api/assets', forexData )
+                .then(res => {
+                    // console.log(res.status);
+                    if (res.status === 200) {
+                        document.getElementById('my_modal_5').close();
+                        Swal.fire({
+                            title: "Successful",
+                            text: "Your Asset Added to Portfolio",
+                            icon: "success",
+                            confirmButtonColor: "#0ba360",
+                            confirmButtonText: 'DONE'
+                        });
+                        reset()
+    
+                    }
+                    else {
+                        Swal.fire({
+                            title: "oh!",
+                            text: "Some Error Occurred",
+                            icon: "error",
+                            confirmButtonColor: "#0ba360",
+                            confirmButtonText: 'DONE'
+                        });
+                    }
+                })
 
             }
             catch {
