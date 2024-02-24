@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import DashboardHeader from "../../../../Components/header/DashboardHeader";
+import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { Link } from "react-router-dom";
-import useAuth from "../../../../Hooks/useAuth";
+import DashboardHeader from "../../../../Components/header/DashboardHeader";
 
-const MyBlog = () => {
-    const { AuthUser } = useAuth();
+const BlogsByTags = () => {
+
+    const { tag } = useParams();
     const axiosPublic = useAxiosPublic();
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    
     useEffect(() => {
-        axiosPublic.get(`/api/blogs/${AuthUser.email}`)
+        axiosPublic.get(`/api/blogs/tag/${tag}`)
         .then(res => {
             setBlogs(res.data);
             setLoading(false);
@@ -24,11 +25,11 @@ const MyBlog = () => {
     if(loading) return (<div>Loading...</div>)
 
     return (
-        <div className="mx-20 mb-10">
-            <DashboardHeader smallTitle={"See Your"} largeTitle={"Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
+        <div className="pt-10">
+            <DashboardHeader smallTitle={"Read all"} largeTitle={`${tag} Blogs`} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
+            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4
              container mt-5 mx-20">
                 {
                     blogs.map(blog => (
@@ -44,6 +45,7 @@ const MyBlog = () => {
                                             {blog.title}
                                         </p>
                                         <p className="font-light text-gray-400 dark:text-gray-300 text-md h-12">
+                                            {/* first convert it to html then show first 20 words */}
                                             {blog.content.replace(/<[^>]*>?/gm, '').split(' ').slice(0, 20).join(' ')}...
                                         </p>
                                         <div className="flex flex-wrap items-center mt-4 justify-starts">
@@ -56,7 +58,7 @@ const MyBlog = () => {
                                             {
                                                 blog.tags.map(tag => (
                                                     <div key={tag.id} className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                                        <Link to={`/blog/tag/${tag}`}> {tag}</Link>
+                                                        {tag}
                                                     </div>
                                                 ))
                                             }
@@ -86,4 +88,4 @@ const MyBlog = () => {
     );
 };
 
-export default MyBlog;
+export default BlogsByTags;

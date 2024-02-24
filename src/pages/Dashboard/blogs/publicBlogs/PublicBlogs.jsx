@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import DashboardHeader from "../../../../Components/header/DashboardHeader";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
-import useAuth from "../../../../Hooks/useAuth";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import DashboardHeader from "../../../../Components/header/DashboardHeader";
 
-const MyBlog = () => {
-    const { AuthUser } = useAuth();
+const PublicBlogs = () => {
+
     const axiosPublic = useAxiosPublic();
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    
     useEffect(() => {
-        axiosPublic.get(`/api/blogs/${AuthUser.email}`)
+        axiosPublic.get('/api/blogs')
         .then(res => {
             setBlogs(res.data);
             setLoading(false);
@@ -24,11 +24,11 @@ const MyBlog = () => {
     if(loading) return (<div>Loading...</div>)
 
     return (
-        <div className="mx-20 mb-10">
-            <DashboardHeader smallTitle={"See Your"} largeTitle={"Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
+        <div className="pt-10">
+            <DashboardHeader smallTitle={"Read all"} largeTitle={"Financial Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10
              container mt-5 mx-20">
                 {
                     blogs.map(blog => (
@@ -72,7 +72,8 @@ const MyBlog = () => {
                                                 {blog.userName}
                                             </p>
                                             <p className="text-gray-400 dark:text-gray-300">
-                                                {new Date(blog.createdAt).toLocaleDateString()} - {Math.floor(blog.content.split(' ').length / 150)} min read
+                                                {new Date(blog.createdAt).toLocaleDateString()} - Likes: { blog.likes} 
+                                                {/* {Math.floor(blog.content.split(' ').length / 150)} min read */}
                                             </p>
                                         </div>
                                     </div>
@@ -86,4 +87,4 @@ const MyBlog = () => {
     );
 };
 
-export default MyBlog;
+export default PublicBlogs;

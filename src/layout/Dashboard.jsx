@@ -4,7 +4,7 @@ import { FaHome, FaUsers } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
 import { TfiSupport } from "react-icons/tfi";
 import { GiTakeMyMoney } from "react-icons/gi";
-import { MdPayment } from "react-icons/md";
+import { MdOutlinePublish, MdPayment, MdPublish } from "react-icons/md";
 import { PiUserCircleDuotone } from "react-icons/pi";
 import { SiGoogletagmanager } from "react-icons/si";
 import { GoGoal } from "react-icons/go";
@@ -13,6 +13,7 @@ import useAuth from "../Hooks/useAuth";
 import { MdDashboard } from "react-icons/md";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import useAdminStatus from "../Hooks/useAdminStatus";
+import { BiBookContent } from "react-icons/bi";
 const Dashboard = () => {
     const [open, setOpen] = useState(true);
     const { AuthUser, LogOut } = useAuth();
@@ -134,31 +135,70 @@ const Dashboard = () => {
                             </li>
 
 
-                            {/* Debt Management */}
-                            <li className="mt-2  duration-1000 lg:mt-0">
-                                {" "}
-                                <NavLink
-                                    to="/dashboard/manageDebt"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
-                                    }
-                                >
-                                    <SiGoogletagmanager className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
-                                </NavLink>
-                            </li>
+                        {/* Debt Management */}
+                        {/* <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/manageDebt"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                }
+                            >
+                                <SiGoogletagmanager className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
+                            </NavLink>
+                        </li> */}
 
-                            {/* My Payments */}
-                            <li className="mt-2  duration-1000 lg:mt-0">
-                                {" "}
-                                <NavLink
-                                    to="/dashboard/payments"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
-                                    }
-                                >
-                                    <MdPayment className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>My Payments</span>
-                                </NavLink>
-                            </li>
+                        {/* MY Blog Section */}
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/myBlogs"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                }
+                            >
+                                <BiBookContent className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Blogs</span>
+                            </NavLink>
+                        </li>
+
+                        {/* Create Blog Section */}
+                        <li className="mt-2 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/publishBlogs"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                }
+                            >
+                                <MdOutlinePublish className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Publish Blog</span>
+                            </NavLink>
+                        </li>
+
+                        {/* Debt Management */}
+                        {/* <li className="mt-2  duration-1000 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/manageDebt"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                }
+                            >
+                                <SiGoogletagmanager className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
+                            </NavLink>
+                        </li> */}
+
+                        {/* My Payments */}
+                        <li className="mt-2  duration-1000 lg:mt-0">
+                            {" "}
+                            <NavLink
+                                to="/dashboard/payments"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                }
+                            >
+                                <MdPayment className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>My Payments</span>
+                            </NavLink>
+                        </li>
                         </>}
 
 
