@@ -1,5 +1,9 @@
-// ToDo 
-// 1.Email Js need to be implement 
+// import { FaLocationDot, FaPhone } from "react-icons/fa6";
+// import { AiTwotoneMail } from "react-icons/ai";
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import Swal from "sweetalert2";
+import { IoIosSend } from "react-icons/io";
 
 const ContactUs = () => {
 
@@ -14,6 +18,33 @@ const ContactUs = () => {
         window.location.href = mailtoLink;
     };
 
+
+    const form = useRef();
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_f3ou88i', 'template_tbzc2ye', form.current, 'Sdok8aunyfWTnDtXq')
+            .then(() => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your message send successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                form.current.reset();
+            }, () => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Something wrong try again later",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+            });
+    }
+
     return (
         <div className="py-24">
             <div
@@ -26,7 +57,7 @@ const ContactUs = () => {
                         experienced team is ready to engage with you.</p>
 
                     {/* Form Part      */}
-                    <form>
+                    <form ref={form} onSubmit={sendEmail}>
                         <div className="space-y-4 mt-8 c">
                             {/* Name  */}
                             <input type="text" placeholder="Full Name"
@@ -45,12 +76,7 @@ const ContactUs = () => {
                         <div className="mt-12">
                             <button type="submit"
                                 className="fullWidthSharedBtn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' className="mr-2"
-                                    viewBox="0 0 548.244 548.244">
-                                    <path fillRule="evenodd"
-                                        d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z"
-                                        clipRule="evenodd" data-original="#000000" />
-                                </svg>
+                                <IoIosSend className='text-xl mr-2 mb-[3px]'/>
                                 Send Message
                             </button>
                         </div>

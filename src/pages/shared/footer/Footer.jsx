@@ -20,37 +20,37 @@ const Footer = () => {
             </div>
 
             <div className='flex flex-row gap-4 lg:gap-32 my-6'>
-                <Link className='text-center'>FAQ</Link>
-                <Link className='text-center'>Configuration</Link>
-                <Link className='text-center'>Github</Link>
-                <Link className='text-center'>Linkedin </Link>
+                <Link to='https://muddasir-faiyaj.web.app/' target='_blanks' className='text-center'>FAQ</Link>
+                <Link to='https://muddasir-faiyaj.web.app/' target='_blanks' className='text-center'>Configuration</Link>
+                <Link to='https://github.com/its-asif/QuickFinance-client-side' target='_blanks' className='text-center'>Github</Link>
+                <Link to='https://muddasir-faiyaj.web.app/' target='_blanks' className='text-center'>Linkedin </Link>
             </div>
 
             <hr className='max-w-xl w-3/4  mx-auto text-white my-2' />
 
-            <div className="flex gap-2 md:gap-12 mt-4">
+            <div className="flex gap-2 md:gap-12 mt-4 mb-8">
 
-                <Link data-aos="flip-up" to='#' target='_blanks' className="">
+                <Link data-aos="flip-up" to='https://tahsinzaman.netlify.app/' target='_blanks' className="">
                     <img className='w-11/12' src={footerIcon1} alt="facebook icons" />
                 </Link>
-                <Link data-aos="flip-down" to='#' target='_blanks' className="">
+                <Link data-aos="flip-down" to='https://muddasir-faiyaj.web.app/' target='_blanks' className="">
                     <img className='w-11/12' src={footerIcon2} alt="linkedin icons" />
                 </Link>
-                <Link data-aos="flip-up" to='#' target='_blanks' className="">
+                <Link data-aos="flip-up" to='https://asifhossain.netlify.app/' target='_blanks' className="">
                     <img className='w-11/12' src={footerIcon3} alt="twitter icons" />
                 </Link>
-                <Link data-aos="flip-down" to='#' target='_blanks' className="">
+                <Link data-aos="flip-down" to='https://github.com/its-asif/QuickFinance-client-side' target='_blanks' className="">
                     <img className='w-11/12' src={footerIcon4} alt="github icons" />
                 </Link>
-                <Link data-aos="flip-up" to='#' target='_blanks' className="">
+                <Link data-aos="flip-up" to='https://tahsinzaman.netlify.app/' target='_blanks' className="">
                     <img className='w-11/12' src={footerIcon5} alt="amazon icons" />
                 </Link>
             </div>
 
-            <div className="flex mt-8 mb-4">
+            {/* <div className="flex mt-8 mb-4">
                 <input type="email" placeholder="Your email" className="bg-white text-black rounded px-2 h-10 outline-none" />
                 <button className="bg-[#399B53] text-white rounded h-10 px-2 ml-3 text-md">Subscribe</button>
-            </div>
+            </div> */}
 
             <p>Copyright © 2024 - All right reserved</p>
         </div>

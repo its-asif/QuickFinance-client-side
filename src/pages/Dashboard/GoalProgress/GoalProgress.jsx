@@ -130,7 +130,7 @@ const GoalProgress = () => {
             </div>
 
             {/* display all goals from user */}
-            <div className="grid grid-cols-1  my-8  md:grid-cols-2 lg:grid-cols-3 gap-10 xl:col-span-4 p-5 ">
+            <div className="grid grid-cols-1  my-8   lg:grid-cols-3 gap-10 xl:col-span-4 p-5 ">
 {
     // console.log(data)
 }

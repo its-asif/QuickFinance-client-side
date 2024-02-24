@@ -55,11 +55,11 @@ const FinancialManagement = () => {
         <div className={` `}>
 
             {/* Banner section */}
-            <div className="md:ml-20">
+            <div className="md:ml-10 lg:ml-20">
             <DashboardHeader smallTitle={"Calculate Your"} largeTitle={"Transactions"} imgSrc={"https://i.ibb.co/jzv23G8/saving.png"} />
             </div>
 
-            <div className="pt-10 pb-32 z-[3] md:mx-32">
+            <div className="pt-10 pb-32 z-[3] lg:mx-32">
 
                 <div className="bg-white bg-opacity-95 max-w-screen-lg py-5 shadow-xl rounded-xl opacity-96 mx-auto">
                     {/* Add List */}

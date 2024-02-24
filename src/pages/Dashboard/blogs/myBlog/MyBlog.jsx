@@ -43,6 +43,7 @@ const MyBlog = () => {
                                             Article
                                         </p> */}
                                         <p className="mb-2 text-xl font-medium text-gray-800 dark:text-white">
+                                        <p className="mb-2 text-xl font-medium text-gray-800 dark:text-white">
                                             {blog.title}
                                         </p>
                                         <p className="font-light text-gray-400 dark:text-gray-300 text-md h-12">
@@ -59,6 +60,7 @@ const MyBlog = () => {
                                             {
                                                 blog.tags.map(tag => (
                                                     <div key={tag.id} className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
+                                                    <div key={tag.id} className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
                                                         {tag}
                                                     </div>
                                                 ))
@@ -69,11 +71,17 @@ const MyBlog = () => {
                                     <div className="flex items-center m-4">
                                         <a href="#" className="relative block">
                                             <img alt="profil" src={blog.userImg} className="mx-auto object-cover rounded-full h-10 w-10 "/>
+                                    <div className="flex items-center m-4">
+                                        <a href="#" className="relative block">
+                                            <img alt="profil" src={blog.userImg} className="mx-auto object-cover rounded-full h-10 w-10 "/>
                                         </a>
+                                        <div className="flex flex-col justify-between ml-4 text-sm">
+                                            <p className="text-gray-800 dark:text-white">
                                         <div className="flex flex-col justify-between ml-4 text-sm">
                                             <p className="text-gray-800 dark:text-white">
                                                 {blog.userName}
                                             </p>
+                                            <p className="text-gray-400 dark:text-gray-300">
                                             <p className="text-gray-400 dark:text-gray-300">
                                                 {/* 20 mars 2029 - 6 min read */}
                                                 {/* "2024-02-21T17:23:35.625Z" */}
