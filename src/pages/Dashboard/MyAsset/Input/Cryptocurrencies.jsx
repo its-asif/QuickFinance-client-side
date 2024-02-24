@@ -4,8 +4,10 @@ import { PiCurrencyBtcFill } from "react-icons/pi";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAssetData from "../../../../Hooks/useAssetData";
 
 const Crypto = () => {
+    const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
@@ -50,7 +52,7 @@ const Crypto = () => {
                             confirmButtonText: 'DONE'
                         });
                         reset()
-    
+                        refetch()
                     }
                     else {
                         Swal.fire({

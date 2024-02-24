@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import './Table.css'
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
@@ -7,13 +6,10 @@ import { IoTrendingDownSharp } from "react-icons/io5";
 import { FaEye } from "react-icons/fa";
 import { RiEqualLine } from "react-icons/ri";
 import Spinner from "./Spinner/Spinner";
+import useAssetData from "../../../Hooks/useAssetData";
 const Table = () => {
-    const [assetData, setAssetData] = useState(null)
-    useEffect(() => {
-        fetch("/asset.json")
-            .then(res => res.json())
-            .then(data => setAssetData(data))
-    }, [])
+    const  { assetData, loading } = useAssetData()
+
     // console.log(assetData);
 
     return (

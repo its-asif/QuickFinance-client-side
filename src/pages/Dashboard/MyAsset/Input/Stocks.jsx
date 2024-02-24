@@ -4,8 +4,10 @@ import { AiOutlineStock } from "react-icons/ai";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAssetData from "../../../../Hooks/useAssetData";
 
 const Stocks = () => {
+    const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
@@ -30,7 +32,7 @@ const Stocks = () => {
                     magnitude: parseFloat(data.quantity),
                     purchase_date: data.date,
                     locale: "US",
-                    status: `${StockStatus > 0 ? 'ups' : 'downs'}`,
+                    status: `${StockStatus > 0 ? 'ups' : 'down'}`,
                     value: newPrice * data.quantity
                 };
                 axiosPublic.post('/api/assets', stocksData )
@@ -46,7 +48,7 @@ const Stocks = () => {
                             confirmButtonText: 'DONE'
                         });
                         reset()
-    
+                        refetch()
                     }
                     else {
                         Swal.fire({

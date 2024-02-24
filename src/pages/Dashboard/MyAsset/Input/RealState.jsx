@@ -4,8 +4,10 @@ import { BiBuildingHouse } from "react-icons/bi";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAssetData from "../../../../Hooks/useAssetData";
 
 const RealState = () => {
+    const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
@@ -33,7 +35,7 @@ const RealState = () => {
                         confirmButtonText: 'DONE'
                     });
                     reset()
-
+                    refetch()
                 }
                 else {
                     Swal.fire({

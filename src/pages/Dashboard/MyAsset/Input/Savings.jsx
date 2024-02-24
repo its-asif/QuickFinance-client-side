@@ -4,8 +4,10 @@ import { BsBank2 } from "react-icons/bs";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAssetData from "../../../../Hooks/useAssetData";
 
 const Savings = () => {
+    const  { refetch } = useAssetData()
     const { AuthUser } = useContext(AuthContext)
     const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset } = useForm();
@@ -62,7 +64,7 @@ const Savings = () => {
                         confirmButtonText: 'DONE'
                     });
                     reset()
-
+                    refetch()
                 }
                 else {
                     Swal.fire({

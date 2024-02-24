@@ -4,8 +4,10 @@ import { AiFillGolden } from "react-icons/ai";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAssetData from "../../../../Hooks/useAssetData";
 
 const Jewelry = () => {
+    const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
@@ -68,7 +70,7 @@ const Jewelry = () => {
                             confirmButtonText: 'DONE'
                         });
                         reset()
-    
+                        refetch()
                     }
                     else {
                         Swal.fire({
