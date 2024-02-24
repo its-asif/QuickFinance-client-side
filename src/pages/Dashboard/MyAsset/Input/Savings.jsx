@@ -73,8 +73,7 @@ const Savings = () => {
                         confirmButtonText: 'DONE'
                     });
                 }
-            }
-            )
+            })
         }
 
     }

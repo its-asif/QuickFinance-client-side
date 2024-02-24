@@ -2,8 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BiBuildingHouse } from "react-icons/bi";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const RealState = () => {
+    const axiosPublic = useAxiosPublic()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
@@ -14,11 +17,34 @@ const RealState = () => {
             magnitude: parseFloat(data.size),
             purchase_date: data.date,
             locale: data.location,
-            status:'equal',
+            status: 'equal',
             value: parseFloat(data.price)
         }
-        console.log(realStateData);
-        reset()
+        axiosPublic.post('/api/assets', realStateData)
+            .then(res => {
+                console.log(res.status);
+                if (res.status === 200) {
+                    document.getElementById('my_modal_5').close();
+                    Swal.fire({
+                        title: "Successful",
+                        text: "Your Asset Added to Portfolio",
+                        icon: "success",
+                        confirmButtonColor: "#0ba360",
+                        confirmButtonText: 'DONE'
+                    });
+                    reset()
+
+                }
+                else {
+                    Swal.fire({
+                        title: "oh!",
+                        text: "Some Error Occurred",
+                        icon: "error",
+                        confirmButtonColor: "#0ba360",
+                        confirmButtonText: 'DONE'
+                    });
+                }
+            })
     }
     return (
         <div className="">
