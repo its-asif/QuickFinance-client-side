@@ -7,10 +7,49 @@ import { FaEye } from "react-icons/fa";
 import { RiEqualLine } from "react-icons/ri";
 import Spinner from "./Spinner/Spinner";
 import useAssetData from "../../../Hooks/useAssetData";
+import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 const Table = () => {
-    const { assetData, loading } = useAssetData()
-
-    // console.log(assetData, loading);
+    const { assetData, loading, refetch } = useAssetData()
+    const axiosPublic = useAxiosPublic();
+    // console.log(assetData);
+    const handleDelete = (id) =>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0ba360",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/api/assets/${id}`)
+                .then(res => {
+                    // console.log(res.status);
+                    if (res.status === 200) {
+                        Swal.fire({
+                            title: "Successful",
+                            text: "Your Asset Deleted from Portfolio",
+                            icon: "success",
+                            confirmButtonColor: "#0ba360",
+                            confirmButtonText: 'DONE'
+                        });
+                        refetch()
+                    }
+                    else {
+                        Swal.fire({
+                            title: "oh!",
+                            text: "Some Error Occurred",
+                            icon: "error",
+                            confirmButtonColor: "#0ba360",
+                            confirmButtonText: 'DONE'
+                        });
+                    }
+                })
+            }
+        });
+    }
     return (
         <div className=''>
             <div className="overflow-x-auto shadow-md rounded-md">
@@ -36,7 +75,7 @@ const Table = () => {
                                     <button onClick={() => { document.getElementById(`asset_edit_${idx}`).showModal() }}>
                                         <MdEdit className="h-4 w-4 md:h-5 md:w-5 text-green-500 hover:scale-110 hover:cursor-pointer" />
                                     </button>
-                                    <MdDelete className="h-4 w-4 md:h-5 md:w-5 text-red-500  hover:scale-110 hover:cursor-pointer" />
+                                    <MdDelete onClick={() =>handleDelete(data._id)} className="h-4 w-4 md:h-5 md:w-5 text-red-500  hover:scale-110 hover:cursor-pointer" />
                                 </th>
                                 <td className="hide-on-small">
                                     {data.category}

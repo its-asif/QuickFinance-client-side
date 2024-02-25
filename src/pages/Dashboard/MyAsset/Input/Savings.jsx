@@ -45,6 +45,7 @@ const Savings = () => {
                 userEmail: AuthUser?.email,
                 category: "Savings",
                 asset_name: data.accType,
+                interestRate:data.interestRate,
                 magnitude: parseFloat(data.amount),
                 purchase_date: data.date,
                 locale: data.bank,
@@ -54,7 +55,7 @@ const Savings = () => {
             // console.log(SavingsData);
             axiosPublic.post('/api/assets', SavingsData)
             .then(res => {
-                console.log(res.status);
+                // console.log(res.status);
                 if (res.status === 200) {
                     document.getElementById('my_modal_5').close();
                     Swal.fire({
@@ -132,7 +133,7 @@ const Savings = () => {
                             defaultValue="" // Add a default value if needed
                         >
                             <option value="">Select Account Type</option>
-                            <option value="Savingse">Savings</option>
+                            <option value="Savings">Savings</option>
                             <option value="Deposit">Deposit</option>
                             <option value="Retirement">Retirement </option>
                             {/* Add more options as needed */}
