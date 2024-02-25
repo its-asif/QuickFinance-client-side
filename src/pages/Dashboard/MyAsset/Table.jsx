@@ -8,10 +8,9 @@ import { RiEqualLine } from "react-icons/ri";
 import Spinner from "./Spinner/Spinner";
 import useAssetData from "../../../Hooks/useAssetData";
 const Table = () => {
-    const  { assetData, loading } = useAssetData()
+    const { assetData, loading } = useAssetData()
 
-    // console.log(assetData);
-
+    // console.log(assetData, loading);
     return (
         <div className=''>
             <div className="overflow-x-auto shadow-md rounded-md">

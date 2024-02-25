@@ -47,10 +47,13 @@ const Jewelry = () => {
                 // compar3e values for Status
                 const purchaseAmount =  parseFloat(data.amount)
                 // console.log(purchaseAmount);
+                // karat data nite hobe 
                 const jewelryData = {
                     userEmail: AuthUser?.email,
                     category: "Jewelry",
                     asset_name: data.jewelry,
+                    weight: parseFloat(data.weight),
+                    karat: selectedKarat,
                     magnitude: parseFloat(data.weight),
                     purchase_date: data.date,
                     locale: "Home",

@@ -40,6 +40,7 @@ const Savings = () => {
         const depositValue = calculateDepositValue(data.amount, data.interestRate, data.date);
         // console.log("Value of the deposit account:", depositValue);
         if (depositValue) {
+            // interest rate pathate hobe 
             const SavingsData = {
                 userEmail: AuthUser?.email,
                 category: "Savings",
