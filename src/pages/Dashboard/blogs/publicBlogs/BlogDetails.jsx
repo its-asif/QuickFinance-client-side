@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import { BiLike } from "react-icons/bi";
 import useAuth from "../../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 
 const BlogDetails = () => {
@@ -14,12 +15,18 @@ const BlogDetails = () => {
     const [loading, setLoading] = useState(true);
     // console.log(blogDetails);
     const [liked, setLiked] = useState(false);
+    
 
 
 
     // handle like
     const handleLike = () => {
-        axiosPublic.patch(`/api/blogs/like/${blogId}`, {userEmail: AuthUser.email})
+        if(!AuthUser){
+            toast.error('You need to login to like this blog');
+            return;
+        }
+
+        axiosPublic.patch(`/api/blogs/like/${blogId}`, {userEmail: AuthUser?.email})
         .then(res => {
             setLiked(!liked);
             console.log(res.data);
