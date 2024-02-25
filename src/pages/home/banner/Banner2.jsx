@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img2 from "/bannerImg2.png";
 import dollarIcon from "/dollarIcon.png";
 import { FaArrowRight } from "react-icons/fa6";
@@ -21,9 +22,11 @@ const Banner2 = () => {
                         <p className="py-6 md:text-lg font-extrabold text-slate-600 text-justify">
                             Step into a realm of financial confidence – where your prosperity is fortified with precision. We make safeguarding your financial future our mission, ensuring your journey is not just secure but thriving.</p>
                         <div>
-                            <button className="sharedBtn">
+                            <Link to={'dashboard'}>
+                                <button className="sharedBtn">
                                 <span className="mr-1">Get Started</span><FaArrowRight size={15} />
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
