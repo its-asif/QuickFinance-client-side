@@ -23,8 +23,8 @@ const useAssetData = () => {
                     try {
                         // console.log('dhukse');
                         // console.log(updateData.asset_name);
-                        
-                        fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${updateData.asset_name}&apikey=1J92GU99QAL1JVP6`)
+
+                        fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${updateData.asset_name}&apikey=${import.meta.env.DATA_STOCKS}`)
                             .then(res => res.json())
                             .then((stocks) => {
                                 console.log(stocks)
@@ -63,7 +63,7 @@ const useAssetData = () => {
                     try {
                         // console.log('dhukse');
                         // console.log(updateData.asset_name);
-                        fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${updateData.asset_name}&to_currency=CNY&apikey=OYCCP79A3KATY3HC`)
+                        fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${updateData.asset_name}&to_currency=CNY&apikey=${import.meta.env.DATA_FOREX_CRYPTO}`)
                             .then(res => res.json())
                             .then((BothData) => {
                                 // console.log(BothData)
@@ -97,7 +97,60 @@ const useAssetData = () => {
                     }
                 }
                 // if (updateData.category === "Jewelry") {
-                //     console.log(updateData);
+                //     try {
+                //         var myHeaders = new Headers();
+                //         myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
+                //         myHeaders.append("Content-Type", "application/json");
+
+                //         var requestOptions = {
+                //             method: 'GET',
+                //             headers: myHeaders,
+                //             redirect: 'follow'
+                //         };
+                //         const response =  fetch(`https://www.goldapi.io/api/${JewelrySymbol}/USD`, requestOptions)
+                //         if (!response.ok) {
+                //             throw new Error('Failed to fetch Commodities data');
+                //         }
+                //         const JewelryData =  response.json();
+                //         // console.log(JewelryData);
+                //         // Get the selected karat from the form data
+                //         const selectedKarat = data.Karats;
+                //         // console.log(selectedKarat);
+
+                //         // Access the price of the selected karat from the fetched jewelry data
+                //         const KaratsPrice = JewelryData[selectedKarat];
+                //         // console.log(KaratsPrice);
+                //         // calculate value 
+                //         const CurrentValue = parseFloat(data.weight) * parseFloat(KaratsPrice)
+                //         // compar3e values for Status
+                //         const purchaseAmount = parseFloat(data.amount)
+                //         // console.log(purchaseAmount);
+                //         // karat data nite hobe 
+                //         const jewelryData = {
+                //             userEmail: AuthUser?.email,
+                //             category: "Jewelry",
+                //             asset_name: data.jewelry,
+                //             karat: selectedKarat,
+                //             magnitude: parseFloat(data.weight),
+                //             purchase_date: data.date,
+                //             locale: "Home",
+                //             status: `${purchaseAmount > CurrentValue ? 'down' : CurrentValue > purchaseAmount ? 'ups' : 'equal'}`,
+                //             value: CurrentValue
+                //         };
+                //         axiosPublic.patch( `/api/assets/${updateData._id}`, jewelryData)
+                //             .then(res => {
+                //                 // console.log(res.status);
+                //                 if (res.status === 200) {
+                //                     refetch()
+                //                 }
+                //             })
+
+                //     }
+                //     catch {
+                //         (error) => {
+                //             console.log(error);
+                //         }
+                //     }
                 // }
                 if (updateData.category === "Savings") {
                     // console.log(updateData);

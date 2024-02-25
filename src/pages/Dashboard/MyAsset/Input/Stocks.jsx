@@ -16,7 +16,7 @@ const Stocks = () => {
         const stockName = data.stock.toUpperCase();
         if (stockName) {
             try {
-                const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockName}&apikey=7F65SIUO6QKGE5OP`);
+                const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockName}&apikey=${import.meta.env.DATA_POST}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch stock data');
                 }

@@ -17,14 +17,14 @@ const Forex = () => {
         const exchangeCurrency = 'USD'
         if (Currency) {
             try {
-                const response = await fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${Currency}&to_currency=${exchangeCurrency}&apikey=7F65SIUO6QKGE5OP`);
+                const response = await fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${Currency}&to_currency=${exchangeCurrency}&apikey=${import.meta.env.DATA_POST}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch stock data');
                 }
                 const CryptoData = await response.json();
                 // console.log(CryptoData);
                 // cryptoName 
-                const CurrencyName = await CryptoData['Realtime Currency Exchange Rate']['2. From_Currency Name']
+                // const CurrencyName = await CryptoData['Realtime Currency Exchange Rate']['2. From_Currency Name']
                 // crypto price 
                 const newPrice = await CryptoData['Realtime Currency Exchange Rate']['5. Exchange Rate']
                 // crypto exchange currency 
