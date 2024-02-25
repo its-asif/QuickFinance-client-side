@@ -96,7 +96,10 @@ const Tax = () => {
     };
 
     return (
-        <div>
+        <div
+            data-aos="fade-up"
+            data-aos-duration="1500"
+        >
             <button className="sharedBtn flex items-center gap-1" onClick={handleClose}><span>Calculate Tax</span> <BsCalculatorFill /></button>
 
             <dialog id="my_modal_3_" className="modal">
