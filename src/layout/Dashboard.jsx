@@ -157,7 +157,7 @@ const Dashboard = () => {
                                     isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <BiBookContent className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>My Blogs</span>
+                                <BiBookContent className={`${open && "text-2xl"} ${!open && "text-3xl"}`} />   <span className={`${!open && "hidden"}`}>My Blogs</span>
                             </NavLink>
                         </li>
 
@@ -170,22 +170,10 @@ const Dashboard = () => {
                                     isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
                                 }
                             >
-                                <MdOutlinePublish className={`${open && "text-2xl"} text-md`} />   <span className={`${!open && "hidden"}`}>Publish Blog</span>
+                                <MdOutlinePublish className={`${open && "text-2xl"} ${!open && "text-3xl"}`} />   <span className={`${!open && "hidden"}`}>Publish Blog</span>
                             </NavLink>
                         </li>
 
-                        {/* Debt Management */}
-                        {/* <li className="mt-2  duration-1000 lg:mt-0">
-                            {" "}
-                            <NavLink
-                                to="/dashboard/manageDebt"
-                                className={({ isActive, isPending }) =>
-                                    isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
-                                }
-                            >
-                                <SiGoogletagmanager className={`${open && "text-2xl"} ${!open && "text-3xl"} `} />   <span className={`${!open && "hidden"}`}>Manage Debt</span>
-                            </NavLink>
-                        </li> */}
 
                         {/* My Payments */}
                         <li className="mt-2  duration-1000 lg:mt-0">
@@ -359,7 +347,7 @@ const Dashboard = () => {
 
 
                             {/* Debt Management */}
-                            <li className="mt-2  duration-1000 lg:mt-0">
+                            {/* <li className="mt-2  duration-1000 lg:mt-0">
                                 {" "}
                                 <NavLink
                                     to="/dashboard/manageDebt"
@@ -368,6 +356,32 @@ const Dashboard = () => {
                                     }
                                 >
                                     <SiGoogletagmanager className={`${open && "text-2xl"} text-md`} />   
+                                </NavLink>
+                            </li> */}
+
+                            {/* MY Blog Section */}
+                            <li className="mt-2 lg:mt-0">
+                                {" "}
+                                <NavLink
+                                    to="/dashboard/myBlogs"
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                    }
+                                >
+                                    <BiBookContent className={`${open && "text-2xl"} text-md`} />
+                                </NavLink>
+                            </li>
+
+                            {/* Create Blog Section */}
+                            <li className="mt-2 lg:mt-0">
+                                {" "}
+                                <NavLink
+                                    to="/dashboard/publishBlogs"
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" : isActive ? "activeDashboard hover:scale-110 opacity-100 duration-300" : " pendingDashboard hover:scale-110 opacity-95 duration-300"
+                                    }
+                                >
+                                    <MdOutlinePublish className={`${open && "text-2xl"} text-md`} /> 
                                 </NavLink>
                             </li>
 

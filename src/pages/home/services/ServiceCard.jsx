@@ -27,7 +27,7 @@ const ServiceCard = ({item}) => {
         </div>
         <div className="p-6 pt-0">
         
-         <Link to={`/category-details/${item?.category}`}>
+         <Link to={`${item?.link}`}>
          <button
            className="block w-full select-none rounded-lg  py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none bg-black text-white"
            type="button"
