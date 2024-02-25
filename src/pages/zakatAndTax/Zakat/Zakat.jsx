@@ -62,7 +62,10 @@ const Zakat = () => {
 
 
     return (
-        <div>
+        <div
+            data-aos="fade-up"
+            data-aos-duration="1500"
+        >
             <button className="sharedBtn flex items-center gap-1" onClick={handleClose}><span>Calculate Zakat</span> <BsCalculatorFill /></button>
 
             <dialog id="my_modal_3" className="modal">
@@ -188,7 +191,7 @@ const Zakat = () => {
                             <Link to='/donateZakat'>
                                 <div className="mt-6">
                                     <button className="fullWidthSharedBtn ">
-                                        <FaDonate className="mr-4"/> Donate Your Zakat
+                                        <FaDonate className="mr-4" /> Donate Your Zakat
                                     </button>
                                 </div>
                             </Link>

@@ -58,6 +58,17 @@ const Navbar = () => {
                     Calculator
                 </NavLink>
             </li>
+            <li className="my-2 lg:my-0">
+                {" "}
+                <NavLink
+                    to="/publicBlogs"
+                    className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "activeNav hover:scale-110  opacity-100 duration-300" : " pendingNav hover:scale-110 opacity-95 duration-300"
+                    }
+                >
+                    Blogs
+                </NavLink>
+            </li>
         </>
     );
     return (

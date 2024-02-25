@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img1 from "/bannerImg1.png";
 import { FaArrowRight } from "react-icons/fa6";
 const Banner1 = () => {
@@ -16,9 +17,11 @@ const Banner1 = () => {
                             Financial Transformation in the Digital Age: Embracing the Evolution of Fintech</p>
                         {/* <button className="btn bg-[#399b53] text-white font-bold md:text-lg">Get Started</button> */}
                         <div>
-                            <button className="sharedBtn">
-                                <span className="mr-1">Get Started</span><FaArrowRight size={15} />
-                            </button>
+                            <Link to={'dashboard'}>
+                                <button className="sharedBtn">
+                                    <span className="mr-1">Get Started</span><FaArrowRight size={15} />
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

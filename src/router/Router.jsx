@@ -25,6 +25,9 @@ import PayTax from "../pages/zakatAndTax/Tax/PayTax";
 import PaymentFailed from "../pages/shared/Payment/PaymentFailed";
 import CreateBlogs from "../pages/Dashboard/blogs/CreateBlog";
 import MyBlog from "../pages/Dashboard/blogs/myBlog/MyBlog";
+import PublicBlogs from "../pages/Dashboard/blogs/publicBlogs/PublicBlogs";
+import BlogDetails from "../pages/Dashboard/blogs/publicBlogs/BlogDetails";
+import BlogsByTags from "../pages/Dashboard/blogs/publicBlogs/BlogsByTags";
 
 
 
@@ -75,7 +78,19 @@ const router = createBrowserRouter([
       {
         path:"/payment/fail/:transId",
         element:<PaymentFailed></PaymentFailed>
-      }
+      },
+      {
+        path: "blogs/:blogId",
+        element: <BlogDetails/>,
+      },
+      {
+        path: "blog/tag/:tag",
+        element: <BlogsByTags/>,
+      },
+      {
+        path: 'publicBlogs',
+        element: <PublicBlogs/>,
+      },
 
     ],
   },
@@ -131,7 +146,7 @@ const router = createBrowserRouter([
         {
           path: 'myAsset',
           element: <MyAsset/>,
-        }
+        },
       ]
   }
 ]);
