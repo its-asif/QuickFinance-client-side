@@ -33,7 +33,7 @@ const Forex = () => {
                 const forexData = {
                     userEmail: AuthUser?.email,
                     category: "Forex",
-                    asset_name: CurrencyName,
+                    asset_name: Currency,
                     magnitude: parseFloat(data.amount),
                     purchase_date: data.date,
                     locale: "Home",

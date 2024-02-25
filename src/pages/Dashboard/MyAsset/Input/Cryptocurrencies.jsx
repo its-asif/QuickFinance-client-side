@@ -32,7 +32,7 @@ const Crypto = () => {
                 const cryptoData = {
                     userEmail: AuthUser?.email,
                     category: "Crypto",
-                    asset_name: cryptoName,
+                    asset_name: cryptoSymbol,
                     magnitude: parseFloat(data.amount),
                     purchase_date: data.date,
                     locale: "Global",
