@@ -99,55 +99,55 @@ const useAssetData = () => {
                 if (updateData.category === "Jewelry") {
                     console.log(updateData);
                 }
-                // if (updateData.category === "Savings") {
-                //     console.log(updateData);
-                //     // Function to calculate the value of the deposit account
-                //     const calculateDepositValue = (amount, interestRate, date) => {
-                //         // Assuming the interest is compounded annually
-                //         const today = new Date();
-                //         const purchaseDate = new Date(date);
-                //         const timeDiff = today.getTime() - purchaseDate.getTime();
-                //         const timeInYears = timeDiff / (1000 * 3600 * 24 * 365); // Convert milliseconds to years
-                //         // console.log(timeInYears);
-                //         // if any one choose feature time 
-                //         if (timeInYears < 0) {
-                //             const value = null;
-                //             console.log('sorry');
-                //             return value;
-                //         }
-                //         else {
-                //             // Convert interest rate to decimal
-                //             const r = parseFloat(interestRate) / 100;
+                if (updateData.category === "Savings") {
+                    console.log(updateData);
+                    // Function to calculate the value of the deposit account
+                    const calculateDepositValue = (amount, interestRate, date) => {
+                        // Assuming the interest is compounded annually
+                        const today = new Date();
+                        const purchaseDate = new Date(date);
+                        const timeDiff = today.getTime() - purchaseDate.getTime();
+                        const timeInYears = timeDiff / (1000 * 3600 * 24 * 365); // Convert milliseconds to years
+                        // console.log(timeInYears);
+                        // if any one choose feature time 
+                        if (timeInYears < 0) {
+                            const value = null;
+                            console.log('sorry');
+                            return value;
+                        }
+                        else {
+                            // Convert interest rate to decimal
+                            const r = parseFloat(interestRate) / 100;
 
-                //             // Calculate the value of the deposit account using compound interest formula
-                //             const value = parseFloat(amount) * Math.pow(1 + r, timeInYears);
-                //             return value;
-                //         }
-                //     };
-                //     // interest rate pathate hobe 
-                //     const depositValue = calculateDepositValue(updateData.amount, updateData.interestRate, updateData.date);
-                //     console.log("Value of the deposit account:", depositValue);
-                //     if (depositValue) {
-                //         const SavingsData = {
-                //             userEmail: AuthUser?.email,
-                //             category: "Savings",
-                //             asset_name: updateData.accType,
-                //             magnitude: parseFloat(updateData.amount),
-                //             purchase_date: updateData.date,
-                //             locale: updateData.bank,
-                //             value: parseFloat(depositValue.toFixed(3)),
-                //             status: "ups"
-                //         }
-                //         console.log(SavingsData);
-                //         axiosPublic.post('/api/assets', SavingsData)
-                //             .then(res => {
-                //                 console.log(res.status);
-                //                 if (res.status === 200) {
-                //                     refetch()
-                //                 }
-                //             })
-                //     }
-                // }
+                            // Calculate the value of the deposit account using compound interest formula
+                            const value = parseFloat(amount) * Math.pow(1 + r, timeInYears);
+                            return value;
+                        }
+                    };
+                    // interest rate pathate hobe 
+                    const depositValue = calculateDepositValue(updateData.magnitude, updateData.interestRate, updateData.purchase_date);
+                    console.log("Value of the deposit account:", depositValue);
+                    if (depositValue) {
+                        const SavingsData = {
+                            userEmail: AuthUser?.email,
+                            category: "Savings",
+                            asset_name: updateData.asset_name,
+                            magnitude: parseFloat(updateData.magnitude),
+                            purchase_date: updateData.purchase_date,
+                            locale: updateData.locale,
+                            value: parseFloat(depositValue.toFixed(3)),
+                            status: "ups"
+                        }
+                        console.log(SavingsData);
+                        axiosPublic.patch(`/api/assets/${updateData._id}`, SavingsData)
+                            .then(res => {
+                                console.log(res.status);
+                                if (res.status === 200) {
+                                    refetch()
+                                }
+                            })
+                    }
+                }
             }
         }
 
