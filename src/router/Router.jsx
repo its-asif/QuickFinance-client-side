@@ -107,10 +107,10 @@ const router = createBrowserRouter([
           path: "myAccount",
           element: <MyDashboard />,
         },
-        // {
-        //   path: "myAsset",
-        //   element: <UnderMaintenance />, 
-        // },
+        {
+          path: "myAsset",
+          element: <MyAsset />, 
+        },
         {
           path: "financialManagement",  //personal finance
           element: <FinancialManagement />

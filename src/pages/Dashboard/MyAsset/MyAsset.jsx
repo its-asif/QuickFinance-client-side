@@ -6,7 +6,6 @@ import RealState from "./Input/RealState";
 import Crypto from "./Input/Cryptocurrencies";
 import Forex from "./Input/Forex";
 import Jewelry from "./Input/Jewelry";
-import Savings from "./Savings";
 import { BiBuildingHouse } from "react-icons/bi";
 import { AiOutlineStock } from "react-icons/ai";
 import { PiCurrencyBtcFill } from "react-icons/pi";
@@ -14,6 +13,7 @@ import { FaSackDollar } from "react-icons/fa6";
 import { AiFillGolden } from "react-icons/ai";
 import { BsBank2 } from "react-icons/bs";
 import Table from "./Table";
+import Savings from "./Input/Savings";
 import DashboardHeader from "../../../Components/header/DashboardHeader";
 const MyAsset = () => {
     const [currentPage, setCurrentPage] = useState('default');
@@ -71,7 +71,7 @@ const MyAsset = () => {
         <div className="w-full h-full p-4 ">
 
             {/* Banner section */}
-            <DashboardHeader smallTitle={"Calculate Your"} largeTitle={"Assets"} imgSrc={"https://i.ibb.co/rcpy1HF/asset.png"} />
+            <DashboardHeader smallTitle={"Your Asset"} largeTitle={"Portfolio"} imgSrc={"https://i.ibb.co/rcpy1HF/asset.png"} />
 
 
 
@@ -84,7 +84,7 @@ const MyAsset = () => {
             </div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box w-80 h-[300px] md:h-80 modalBg">
+                <div className="modal-box w-[100vw] md:w-full modalBg">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -134,7 +134,7 @@ const MyAsset = () => {
                 </div>
             </dialog>
             {/* table  */}
-            <div className="lg:mt-6">
+            <div className="my-6">
                 <Table/>
             </div>
         </div>
