@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { BsCalculatorFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { FaDonate } from "react-icons/fa";
 const Tax = () => {
     const [earn, setEarn] = useState(null);
     const [expense, setExpense] = useState(null);
@@ -14,8 +15,8 @@ const Tax = () => {
             modal.showModal();
         }
         setEarn(0);
-       setExpense(0);
-       setTotal(0);
+        setExpense(0);
+        setTotal(0);
         setTax(0);
         const form = document.getElementById('taxSection');
         if (form) {
@@ -95,7 +96,10 @@ const Tax = () => {
     };
 
     return (
-        <div>
+        <div
+            data-aos="fade-up"
+            data-aos-duration="1500"
+        >
             <button className="sharedBtn flex items-center gap-1" onClick={handleClose}><span>Calculate Tax</span> <BsCalculatorFill /></button>
 
             <dialog id="my_modal_3_" className="modal">
@@ -215,7 +219,6 @@ const Tax = () => {
                                         <input
                                             name="age"
                                             type="number"
-                                            required
                                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                             placeholder="0"
                                         />
@@ -247,13 +250,15 @@ const Tax = () => {
 
                                         <p className="mb-2 flex justify-between">Current Amount : <span className="flex justify-center items-center gap-1">{total}<FaBangladeshiTakaSign /></span></p>
 
-                                        <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
+                                        <p className="mb-2 text-[#0ba360] flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
                                     </div>
-                                    <Link to='/donateTax'>
-                           <button className="px-6 py-2 mt-8 rounded text-white text-sm tracking-wider font-medium outline-none border-2 border-[#399b53] bg-[#399b53] btn hover:bg-transparent hover:text-black transition-all duration-300">
-                                        Pay Your Tax
-                                    </button>
-                           </Link>
+                                    <Link to='/payTax'>
+                                        <div className="mt-6">
+                                            <button className="fullWidthSharedBtn ">
+                                                <FaDonate className="mr-4" />Pay Your Tax
+                                            </button>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -279,8 +284,8 @@ const Tax = () => {
 
                                 <p className="mb-2 flex justify-between text-xl mt-4 font-bold">Tax Amount: <span className="flex justify-center items-center gap-1">{tax} <FaBangladeshiTakaSign /></span></p>
                             </div>
-                           
-                           
+
+
                         </div>
                     </div>
                 </div>

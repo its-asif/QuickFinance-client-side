@@ -3,11 +3,10 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
-const DonateZakat = () => {
-
-  const { AuthUser } = useAuth()
-  const axiosPublic = useAxiosPublic();
-  const handleDonateZakat = (event) => {
+const PayTax = () => {
+  const { AuthUser } = useAuth();
+  const axiosPublic = useAxiosPublic()
+  const handleDonateTax = (event) => {
     event.preventDefault();
     const form = event.target;
     console.log("log data ", form);
@@ -24,14 +23,17 @@ const DonateZakat = () => {
       amount,
       currency_type,
       organizer_name,
-      trxType: 'zakat',
+      trxType: 'tax',
       name,
       address,
       post_code,
       phone_no,
       email,
 
+
     }
+
+    console.log(data);
     axiosPublic.post('/api/payments', data)
       .then((res) => {
         window.location.replace(res?.data?.url)
@@ -42,27 +44,21 @@ const DonateZakat = () => {
 
 
 
-
-
-
   }
-  const storageAmount = parseFloat(localStorage.getItem('zakat_money'));
-  console.log(storageAmount);
-
+  const storageAmount = localStorage.getItem('tax_money');
 
   return (
-    <div className=''>
-      <div className={`bg-cover pt-10  bg-[url('/zakat.jpg')] bg-opacity-60  bg-no-repeat bg-center shadow-lg overflow-hidden hero min-h-screen `}>
+    <div className='overflow-x-hidden'>
+      <div className={`bg-cover pt-10  bg-[url('/tax.jpg')] bg-opacity-60  bg-no-repeat bg-center shadow-lg overflow-hidden hero min-h-screen `}>
         <div className={` hero-content flex-col lg:flex-row`}>
-          <div
-            data-aos="fade-right"
+          <div data-aos="fade-right"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine"
             className="text-center lg:text-left bg-black bg-opacity-50 rounded-xl text-white p-8">
-            <h1 className="text-5xl lg:text-7xl font-bold ">Caring Hearts,
+            <h1 className="text-5xl lg:text-5xl font-bold ">Navigating Your Tax
               <br />
-              <span className='text-white'>Lasting Impact</span></h1>
-            <p className="py-6 lg:text-3xl  text-white"> Fulfill Your Zakat Obligation with Assurance through our Respected Islamic Charity, Bringing Hope to Those in Need.</p>
+              <span className='text-white'>Responsibilities with Ease <br /> and Confidence</span></h1>
+            <p className="py-6 lg:text-3xl  text-white">Ensure Your Tax Obligation with Confidence through Trusted Channels, Providing Support and Stability to Communities in Need.</p>
           </div>
           <div
             data-aos="fade-left"
@@ -70,13 +66,13 @@ const DonateZakat = () => {
             data-aos-offset="500"
             data-aos-duration="500"
             className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleDonateZakat} className="card-body ">
+            <form onSubmit={handleDonateTax} className="card-body ">
               <div className="lg:flex gap-5  items-center">
                 <div className="form-control">
                   <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
-                    <span className="">Donated Zakat Amount</span>
+                    <span className="">Tax paying Amount</span>
                   </label>
-                  <input type='number' name='amount' defaultValue={storageAmount} placeholder="Donated Amount" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required />
+                  <input type="number" name='amount' defaultValue={storageAmount} min={0.00} placeholder="Donated Amount" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required />
                 </div>
                 <div className="form-control">
                   <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
@@ -91,25 +87,24 @@ const DonateZakat = () => {
                   </select>
                 </div>
               </div>
-              <div className="form-control">
-                <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
-                  <span className="">Zakat Donations Organization</span>
-                </label>
-                <select type="text" name='organizer_name' placeholder="Zakat Donations Organization" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required >
+              <div >
+                <div className="form-control">
+                  <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
+                    <span className="">Tax Collections Organization</span>
+                  </label>
+                  <select type="text" name='organizer_name' placeholder="Tax Donations Organization" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required >
 
-                  <option value="Al Markazul Islami">Al Markazul Islami</option>
-                  <option value="Anzuman Mufidul Islam">Anzuman Mufidul Islam</option>
-                  <option value="As-Sunnah Foundation">As-Sunnah Foundation</option>
-                  <option value="Center for Zakat Management">Center for Zakat Management</option>
-                  <option value="K K Foundation">K K Foundation</option>
+                    <option value="BD TAX">BD TAX </option>
 
-                </select>
-              </div>
-              <div className="form-control">
-                <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
-                  <span className="">Your Name</span>
-                </label>
-                <input type="text" name='name' placeholder="Your Name" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required />
+
+                  </select>
+                </div>
+                <div className="form-control">
+                  <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
+                    <span className="">Your Name</span>
+                  </label>
+                  <input type="text" name='name' placeholder="Your Name" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required />
+                </div>
               </div>
               <div className="form-control">
                 <label className="block mb-2 text-sm font-medium text-green-700 dark:text-green-500">
@@ -130,7 +125,7 @@ const DonateZakat = () => {
                 <input type="number" name='phone_no' placeholder="Phone Number" className="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-green-100 dark:border-green-400" required />
               </div>
               <div className="form-control mt-6">
-                <button className="sharedBtn">Donate</button>
+                <button className="sharedBtn">Pay Your TAX</button>
               </div>
             </form>
           </div>
@@ -140,4 +135,4 @@ const DonateZakat = () => {
   );
 };
 
-export default DonateZakat;
+export default PayTax;

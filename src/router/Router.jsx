@@ -18,11 +18,16 @@ import GoalProgress from "../pages/Dashboard/GoalProgress/GoalProgress";
 import AllUsers from "../pages/Dashboard/adminRoutes/AllUsers";
 import MyAsset from "../pages/Dashboard/MyAsset/MyAsset";
 import DonateZakat from "../pages/zakatAndTax/Zakat/DonateZakat";
-import DonateTax from "../pages/zakatAndTax/Tax/DonateTax";
 import PaymentSuccess from "../pages/shared/Payment/PaymentSuccess";
 import UnderMaintenance from "../pages/shared/underMaintenance/UnderMaintenance";
 import MyPayments from "../pages/Dashboard/payments/MyPayments";
-import MyBlogs from "../pages/Dashboard/blogs/MyBlogs";
+import PayTax from "../pages/zakatAndTax/Tax/PayTax";
+import PaymentFailed from "../pages/shared/Payment/PaymentFailed";
+import CreateBlogs from "../pages/Dashboard/blogs/CreateBlog";
+import MyBlog from "../pages/Dashboard/blogs/myBlog/MyBlog";
+import PublicBlogs from "../pages/Dashboard/blogs/publicBlogs/PublicBlogs";
+import BlogDetails from "../pages/Dashboard/blogs/publicBlogs/BlogDetails";
+import BlogsByTags from "../pages/Dashboard/blogs/publicBlogs/BlogsByTags";
 
 
 
@@ -54,8 +59,8 @@ const router = createBrowserRouter([
 
       },
       {
-        path:"/donateTax",
-        element:<DonateTax></DonateTax>
+        path:"/payTax",
+        element:<PayTax></PayTax>
 
       },
       {
@@ -69,7 +74,23 @@ const router = createBrowserRouter([
       {
         path:"/payment/success/:tranId",
         element:<PaymentSuccess></PaymentSuccess>
-      }
+      },
+      {
+        path:"/payment/fail/:transId",
+        element:<PaymentFailed></PaymentFailed>
+      },
+      {
+        path: "blogs/:blogId",
+        element: <BlogDetails/>,
+      },
+      {
+        path: "blog/tag/:tag",
+        element: <BlogsByTags/>,
+      },
+      {
+        path: 'publicBlogs',
+        element: <PublicBlogs/>,
+      },
 
     ],
   },
@@ -88,7 +109,7 @@ const router = createBrowserRouter([
         },
         {
           path: "myAsset",
-          element: <UnderMaintenance />, 
+          element: <MyAsset />, 
         },
         {
           path: "financialManagement",  //personal finance
@@ -115,13 +136,17 @@ const router = createBrowserRouter([
           element: <AllUsers/>,
         },
         {
+          path: 'publishBlogs',
+          element: <CreateBlogs/>,
+        },
+        {
           path: 'myBlogs',
-          element: <MyBlogs/>,
+          element: <MyBlog/>,
         },
         {
           path: 'myAsset',
           element: <MyAsset/>,
-        }
+        },
       ]
   }
 ]);

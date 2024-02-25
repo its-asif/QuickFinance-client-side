@@ -5,6 +5,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import useBudgetData from "../../../Hooks/useBudgetData";
+import DashboardHeader from "../../../Components/header/DashboardHeader";
 // import BudgetData from "./BudgetData";
 
 const BudgetPlanning = () => {
@@ -13,7 +14,6 @@ const BudgetPlanning = () => {
     const { AuthUser } = useAuth();
     const userEmail = AuthUser?.email;
     const { budgetPlanningData, refetch } = useBudgetData(userEmail);
-    console.log(budgetPlanningData[0]);
 
     useEffect(() => {
         if (budgetPlanningData[0]) {
@@ -332,15 +332,15 @@ const BudgetPlanning = () => {
         schoolUniforms, otherSchoolNeeds, otherChildren
     ]);
 
-    document.addEventListener("wheel", function(event){
-        if(document.activeElement.type === "number"){
+    document.addEventListener("wheel", function (event) {
+        if (document.activeElement.type === "number") {
             document.activeElement.blur();
         }
     });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const planName =  AuthUser?.email.split('@')[0];
+        const planName = AuthUser?.email.split('@')[0];
         const budgetData = {
             // General Information
             planName: planName,
@@ -602,7 +602,16 @@ const BudgetPlanning = () => {
 
     return (
         <div className="mx-2 pt-10 md:mx-20 mt-4">
-            <form onSubmit={handleSubmit} className=' '>
+
+
+            {/* Banner section */}
+            <DashboardHeader smallTitle={"Plan Your"} largeTitle={"Monthly Budget"} imgSrc={"https://i.ibb.co/Php2XhG/saving.png"} />
+
+
+
+
+
+            <form onSubmit={handleSubmit} className='mt-20 '>
                 <div className="space-y-3">
                     {/* <div className="mb-6 ml-10 md:ml-0">
                         <label htmlFor='planName' className=''>
@@ -616,7 +625,7 @@ const BudgetPlanning = () => {
                         </div>
                     </div> */}
 
-                    <div className="collapse bg-base-200 mb-2 rounded-none">
+                    <div className="collapse bg-green-300 mb-2 rounded-none">
                         <input type="checkbox" />
                         <div className="collapse-title text-xl font-medium">
                             <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -629,7 +638,7 @@ const BudgetPlanning = () => {
                         </div>
                     </div>
 
-                    <div className="collapse bg-base-200 rounded-none mb-2">
+                    <div className="collapse bg-green-300 rounded-none mb-2">
                         <input type="checkbox" />
                         <div className="collapse-title text-xl font-medium">
                             <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -642,7 +651,7 @@ const BudgetPlanning = () => {
                         </div>
                     </div>
                     {/* Home & Utilities Section */}
-                    <div className="collapse bg-base-200 rounded-none mb-2">
+                    <div className="collapse bg-green-300 rounded-none mb-2">
                         <input type="checkbox" />
                         <div className="collapse-title text-xl font-medium">
                             <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -655,7 +664,7 @@ const BudgetPlanning = () => {
                         </div>
                     </div>
 
-                    <div className="collapse bg-base-200 rounded-none mb-2">
+                    <div className="collapse bg-green-300 rounded-none mb-2">
                         <input type="checkbox" />
                         <div className="collapse-title text-xl font-medium">
                             <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -668,7 +677,7 @@ const BudgetPlanning = () => {
                         </div>
                     </div>
 
-                    <div className="collapse bg-base-200 rounded-none mb-4">
+                    <div className="collapse bg-green-300 rounded-none mb-4">
                         <input type="checkbox" />
                         <div className="collapse-title text-xl font-medium">
                             <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -682,7 +691,7 @@ const BudgetPlanning = () => {
                     </div>
                 </div>
 
-                <div className="collapse bg-base-200 rounded-none mb-2 mt-2">
+                <div className="collapse bg-green-300 rounded-none mb-2 mt-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -695,7 +704,7 @@ const BudgetPlanning = () => {
                     </div>
                 </div>
 
-                <div className="collapse bg-base-200 rounded-none mb-2">
+                <div className="collapse bg-green-300 rounded-none mb-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -708,7 +717,7 @@ const BudgetPlanning = () => {
                     </div>
                 </div>
 
-                <div className="collapse bg-base-200 rounded-none mb-2">
+                <div className="collapse bg-green-300 rounded-none mb-2">
                     <input type="checkbox" />
                     <div className="collapse-title text-xl font-medium">
                         <h1 className="py-2 px-4 flex flex-col md:flex-row justify-between">
@@ -721,7 +730,7 @@ const BudgetPlanning = () => {
                     </div>
                 </div>
 
-                <input type="submit" value="Save Data" className="btn  w-full bg-[#399b53] text-white my-4" />
+                <input type="submit" value="Save Data" className="btn  w-full bg-black hover:bg-gray-900 text-white my-4" />
 
 
 
@@ -751,7 +760,7 @@ const BudgetPlanning = () => {
                         rootProps={{ 'data-testid': '1' }}
                     />
                 </div>
-                <h1 className="text-gray-50 pl-8 mt-2 py-6 pr-[60px]  bg-blue-400">
+                <h1 className="text-gray-50 pl-8 mt-2 py-6 pr-[60px]  bg-blue-600">
                     <div className="text-2xl font-medium flex flex-col md:flex-row justify-between">
                         <span className="">Summary</span>
                         <p className=""> {totalIncome - (totalInsuranceFinancial + totalHomeUtilities + totalGroceries + totalPersonalMedical + totalEntertainment + totalTransportAuto + totalChildren)} Tk </p>

@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import bg from "/finance.jpg"
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useFinanceData from "../../Hooks/useFinanceData";
+import DashboardHeader from "../../Components/header/DashboardHeader";
 
 const FinancialManagement = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
@@ -51,10 +52,14 @@ const FinancialManagement = () => {
 
     return (
 
-        <div className={`bg-cover object-cover min-h-screen bg-[url('/finance.jpg')] bg-opacity-60 `}
-        >
+        <div className={` `}>
 
-            <div className="pt-32 pb-32 z-[3] md:mx-32">
+            {/* Banner section */}
+            <div className="md:ml-10 lg:ml-20">
+            <DashboardHeader smallTitle={"Calculate Your"} largeTitle={"Transactions"} imgSrc={"https://i.ibb.co/jzv23G8/saving.png"} />
+            </div>
+
+            <div className="pt-10 pb-32 z-[3] lg:mx-32">
 
                 <div className="bg-white bg-opacity-95 max-w-screen-lg py-5 shadow-xl rounded-xl opacity-96 mx-auto">
                     {/* Add List */}
