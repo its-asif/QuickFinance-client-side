@@ -76,7 +76,7 @@ const router = createBrowserRouter([
         element:<PaymentSuccess></PaymentSuccess>
       },
       {
-        path:"/payment/fail/:transId",
+        path:"/payment/fail/:tranId",
         element:<PaymentFailed></PaymentFailed>
       },
       {

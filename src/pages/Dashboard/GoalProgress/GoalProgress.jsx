@@ -1,4 +1,4 @@
-
+import { Chart } from 'chart.js/auto';
 import moment from 'moment';
 import useAuth from '../../../Hooks/useAuth';
 import goalImg from '/goal.png'
@@ -8,12 +8,13 @@ import { FaTimesCircle } from "react-icons/fa";
 import GoalProgressCard from './GoalProgressCard';
 import toast from 'react-hot-toast';
 import DashboardHeader from '../../../Components/header/DashboardHeader';
+import { useEffect, useRef } from 'react';
 const GoalProgress = () => {
 
 
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
-
+    
     // data fetch
     const { data, refetch } = useQuery({
         queryKey: ['GoalData'],
@@ -22,6 +23,60 @@ const GoalProgress = () => {
             return res.data;
         }
     });
+
+    const chartRef = useRef(null);
+    useEffect(() => {
+        if (chartRef.current) {
+            // Data
+            const totalExpense = data?.userBudget.totalExpense || 0;
+            const totalIncome = data?.userBudget.totalIncome || 0;
+            let totalSaving = data?.userBudget.totalSaving || 0;
+
+            // Ensure saving is not negative
+            totalSaving = Math.max(totalSaving, 0);
+
+            // Destroy existing chart if it exists
+            if (chartRef.current.chart) {
+                chartRef.current.chart.destroy();
+            }
+
+            // Get canvas element
+            const ctx = chartRef.current.getContext('2d');
+
+            // Create bar chart
+            chartRef.current.chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Expense', 'Income', 'Saving'],
+                    datasets: [{
+                        label: 'Amount',
+                        data: [totalExpense, totalIncome, totalSaving],
+                        backgroundColor: [
+                            'rgba(255,15,15,1.00)', // Red for Expense
+                            'rgba(15,147,255,1.00)',  // Blue for Income
+                            'rgba(57, 155, 83, 1)'   // Green for Saving
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    }, [data]);
+    
+       
+       
 // post data 
             const handleAddGoal= (event)=>{
                 event.preventDefault();
@@ -86,7 +141,10 @@ const GoalProgress = () => {
 
 
 
-
+            {/* Bar chart */}
+            <div className='my-5 flex w-full h-96 bg-white rounded-lg bg-opacity-10 shadow-xl justify-center items-center'>
+                <canvas ref={chartRef} id="myBarChart" width="400" height="200"></canvas>
+            </div>
             {/* set goal input field and button */}
             <div>
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
@@ -136,7 +194,7 @@ const GoalProgress = () => {
 }
 
                 {
-                    data?.goals.map((item) =>
+                    data?.goals?.map((item) =>
                         <GoalProgressCard
                             key={item?._id}
                             item={item} refetch={refetch}>
