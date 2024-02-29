@@ -20,31 +20,30 @@ const Footer = () => {
             </div>
 
             <div className='flex flex-row gap-4 lg:gap-32 my-6'>
-                <Link to='https://muddasir-faiyaj.web.app/' target='_blanks' className='text-center'>FAQ</Link>
-                <Link to='https://muddasir-faiyaj.web.app/' target='_blanks' className='text-center'>Configuration</Link>
-                <Link to='https://github.com/its-asif/QuickFinance-client-side' target='_blanks' className='text-center'>Github</Link>
-                <Link to='https://muddasir-faiyaj.web.app/' target='_blanks' className='text-center'>Linkedin </Link>
+                <Link to='https://muddasir-faiyaj.web.app/' target='_blank' className='text-center'>Terms and Conditions</Link>
+                <Link to='https://muddasir-faiyaj.web.app/' target='_blank' className='text-center'>Privacy and Policy</Link>
+                <Link to='/about' className='text-center'>About Us</Link>
+                <Link to='/contact' className='text-center'>Contact Us</Link>
+                <Link to='/publicBlogs' className='text-center'>Read Blogs</Link>
             </div>
 
             <hr className='max-w-xl w-3/4  mx-auto text-white my-2' />
 
             <div className="flex gap-2 md:gap-12 mt-4 mb-8">
 
-                <Link data-aos="flip-up" to='https://tahsinzaman.netlify.app/' target='_blanks' className="">
+                <Link data-aos="flip-up" to='https://tahsinzaman.netlify.app/' target='_blank' className="">
                     <img className='w-11/12' src={footerIcon1} alt="facebook icons" />
                 </Link>
-                <Link data-aos="flip-down" to='https://muddasir-faiyaj.web.app/' target='_blanks' className="">
+                <Link data-aos="flip-down" to='https://muddasir-faiyaj.web.app/' target='_blank' className="">
                     <img className='w-11/12' src={footerIcon2} alt="linkedin icons" />
                 </Link>
-                <Link data-aos="flip-up" to='https://asifhossain.netlify.app/' target='_blanks' className="">
+                <Link data-aos="flip-up" to='https://asifhossain.netlify.app/' target='_blank' className="">
                     <img className='w-11/12' src={footerIcon3} alt="twitter icons" />
                 </Link>
-                <Link data-aos="flip-down" to='https://github.com/its-asif/QuickFinance-client-side' target='_blanks' className="">
+                <Link data-aos="flip-down" to='https://github.com/its-asif/QuickFinance-client-side' target='_blank' className="">
                     <img className='w-11/12' src={footerIcon4} alt="github icons" />
                 </Link>
-                <Link data-aos="flip-up" to='https://tahsinzaman.netlify.app/' target='_blanks' className="">
-                    <img className='w-11/12' src={footerIcon5} alt="amazon icons" />
-                </Link>
+
             </div>
 
             {/* <div className="flex mt-8 mb-4">

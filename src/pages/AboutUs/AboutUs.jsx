@@ -295,10 +295,11 @@ const AboutUs = () => {
 
             {/* Team Section */}
 
-            <div className="text-slate-100 max-w-[85rem] px-4 py-10 lg:px-8 lg:py-14 mx-auto bg-gradient-to-r from-[#0ba360] to-green-400">
+            <div className="text-gray-900 max-w-[85rem] px-4 py-10 lg:px-8 lg:py-14 mx-auto bg-gradient-to-r from-[#0ba360] to-green-400">
 
                 <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-                    <h2 className="text-2xl font-bold md:text-4xl md:leading-tight">Meet Our team</h2>
+                    <h2 className="text-2xl font-bold md:text-4xl ">Meet Our team</h2>
+                    <p className="my-3">Unveiling the Exceptional Faces Behind Our Phenomenal Success: Meet Our Outstanding Team</p>
                 </div>
 
                 <div className="container mx-auto my-8">
