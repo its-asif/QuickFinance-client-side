@@ -11,17 +11,17 @@ const MyBlog = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // axiosPublic.get(`/api/blogs/${AuthUser.email}`)
-        // .then(res => {
-        //     setBlogs(res.data);
-        //     setLoading(false);
-        // })
+        axiosPublic.get(`/api/blogs/${AuthUser.email}`)
+        .then(res => {
+            setBlogs(res.data);
+            setLoading(false);
+        })
 
     }, [])
     
     console.log(blogs)
 
-    // if(loading) return (<div>Loading...</div>)
+    if(loading) return (<div>Loading...</div>)
 
     return (
         <div className="mx-20 mb-10">
