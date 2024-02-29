@@ -108,6 +108,8 @@ const GoalProgressCard = ({ item, refetch }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+                
+               
                 axiosPublic.delete(`/api/goals/${id}`)
                     .then((postData) => {
                         if (postData?.data) {
@@ -170,7 +172,7 @@ const GoalProgressCard = ({ item, refetch }) => {
                             disabled={goalStatus === 'completed'}> {/* Add disabled attribute */}
                             <FaEdit />
                         </button>
-
+                     
                         <dialog
                             id="my_modal_3"
                             className="modal modal-bottom transform duration-500 sm:modal-middle">
@@ -180,17 +182,14 @@ const GoalProgressCard = ({ item, refetch }) => {
                                 <button onClick={() => document.getElementById('my_modal_3').close()} className='flex transform duration-500  justify-end right-0 top-0 p-3 absolute'>
                                     <FaTimesCircle className='text-3xl text-[#D2042D] hover:text-red-600 bg-white rounded-full' /></button>
                                 <p className="py-4 px-5 font-bold">Update your Goal Details</p>
-                                <div className="modal-action">
-                                    <form onSubmit={handleUpdateGoal} className='space-y-4 px-5' method="dialog">
+                                <div className="modal-action block w-full ">
+                              
+                                    <form onSubmit={handleUpdateGoal} className='space-y-4  ' method="dialog">
                                         {/* if there is a button in form, it will close the modal */}
-                                        <div >
-                                        <input name='amount'  type="number" placeholder="save money for your future goal" className="input input-bordered input-success w-full max-w-xs" />
-                                        </div>
                                        
-
-                                    
-                                     
-                                        <button type='submit' className="btn sharedBtn">Submit</button>
+                                        <input name='amount'  type="number" placeholder="save money for your future goal" className="input input-bordered input-success w-full " />
+                                      
+                                        <button type='submit' className="btn sharedBtn block">Submit</button>
                                     </form>
                                 </div>
                             </div>
