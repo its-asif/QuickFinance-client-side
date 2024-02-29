@@ -1,11 +1,11 @@
 
+import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+
 
 
 const PayTax = () => {
   const { AuthUser } = useAuth();
-  const axiosPublic = useAxiosPublic()
   const handleDonateTax = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -34,7 +34,7 @@ const PayTax = () => {
     }
 
     console.log(data);
-    axiosPublic.post('/api/payments', data)
+    axios.post('https://quick-finance-server-side.vercel.app/api/payments', data)
       .then((res) => {
         window.location.replace(res?.data?.url)
         console.log(res.data);
