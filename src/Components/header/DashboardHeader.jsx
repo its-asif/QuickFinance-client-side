@@ -9,7 +9,7 @@ const DashboardHeader = ({smallTitle, largeTitle, imgSrc}) => {
 
                     <h1 className= 'text-4xl md:text-5xl  lg:text-8xl font-bold'>
                         {largeTitle.split(' ').map((word, index) => {
-                            return <span key={index} className='blo ck'>{word}</span>
+                            return <span key={index} className='block'>{word}</span>
                         })}
                     </h1>
                 </div>
