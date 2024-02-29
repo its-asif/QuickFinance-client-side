@@ -7,19 +7,49 @@ const PublicBlogs = () => {
 
     const axiosPublic = useAxiosPublic();
     const [blogs, setBlogs] = useState([]);
+    const [filteredBlogs, setFilteredBlogs] = useState([]);
+    const [tags, setTags] = useState([]);
     const [loading, setLoading] = useState(true);
+
 
     
     useEffect(() => {
         axiosPublic.get('/api/blogs')
         .then(res => {
             setBlogs(res.data);
+            setFilteredBlogs(res.data);
             setLoading(false);
         })
 
     }, [])
+
+    useEffect(() => {
+        const tags = blogs.map(blog => blog.tags).flat();
+        setTags([...new Set(tags)]);
+    }, [blogs])
     
-    console.log(blogs)
+    // console.log(blogs)
+
+    // sorting by date and likes
+    const handleSort = (e) => {
+        if(e.target.value === 'latest') {
+            setFilteredBlogs([...blogs].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
+        } else if(e.target.value === 'oldest') {
+            setFilteredBlogs([...blogs].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)))
+        } else if(e.target.value === 'likes') {
+            setFilteredBlogs([...blogs].sort((a, b) => b.likes - a.likes))
+        }
+    }
+
+
+    // filter by tags
+    const handleFilter = (e) => {
+        if(e.target.value === 'all') {
+            setFilteredBlogs(blogs)
+        } else {
+            setFilteredBlogs(blogs.filter(blog => blog.tags.includes(e.target.value)))
+        }
+    }
 
     if(loading) return <div className="h-screen"><Spinner /></div>
 
@@ -33,11 +63,54 @@ const PublicBlogs = () => {
             </div>
 
 
+            {/* filter and sort */}
+            <div className="flex gap-6 items-center container mx-auto my-4">
+
+
+                {/* filter */}
+                <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                        <span className="label-text">Filter by Tags:</span>
+                    </div>
+                    <select 
+                        className="select select-bordered"
+                        onChange={handleFilter}
+                        name="filter"
+                        id="filter"
+                        >
+                        <option value="all" selected>All</option>
+                        {
+                            tags.map(tag => (
+                                <option key={tag} value={tag}>{tag}</option>
+                            ))
+                        }
+                    </select>
+                </label>
+
+                {/* sorting */}
+                <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                        <span className="label-text">Sort by:</span>
+                    </div>
+
+                    <select 
+                        onChange={handleSort} 
+                        name="sort" id="sort" 
+                        className="select select-bordered">
+                        <option value="latest" selected>Latest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="likes">Likes</option>
+                    </select>
+                </label>
+            </div>
+
+
+
             {/* card - blog list */}
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
              container mt-5 mx-auto ">
                 {
-                    blogs.map(blog => (
+                    filteredBlogs.map(blog => (
                         <div key={blog._id} className="card mb-4">
                             <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-full">
                                 <Link to={`/blogs/${blog._id}`} className="block w-full h-full">
