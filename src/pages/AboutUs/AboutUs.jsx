@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import useUsersData from "../../Hooks/useUsersData";
 import team1 from './../../assets/team/tahmid.webp'
 import team2 from './../../assets/team/asif-2.jpg'
-import team3 from './../../assets/team/hanif.jpg'
+// import team3 from './../../assets/team/hanif.jpg'
 import team4 from './../../assets/team/fayaz-2.jpg'
 import team5 from './../../assets/team/tahsin.jpg'
 
@@ -114,12 +114,12 @@ const AboutUs = () => {
             image: team2,
             portfolio: "https://asifhossain.netlify.app/"
         },
-        {
-            name: "Hanif Biswas",
-            position: "",
-            image: team3,
-            portfolio: "https://asifhossain.netlify.app/"
-        },
+        // {
+        //     name: "Hanif Biswas",
+        //     position: "",
+        //     image: team3,
+        //     portfolio: "https://asifhossain.netlify.app/"
+        // },
         {
             name: "Muddasir Faiyaz",
             position: "",
@@ -302,23 +302,22 @@ const AboutUs = () => {
                     <p className="my-3">Unveiling the Exceptional Faces Behind Our Phenomenal Success: Meet Our Outstanding Team</p>
                 </div>
 
-                <div className="container mx-auto my-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                <div className="container mx-auto my-8 px-20">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {teamData.map((member, index) => (
-                            <div key={index} className="text-center shadow-xl rounded-lg overflow-hidden group">
-                                <div className="relative">
-                                    <img className="w-full h-56 object-cover group-hover:opacity-40" src={member.image} alt={member.name} />
-                                    <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 ">
-                                        <div className="transform translate-y-6 group-hover:translate-y-0">
-                                            <h3 className="text-lg font-semibold text-black transition-all duration-300">{member.name}</h3>
-                                            <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a>
-                                        </div>
+                            <div key={index} className=" text-center rounded-full overflow-hidden group">
+                                <div className="flex">
+                                    <img className="w-24 h-40 object-cover" src={member.image} alt={member.name} />
+                                    <div className="ml-4 flex flex-col justify-center text-left">
+                                        <h3 className="text-lg font-semibold text-black">{member.name}</h3>
+                                        <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="text-black text-base cursor-pointer hover:underline">View Profile</a>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </div>
+
 
 
 
