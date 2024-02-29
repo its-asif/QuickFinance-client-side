@@ -303,7 +303,7 @@ const AboutUs = () => {
                 </div>
 
                 <div className="container mx-auto my-8 px-20">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {teamData.map((member, index) => (
                             <div key={index} className=" text-center rounded-full overflow-hidden group">
                                 <div className="flex">
