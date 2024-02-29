@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import DashboardHeader from "../../../../Components/header/DashboardHeader";
+import Spinner from "../../MyAsset/Spinner/Spinner";
 
 const PublicBlogs = () => {
 
@@ -21,10 +22,10 @@ const PublicBlogs = () => {
     
     console.log(blogs)
 
-    if(loading) return (<div>Loading...</div>)
+    if(loading) return <div className="h-screen"><Spinner /></div>
 
     return (
-        <div className="pt-10">
+        <div className="pt-10 min-h-screen">
             <DashboardHeader smallTitle={"Read all"} largeTitle={"Financial Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
