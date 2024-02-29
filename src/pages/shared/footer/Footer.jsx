@@ -20,8 +20,8 @@ const Footer = () => {
             </div>
 
             <div className='flex flex-row gap-4 lg:gap-32 my-6'>
-                <Link to='https://muddasir-faiyaj.web.app/' target='_blank' className='text-center'>Terms and Conditions</Link>
-                <Link to='https://muddasir-faiyaj.web.app/' target='_blank' className='text-center'>Privacy and Policy</Link>
+                <Link to='/termsAndConditions' className='text-center'>Terms and Conditions</Link>
+                <Link to='/privacyAndPolicy' className='text-center'>Privacy and Policy</Link>
                 <Link to='/about' className='text-center'>About Us</Link>
                 <Link to='/contact' className='text-center'>Contact Us</Link>
                 <Link to='/publicBlogs' className='text-center'>Read Blogs</Link>
