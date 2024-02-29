@@ -25,7 +25,7 @@ const PublicBlogs = () => {
     if(loading) return <div className="h-screen"><Spinner /></div>
 
     return (
-        <div className="pt-10 min-h-screen">
+        <div className="pt-10">
             <DashboardHeader smallTitle={"Read all"} largeTitle={"Financial Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
