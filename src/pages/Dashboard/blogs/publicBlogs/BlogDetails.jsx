@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BiLike } from "react-icons/bi";
 import useAuth from "../../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import Spinner from "../../MyAsset/Spinner/Spinner";
 
 
 const BlogDetails = () => {
@@ -49,7 +50,7 @@ const BlogDetails = () => {
         })
     }, [ liked ])
 
-    if(loading) return (<div>Loading...</div>)
+    if(loading) return <div className="h-screen"><Spinner /></div>
 
     return (
         <div className="pt-28 max-w-3xl mx-auto">
