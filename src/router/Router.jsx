@@ -55,12 +55,12 @@ const router = createBrowserRouter([
       },
       {
         path:"/donateZakat",
-        element:<DonateZakat></DonateZakat>
+        element:<PrivateRoute><DonateZakat></DonateZakat></PrivateRoute>
 
       },
       {
         path:"/payTax",
-        element:<PayTax></PayTax>
+        element:<PrivateRoute><PayTax></PayTax></PrivateRoute>
 
       },
       {
