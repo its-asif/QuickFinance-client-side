@@ -108,7 +108,7 @@ const CreateBlogs = () => {
             </div>
 
             {/* Form Section */}
-            <div className='flex flex-col justify-center lg:w-1/3 mx-auto bg-green-100 p-10 m-4 rounded-lg'>
+            <div className='flex flex-col justify-center md:w-2/3 mx-auto bg-green-100 p-10 m-4 rounded-lg'>
 
                 {/* input title */}
                 <div className="form-control w-full">

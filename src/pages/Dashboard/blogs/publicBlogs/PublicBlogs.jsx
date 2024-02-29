@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import DashboardHeader from "../../../../Components/header/DashboardHeader";
 import Spinner from "../../MyAsset/Spinner/Spinner";
 
 const PublicBlogs = () => {
@@ -25,16 +24,22 @@ const PublicBlogs = () => {
     if(loading) return <div className="h-screen"><Spinner /></div>
 
     return (
-        <div className="pt-10">
-            <DashboardHeader smallTitle={"Read all"} largeTitle={"Financial Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
-            
+        <div className="py-16">
+
+            <div className="text-center">
+                <h1 className="text-5xl font-semibold text-gray-800 dark:text-white my-10">
+                    Read our latest blogs
+                </h1>
+            </div>
+
+
             {/* card - blog list */}
-            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10
-             container mt-5">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
+             container mt-5 mx-auto ">
                 {
                     blogs.map(blog => (
                         <div key={blog._id} className="card mb-4">
-                            <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-60 md:w-80">
+                            <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-full">
                                 <Link to={`/blogs/${blog._id}`} className="block w-full h-full">
                                     <img alt="blog photo" src={blog.blogImg} className="object-cover w-full h-48"/>
                                     <div className="w-full p-4 bg-white dark:bg-gray-800 h-40">
