@@ -8,11 +8,11 @@ const FaqSection = () => {
                 <div data-aos="flip-down" data-aos-duration="2000" className="max-lg:order-1 max-lg:text-center w-4/5 lg:w-4/5 mx-auto ">
 
                     <div>
-                        <h1 className='text-4xl font-bold'>Frequently Asked Questions <span className='text-[#399B53]'>(FAQ)</span> </h1>
+                        <h1 className='text-4xl font-bold'>Frequently Asked Questions <span className='text-[#5ae4a7]'>(FAQ)</span> </h1>
                         <p className='my-4 leading-loose text-slate-600'>Explore our comprehensive guide to address common queries and gain insights into our financial services. If you have additional questions, feel free to reach out for personalized assistance</p>
                     </div>
 
-                    <div className="collapse collapse-arrow  trial">
+                    <div className="collapse collapse-arrow bg-[#5ae4a7]">
                         <input type="checkbox" id="faq1" />
                         <div className="collapse-title text-xl font-medium">
                             What financial services do you offer?
@@ -22,7 +22,7 @@ const FaqSection = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow trial mt-4">
+                    <div className="collapse collapse-arrow bg-[#5ae4a7] mt-4">
                         <input type="checkbox" id="faq2" />
                         <div className="collapse-title text-xl font-medium">
                             How can I access my account online?
@@ -32,7 +32,7 @@ const FaqSection = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow trial mt-4">
+                    <div className="collapse collapse-arrow bg-[#5ae4a7] mt-4">
                         <input type="checkbox" id="faq3" />
                         <div className="collapse-title text-xl font-medium">
                             How do I get started with your services?
