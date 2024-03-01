@@ -61,7 +61,7 @@ const PublicBlogs = () => {
         <div className="py-16">
 
             <div className="text-center">
-                <h1 className="text-5xl font-semibold text-gray-800 dark:text-white my-10">
+                <h1 className="text-5xl font-semibold text-gray-800  my-10">
                     Read our latest blogs
                 </h1>
             </div>
@@ -117,7 +117,7 @@ const PublicBlogs = () => {
                     filteredBlogs.map(blog => (
                         <div key={blog._id} className="
                             overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-full
-                            dark:bg-gray-800 dark:text-white dark:border-gray-600
+                           
                             bg-white text-gray-800 border-gray-200 border-2
                         ">
                             <div className="
@@ -125,14 +125,14 @@ const PublicBlogs = () => {
                             ">
                                 <Link to={`/blogs/${blog._id}`} className="flex flex-col w-full h-full ">
                                     <img alt="blog photo" src={blog.blogImg} className="object-cover w-full h-60"/>
-                                    <div className="w-full p-4 bg-white dark:bg-gray-800 ">
+                                    <div className="w-full p-4 bg-white  ">
                                         {/* <p className="font-medium text-indigo-500 text-md">
                                             Article
                                         </p> */}
-                                        <p className="mb-2 text-xl font-medium text-gray-800 dark:text-white">
+                                        <p className="mb-2 text-xl font-medium text-gray-800 ">
                                             {blog.title}
                                         </p>
-                                        <p className="font-light text-gray-400 dark:text-gray-300 text-md">
+                                        <p className="font-light text-gray-400  text-md">
                                             {blog.content.replace(/<[^>]*>?/gm, '').split(' ').slice(0, 20).join(' ')}...
                                         </p>
 
@@ -153,10 +153,10 @@ const PublicBlogs = () => {
                                             <img alt="profil" src={blog.userImg} className="mx-auto object-cover rounded-full h-10 w-10 "/>
                                         </a>
                                         <div className="flex flex-col justify-between ml-4 text-sm">
-                                            <p className="text-gray-800 dark:text-white">
+                                            <p className="text-gray-800 ">
                                                 {blog.userName}
                                             </p>
-                                            <p className="text-gray-400 dark:text-gray-300">
+                                            <p className="text-gray-400 ">
                                                 {new Date(blog.createdAt).toLocaleDateString()} - Likes: { blog.likes} 
                                                 {/* {Math.floor(blog.content.split(' ').length / 150)} min read */}
                                             </p>
