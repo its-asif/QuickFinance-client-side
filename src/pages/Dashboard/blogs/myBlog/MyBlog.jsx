@@ -28,6 +28,17 @@ const MyBlog = () => {
             <DashboardHeader smallTitle={"See Your"} largeTitle={"Blogs"} imgSrc={"https://i.ibb.co/RCCJ8zL/blog-banner-img.png"} />
             
             {/* card - blog list */}
+
+            {
+                blogs.length === 0 && (
+                    <div className="text-center">
+                        <h1 className="text-3xl text-gray-500 dark:text-white font-bold mt-10">
+                            You have not written any blog yet
+                        </h1>
+                        <Link to="/dashboard/publishBlogs" className="text-blue-500 text-2xl mt-5">Write a blog</Link>
+                    </div>
+                )
+            }
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10
              container mt-5">
                 {

@@ -10,7 +10,7 @@ import footerIcon5 from './../../../assets/footer_icons/Amazon.png'
 const Footer = () => {
     return (
 
-        <div className="flex flex-col items-center bg-black text-white mb-0 py-8">
+        <div className="flex flex-col items-center bg-black text-white mb-0 py-8 mt-auto">
 
             <div className='flex justify-center items-center gap-5'>
                 <img data-aos="zoom-in-right" src={footerLogo} alt="QuickFinance Logo" />

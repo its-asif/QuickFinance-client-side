@@ -302,23 +302,23 @@ const AboutUs = () => {
                     <p className="my-3">Unveiling the Exceptional Faces Behind Our Phenomenal Success: Meet Our Outstanding Team</p>
                 </div>
 
-                <div className="container mx-auto my-8">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                <div className="container mx-auto my-8 px-20">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
                         {teamData.map((member, index) => (
-                            <div key={index} className="text-center shadow-xl rounded-lg overflow-hidden group">
-                                <div className="relative">
-                                    <img className="w-full h-56 object-cover group-hover:opacity-40" src={member.image} alt={member.name} />
-                                    <div className="absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 ">
-                                        <div className="transform translate-y-6 group-hover:translate-y-0">
-                                            <h3 className="text-lg font-semibold text-black transition-all duration-300">{member.name}</h3>
-                                            <a href={member.portfolio} target="_blank" rel="noopener noreferrer" className="text-black text-lg cursor-pointer underline">View Profile</a>
+                            <div key={index} className=" text-center rounded-full overflow-hidden group">
+                                <Link to={member.portfolio}>
+                                    <div className="avatar hover:opacity-55">
+                                        <div className="w-24 rounded-full">
+                                            <img src={member.image} />
                                         </div>
                                     </div>
-                                </div>
+                                    <p>{member.name}</p>
+                                </Link>
                             </div>
                         ))}
                     </div>
                 </div>
+
 
 
 
