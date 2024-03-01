@@ -1,6 +1,5 @@
 import useAuth from "../../../Hooks/useAuth";
 import { ImCloudDownload } from "react-icons/im";
-import { MdVerifiedUser } from "react-icons/md";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
 import moment from 'moment';
@@ -163,54 +162,61 @@ const MyDashboard = () => {
             </div>
 
 
-            <h1 className="text-5xl my-10 font-bold text-center text-green-700"> Transaction Summary</h1>
 
-            {/* Graph */}
-            <div>
-
-                {/* income and expense by category (pie chart) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div data-aos="fade-up" data-aos-duration="1000">
-                        <Chart
-                            width={'100%'}
-                            height={'400px'}
-                            chartType="PieChart"
-                            loader={<div>Loading Chart</div>}
-                            data={incomeByCategoryData}
-                            options={{
-                                title: 'Income By Category',
-                            }}
-                            rootProps={{ 'data-testid': '1' }}
-                        />
+            <div className="flex lg:flex-row flex-col gap-4">
+                {/* Graph */}
+                <div>
+                    <h1 className="text-4xl my-8 font-bold text-start text-green-700"> Transaction Summary</h1>
+                    {/* income and expense by category (pie chart) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-[50vw]">
+                        <div data-aos="fade-up" data-aos-duration="1000">
+                            <Chart
+                                width={'100%'}
+                                height={'400px'}
+                                chartType="PieChart"
+                                loader={<div>Loading Chart</div>}
+                                data={incomeByCategoryData}
+                                options={{
+                                    title: 'Income By Category',
+                                }}
+                                rootProps={{ 'data-testid': '1' }}
+                            />
+                        </div>
+                        <div data-aos="fade-up" data-aos-duration="1000">
+                            <Chart
+                                width={'100%'}
+                                height={'400px'}
+                                chartType="PieChart"
+                                loader={<div>Loading Chart</div>}
+                                data={expenseByCategoryData}
+                                options={{
+                                    title: 'Expense By Category',
+                                }}
+                                rootProps={{ 'data-testid': '1' }}
+                            />
+                        </div>
                     </div>
-                    <div data-aos="fade-up" data-aos-duration="1000">
-                        <Chart
-                            width={'100%'}
-                            height={'400px'}
-                            chartType="PieChart"
-                            loader={<div>Loading Chart</div>}
-                            data={expenseByCategoryData}
-                            options={{
-                                title: 'Expense By Category',
-                            }}
-                            rootProps={{ 'data-testid': '1' }}
-                        />
+
+                    {/* income and expense by date ( line chart )*/}
+                    <div>
+                        <div data-aos="fade-up" data-aos-duration="1000" className="border my-4 lg:w-[50vw] rounded-md">
+                            <Chart
+                                chartType="LineChart"
+                                width="100%"
+                                height="400px"
+                                data={lineData}
+                                options={options}
+                            />
+                        </div>
                     </div>
                 </div>
+                <div>
+                    <h1 className="text-4xl my-8 font-bold text-start text-green-700">Suggested Blog</h1>
+                    <div className=" w-[50vw] h-full bg-white rounded-md">
 
-                {/* income and expense by date ( line chart )*/}
-                <div data-aos="fade-up" data-aos-duration="1000">
-                    <Chart
-                        chartType="LineChart"
-                        width="100%"
-                        height="400px"
-                        data={lineData}
-                        options={options}
-                    />
+                    </div>
                 </div>
             </div>
-
-
             {/* Report Data  */}
             <div className="hidden">
                 <div className="bg-gray-100 " ref={componentPdf} style={{ width: '100%' }} >
