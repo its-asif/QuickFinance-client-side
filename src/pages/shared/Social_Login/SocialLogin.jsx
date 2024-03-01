@@ -42,30 +42,30 @@ const SocialLogin = () => {
                 //     email: result?.user.email,
                 // }, { withCredentials: true })
                 //     .then(res => console.log(res.data))
-                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/dashboard')
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 // toast.error(`${errorMessage}`)
             });
     }
-    const handleFacebookLogIn = () => {
-        FacebookSignUp()
-            .then((result) => {
-                // The signed-in user info.
-                const user = result.user;
-                console.log(user);
-            })
-            .catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                console.log(errorMessage);
-            });
-    }
+    // const handleFacebookLogIn = () => {
+    //     FacebookSignUp()
+    //         .then((result) => {
+    //             // The signed-in user info.
+    //             const user = result.user;
+    //             console.log(user);
+    //         })
+    //         .catch((error) => {
+    //             // Handle Errors here.
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             // The email of the user's account used.
+    //             const email = error.customData.email;
+    //             // The AuthCredential type that was used.
+    //             console.log(errorMessage);
+    //         });
+    // }
     return (
         <div>
             <div className="divider">OR</div>
@@ -82,7 +82,7 @@ const SocialLogin = () => {
                 </button>
 
                 {/* Facebook */}
-                <button onClick={handleFacebookLogIn}
+                {/* <button onClick={handleFacebookLogIn}
                     type="button"
                     className="relative flex  gap-1  w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-200 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                 >
@@ -90,7 +90,7 @@ const SocialLogin = () => {
                     <span className="mr-2 inline-block">
                         Sign in with Facebook
                     </span>
-                </button>
+                </button> */}
             </div>
         </div>
     );

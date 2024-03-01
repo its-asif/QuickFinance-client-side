@@ -52,6 +52,7 @@ const Jewelry = () => {
                     userEmail: AuthUser?.email,
                     category: "Jewelry",
                     asset_name: data.jewelry,
+                    JewelrySymbol: data.material,
                     karat: selectedKarat,
                     magnitude: parseFloat(data.weight),
                     purchase_date: data.date,

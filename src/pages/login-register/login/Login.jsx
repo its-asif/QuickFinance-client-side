@@ -62,7 +62,7 @@ const Login = () => {
                             //     })
                             toast.success(`Authenticating as ${result.user.email}`)
                             form.reset()
-                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/dashboard')
                         })
                         .catch((error) => {
                             const errorMessage = error.message;
@@ -138,15 +138,6 @@ const Login = () => {
                                                 <label htmlFor="" className="text-base font-medium text-black">
                                                     Password:
                                                 </label>
-
-                                                {/* Forgot Password */}
-                                                <a
-                                                    href="#"
-                                                    title=""
-                                                    className="text-sm font-semibold text-blue-600 hover:underline"
-                                                >
-                                                    Forgot password?
-                                                </a>
                                             </div>
 
 
