@@ -92,6 +92,8 @@ const GoalProgressCard = ({ item, refetch }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+              
+                
                 axiosPublic.delete(`/api/goals/${_id}`)
                     .then((postData) => {
                         if (postData?.data) {
