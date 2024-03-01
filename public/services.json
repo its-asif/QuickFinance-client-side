@@ -25,8 +25,8 @@
     "link": "dashboard/myAsset"
   },
   {
-    "category": "Debt Management",
+    "category": "Goal Progress Tracker",
     "image": "https://i.ibb.co/NCCWjpQ/image-2.jpg",
-    "link": "dashboard/manageDebt"
+    "link": "dashboard/goalProgress"
   }
 ]

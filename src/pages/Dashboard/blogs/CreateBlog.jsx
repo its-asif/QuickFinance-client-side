@@ -66,6 +66,20 @@ const CreateBlogs = () => {
 
 
     const handleSubmit = () => {
+
+        if(!title ) {
+            return toast.error('Title is required');
+        }
+        if(!tags.length) {
+            return toast.error('Tags are required');
+        }
+        if( !value ) {
+            return toast.error('Content is required');
+        }
+        if( !blogImage ) {
+            return toast.error('Blog Image is required');
+        }
+
         const blogData = {
             userEmail: email,
             userName: displayName,
@@ -89,6 +103,11 @@ const CreateBlogs = () => {
         .catch(err => {
             console.log(err);
             toast.error('Failed to Post Blog');
+
+            // handle payload too large error
+            if(err.response.status === 413) {
+                toast.error('Image size is too large. Please upload a smaller image.');
+            }
         })
     }
 
@@ -108,7 +127,7 @@ const CreateBlogs = () => {
             </div>
 
             {/* Form Section */}
-            <div className='flex flex-col justify-center lg:w-1/3 mx-auto bg-green-100 p-10 m-4 rounded-lg'>
+            <div className='flex flex-col justify-center md:w-2/3 mx-auto bg-green-100 p-10 m-4 rounded-lg'>
 
                 {/* input title */}
                 <div className="form-control w-full">
