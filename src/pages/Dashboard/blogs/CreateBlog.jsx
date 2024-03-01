@@ -66,6 +66,20 @@ const CreateBlogs = () => {
 
 
     const handleSubmit = () => {
+
+        if(!title ) {
+            return toast.error('Title is required');
+        }
+        if(!tags.length) {
+            return toast.error('Tags are required');
+        }
+        if( !value ) {
+            return toast.error('Content is required');
+        }
+        if( !blogImage ) {
+            return toast.error('Blog Image is required');
+        }
+
         const blogData = {
             userEmail: email,
             userName: displayName,

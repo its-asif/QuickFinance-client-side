@@ -26,6 +26,9 @@ const PublicBlogs = () => {
     useEffect(() => {
         const tags = blogs.map(blog => blog.tags).flat();
         setTags([...new Set(tags)]);
+
+        // sort by latest
+        setFilteredBlogs([...blogs].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)))
     }, [blogs])
     
     // console.log(blogs)
@@ -111,30 +114,32 @@ const PublicBlogs = () => {
              container mt-5 mx-auto ">
                 {
                     filteredBlogs.map(blog => (
-                        <div key={blog._id} className="card mb-4">
-                            <div className="m-auto overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-full">
-                                <Link to={`/blogs/${blog._id}`} className="block w-full h-full">
-                                    <img alt="blog photo" src={blog.blogImg} className="object-cover w-full h-48"/>
-                                    <div className="w-full p-4 bg-white dark:bg-gray-800 h-40">
+                        <div key={blog._id} className="
+                            overflow-hidden rounded-lg shadow-lg cursor-pointer h-90 w-full
+                            dark:bg-gray-800 dark:text-white dark:border-gray-600
+                            bg-white text-gray-800 border-gray-200 border-2
+                        ">
+                            <div className="
+                                relative overflow-hidden h-full w-full
+                            ">
+                                <Link to={`/blogs/${blog._id}`} className="flex flex-col w-full h-full ">
+                                    <img alt="blog photo" src={blog.blogImg} className="object-cover w-full h-60"/>
+                                    <div className="w-full p-4 bg-white dark:bg-gray-800 ">
                                         {/* <p className="font-medium text-indigo-500 text-md">
                                             Article
                                         </p> */}
                                         <p className="mb-2 text-xl font-medium text-gray-800 dark:text-white">
                                             {blog.title}
                                         </p>
-                                        <p className="font-light text-gray-400 dark:text-gray-300 text-md h-12">
+                                        <p className="font-light text-gray-400 dark:text-gray-300 text-md">
                                             {blog.content.replace(/<[^>]*>?/gm, '').split(' ').slice(0, 20).join(' ')}...
                                         </p>
-                                        <div className="flex flex-wrap items-center mt-4 justify-starts">
-                                            {/* <div className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                                #Car
-                                            </div>
-                                            <div className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
-                                                #Money
-                                            </div> */}
+
+                                        {/* tags */}
+                                        <div className="flex flex-wrap items-center mt-4 justify-start gap-2">
                                             {
                                                 blog.tags.map(tag => (
-                                                    <div key={tag.id} className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
+                                                    <div key={tag.id} className="text-xs py-1.5 px-4 text-gray-600 bg-blue-100 rounded-2xl">
                                                         <Link to={`/blog/tag/${tag}`}> {tag}</Link>
                                                     </div>
                                                 ))
@@ -142,7 +147,7 @@ const PublicBlogs = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center m-4">
+                                    <div className="flex items-center m-4 mt-auto">
                                         <a href="#" className="relative block">
                                             <img alt="profil" src={blog.userImg} className="mx-auto object-cover rounded-full h-10 w-10 "/>
                                         </a>
