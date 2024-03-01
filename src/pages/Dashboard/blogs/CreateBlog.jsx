@@ -103,6 +103,11 @@ const CreateBlogs = () => {
         .catch(err => {
             console.log(err);
             toast.error('Failed to Post Blog');
+
+            // handle payload too large error
+            if(err.response.status === 413) {
+                toast.error('Image size is too large. Please upload a smaller image.');
+            }
         })
     }
 
