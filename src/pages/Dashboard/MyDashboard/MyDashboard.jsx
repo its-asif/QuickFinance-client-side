@@ -1,5 +1,4 @@
 import useAuth from "../../../Hooks/useAuth";
-import { MdVerified } from "react-icons/md";
 import { ImCloudDownload } from "react-icons/im";
 import { MdVerifiedUser } from "react-icons/md";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
@@ -9,7 +8,9 @@ import { Chart } from "react-google-charts";
 import useAdminStatus from "../../../Hooks/useAdminStatus";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
+import useAssetData from "../../../Hooks/useAssetData";
 const MyDashboard = () => {
+    const { assetData } = useAssetData()
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
     const [data, setData] = useState([]);
@@ -20,7 +21,8 @@ const MyDashboard = () => {
                 // console.log(res.data);
             });
     }, [AuthUser]);
-
+    const AssetBalance = assetData?.reduce((acc, amount) => acc + amount.value, 0)
+    // console.log();
     const isAdmin = useAdminStatus();
 
 
@@ -110,62 +112,53 @@ const MyDashboard = () => {
                 </div>
             </div>
             {/*End  greeting part */}
-            <div className={`bg-cover w-full    bg-[url('/dashboard.png')]  bg-no-repeat bg-center shadow-2xl rounded-xl mb-4 py-8`}>
-                {/* <div className="  rounded-lg  bg-white " data-aos="zoom-in-right" data-aos-duration="3000">
-                    <div className="mb-4 rounded-md bg-gray-100  lg:h-[300px] p-8 pr-0 flex justify-around items-center lg:p-[45px] ">
-                        <div className="space-y-1">
-                            <h1 className="xl:text-4xl font-extrabold font-Jost tracking-wider lg:text-2xl text-xl"> Hello!  {AuthUser?.displayName}</h1>
-                            <p className="text-base  font-semibold ">
-                                It’s good to see you again.
-                            </p>
-                        </div>
-                        <div className=" ">
-                            <img src="/hello-98ac2d3b.png" className="lg:w-[500px] w-[300px] h-full object-cover -mt-20  lg:-mt-20 " alt="" />
-                        </div>
-                    </div>
-
-
-                </div> */}
-
-                {/* profile */}
-                <div data-aos="zoom-in-right" data-aos-duration="3000"
-                    className="  rounded-lg lg:h-[300px] max-h-full max-w-full  mb-4 flex justify-center items-center   ">
+            <div className={`bg-cover w-full   bg-[url('/dashboard.png')]  bg-no-repeat bg-center shadow-2xl rounded-xl mb-4 py-8`}>
+                <div className=" flex md:flex-row flex-col justify-center items-center gap-2">
+                    {/* profile */}
                     <div
-                        className="flex flex-col md:flex-row items-center  bg-white py-14 px-8 bg-opacity-70 rounded-lg gap-2 text-xl">
+                        //  data-aos="zoom-in-right" data-aos-duration="3000"
+                        className="  rounded-lg lg:h-[300px] max-h-full max-w-full mb-4 flex justify-center items-center">
                         <div
-                            className="mb-5 text-center">
-                            <img
-                                className="md:w-24 duration-300 md:h-24 w-2/3 object-cover rounded-full border-[3.5px] border-green-700 "
-                                src={AuthUser?.photoURL} alt="" />
-                            <MdVerifiedUser size={20}
-                                className="text-blue-700 absolute -translate-y-[60/api/dashboard/:emailpx] md:-translate-y-24 z-20" />
-                        </div>
-                        <div className="">
-                            <p className="flex items-center gap-1 text-sm md:text-xl">
-                                {/* <span className="font-semibold  text-green-700">Username:</span> */}
-
-                            </p>
-                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
-                            <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin ? "Admin" : "User"}</p>
-                            {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
-                            {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
-                            {/* expencess and income*/}
-                            <div className="mt-2 mb-4 text-sm md:text-md">
-                                <p className=" text-sm md:text-xl font-semibold"><span className=" pr-3 text-black"
-                                >Total Balance:</span>{data?.balance} TK</p>
-
-                                <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
-                                >Total Expenses:</span> {data?.totalExpense} Tk</p>
-
-                                <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
-                                >Total Income:</span> {data?.totalIncome} Tk</p>
+                            className="flex flex-col md:flex-row items-center  bg-white py-8 px-8 bg-opacity-70 rounded-lg gap-2 text-xl">
+                            <div
+                                className="mb-5 text-center">
+                                <img
+                                    className="md:w-24 duration-300 md:h-24 w-2/3 object-cover rounded-full"
+                                    src={AuthUser?.photoURL} alt="" />
+                                {/* <MdVerifiedUser size={20}
+                                className="text-blue-700 absolute -translate-y-[60/api/dashboard/:emailpx] md:-translate-y-24 z-20" /> */}
                             </div>
+                            <div className="">
+                                <p className="flex items-center gap-1 text-sm md:text-xl">
+                                    {/* <span className="font-semibold  text-green-700">Username:</span> */}
 
-                            {/* Print Btn  */}
-                            <button onClick={downloadPdf} className="sharedBtn "> <ImCloudDownload className=" mr-2 text-2xl" /> My Report </button>
+                                </p>
+                                <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">Email</span>: {AuthUser?.email}</p>
+                                <p className="text-sm md:text-xl"><span className="font-semibold text-green-700">User Status</span>: {isAdmin ? "Admin" : "User"}</p>
+                                {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">UId:</span> {AuthUser?.uid}</p> */}
+                                {/* <p className="hidden md:flex gap-2"><span className="font-semibold text-green-700">Last Sign In At:</span> {AuthUser?.metadata.lastSignInTime}</p> */}
+                                {/* expencess and income*/}
+                                <div className="mt-2 mb-4 text-sm md:text-md">
+                                    <p className=" text-sm md:text-xl font-semibold"><span className=" pr-3 text-black"
+                                    >Total Balance:</span>{data?.balance} TK</p>
+
+                                    <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
+                                    >Total Expenses:</span> {data?.totalExpense} Tk</p>
+
+                                    <p className="text-sm md:text-xl font-semibold"><span className="  text-black"
+                                    >Total Income:</span> {data?.totalIncome} Tk</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
+                    {/* asset data  */}
+                    <div className=" bg-white py-8 px-8 bg-opacity-70 rounded-lg border">
+                        <p className="text-xl font-semibold text-green-700 mb-2 ">Financial States</p>
+                        <p className="text-3xl lg:text-4xl font-extrabold mb-6">{AssetBalance} USD</p>
+                        {/* Print Btn  */}
+                        <button onClick={downloadPdf} className="fullWidthSharedBtn"> <ImCloudDownload className=" mr-2 text-2xl" /> My Report </button>
+                    </div>
                 </div>
             </div>
 
