@@ -12,7 +12,7 @@ const PublicBlogs = () => {
     const [loading, setLoading] = useState(true);
 
 
-    
+    // fetch initial data and store
     useEffect(() => {
         axiosPublic.get('/api/blogs')
         .then(res => {
@@ -23,6 +23,7 @@ const PublicBlogs = () => {
 
     }, [])
 
+    // after fetching data, set tags and sort by latest
     useEffect(() => {
         const tags = blogs.map(blog => blog.tags).flat();
         setTags([...new Set(tags)]);
