@@ -62,7 +62,7 @@ const Login = () => {
                             //     })
                             toast.success(`Authenticating as ${result.user.email}`)
                             form.reset()
-                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                            location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/dashboard')
                         })
                         .catch((error) => {
                             const errorMessage = error.message;

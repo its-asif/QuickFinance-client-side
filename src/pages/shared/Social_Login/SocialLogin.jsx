@@ -42,7 +42,7 @@ const SocialLogin = () => {
                 //     email: result?.user.email,
                 // }, { withCredentials: true })
                 //     .then(res => console.log(res.data))
-                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/dashboard')
             })
             .catch((error) => {
                 const errorMessage = error.message;
