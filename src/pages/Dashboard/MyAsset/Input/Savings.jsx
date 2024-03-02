@@ -5,11 +5,13 @@ import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAssetData from "../../../../Hooks/useAssetData";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const Savings = () => {
     const  { refetch } = useAssetData()
     const { AuthUser } = useContext(AuthContext)
     const axiosPublic = useAxiosPublic()
+    const axiosSecure =useAxiosSecure()
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
 
@@ -53,7 +55,7 @@ const Savings = () => {
                 status: "ups"
             }
             // console.log(SavingsData);
-            axiosPublic.post('/api/assets', SavingsData)
+            axiosSecure.post('/api/assets', SavingsData)
             .then(res => {
                 // console.log(res.status);
                 if (res.status === 200) {

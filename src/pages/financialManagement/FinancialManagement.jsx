@@ -7,11 +7,13 @@ import bg from "/finance.jpg"
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useFinanceData from "../../Hooks/useFinanceData";
 import DashboardHeader from "../../Components/header/DashboardHeader";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const FinancialManagement = () => {
     const [isFormOpen, setIsFormOpen] = useState(false)
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure =useAxiosSecure()
     const { loading, AuthUser } = useAuth();
 
     const email = AuthUser?.email;
@@ -29,7 +31,7 @@ const FinancialManagement = () => {
             amount: data.amount,
             trxDetails: data.trxDetails,
         };
-        const financialItemRes = await axiosPublic?.post('/api/transactions', financialItem);
+        const financialItemRes = await axiosSecure?.post('/api/transactions', financialItem);
         console.log(financialItemRes.data)
         if (financialItemRes?.data.userEmail) {
             // show success popup

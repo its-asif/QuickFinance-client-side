@@ -9,9 +9,11 @@ import Spinner from "./Spinner/Spinner";
 import useAssetData from "../../../Hooks/useAssetData";
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 const Table = () => {
     const { assetData, loading, refetch } = useAssetData()
     const axiosPublic = useAxiosPublic();
+    const axiosSecure =useAxiosSecure()
     // console.log(assetData);
     const handleDelete = (id) => {
         Swal.fire({
@@ -24,7 +26,7 @@ const Table = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosPublic.delete(`/api/assets/${id}`)
+                axiosSecure.delete(`/api/assets/${id}`)
                     .then(res => {
                         // console.log(res.status);
                         if (res.status === 200) {

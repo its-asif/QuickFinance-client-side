@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import useBudgetData from "../../../Hooks/useBudgetData";
 import DashboardHeader from "../../../Components/header/DashboardHeader";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 // import BudgetData from "./BudgetData";
 
 const BudgetPlanning = () => {
 
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const { AuthUser } = useAuth();
     const userEmail = AuthUser?.email;
     const { budgetPlanningData, refetch } = useBudgetData(userEmail);
@@ -451,7 +453,7 @@ const BudgetPlanning = () => {
         console.log(budgetData);
 
         try {
-            const budgetDataRes = await axiosPublic.post("/api/budget", budgetData);
+            const budgetDataRes = await axiosSecure.post("/api/budget", budgetData);
             console.log(budgetDataRes.data);
 
             if (budgetDataRes?.data.modifiedCount !== 0) {

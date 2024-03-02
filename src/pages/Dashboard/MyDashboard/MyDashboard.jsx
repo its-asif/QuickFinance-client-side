@@ -8,13 +8,15 @@ import useAdminStatus from "../../../Hooks/useAdminStatus";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
 import useAssetData from "../../../Hooks/useAssetData";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const MyDashboard = () => {
     const { assetData } = useAssetData()
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const [data, setData] = useState([]);
     useEffect(() => {
-        axiosPublic.get("/api/dashboard/" + AuthUser?.email)
+        axiosSecure.get("/api/dashboard/" + AuthUser?.email)
             .then((res) => {
                 setData(res.data);
                 // console.log(res.data);

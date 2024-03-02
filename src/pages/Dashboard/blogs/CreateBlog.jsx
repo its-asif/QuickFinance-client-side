@@ -6,6 +6,7 @@ import useAuth from '../../../Hooks/useAuth';
 import DashboardHeader from '../../../Components/header/DashboardHeader';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const CreateBlogs = () => {
     const { AuthUser } = useAuth();
@@ -17,6 +18,7 @@ const CreateBlogs = () => {
     const [blogImage, setBlogImage] = useState('');
     const {email, displayName, photoURL} = AuthUser;
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
 
     // console.log(email, displayName, photoURL);
 
@@ -91,7 +93,7 @@ const CreateBlogs = () => {
         }
         console.log(blogData);
         // post data
-        axiosPublic.post('/api/blogs', blogData)
+        axiosSecure.post('/api/blogs', blogData)
         .then(res => {
             console.log(res);
             toast.success('Blog Posted Successfully');

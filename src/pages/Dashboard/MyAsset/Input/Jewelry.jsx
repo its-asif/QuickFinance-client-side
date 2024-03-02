@@ -5,10 +5,12 @@ import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAssetData from "../../../../Hooks/useAssetData";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const Jewelry = () => {
     const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure =useAxiosSecure()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
 
@@ -60,7 +62,7 @@ const Jewelry = () => {
                     status: `${purchaseAmount > CurrentValue? 'down': CurrentValue > purchaseAmount ? 'ups' :'equal'}`,
                     value: CurrentValue
                 };
-                axiosPublic.post('/api/assets', jewelryData)
+                axiosSecure.post('/api/assets', jewelryData)
                 .then(res => {
                     // console.log(res.status);
                     if (res.status === 200) {

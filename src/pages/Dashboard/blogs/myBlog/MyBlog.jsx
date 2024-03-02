@@ -3,15 +3,17 @@ import DashboardHeader from "../../../../Components/header/DashboardHeader";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const MyBlog = () => {
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosPublic.get(`/api/blogs/${AuthUser.email}`)
+        axiosSecure.get(`/api/blogs/${AuthUser.email}`)
         .then(res => {
             setBlogs(res.data);
             setLoading(false);

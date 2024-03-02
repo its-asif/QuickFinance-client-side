@@ -1,12 +1,14 @@
 
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 
 const PayTax = () => {
   const { AuthUser } = useAuth();
   const axiosPublic = useAxiosPublic()
+  const axiosSecure =useAxiosSecure()
   const handleDonateTax = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -35,7 +37,7 @@ const PayTax = () => {
     }
 
     try {
-      const res = await axiosPublic.post('/api/payments', data);
+      const res = await axiosSecure.post('/api/payments', data);
       console.log(res.data);
       const { url } = res.data || {};
       if (url) {
