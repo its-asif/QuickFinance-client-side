@@ -4,9 +4,11 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const GoalProgressCard = ({ item, refetch }) => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     let percentageCompleted = 0;
 
     const {
@@ -44,7 +46,7 @@ const GoalProgressCard = ({ item, refetch }) => {
                 amount
             };
 
-            axiosPublic.patch(`/api/goals/addAmount/${_id}`, amountData)
+            axiosSecure.patch(`/api/goals/addAmount/${_id}`, amountData)
                 .then((postData) => {
                     if (postData?.data) {
                         document.getElementById(`my_modal${_id}`).close();
@@ -94,7 +96,7 @@ const GoalProgressCard = ({ item, refetch }) => {
             if (result.isConfirmed) {
               
                 
-                axiosPublic.delete(`/api/goals/${_id}`)
+                axiosSecure.delete(`/api/goals/${_id}`)
                     .then((postData) => {
                         if (postData?.data) {
                             toast.success('Successfully Deleted!', { duration: 3000 });

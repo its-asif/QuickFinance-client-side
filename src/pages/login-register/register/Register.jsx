@@ -13,13 +13,16 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from 'react';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 const Register = () => {
     const { GoogleSignUp, createUser, UpdateUser } = useAuth()
     // console.log(loading);
     // Navigate After LOgIn
     const location = useLocation()
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     const axiosPublic = useAxiosPublic()
+    const axiosSecure =useAxiosSecure()
     // Password validation
     const [passwordError, setPasswordError] = useState(null)
 
@@ -78,19 +81,18 @@ const Register = () => {
                                             
 
                                             try {
-                                                axiosPublic.post('/api/users', userDetail)
+                                                axiosSecure.post('/api/users', userDetail)
                                                     .then(res => {
                                                         if (res.data.status === 200) {
-                                                            console.log('User Added to Database')
-                                                            // localStorage.setItem('ToastShowed', JSON.stringify('false'))
-                                                            // toast.success(`Authenticating as ${result.user.email}`)
-                                                            // location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/')
+                                                            toast.success(`Success!! User created Successfully`,{duration:3000}); 
+                                                            navigate(from, { replace: true });
                                                         }
                                                     })
 
                                             }
                                             catch (error) {
-                                                console.error('Error during signup:', error.message);
+                                                
+                                                toast.success(`Error during sign up: ${ error.message}`,{duration:3000}); 
                                             }
 
 

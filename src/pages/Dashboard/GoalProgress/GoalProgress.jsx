@@ -9,11 +9,13 @@ import GoalProgressCard from './GoalProgressCard';
 import toast from 'react-hot-toast';
 import DashboardHeader from '../../../Components/header/DashboardHeader';
 import { useEffect, useRef } from 'react';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 const GoalProgress = () => {
 
 
     const { AuthUser } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure =useAxiosSecure()
     
     // data fetch
     const { data, refetch } = useQuery({
@@ -95,7 +97,7 @@ const GoalProgress = () => {
                     goalDate
                 }
 
-                axiosPublic.post(`/api/goals/`, goalData)
+                axiosSecure.post(`/api/goals/`, goalData)
                 .then( (postData)=>{
                     if(postData?.data){
                         document.getElementById('my_modal_5').close();

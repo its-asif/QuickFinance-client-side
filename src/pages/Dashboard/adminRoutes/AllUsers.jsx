@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const AllUsers = () => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure =useAxiosSecure()
     const [allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
-        axiosPublic.get('/api/users')
+        axiosSecure.get('/api/users')
             .then(response => {
                 console.log(response.data);
                 setAllUsers(response.data);
@@ -48,8 +50,8 @@ const AllUsers = () => {
                                 </thead>
 
                                 <tbody>
-                                    {allUsers.map(user => (
-                                        <tr>
+                                    {allUsers.map((user,idx) => (
+                                        <tr key={idx}>
                                             <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                                 <div className="flex items-center">
                                                     <div className="flex-shrink-0">

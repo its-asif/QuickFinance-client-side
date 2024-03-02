@@ -4,9 +4,12 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const SocialLogin = () => {
     const { FacebookSignUp, GoogleSignUp } = useAuth()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     // Navigate After LOgIn
     const location = useLocation()
     const navigate = useNavigate()
@@ -14,39 +17,22 @@ const SocialLogin = () => {
         GoogleSignUp()
             .then(result => {
                 console.log(result.user)
-                // toast.success(`Authenticating as ${result.user.email}`)
-                // const SignedUser = {
-                //     userName: result.user.displayName,
-                //     userEmail: result.user.email,
-                //     userFirebaseUid: result.user.uid,
-                //     userCreationTime: result.user.metadata.creationTime,
-                //     userLastSignInTime: result.user.metadata.lastSignInTime,
-                //     UserVerified: result.user.emailVerified,
-                //     userCity: "none",
-                //     userZip: "none",
-                //     userSkill: "none",
-                //     userPhoto: result.user.photoURL,
-                // }
-                // console.log(SignedUser);
-                // fetch('https://joblancernewserver.vercel.app/user', {
-                //     method: `POST`,
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(SignedUser)
-                // })
-                //     .then(res => res.json())
-                //     .then(data => console.log(data))
-                // localStorage.setItem('ToastShow', JSON.stringify('false'))
-                // axios.post('https://joblancernewserver.vercel.app/jwt', {
-                //     email: result?.user.email,
-                // }, { withCredentials: true })
-                //     .then(res => console.log(res.data))
+                const userInfo = {
+                    email: result?.user?.email,
+                    name: result?.user?.displayName
+                  }
+                  axiosSecure.post("/api/users",userInfo)
+                  .then(res=>{
+                    if(res?.data){
+                        console.log(res.data);
+                        toast.success('Successfully login by Google!',{duration:3000}); 
+                    }
+                  })
                 location?.search ? navigate(`${location?.search?.slice(1, location.search.length)}`) : navigate('/dashboard')
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                // toast.error(`${errorMessage}`)
+                toast.success(`Error!! Reason: ${errorMessage}`,{duration:3000}); 
             });
     }
     // const handleFacebookLogIn = () => {

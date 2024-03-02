@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
 import DashboardHeader from "../../../Components/header/DashboardHeader";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MyPayments = () => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const { AuthUser } = useAuth();
     const [paymentData, setPaymentData] = useState([]);
 
     useEffect(() => {
-        axiosPublic.get(`/api/payments/${AuthUser?.email}`)
+        axiosSecure.get(`/api/payments/${AuthUser?.email}`)
         .then(res => {
             setPaymentData(res.data);
         })

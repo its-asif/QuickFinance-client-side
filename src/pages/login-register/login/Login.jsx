@@ -17,6 +17,7 @@ const Login = () => {
     // Navigate After LOgIn
     const location = useLocation()
     const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     // Password validation
     const [passwordError, setPasswordError] = useState(null)
 

@@ -5,10 +5,12 @@ import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAssetData from "../../../../Hooks/useAssetData";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const Stocks = () => {
     const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure =useAxiosSecure()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
 
@@ -35,7 +37,7 @@ const Stocks = () => {
                     status: `${StockStatus > 0 ? 'ups' : 'down'}`,
                     value: newPrice * data.quantity
                 };
-                axiosPublic.post('/api/assets', stocksData )
+                axiosSecure.post('/api/assets', stocksData )
                 .then(res => {
                     // console.log(res.status);
                     if (res.status === 200) {

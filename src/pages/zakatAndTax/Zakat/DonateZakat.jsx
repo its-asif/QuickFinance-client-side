@@ -2,11 +2,13 @@
 
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 
 const DonateZakat = () => {
   const axiosPublic = useAxiosPublic()
+  const axiosSecure = useAxiosSecure()
   const { AuthUser } = useAuth()
   
   const handleDonateZakat = async(event) => {
@@ -35,7 +37,7 @@ const DonateZakat = () => {
 
     }
     try {
-      const res =await  axiosPublic.post('/api/payments', data);
+      const res =await  axiosSecure.post('/api/payments', data);
       console.log(res.data);
       const { url } = res.data;
       if (url) {

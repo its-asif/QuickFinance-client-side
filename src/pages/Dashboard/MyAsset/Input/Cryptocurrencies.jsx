@@ -5,10 +5,12 @@ import { AuthContext } from "../../../../AuthProvider/Contextapi";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAssetData from "../../../../Hooks/useAssetData";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const Crypto = () => {
     const  { refetch } = useAssetData()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
@@ -39,7 +41,7 @@ const Crypto = () => {
                     status: "equal",
                     value: parseFloat(`${newPrice * data.amount}`)
                 };
-                axiosPublic.post('/api/assets', cryptoData )
+                axiosSecure.post('/api/assets', cryptoData )
                 .then(res => {
                     // console.log(res.status);
                     if (res.status === 200) {
