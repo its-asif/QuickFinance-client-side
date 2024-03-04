@@ -16,8 +16,9 @@ const PublicBlogs = () => {
     useEffect(() => {
         axiosPublic.get('/api/blogs')
         .then(res => {
-            setBlogs(res.data);
-            setFilteredBlogs(res.data);
+            console.log("log from publice blog",res.data);
+            setBlogs(res?.data);
+            setFilteredBlogs(res?.data);
             setLoading(false);
         })
 

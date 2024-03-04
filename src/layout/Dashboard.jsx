@@ -20,7 +20,8 @@ const Dashboard = () => {
 
     const Location = useLocation()
     // console.log(Location);
-    const isAdmin = useAdminStatus();
+    const [isAdmin,isAdminLoading] = useAdminStatus();
+
 
 
     return (
@@ -78,7 +79,7 @@ const Dashboard = () => {
                         </li>
 
                         {/* General Users Routes*/}
-                        {!isAdmin && <>
+                        {isAdmin == false && <>
 
                             {/* My assets */}
                             <li className="mt-2  duration-1000 lg:mt-0">
@@ -193,7 +194,7 @@ const Dashboard = () => {
 
 
                         {/* Admin Routes */}
-                        {isAdmin && <>
+                        {isAdmin ==true && <>
 
                             {/* All Users */}
                             <li className="mt-2  duration-500 lg:mt-0">
@@ -289,7 +290,7 @@ const Dashboard = () => {
                         </li>
 
                         {/* General Users Routes*/}
-                        {!isAdmin && <>
+                        {isAdmin ==false && <>
 
                             {/* My assets */}
                             <li className="mt-2  duration-1000 lg:mt-0">
@@ -403,7 +404,7 @@ const Dashboard = () => {
 
 
                         {/* Admin Routes */}
-                        {isAdmin && <>
+                        {isAdmin == true && <>
 
                             {/* All Users */}
                             <li className="mt-2  duration-500 lg:mt-0">
