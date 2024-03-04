@@ -3,9 +3,10 @@
 
 
 import { createContext, useEffect, useState } from "react";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 import auth from "../firebase/firebase.config";
 import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "@firebase/auth";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 
 
 
@@ -13,7 +14,7 @@ import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword
 
 const AuthContext = createContext()
 const ContextApi = ({ children }) => {
-    const axiosPublic = useAxiosPublic()
+   const axiosPublic = useAxiosPublic() 
     // emailAndPassword Authentication
     const [AuthUser, setAuthUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -88,7 +89,7 @@ const ContextApi = ({ children }) => {
         });
 
         return () => Unsubscribe()
-    }, [axiosPublic])
+    }, [AuthUser,loading])
 
 
     const contextInfo = {

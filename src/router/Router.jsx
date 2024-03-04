@@ -30,6 +30,7 @@ import BlogDetails from "../pages/Dashboard/blogs/publicBlogs/BlogDetails";
 import BlogsByTags from "../pages/Dashboard/blogs/publicBlogs/BlogsByTags";
 import TermsAndConditions from "../Components/TermsAndConditions/TermsAndConditions";
 import PrivacyAndPolicy from "../Components/PrivacyAndPolicy/PrivacyAndPolicy";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -143,7 +144,9 @@ const router = createBrowserRouter([
         },
         {
           path: 'allUsers',
-          element: <AllUsers />,
+          element: <AdminRoute>
+            <AllUsers />
+          </AdminRoute>,
         },
         {
           path: 'publishBlogs',

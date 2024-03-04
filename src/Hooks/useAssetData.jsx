@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
 import { AuthContext } from "../AuthProvider/Contextapi";
 import { useContext, useEffect } from "react";
+import useAxiosSecure from "./useAxiosSecure";
 const useAssetData = () => {
     const { AuthUser } = useContext(AuthContext)
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure =useAxiosSecure();
     const { data: assetData = [], isPending: loading, refetch } = useQuery({
         queryKey: ["assetData"],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/api/assets/${AuthUser?.email}`);
+            const res = await axiosSecure.get(`/api/assets/${AuthUser?.email}`);
             return res.data;
         },
     });
@@ -43,7 +43,7 @@ const useAssetData = () => {
                                         value: newPrice * updateData.magnitude
                                     };
                                     // console.log(stocksData);
-                                    axiosPublic.patch(`/api/assets/${updateData._id}`, stocksData)
+                                    axiosSecure.patch(`/api/assets/${updateData._id}`, stocksData)
                                         .then(res => {
                                             // console.log(res.status);
                                             if (res.status === 200) {
@@ -81,7 +81,7 @@ const useAssetData = () => {
                                         status: `${newValue > oldValue ? 'ups' : newValue < oldValue ? 'downs' : 'equal'}`,
                                         value: newValue
                                     };
-                                    axiosPublic.patch(`/api/assets/${updateData._id}`, patchData)
+                                    axiosSecure.patch(`/api/assets/${updateData._id}`, patchData)
                                         .then(res => {
                                             // console.log(res.status);
                                             if (res.status === 200) {
@@ -192,7 +192,7 @@ const useAssetData = () => {
                             status: "ups"
                         }
                         console.log(SavingsData);
-                        axiosPublic.patch(`/api/assets/${updateData._id}`, SavingsData)
+                        axiosSecure.patch(`/api/assets/${updateData._id}`, SavingsData)
                             .then(res => {
                                 // console.log(res.status);
                                 if (res.status === 200) {

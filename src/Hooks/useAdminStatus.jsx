@@ -1,26 +1,21 @@
-import { useEffect, useState } from "react";
-import useAxiosPublic from "./useAxiosPublic";
 import useAuth from "./useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useAdminStatus = () => {
-    const { AuthUser } = useAuth();
-    const axiosPublic = useAxiosPublic();
-    const [isAdmin, setIsAdmin] = useState(false);
-
-    useEffect(() => {
-        if (AuthUser) {
-            axiosPublic.get(`api/users/${AuthUser?.email}`)
-            .then((res) => {
-                setIsAdmin(res?.data?.isAdmin);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    const { AuthUser ,loading} = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const {data:isAdmin, isPending:isAdminLoading}= useQuery({
+        queryKey: [AuthUser?.email,'admin'],
+        enabled: !loading,
+        queryFn: async () =>{
+        const res = await axiosSecure.get(`/api/users/admin/${AuthUser?.email}`)
+        return res?.data?.isAdmin
         }
-    }, []);
 
-    return isAdmin;
+    })
+    return [isAdmin,isAdminLoading]
 };
 
 export default useAdminStatus;

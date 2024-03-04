@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 
 const useFinanceData = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const { data: financialManagementData = [], loading: loading, refetch } = useQuery({
 
         queryKey: ['financialManagementData'],
         queryFn: async () => {
 
-            const res = await axiosPublic.get('/api/transactions/');
+            const res = await axiosSecure.get('/api/transactions/');
             return res.data;
         }
     })
