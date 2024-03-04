@@ -28,28 +28,36 @@ const useAssetData = () => {
                             .then(res => res.json())
                             .then((stocks) => {
                                 console.log(stocks)
-                                const newPrice = stocks['Global Quote']['05. price'];
-                                if (newPrice) {
-                                    const StockStatus = stocks['Global Quote']['09. change'];
+                                const ApiLimit = stocks['Information']
+                                if (ApiLimit) {
+                                    console.log('Api limit over');
+                                }
+                                else {
 
-                                    const stocksData = {
-                                        userEmail: AuthUser?.email,
-                                        category: "Stocks",
-                                        asset_name: updateData.asset_name,
-                                        magnitude: updateData.magnitude,
-                                        purchase_date: updateData.purchase_date,
-                                        locale: updateData.locale,
-                                        status: `${StockStatus > 0 ? 'ups' : 'down'}`,
-                                        value: newPrice * updateData.magnitude
-                                    };
-                                    // console.log(stocksData);
-                                    axiosPublic.patch(`/api/assets/${updateData._id}`, stocksData)
-                                        .then(res => {
-                                            // console.log(res.status);
-                                            if (res.status === 200) {
-                                                refetch()
-                                            }
-                                        })
+
+                                    const newPrice = stocks['Global Quote']['05. price'];
+                                    if (newPrice) {
+                                        const StockStatus = stocks['Global Quote']['09. change'];
+
+                                        const stocksData = {
+                                            userEmail: AuthUser?.email,
+                                            category: "Stocks",
+                                            asset_name: updateData.asset_name,
+                                            magnitude: updateData.magnitude,
+                                            purchase_date: updateData.purchase_date,
+                                            locale: updateData.locale,
+                                            status: `${StockStatus > 0 ? 'ups' : 'down'}`,
+                                            value: newPrice * updateData.magnitude
+                                        };
+                                        // console.log(stocksData);
+                                        axiosPublic.patch(`/api/assets/${updateData._id}`, stocksData)
+                                            .then(res => {
+                                                // console.log(res.status);
+                                                if (res.status === 200) {
+                                                    refetch()
+                                                }
+                                            })
+                                    }
                                 }
                             })
                     }
@@ -67,27 +75,33 @@ const useAssetData = () => {
                             .then(res => res.json())
                             .then((BothData) => {
                                 // console.log(BothData)
-                                const newPrice = BothData['Global Quote']['5. Exchange Rate'];
-                                if (newPrice) {
-                                    const newValue = newPrice * updateData.magnitude;
-                                    const oldValue = updateData.value
-                                    const patchData = {
-                                        userEmail: AuthUser?.email,
-                                        category: "Stocks",
-                                        asset_name: updateData.asset_name,
-                                        magnitude: updateData.magnitude,
-                                        purchase_date: updateData.purchase_date,
-                                        locale: updateData.locale,
-                                        status: `${newValue > oldValue ? 'ups' : newValue < oldValue ? 'downs' : 'equal'}`,
-                                        value: newValue
-                                    };
-                                    axiosPublic.patch(`/api/assets/${updateData._id}`, patchData)
-                                        .then(res => {
-                                            // console.log(res.status);
-                                            if (res.status === 200) {
-                                                refetch()
-                                            }
-                                        })
+                                const ApiLimit = BothData['Information']
+                                if (ApiLimit) {
+                                    console.log('Api limit over');
+                                }
+                                else {
+                                    const newPrice = BothData['Global Quote']['5. Exchange Rate'];
+                                    if (newPrice) {
+                                        const newValue = newPrice * updateData.magnitude;
+                                        const oldValue = updateData.value
+                                        const patchData = {
+                                            userEmail: AuthUser?.email,
+                                            category: "Stocks",
+                                            asset_name: updateData.asset_name,
+                                            magnitude: updateData.magnitude,
+                                            purchase_date: updateData.purchase_date,
+                                            locale: updateData.locale,
+                                            status: `${newValue > oldValue ? 'ups' : newValue < oldValue ? 'downs' : 'equal'}`,
+                                            value: newValue
+                                        };
+                                        axiosPublic.patch(`/api/assets/${updateData._id}`, patchData)
+                                            .then(res => {
+                                                // console.log(res.status);
+                                                if (res.status === 200) {
+                                                    refetch()
+                                                }
+                                            })
+                                    }
                                 }
                             })
 
