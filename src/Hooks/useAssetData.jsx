@@ -15,7 +15,7 @@ const useAssetData = () => {
     // console.log(assetData);
     useEffect(() => {
         if (loading == false) {
-            console.log(loading);
+            // console.log(loading);
             for (const updateData of assetData) {
                 // real time data for stocks 
                 if (updateData.category === "Stocks") {
@@ -28,8 +28,8 @@ const useAssetData = () => {
                             .then(res => res.json())
                             .then((stocks) => {
                                 console.log(stocks)
-                                if (stocks['Global Quote']['05. price']) {
-                                    const newPrice = stocks['Global Quote']['05. price'];
+                                const newPrice = stocks['Global Quote']['05. price'];
+                                if (newPrice) {
                                     const StockStatus = stocks['Global Quote']['09. change'];
 
                                     const stocksData = {
