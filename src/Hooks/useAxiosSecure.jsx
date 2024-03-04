@@ -7,8 +7,8 @@ import useAuth from "./useAuth";
 
 export const axiosSecure = axios.create({
     // baseURL: 'https://quick-finance-server-side.vercel.app',
-       baseURL: 'https://quick-finance-server-side-zeta.vercel.app',
-    // baseURL: 'http://localhost:3000',
+    //    baseURL: 'https://quick-finance-server-side-zeta.vercel.app',
+    baseURL: 'http://localhost:3000',
     withCredentials: true
 });
 

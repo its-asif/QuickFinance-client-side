@@ -96,62 +96,60 @@ const useAssetData = () => {
                         console.log('error');
                     }
                 }
-                // if (updateData.category === "Jewelry") {
-                //     try {
-                //         var myHeaders = new Headers();
-                //         myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
-                //         myHeaders.append("Content-Type", "application/json");
+                if (updateData.category === "Jewelry") {
+                    console.log(updateData.category);
+                    try {
+                        var myHeaders = new Headers();
+                        // myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
+                        myHeaders.append("x-access-token", "goldapi-dvvsltbj6n1w-io");
+                        myHeaders.append("Content-Type", "application/json");
 
-                //         var requestOptions = {
-                //             method: 'GET',
-                //             headers: myHeaders,
-                //             redirect: 'follow'
-                //         };
-                //         const response =  fetch(`https://www.goldapi.io/api/${JewelrySymbol}/USD`, requestOptions)
-                //         if (!response.ok) {
-                //             throw new Error('Failed to fetch Commodities data');
-                //         }
-                //         const JewelryData =  response.json();
-                //         // console.log(JewelryData);
-                //         // Get the selected karat from the form data
-                //         const selectedKarat = data.Karats;
-                //         // console.log(selectedKarat);
-
-                //         // Access the price of the selected karat from the fetched jewelry data
-                //         const KaratsPrice = JewelryData[selectedKarat];
-                //         // console.log(KaratsPrice);
-                //         // calculate value 
-                //         const CurrentValue = parseFloat(data.weight) * parseFloat(KaratsPrice)
-                //         // compar3e values for Status
-                //         const purchaseAmount = parseFloat(data.amount)
-                //         // console.log(purchaseAmount);
-                //         // karat data nite hobe 
-                //         const jewelryData = {
-                //             userEmail: AuthUser?.email,
-                //             category: "Jewelry",
-                //             asset_name: data.jewelry,
-                //             karat: selectedKarat,
-                //             magnitude: parseFloat(data.weight),
-                //             purchase_date: data.date,
-                //             locale: "Home",
-                //             status: `${purchaseAmount > CurrentValue ? 'down' : CurrentValue > purchaseAmount ? 'ups' : 'equal'}`,
-                //             value: CurrentValue
-                //         };
-                //         axiosPublic.patch( `/api/assets/${updateData._id}`, jewelryData)
-                //             .then(res => {
-                //                 // console.log(res.status);
-                //                 if (res.status === 200) {
-                //                     refetch()
-                //                 }
-                //             })
-
-                //     }
-                //     catch {
-                //         (error) => {
-                //             console.log(error);
-                //         }
-                //     }
-                // }
+                        var requestOptions = {
+                            method: 'GET',
+                            headers: myHeaders,
+                            redirect: 'follow'
+                        };
+                        // console.log(JewelryData);
+                        fetch(`https://www.goldapi.io/api/${updateData.JewelrySymbol}/USD`, requestOptions)
+                            .then(res => res.json())
+                            .then((JewelryData) => {
+                                // Get the selected karat from the form data
+                                const selectedKarat = updateData.Karats;
+                                // Access the price of the selected karat from the fetched jewelry data
+                                const KaratsPrice = JewelryData[selectedKarat];
+                                // console.log(KaratsPrice);
+                                // calculate value 
+                                const CurrentValue = parseFloat(updateData.weight) * parseFloat(KaratsPrice)
+                                // compar3e values for Status
+                                const purchaseAmount = parseFloat(updateData.amount)
+                                // console.log(purchaseAmount);
+                                // karat data nite hobe 
+                                const jewelryData = {
+                                    userEmail: AuthUser?.email,
+                                    category: "Jewelry",
+                                    asset_name: updateData.jewelry,
+                                    karat: selectedKarat,
+                                    magnitude: parseFloat(updateData.weight),
+                                    purchase_date: updateData.date,
+                                    locale: "Home",
+                                    status: `${purchaseAmount > CurrentValue ? 'down' : CurrentValue > purchaseAmount ? 'ups' : 'equal'}`,
+                                    value: CurrentValue
+                                };
+                                axiosPublic.patch(`/api/assets/${updateData._id}`, jewelryData)
+                                    .then(res => {
+                                        // console.log(res.status);
+                                        if (res.status === 200) {
+                                            refetch()
+                                        }
+                                    })
+                            })
+                    }
+                    catch {
+                        (error) => {
+                            console.log(error);
+                        }
+                    }
+                }
                 if (updateData.category === "Savings") {
                     // console.log(updateData);
                     // Function to calculate the value of the deposit account

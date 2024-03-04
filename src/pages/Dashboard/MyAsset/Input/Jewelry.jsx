@@ -23,7 +23,8 @@ const Jewelry = () => {
         if (JewelrySymbol) {
             try {
                 var myHeaders = new Headers();
-                myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
+                // myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
+                myHeaders.append("x-access-token", "goldapi-dvvsltbj6n1w-io");
                 myHeaders.append("Content-Type", "application/json");
 
                 var requestOptions = {
