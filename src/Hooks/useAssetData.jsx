@@ -34,7 +34,6 @@ const useAssetData = () => {
                                 }
                                 else {
 
-<<<<<<< HEAD
 
                                     const newPrice = stocks['Global Quote']['05. price'];
                                     if (newPrice) {
@@ -51,7 +50,7 @@ const useAssetData = () => {
                                             value: newPrice * updateData.magnitude
                                         };
                                         // console.log(stocksData);
-                                        axiosPublic.patch(`/api/assets/${updateData._id}`, stocksData)
+                                        axiosSecure.patch(`/api/assets/${updateData._id}`, stocksData)
                                             .then(res => {
                                                 // console.log(res.status);
                                                 if (res.status === 200) {
@@ -59,26 +58,6 @@ const useAssetData = () => {
                                                 }
                                             })
                                     }
-=======
-                                    const stocksData = {
-                                        userEmail: AuthUser?.email,
-                                        category: "Stocks",
-                                        asset_name: updateData.asset_name,
-                                        magnitude: updateData.magnitude,
-                                        purchase_date: updateData.purchase_date,
-                                        locale: updateData.locale,
-                                        status: `${StockStatus > 0 ? 'ups' : 'down'}`,
-                                        value: newPrice * updateData.magnitude
-                                    };
-                                    // console.log(stocksData);
-                                    axiosSecure.patch(`/api/assets/${updateData._id}`, stocksData)
-                                        .then(res => {
-                                            // console.log(res.status);
-                                            if (res.status === 200) {
-                                                refetch()
-                                            }
-                                        })
->>>>>>> 119452dad3116f404ed3f8e01b32f2f46acc1896
                                 }
                             })
                     }
@@ -115,7 +94,7 @@ const useAssetData = () => {
                                             status: `${newValue > oldValue ? 'ups' : newValue < oldValue ? 'downs' : 'equal'}`,
                                             value: newValue
                                         };
-                                        axiosPublic.patch(`/api/assets/${updateData._id}`, patchData)
+                                        axiosSecure.patch(`/api/assets/${updateData._id}`, patchData)
                                             .then(res => {
                                                 // console.log(res.status);
                                                 if (res.status === 200) {
@@ -170,7 +149,7 @@ const useAssetData = () => {
                                     status: `${purchaseAmount > CurrentValue ? 'down' : CurrentValue > purchaseAmount ? 'ups' : 'equal'}`,
                                     value: CurrentValue
                                 };
-                                axiosPublic.patch(`/api/assets/${updateData._id}`, jewelryData)
+                                axiosSecure.patch(`/api/assets/${updateData._id}`, jewelryData)
                                     .then(res => {
                                         // console.log(res.status);
                                         if (res.status === 200) {

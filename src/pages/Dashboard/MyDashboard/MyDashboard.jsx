@@ -66,13 +66,11 @@ const MyDashboard = () => {
         expenseByCategoryData.push([category, amount]);
     })
     const [blogs, setBlogs] = useState([]);
-    const [loading, setLoading] = useState(true);
     // fetch initial data and store
     useEffect(() => {
         axiosPublic.get('/api/blogs')
         .then(res => {
             setBlogs(res.data);
-            setLoading(false);
         })
 
     }, [])
