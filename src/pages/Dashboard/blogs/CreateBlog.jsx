@@ -4,7 +4,6 @@ import 'react-quill/dist/quill.snow.css';
 import PostedBlog from './postedBlog/PostedBlog'
 import useAuth from '../../../Hooks/useAuth';
 import DashboardHeader from '../../../Components/header/DashboardHeader';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
@@ -17,7 +16,6 @@ const CreateBlogs = () => {
     const [title, setTitle] = useState('');
     const [blogImage, setBlogImage] = useState('');
     const {email, displayName, photoURL} = AuthUser;
-    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
 
     // console.log(email, displayName, photoURL);

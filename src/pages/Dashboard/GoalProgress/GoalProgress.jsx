@@ -14,14 +14,13 @@ const GoalProgress = () => {
 
 
     const { AuthUser } = useAuth();
-    const axiosPublic = useAxiosPublic();
     const axiosSecure =useAxiosSecure()
     
     // data fetch
     const { data, refetch } = useQuery({
         queryKey: ['GoalData'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/api/progress/budget/${AuthUser?.email}`)
+            const res = await axiosSecure.get(`/api/progress/budget/${AuthUser?.email}`)
             return res.data;
         }
     });

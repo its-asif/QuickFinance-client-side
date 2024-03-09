@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
 import { AuthContext } from "../AuthProvider/Contextapi";
 import { useContext, useEffect } from "react";
+import useAxiosSecure from "./useAxiosSecure";
 const useAssetData = () => {
     const { AuthUser } = useContext(AuthContext)
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure =useAxiosSecure();
     const { data: assetData = [], isPending: loading, refetch } = useQuery({
         queryKey: ["assetData"],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/api/assets/${AuthUser?.email}`);
+            const res = await axiosSecure.get(`/api/assets/${AuthUser?.email}`);
             return res.data;
         },
     });
@@ -34,6 +34,7 @@ const useAssetData = () => {
                                 }
                                 else {
 
+<<<<<<< HEAD
 
                                     const newPrice = stocks['Global Quote']['05. price'];
                                     if (newPrice) {
@@ -58,6 +59,26 @@ const useAssetData = () => {
                                                 }
                                             })
                                     }
+=======
+                                    const stocksData = {
+                                        userEmail: AuthUser?.email,
+                                        category: "Stocks",
+                                        asset_name: updateData.asset_name,
+                                        magnitude: updateData.magnitude,
+                                        purchase_date: updateData.purchase_date,
+                                        locale: updateData.locale,
+                                        status: `${StockStatus > 0 ? 'ups' : 'down'}`,
+                                        value: newPrice * updateData.magnitude
+                                    };
+                                    // console.log(stocksData);
+                                    axiosSecure.patch(`/api/assets/${updateData._id}`, stocksData)
+                                        .then(res => {
+                                            // console.log(res.status);
+                                            if (res.status === 200) {
+                                                refetch()
+                                            }
+                                        })
+>>>>>>> 119452dad3116f404ed3f8e01b32f2f46acc1896
                                 }
                             })
                     }
@@ -204,7 +225,7 @@ const useAssetData = () => {
                             status: "ups"
                         }
                         console.log(SavingsData);
-                        axiosPublic.patch(`/api/assets/${updateData._id}`, SavingsData)
+                        axiosSecure.patch(`/api/assets/${updateData._id}`, SavingsData)
                             .then(res => {
                                 // console.log(res.status);
                                 if (res.status === 200) {

@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import DashboardHeader from "../../../../Components/header/DashboardHeader";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const MyBlog = () => {
     const { AuthUser } = useAuth();
-    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
