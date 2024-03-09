@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
 import DashboardHeader from "../../../Components/header/DashboardHeader";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const MyPayments = () => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const { AuthUser } = useAuth();
     const [paymentData, setPaymentData] = useState([]);
 
     useEffect(() => {
-        axiosPublic.get(`/api/payments/${AuthUser?.email}`)
+        axiosSecure.get(`/api/payments/${AuthUser?.email}`)
         .then(res => {
             setPaymentData(res.data);
         })
@@ -60,7 +62,7 @@ const MyPayments = () => {
                                         <td>{payment.tran_id}</td>
                                         <td>
                                             {
-                                                payment.payment_status === 'true'? 
+                                                payment.payment_status === true? 
                                                 <span className="btn btn-sm bg-green-200 text-green-700">Success</span> :
                                                 <span className="btn btn-sm bg-red-200 text-red-700">Failed</span>
                                             

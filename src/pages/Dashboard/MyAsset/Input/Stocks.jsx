@@ -1,17 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineStock } from "react-icons/ai";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAssetData from "../../../../Hooks/useAssetData";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const Stocks = () => {
-    const  { refetch } = useAssetData()
-    const axiosPublic = useAxiosPublic()
+    const { refetch } = useAssetData()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
-
+    // symbol validation 
+    const [symbolError, setSymbolError] = useState(null)
     const onSubmit = async (data) => {
         const stockName = data.stock.toUpperCase();
         if (stockName) {
@@ -21,45 +24,66 @@ const Stocks = () => {
                     throw new Error('Failed to fetch stock data');
                 }
                 const StocksData = await response.json();
-                const newPrice = await StocksData['Global Quote']['05. price'];
-                const StockStatus = await StocksData['Global Quote']['09. change'];
+                if (StocksData['Information']) {
+                    document.getElementById('my_modal_5').close();
+                    Swal.fire({
+                        title: "opps!",
+                        text: "Our Api limit is over try next Day",
+                        icon: "error",
+                        confirmButtonColor: "#0ba360",
+                        confirmButtonText: 'DONE'
+                    });
+                }
+                else {
 
-
-                const stocksData = {
-                    userEmail: AuthUser?.email,
-                    category: "Stocks",
-                    asset_name: data.stock.toUpperCase(),
-                    magnitude: parseFloat(data.quantity),
-                    purchase_date: data.date,
-                    locale: "US",
-                    status: `${StockStatus > 0 ? 'ups' : 'down'}`,
-                    value: newPrice * data.quantity
-                };
-                axiosPublic.post('/api/assets', stocksData )
-                .then(res => {
-                    // console.log(res.status);
-                    if (res.status === 200) {
-                        document.getElementById('my_modal_5').close();
-                        Swal.fire({
-                            title: "Successful",
-                            text: "Your Asset Added to Portfolio",
-                            icon: "success",
-                            confirmButtonColor: "#0ba360",
-                            confirmButtonText: 'DONE'
-                        });
-                        reset()
-                        refetch()
+                    const newPrice = await StocksData['Global Quote']['05. price'];
+                    if (!newPrice) {
+                        setSymbolError('Enter a Stock valid Symbol');
                     }
                     else {
-                        Swal.fire({
-                            title: "oh!",
-                            text: "Some Error Occurred",
-                            icon: "error",
-                            confirmButtonColor: "#0ba360",
-                            confirmButtonText: 'DONE'
-                        });
+
+
+                        const StockStatus = await StocksData['Global Quote']['09. change'];
+
+
+                        const stocksData = {
+                            userEmail: AuthUser?.email,
+                            category: "Stocks",
+                            asset_name: data.stock.toUpperCase(),
+                            magnitude: parseFloat(data.quantity),
+                            purchase_date: data.date,
+                            locale: "US",
+                            status: `${StockStatus > 0 ? 'ups' : 'down'}`,
+                            value: newPrice * data.quantity
+                        };
+                        axiosSecure.post('/api/assets', stocksData)
+                            .then(res => {
+                                // console.log(res.status);
+                                if (res.status === 200) {
+                                    document.getElementById('my_modal_5').close();
+                                    Swal.fire({
+                                        title: "Successful",
+                                        text: "Your Asset Added to Portfolio",
+                                        icon: "success",
+                                        confirmButtonColor: "#0ba360",
+                                        confirmButtonText: 'DONE'
+                                    });
+                                    reset()
+                                    refetch()
+                                    setSymbolError(null)
+                                }
+                                else {
+                                    Swal.fire({
+                                        title: "oh!",
+                                        text: "Some Error Occurred",
+                                        icon: "error",
+                                        confirmButtonColor: "#0ba360",
+                                        confirmButtonText: 'DONE'
+                                    });
+                                }
+                            })
                     }
-                })
+                }
             }
             catch {
                 console.log('error');
@@ -84,6 +108,9 @@ const Stocks = () => {
                         placeholder="e.g. IBM, AAPL, AMZN"
                         required
                     />
+                    {
+                        symbolError && <p className="text-sm text-red-600">Please Enter A Valid Symbol</p>
+                    }
                 </div>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Purchase Date</label>

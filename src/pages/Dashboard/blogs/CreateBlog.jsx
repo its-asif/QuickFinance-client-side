@@ -4,8 +4,8 @@ import 'react-quill/dist/quill.snow.css';
 import PostedBlog from './postedBlog/PostedBlog'
 import useAuth from '../../../Hooks/useAuth';
 import DashboardHeader from '../../../Components/header/DashboardHeader';
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const CreateBlogs = () => {
     const { AuthUser } = useAuth();
@@ -16,7 +16,7 @@ const CreateBlogs = () => {
     const [title, setTitle] = useState('');
     const [blogImage, setBlogImage] = useState('');
     const {email, displayName, photoURL} = AuthUser;
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
 
     // console.log(email, displayName, photoURL);
 
@@ -66,6 +66,20 @@ const CreateBlogs = () => {
 
 
     const handleSubmit = () => {
+
+        if(!title ) {
+            return toast.error('Title is required');
+        }
+        if(!tags.length) {
+            return toast.error('Tags are required');
+        }
+        if( !value ) {
+            return toast.error('Content is required');
+        }
+        if( !blogImage ) {
+            return toast.error('Blog Image is required');
+        }
+
         const blogData = {
             userEmail: email,
             userName: displayName,
@@ -77,7 +91,7 @@ const CreateBlogs = () => {
         }
         console.log(blogData);
         // post data
-        axiosPublic.post('/api/blogs', blogData)
+        axiosSecure.post('/api/blogs', blogData)
         .then(res => {
             console.log(res);
             toast.success('Blog Posted Successfully');
@@ -89,6 +103,11 @@ const CreateBlogs = () => {
         .catch(err => {
             console.log(err);
             toast.error('Failed to Post Blog');
+
+            // handle payload too large error
+            if(err.response.status === 413) {
+                toast.error('Image size is too large. Please upload a smaller image.');
+            }
         })
     }
 
@@ -108,7 +127,7 @@ const CreateBlogs = () => {
             </div>
 
             {/* Form Section */}
-            <div className='flex flex-col justify-center lg:w-1/3 mx-auto bg-green-100 p-10 m-4 rounded-lg'>
+            <div className='flex flex-col justify-center md:w-2/3 mx-auto bg-green-100 p-10 m-4 rounded-lg'>
 
                 {/* input title */}
                 <div className="form-control w-full">

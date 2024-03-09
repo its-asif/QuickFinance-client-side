@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useBudgetData = (userEmail) => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { data: budgetPlanningData = [], loading, refetch } = useQuery({
         queryKey: ["budgetPlanningData", userEmail],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/api/budget/${userEmail}`);
+            const res = await axiosSecure.get(`/api/budget/${userEmail}`);
             return res.data;
         },
     });

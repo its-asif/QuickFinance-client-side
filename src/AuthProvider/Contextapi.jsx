@@ -3,9 +3,10 @@
 
 
 import { createContext, useEffect, useState } from "react";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 import auth from "../firebase/firebase.config";
 import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "@firebase/auth";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 
 
 
@@ -13,7 +14,7 @@ import { GoogleAuthProvider,FacebookAuthProvider, createUserWithEmailAndPassword
 
 const AuthContext = createContext()
 const ContextApi = ({ children }) => {
-    const axiosPublic = useAxiosPublic()
+   const axiosPublic = useAxiosPublic() 
     // emailAndPassword Authentication
     const [AuthUser, setAuthUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -61,31 +62,34 @@ const ContextApi = ({ children }) => {
 
     useEffect(() => {
         const Unsubscribe = onAuthStateChanged(auth, (user) => {
+            const userEmail = user?.email || AuthUser?.email;
+            const loggedUser = { email: userEmail };
             setAuthUser(user)
+            setLoading(false);
             if (user) {
-                const UserInfo = {
-                    email: user?.email
-                }
+                axiosPublic.post('/api/v1/jwt',loggedUser, { withCredentials: true })
+                .then(res=>{
+                    console.log('token response', res.data);
+                })
+                axiosPublic.post('/api/users',loggedUser)
+                .then(res=>{
+                    console.log('token response', res.data);
+                })
+               
 
-                // get token and store client
-                // axiosPublic.post('/jwt', UserInfo)
-                //     .then(res => {
-                //         if (res.data.token) {
-                //             localStorage.setItem('access-token', res.data.token);
-                //         }
-                //     })
-
-                setLoading(false)
             }
             else {
-
-                // localStorage.removeItem('access-token');
-                setLoading(false)
+                axiosPublic.post('/api/v1/logout',loggedUser,{
+                    withCredentials:true
+                })
+                .then(res=>{
+                    console.log('token response', res.data);
+                })
             }
         });
 
         return () => Unsubscribe()
-    }, [])
+    }, [AuthUser,loading])
 
 
     const contextInfo = {

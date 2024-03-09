@@ -23,7 +23,8 @@ const ContactUs = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_f3ou88i', 'template_tbzc2ye', form.current, 'Sdok8aunyfWTnDtXq')
+        // emailjs.sendForm('service_f3ou88i', 'template_tbzc2ye', form.current, 'Sdok8aunyfWTnDtXq')
+        emailjs.sendForm('service_4x59zn6', 'template_an21w53', form.current, '4JdKn_HLBgSVDR5dC')
             .then(() => {
                 Swal.fire({
                     position: "center",
@@ -60,15 +61,19 @@ const ContactUs = () => {
                     <form ref={form} onSubmit={sendEmail}>
                         <div className="space-y-4 mt-8 c">
                             {/* Name  */}
-                            <input type="text" placeholder="Full Name"
+                            <input
+                                required
+                                type="text" placeholder="Full Name"
                                 className="px-2 py-3 bg-white w-full text-sm border-b-2 focus:border-[#0ba360] outline-none" />
 
                             {/* Email      */}
-                            <input type="email" placeholder="Email"
+                            <input
+                                required
+                                type="email" placeholder="Email"
                                 className="px-2 py-3 bg-white text-black w-full text-sm border-b-2 focus:border-[#0ba360] outline-none" />
 
                             {/* Massage  */}
-                            <textarea placeholder="Write Message"
+                            <textarea placeholder="Write Message" required
                                 className="px-2 pt-3 bg-white text-black w-full text-sm border-b-2 focus:border-[#0ba360] outline-none"></textarea>
                         </div>
 
@@ -76,7 +81,7 @@ const ContactUs = () => {
                         <div className="mt-12">
                             <button type="submit"
                                 className="fullWidthSharedBtn">
-                                <IoIosSend className='text-xl mr-2 mb-[3px]'/>
+                                <IoIosSend className='text-xl mr-2 mb-[3px]' />
                                 Send Message
                             </button>
                         </div>

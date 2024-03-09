@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BiLike } from "react-icons/bi";
 import useAuth from "../../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import Spinner from "../../MyAsset/Spinner/Spinner";
 
 
 const BlogDetails = () => {
@@ -49,7 +50,7 @@ const BlogDetails = () => {
         })
     }, [ liked ])
 
-    if(loading) return (<div>Loading...</div>)
+    if(loading) return <div className="h-screen"><Spinner /></div>
 
     return (
         <div className="pt-28 max-w-3xl mx-auto">
@@ -62,7 +63,7 @@ const BlogDetails = () => {
 
 
                 {/* show user details */}
-                <div className="flex justify-between items-center mb-6">
+                <div className="flex justify-between items-center mb-6 mx-6">
                 <div className="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
                     <div className="flex-shrink-0">
                         <img src={blogDetails.userImg}
@@ -133,7 +134,7 @@ const BlogDetails = () => {
 
 
                     {/* show all tags */}
-                    <div className='flex justify-center gap-2'>
+                    <div className='flex flex-wrap justify-center gap-2'>
                         {blogDetails.tags.map((tag, index) => {
                             return <div key={index} className=' m-2 btn btn-sm rounded-lg'> 
                                         <Link to={`/blog/tag/${tag}`}> {tag}</Link>

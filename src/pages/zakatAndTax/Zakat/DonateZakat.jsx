@@ -1,13 +1,17 @@
 
+
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 
 
 const DonateZakat = () => {
-
+  const axiosPublic = useAxiosPublic()
+  const axiosSecure = useAxiosSecure()
   const { AuthUser } = useAuth()
-  const axiosPublic = useAxiosPublic();
-  const handleDonateZakat = (event) => {
+  
+  const handleDonateZakat = async(event) => {
     event.preventDefault();
     const form = event.target;
     console.log("log data ", form);
@@ -19,7 +23,7 @@ const DonateZakat = () => {
     const post_code = parseFloat(form.post_code.value);
     const phone_no = parseFloat(form.phone_no.value);
     const email = AuthUser?.email;
-
+    
     const data = {
       amount,
       currency_type,
@@ -32,12 +36,20 @@ const DonateZakat = () => {
       email,
 
     }
-    axiosPublic.post('/api/payments', data)
-      .then((res) => {
-        window.location.replace(res?.data?.url)
-        console.log(res.data);
-
-      })
+    try {
+      const res =await  axiosSecure.post('/api/payments', data);
+      console.log(res.data);
+      const { url } = res.data;
+      if (url) {
+        window.location.replace(url);
+      } else {
+        console.error('URL not found in response:', res.data);
+        // Handle the case where URL is not available in the response
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle errors as needed
+    }
 
 
 

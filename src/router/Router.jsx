@@ -28,6 +28,9 @@ import MyBlog from "../pages/Dashboard/blogs/myBlog/MyBlog";
 import PublicBlogs from "../pages/Dashboard/blogs/publicBlogs/PublicBlogs";
 import BlogDetails from "../pages/Dashboard/blogs/publicBlogs/BlogDetails";
 import BlogsByTags from "../pages/Dashboard/blogs/publicBlogs/BlogsByTags";
+import TermsAndConditions from "../Components/TermsAndConditions/TermsAndConditions";
+import PrivacyAndPolicy from "../Components/PrivacyAndPolicy/PrivacyAndPolicy";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -54,13 +57,13 @@ const router = createBrowserRouter([
         element: <ZakatAndTax />
       },
       {
-        path:"/donateZakat",
-        element:<DonateZakat></DonateZakat>
+        path: "/donateZakat",
+        element: <PrivateRoute><DonateZakat></DonateZakat></PrivateRoute>
 
       },
       {
-        path:"/payTax",
-        element:<PayTax></PayTax>
+        path: "/payTax",
+        element: <PrivateRoute><PayTax></PayTax></PrivateRoute>
 
       },
       {
@@ -68,35 +71,43 @@ const router = createBrowserRouter([
         element: <ContactUs></ContactUs>
       },
       {
-        path: "/about", 
+        path: "/about",
         element: <AboutUs></AboutUs>
       },
       {
-        path:"/payment/success/:tranId",
-        element:<PaymentSuccess></PaymentSuccess>
+        path: "/payment/success/:tranId",
+        element: <PaymentSuccess></PaymentSuccess>
       },
       {
-        path:"/payment/fail/:transId",
-        element:<PaymentFailed></PaymentFailed>
+        path: "/payment/fail/:tranId",
+        element: <PaymentFailed></PaymentFailed>
       },
       {
         path: "blogs/:blogId",
-        element: <BlogDetails/>,
+        element: <BlogDetails />,
       },
       {
         path: "blog/tag/:tag",
-        element: <BlogsByTags/>,
+        element: <BlogsByTags />,
       },
       {
         path: 'publicBlogs',
-        element: <PublicBlogs/>,
+        element: <PublicBlogs />,
       },
+      {
+        path: '/termsAndConditions',
+        element: <TermsAndConditions />
+      },
+      {
+        path: '/privacyAndPolicy',
+        element: <PrivacyAndPolicy />
+      }
 
     ],
   },
   {
     path: "/dashboard",
-    element: <PrivateRoute><Dashboard/></PrivateRoute>,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children:
       [
         {
@@ -109,7 +120,7 @@ const router = createBrowserRouter([
         },
         {
           path: "myAsset",
-          element: <MyAsset />, 
+          element: <MyAsset />,
         },
         {
           path: "financialManagement",  //personal finance
@@ -120,32 +131,34 @@ const router = createBrowserRouter([
           element: <BudgetPlanning />
         },
         {
-          path:'goalProgress',
-          element: <GoalProgress/>,
+          path: 'goalProgress',
+          element: <GoalProgress />,
         },
         {
-          path:'manageDebt',
-          element: <UnderMaintenance/>,
+          path: 'manageDebt',
+          element: <UnderMaintenance />,
         },
         {
-          path:'payments',
-          element: <MyPayments/>,
+          path: 'payments',
+          element: <MyPayments />,
         },
         {
           path: 'allUsers',
-          element: <AllUsers/>,
+          element: <AdminRoute>
+            <AllUsers />
+          </AdminRoute>,
         },
         {
           path: 'publishBlogs',
-          element: <CreateBlogs/>,
+          element: <CreateBlogs />,
         },
         {
           path: 'myBlogs',
-          element: <MyBlog/>,
+          element: <MyBlog />,
         },
         {
           path: 'myAsset',
-          element: <MyAsset/>,
+          element: <MyAsset />,
         },
       ]
   }
