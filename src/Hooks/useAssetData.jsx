@@ -15,7 +15,7 @@ const useAssetData = () => {
     // console.log(assetData);
     useEffect(() => {
         if (loading == false) {
-            console.log(loading);
+            // console.log(loading);
             for (const updateData of assetData) {
                 // real time data for stocks 
                 if (updateData.category === "Stocks") {
@@ -28,28 +28,36 @@ const useAssetData = () => {
                             .then(res => res.json())
                             .then((stocks) => {
                                 console.log(stocks)
-                                if (stocks['Global Quote']['05. price']) {
-                                    const newPrice = stocks['Global Quote']['05. price'];
-                                    const StockStatus = stocks['Global Quote']['09. change'];
+                                const ApiLimit = stocks['Information']
+                                if (ApiLimit) {
+                                    console.log('Api limit over');
+                                }
+                                else {
 
-                                    const stocksData = {
-                                        userEmail: AuthUser?.email,
-                                        category: "Stocks",
-                                        asset_name: updateData.asset_name,
-                                        magnitude: updateData.magnitude,
-                                        purchase_date: updateData.purchase_date,
-                                        locale: updateData.locale,
-                                        status: `${StockStatus > 0 ? 'ups' : 'down'}`,
-                                        value: newPrice * updateData.magnitude
-                                    };
-                                    // console.log(stocksData);
-                                    axiosSecure.patch(`/api/assets/${updateData._id}`, stocksData)
-                                        .then(res => {
-                                            // console.log(res.status);
-                                            if (res.status === 200) {
-                                                refetch()
-                                            }
-                                        })
+
+                                    const newPrice = stocks['Global Quote']['05. price'];
+                                    if (newPrice) {
+                                        const StockStatus = stocks['Global Quote']['09. change'];
+
+                                        const stocksData = {
+                                            userEmail: AuthUser?.email,
+                                            category: "Stocks",
+                                            asset_name: updateData.asset_name,
+                                            magnitude: updateData.magnitude,
+                                            purchase_date: updateData.purchase_date,
+                                            locale: updateData.locale,
+                                            status: `${StockStatus > 0 ? 'ups' : 'down'}`,
+                                            value: newPrice * updateData.magnitude
+                                        };
+                                        // console.log(stocksData);
+                                        axiosSecure.patch(`/api/assets/${updateData._id}`, stocksData)
+                                            .then(res => {
+                                                // console.log(res.status);
+                                                if (res.status === 200) {
+                                                    refetch()
+                                                }
+                                            })
+                                    }
                                 }
                             })
                     }
@@ -67,27 +75,33 @@ const useAssetData = () => {
                             .then(res => res.json())
                             .then((BothData) => {
                                 // console.log(BothData)
-                                const newPrice = BothData['Global Quote']['5. Exchange Rate'];
-                                if (newPrice) {
-                                    const newValue = newPrice * updateData.magnitude;
-                                    const oldValue = updateData.value
-                                    const patchData = {
-                                        userEmail: AuthUser?.email,
-                                        category: "Stocks",
-                                        asset_name: updateData.asset_name,
-                                        magnitude: updateData.magnitude,
-                                        purchase_date: updateData.purchase_date,
-                                        locale: updateData.locale,
-                                        status: `${newValue > oldValue ? 'ups' : newValue < oldValue ? 'downs' : 'equal'}`,
-                                        value: newValue
-                                    };
-                                    axiosSecure.patch(`/api/assets/${updateData._id}`, patchData)
-                                        .then(res => {
-                                            // console.log(res.status);
-                                            if (res.status === 200) {
-                                                refetch()
-                                            }
-                                        })
+                                const ApiLimit = BothData['Information']
+                                if (ApiLimit) {
+                                    console.log('Api limit over');
+                                }
+                                else {
+                                    const newPrice = BothData['Global Quote']['5. Exchange Rate'];
+                                    if (newPrice) {
+                                        const newValue = newPrice * updateData.magnitude;
+                                        const oldValue = updateData.value
+                                        const patchData = {
+                                            userEmail: AuthUser?.email,
+                                            category: "Stocks",
+                                            asset_name: updateData.asset_name,
+                                            magnitude: updateData.magnitude,
+                                            purchase_date: updateData.purchase_date,
+                                            locale: updateData.locale,
+                                            status: `${newValue > oldValue ? 'ups' : newValue < oldValue ? 'downs' : 'equal'}`,
+                                            value: newValue
+                                        };
+                                        axiosSecure.patch(`/api/assets/${updateData._id}`, patchData)
+                                            .then(res => {
+                                                // console.log(res.status);
+                                                if (res.status === 200) {
+                                                    refetch()
+                                                }
+                                            })
+                                    }
                                 }
                             })
 
@@ -96,62 +110,60 @@ const useAssetData = () => {
                         console.log('error');
                     }
                 }
-                // if (updateData.category === "Jewelry") {
-                //     try {
-                //         var myHeaders = new Headers();
-                //         myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
-                //         myHeaders.append("Content-Type", "application/json");
+                if (updateData.category === "Jewelry") {
+                    console.log(updateData.category);
+                    try {
+                        var myHeaders = new Headers();
+                        // myHeaders.append("x-access-token", "goldapi-15aqdqrlsxkw9dx-io");
+                        myHeaders.append("x-access-token", "goldapi-dvvsltbj6n1w-io");
+                        myHeaders.append("Content-Type", "application/json");
 
-                //         var requestOptions = {
-                //             method: 'GET',
-                //             headers: myHeaders,
-                //             redirect: 'follow'
-                //         };
-                //         const response =  fetch(`https://www.goldapi.io/api/${JewelrySymbol}/USD`, requestOptions)
-                //         if (!response.ok) {
-                //             throw new Error('Failed to fetch Commodities data');
-                //         }
-                //         const JewelryData =  response.json();
-                //         // console.log(JewelryData);
-                //         // Get the selected karat from the form data
-                //         const selectedKarat = data.Karats;
-                //         // console.log(selectedKarat);
-
-                //         // Access the price of the selected karat from the fetched jewelry data
-                //         const KaratsPrice = JewelryData[selectedKarat];
-                //         // console.log(KaratsPrice);
-                //         // calculate value 
-                //         const CurrentValue = parseFloat(data.weight) * parseFloat(KaratsPrice)
-                //         // compar3e values for Status
-                //         const purchaseAmount = parseFloat(data.amount)
-                //         // console.log(purchaseAmount);
-                //         // karat data nite hobe 
-                //         const jewelryData = {
-                //             userEmail: AuthUser?.email,
-                //             category: "Jewelry",
-                //             asset_name: data.jewelry,
-                //             karat: selectedKarat,
-                //             magnitude: parseFloat(data.weight),
-                //             purchase_date: data.date,
-                //             locale: "Home",
-                //             status: `${purchaseAmount > CurrentValue ? 'down' : CurrentValue > purchaseAmount ? 'ups' : 'equal'}`,
-                //             value: CurrentValue
-                //         };
-                //         axiosPublic.patch( `/api/assets/${updateData._id}`, jewelryData)
-                //             .then(res => {
-                //                 // console.log(res.status);
-                //                 if (res.status === 200) {
-                //                     refetch()
-                //                 }
-                //             })
-
-                //     }
-                //     catch {
-                //         (error) => {
-                //             console.log(error);
-                //         }
-                //     }
-                // }
+                        var requestOptions = {
+                            method: 'GET',
+                            headers: myHeaders,
+                            redirect: 'follow'
+                        };
+                        // console.log(JewelryData);
+                        fetch(`https://www.goldapi.io/api/${updateData.JewelrySymbol}/USD`, requestOptions)
+                            .then(res => res.json())
+                            .then((JewelryData) => {
+                                // Get the selected karat from the form data
+                                const selectedKarat = updateData.Karats;
+                                // Access the price of the selected karat from the fetched jewelry data
+                                const KaratsPrice = JewelryData[selectedKarat];
+                                // console.log(KaratsPrice);
+                                // calculate value 
+                                const CurrentValue = parseFloat(updateData.weight) * parseFloat(KaratsPrice)
+                                // compar3e values for Status
+                                const purchaseAmount = parseFloat(updateData.amount)
+                                // console.log(purchaseAmount);
+                                // karat data nite hobe 
+                                const jewelryData = {
+                                    userEmail: AuthUser?.email,
+                                    category: "Jewelry",
+                                    asset_name: updateData.jewelry,
+                                    karat: selectedKarat,
+                                    magnitude: parseFloat(updateData.weight),
+                                    purchase_date: updateData.date,
+                                    locale: "Home",
+                                    status: `${purchaseAmount > CurrentValue ? 'down' : CurrentValue > purchaseAmount ? 'ups' : 'equal'}`,
+                                    value: CurrentValue
+                                };
+                                axiosSecure.patch(`/api/assets/${updateData._id}`, jewelryData)
+                                    .then(res => {
+                                        // console.log(res.status);
+                                        if (res.status === 200) {
+                                            refetch()
+                                        }
+                                    })
+                            })
+                    }
+                    catch {
+                        (error) => {
+                            console.log(error);
+                        }
+                    }
+                }
                 if (updateData.category === "Savings") {
                     // console.log(updateData);
                     // Function to calculate the value of the deposit account

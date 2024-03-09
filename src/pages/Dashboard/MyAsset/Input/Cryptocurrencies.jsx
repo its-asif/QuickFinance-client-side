@@ -1,18 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { PiCurrencyBtcFill } from "react-icons/pi";
 import { AuthContext } from "../../../../AuthProvider/Contextapi";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAssetData from "../../../../Hooks/useAssetData";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const Crypto = () => {
-    const  { refetch } = useAssetData()
-    const axiosPublic = useAxiosPublic()
+    const { refetch } = useAssetData()
+    // const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { AuthUser } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
+    // symbol validation 
+    const [symbolError, setSymbolError] = useState(null)
     const onSubmit = async (data) => {
         const cryptoSymbol = data.crypto.toUpperCase();
         const exchangeCurrency = 'USD'
@@ -23,49 +25,67 @@ const Crypto = () => {
                     throw new Error('Failed to fetch stock data');
                 }
                 const CryptoData = await response.json();
-                // console.log(CryptoData);
-                // cryptoName 
-                // const cryptoName = await CryptoData['Realtime Currency Exchange Rate']['2. From_Currency Name']
-                // crypto price 
-                const newPrice = await CryptoData['Realtime Currency Exchange Rate']['5. Exchange Rate']
-                // crypto exchange currency 
-                // const code = await CryptoData['Realtime Currency Exchange Rate']['3. To_Currency Code']
+                if (CryptoData['Information']) {
+                    document.getElementById('my_modal_5').close();
+                    Swal.fire({
+                        title: "opps!",
+                        text: "Our Api limit is over try next Day",
+                        icon: "error",
+                        confirmButtonColor: "#0ba360",
+                        confirmButtonText: 'DONE'
+                    });
+                }
+                else {
 
-                const cryptoData = {
-                    userEmail: AuthUser?.email,
-                    category: "Crypto",
-                    asset_name: cryptoSymbol,
-                    magnitude: parseFloat(data.amount),
-                    purchase_date: data.date,
-                    locale: "Global",
-                    status: "equal",
-                    value: parseFloat(`${newPrice * data.amount}`)
-                };
-                axiosSecure.post('/api/assets', cryptoData )
-                .then(res => {
-                    // console.log(res.status);
-                    if (res.status === 200) {
-                        document.getElementById('my_modal_5').close();
-                        Swal.fire({
-                            title: "Successful",
-                            text: "Your Asset Added to Portfolio",
-                            icon: "success",
-                            confirmButtonColor: "#0ba360",
-                            confirmButtonText: 'DONE'
-                        });
-                        reset()
-                        refetch()
+                    // console.log(CryptoData);
+                    // cryptoName 
+                    // const cryptoName = await CryptoData['Realtime Currency Exchange Rate']['2. From_Currency Name']
+                    // crypto price 
+                    const newPrice = await CryptoData['Realtime Currency Exchange Rate']['5. Exchange Rate']
+                    // crypto exchange currency 
+                    // const code = await CryptoData['Realtime Currency Exchange Rate']['3. To_Currency Code']
+                    if (!newPrice) {
+                        setSymbolError('Enter a Stock valid Symbol');
                     }
                     else {
-                        Swal.fire({
-                            title: "oh!",
-                            text: "Some Error Occurred",
-                            icon: "error",
-                            confirmButtonColor: "#0ba360",
-                            confirmButtonText: 'DONE'
-                        });
+
+                        const cryptoData = {
+                            userEmail: AuthUser?.email,
+                            category: "Crypto",
+                            asset_name: cryptoSymbol,
+                            magnitude: parseFloat(data.amount),
+                            purchase_date: data.date,
+                            locale: "Global",
+                            status: "equal",
+                            value: parseFloat(`${newPrice * data.amount}`)
+                        };
+                        axiosSecure.post('/api/assets', cryptoData)
+                            .then(res => {
+                                // console.log(res.status);
+                                if (res.status === 200) {
+                                    document.getElementById('my_modal_5').close();
+                                    Swal.fire({
+                                        title: "Successful",
+                                        text: "Your Asset Added to Portfolio",
+                                        icon: "success",
+                                        confirmButtonColor: "#0ba360",
+                                        confirmButtonText: 'DONE'
+                                    });
+                                    reset()
+                                    refetch()
+                                }
+                                else {
+                                    Swal.fire({
+                                        title: "oh!",
+                                        text: "Some Error Occurred",
+                                        icon: "error",
+                                        confirmButtonColor: "#0ba360",
+                                        confirmButtonText: 'DONE'
+                                    });
+                                }
+                            })
                     }
-                })
+                }
 
             }
             catch {
@@ -91,6 +111,9 @@ const Crypto = () => {
                         placeholder="e.g. BTC, ETH, XRP"
                         required
                     />
+                    {
+                        symbolError && <p className="text-sm text-red-600">Please Enter A Valid Symbol</p>
+                    }
                 </div>
                 {/* <div className="flex flex-col mb-2">
                     <label htmlFor="amount" className="primaryColor text-sm md:text-base font-bold mb-1">Exchange Currency</label>

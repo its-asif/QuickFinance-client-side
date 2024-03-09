@@ -23,7 +23,8 @@ const ContactUs = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_f3ou88i', 'template_tbzc2ye', form.current, 'Sdok8aunyfWTnDtXq')
+        // emailjs.sendForm('service_f3ou88i', 'template_tbzc2ye', form.current, 'Sdok8aunyfWTnDtXq')
+        emailjs.sendForm('service_4x59zn6', 'template_an21w53', form.current, '4JdKn_HLBgSVDR5dC')
             .then(() => {
                 Swal.fire({
                     position: "center",
