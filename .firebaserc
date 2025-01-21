@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "quickfinance-a948a"
-  }
+    "y": "quickfinance-cc0c9",
+    "default": "quickfinance-cc0c9"
+  },
+  "targets": {},
+  "etags": {}
 }
