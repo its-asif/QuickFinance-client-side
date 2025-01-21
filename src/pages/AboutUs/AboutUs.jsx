@@ -121,7 +121,7 @@ const AboutUs = () => {
             portfolio: "https://asifhossain.netlify.app/"
         },
         {
-            name: "Muddasir Faiyaz",
+            name: "Muddasir Faiyaj",
             position: "",
             image: team4,
             portfolio: "https://muddasir-faiyaj.web.app/"
